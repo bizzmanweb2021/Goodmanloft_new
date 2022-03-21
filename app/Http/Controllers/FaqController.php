@@ -13,4 +13,8 @@ class FaqController extends Controller
         $faq = FAQ::orderBy('id')->get();
         return view('Frontend.FAQ.index')->with('faq',$faq);
     }
+    public function term()
+    {
+        return view('Frontend.Terms&Condition.index');
+    }
 }

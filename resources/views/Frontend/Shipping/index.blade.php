@@ -1,7 +1,7 @@
 @extends('Frontend.layouts.master')
 @section('content')
 <!-- Page Banner Section Start -->
-<div class="page-banner-section section bg-image" data-bg="assets/images/inner-breadcum.png">
+{{-- <div class="page-banner-section section bg-image" data-bg="assets/images/inner-breadcum.png"> --}}
     <div class="container">
         <div class="row">
             <div class="col">
@@ -17,7 +17,7 @@
             </div>
         </div>
     </div>
-</div>
+{{-- </div> --}}
 <!-- Page Banner Section End -->
 <!--Contact section start-->
 <div class="conact-section section pt-95 pt-lg-75 pt-md-65 pt-sm-55 pt-xs-45">
@@ -141,70 +141,71 @@
         </div>
      </div>
 
-     <div class="shipping-option">
-         <h3>Shipping Method</h3>
+     <div class="row">
+         <div class="col-md-7">
+            <div class="shipping-option">
 
-        @foreach (App\Models\DeliveryRate::all() as $del)
+                <h3>Shipping Method</h3>
 
-         <div class="shipping-option-mode">
-            <div class="row">
-                <div class="col-md-10">
-                    <div class="single-method">
-                        <input type="radio" id="payment_check" name="payment-method" value="check">
-                        <label for="payment_check">Delivery Rate</label>
-                    </div>
+               @foreach (App\Models\DeliveryRate::all() as $del)
+
+                <div class="shipping-option-mode">
+                   <div class="row">
+                       <div class="col-md-10">
+                           <div class="single-method">
+                               <input type="radio" id="payment_check" name="payment-method" value="check">
+                               <label for="payment_check">Delivery Rate</label>
+                           </div>
+                       </div>
+                       <div class="col-md-2">
+                            <div class="shipping-payment">
+                                <h4>${{ $del->rate }}</h4>
+                            </div>
+                       </div>
+                   </div>
                 </div>
-                <div class="col-md-2">
-                     <div class="shipping-payment">
-                         <h4>${{ $del->rate }}</h4>
-                     </div>
-                </div>
+
+                @endforeach
             </div>
-            {{-- <div class="row">
-                <div class="col-md-10">
-                    <div class="single-method">
-                        <input type="radio" id="payment_paypal" name="payment-method" value="paypal">
-                        <label for="payment_paypal">Delivery Rate</label>
-
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="shipping-payment">
-                        <h4>${{ $del->rate }}</h4>
-                    </div>
-                </div>
-            </div> --}}
          </div>
+         <div class="col-lg-5">
+            <div class="row">
+                <!-- Cart Total -->
+                <div class="col-12 mb-60 mt-5">
+                    <h3 style="margin-top:30px;">Cart Total</h3>
+                    <div class="checkout-cart-total">
+                        <h4>Product <span>Total</span></h4>
+                        @php $sub_total = 0 @endphp
+                        @foreach (App\Models\Cart::get() as $cart)
+                        <?php $sub_total += $cart->total ?>
+                        <ul>
+                            <li>{{ $cart->product_name }} <span>${{ $cart->total }}</span></li>
+                        </ul>
+                        @endforeach
+                        <p>Sub Total <span>${{ $sub_total }}</span></p>
 
-         @endforeach
-     </div>
-     <div class="col-lg-5">
-        <div class="row">
-            <!-- Cart Total -->
-            <div class="col-12 mb-60">
-                <h4 class="checkout-title">Cart Total</h4>
-                <div class="checkout-cart-total">
-                    <h4>Product <span>Total</span></h4>
-                    @php $sub_total = 0 @endphp
-                    @foreach (App\Models\Cart::get() as $cart)
-                    <?php $sub_total += $cart->total ?>
-                    <ul>
-                        <li>{{ $cart->product_name }} <span>${{ $cart->total }}</span></li>
-                    </ul>
-                    @endforeach
-                    <p>Sub Total <span>${{ $sub_total }}</span></p>
-                    @if ( $sub_total >= 250)
-                        <p>Delivery Rate <span>$0</span></p>
-                    @else
-                    <p>Delivery Rate <span>$20</span></p>
-                    @endif
+                        @if ( $sub_total >= 250)
+                        @php $del = 0 @endphp
+                            <p>Delivery Rate <span>${{ $del }}</span></p>
+                            <?php $tot = $sub_total + $del ?>
+                            <p>Total<span>${{ $tot }}</span></p>
+                        @else
+                        @php $del = 20 @endphp
+                            <p>Delivery Rate <span>${{ $del }}</span></p>
+                            <?php $tot = $sub_total + $del ?>
+                            <p>Total<span>${{ $tot }}</span></p>
+
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
+
      <br>
      <div class="shipping-btn ">
-        <button class="btn" type="submit"><span>Continue To Payment</span></button> &nbsp;
+        <a href="javascript:void(0)" data-amount="1280" data-id="3" class="btn order_now"><span>Continue To Payment</span></a> &nbsp;
         <a href="{{ route('checkout') }}">Return to information</a>
      </div>
 
@@ -213,7 +214,9 @@
 <!--Contact section end-->
 
 @endsection
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 @section('javascript')
+<script>
     $(document).ready({
         $('#ship2').on('submit', '#ship2', function(e){
             e.PreventDefault();
@@ -231,5 +234,36 @@
             });
 
         });
+        var SITEURL = '{{URL::to('')}}';
+        $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+        $('body').on('click', '.buy_now', function(e){
+        var totalAmount = $(this).attr("data-amount");
+        var product_id =  $(this).attr("data-id");
+        var options = {
+        "key": "rzp_test_jOCPSrfkSUVcWD",
+        "amount": (totalAmount*100), // 2000 paise = INR 20
+        "name": "Tutsmake",
+        "description": "Payment",
+        "image": "//www.tutsmake.com/wp-content/uploads/2018/12/cropped-favicon-1024-1-180x180.png",
+        "handler": function (response){
+        window.location.href = SITEURL +'/'+ 'paysuccess?payment_id='+response.razorpay_payment_id+'&product_id='+product_id+'&amount='+totalAmount;
+        },
+        "prefill": {
+        "contact": '9988665544',
+        "email":   'tutsmake@gmail.com',
+        },
+        "theme": {
+        "color": "#528FF0"
+        }
+        };
+        var rzp1 = new Razorpay(options);
+        rzp1.open();
+        e.preventDefault();
+        });
     });
+</script>
 @endsection

@@ -45,32 +45,33 @@
             </div>
                 <div class="product-bg-pattern">
                     <div class="container">
-                        <div class="row">
 
+                        <div class="row">
+                            @foreach ($product as $product )
                             <div class="col-md-4 col-sm-6 ">
-                                @if (!empty($product[4]['id']))
+                                {{-- @if (!empty($product[4]['id'])) --}}
                                 <div class="single-grid-product mb-40">
                                     <div class="product-image">
                                         <div class="product-label">
-                                            <span class="sale">-20%</span>
+                                            <span class="sale">Sale</span>
                                             <span class="new">New</span>
                                         </div>
-                                        <a href="{{ route('productShow',$product[4]['id']) }}" tabindex="0">
-                                            <img src=" {{ asset($product[4]['product_image']) }}" class="img-fluid" alt="" >
+                                        <a href="{{ route('productShow',$product['id']) }}" tabindex="0">
+                                            <img src=" {{ asset($product['product_image']) }}" class="img-fluid" alt="" >
                                         </a>
 
                                         <div class="product-action d-flex justify-content-between">
-                                                <input type="hidden" value="{{ $product[4]['id'] }}" name="id">
-                                                <input type="hidden" value="{{ $product[4]['product_name'] }}" name="name">
-                                                <input type="hidden" value="{{ $product[4]['Price'] }}" name="price">
-                                                <input type="hidden" value="{{ $product[4]['product_image'] }}"  name="image">
+                                                <input type="hidden" value="{{ $product['id'] }}" name="id">
+                                                <input type="hidden" value="{{ $product['product_name'] }}" name="name">
+                                                <input type="hidden" value="{{ $product['Price'] }}" name="price">
+                                                <input type="hidden" value="{{ $product['product_image'] }}"  name="image">
                                                 <input type="hidden" value="1" name="quantity">
 
 
-                                                <a class="product-btn" href="{{ route('add.wish',$product[4]['id']) }}" tabindex="0">Add to Cart</a>
+                                                <a class="product-btn" href="{{ route('add.wish',$product['id']) }}" tabindex="0">Add to Cart</a>
 
                                             <ul class="d-flex">
-                                                <li><a href="{{ route('wishlistShow',$product[4]['id']) }}" tabindex="0"><i class="ion-android-favorite-outline"></i></a>
+                                                <li><a href="{{ route('wishlistShow',$product['id']) }}" tabindex="0"><i class="ion-android-favorite-outline"></i></a>
                                                 </li>
                                                 <li><a href="compare.html" tabindex="0"><i class="ion-ios-shuffle"></i></a></li>
                                             </ul>
@@ -88,14 +89,14 @@
                                             </span>
                                         </div>
 
-                                        <h3 class="title"> <a href="{{ route('productShow',$product[4]['id']) }}" tabindex="0">{{($product[0]['product_name']) }}</a></h3>
-                                                <p class="product-price"><span class="discounted-price">{{($product[4]['Price']) }}</span> <span class="main-price discounted">$120.00</span></p>
+                                        <h3 class="title"> <a href="{{ route('productShow',$product['id']) }}" tabindex="0">{{($product['product_name']) }}</a></h3>
+                                                <p class="product-price"><span class="discounted-price">{{($product['Price']) }}</span> <span class="main-price discounted">$120.00</span></p>
 
                                     </div>
                                 </div>
-                                @endif
-                                @if(!empty($product[2]['id']))
-                                <div class="single-grid-product mb-40">
+                                {{-- @endif --}}
+                                {{-- @if(!empty($product[2]['id'])) --}}
+                                {{-- <div class="single-grid-product mb-40">
                                     <div class="product-image">
                                         <div class="product-label">
                                             <span class="sale">-20%</span>
@@ -129,11 +130,11 @@
                                         <h3 class="title"> <a href="{{ route('productShow',$product[2]['id']) }}" tabindex="0">{{($product[1]['product_name']) }}</a></h3>
                                         <p class="product-price"><span class="discounted-price">{{($product[2]['Price']) }}</span> <span class="main-price discounted">$120.00</span></p>
                                     </div>
-                                </div>
-                                @endif
+                                </div> --}}
+                                {{-- @endif --}}
                             </div>
 
-                            <div class="col-md-4 col-sm-6 ">
+                            {{-- <div class="col-md-4 col-sm-6 ">
                                 @if(!empty($product[3]['id']))
                                 <div class="single-grid-product mb-40">
                                     <div class="product-image">
@@ -172,8 +173,8 @@
                                     </div>
                                 </div>
                                 @endif
-                            </div>
-                            <div class="col-md-4 col-sm-6 ">
+                            </div> --}}
+                            {{-- <div class="col-md-4 col-sm-6 ">
                                 @if(!empty($product[1]['id']))
                                 <div class="single-grid-product mb-40 ">
                                     <div class="product-image">
@@ -245,8 +246,10 @@
                                     </div>
                                 </div>
                                 @endif
-                            </div>
+                            </div> --}}
+                            @endforeach
                         </div>
+
                     </div>
                 </div>
         </div>
@@ -288,6 +291,9 @@
             </div>
         </div>
         <!--Banner section end-->
+        <div class="site-whatsapp">
+            <a href="https://wa.me/6596352229" target="_blank"><img src="assets/images/wp-logo.png" alt=""></a>
+          </div>
 
         <!-- List Product Section Start -->
         <div class="list-product-section section pt-80 pt-lg-60 pt-md-50 pt-sm-40 pt-xs-20">

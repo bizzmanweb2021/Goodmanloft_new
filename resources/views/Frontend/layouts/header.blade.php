@@ -85,16 +85,19 @@
                                 </ul>
                             </nav>
                             <div class="header-right_wrap d-flex">
-                                <div class="header-search">
-                                    <button class="header-search-toggle"><i
-                                            class="ion-ios-search-strong"></i></button>
-                                    <div class="header-search-form">
-                                        <form action="#">
-                                            <input type="text" placeholder="Type and hit enter">
-                                            <button><i class="ion-ios-search-strong"></i></button>
-                                        </form>
+                                <form action="{{ route('product.search') }}" method="GET" role="search">
+                                    <div class="header-search">
+                                        <button class="header-search-toggle"><i
+                                                class="ion-ios-search-strong"></i></button>
+                                        <div class="header-search-form">
+                                            <form action="#">
+                                                <input type="text" placeholder="Type and hit enter">
+                                                <button><i class="ion-ios-search-strong"></i></button>
+                                            </form>
+                                        </div>
                                     </div>
-                                </div>
+                                </form>
+
                                 <div class="header-cart">
                                     <a href="{{ route('cart.show') }}"><i class="fa fa-shopping-bag"></i><span class="cart-count">{{ App\Models\Cart::where('user_id',Auth::check()?Auth::user()->id:0)->count() }}</span></a>
                                     <!--Mini Cart Dropdown Start-->

@@ -26,5 +26,10 @@ class HomeController extends Controller
         return view('Frontend.Home.index')->with('product',$product);
     }
 
+    public function search(Request $request)
+    {
+
+    }
+
 
 }

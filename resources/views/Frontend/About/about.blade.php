@@ -1,7 +1,7 @@
 @extends('Frontend.layouts.master')
 @section('content')
  <!-- Page Banner Section Start -->
- <div class="page-banner-section section bg-image" data-bg="assets/images/inner-breadcum.png">
+ {{-- <div class="page-banner-section section bg-image" data-bg="assets/images/inner-breadcum.png"> --}}
     <div class="container">
         <div class="row">
             <div class="col">
@@ -17,8 +17,10 @@
             </div>
         </div>
     </div>
-</div>
-<!-- Page Banner Section End -->
+{{-- </div> --}}
+<div class="site-whatsapp">
+    <a href="https://wa.me/6596352229" target="_blank"><img src="assets/images/wp-logo.png" alt=""></a>
+  </div>
 <!--About Us Area Start-->
 <div class="about-us-area section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">
     <div class="container-fluid">

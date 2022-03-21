@@ -3,7 +3,7 @@
 @section('content')
 <div class="content">
     <!-- Page Banner Section Start -->
-        <div class="page-banner-section section bg-image" data-bg="{{ asset('assets/images/inner-breadcum.png') }}">
+        {{-- <div class="page-banner-section section bg-image" data-bg="{{ asset('assets/images/inner-breadcum.png') }}"> --}}
             <div class="container">
                 <div class="row">
                     <div class="col">
@@ -17,7 +17,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        {{-- </div> --}}
         <!-- Page Banner Section End -->
 
         <!-- Single Product Section Start -->

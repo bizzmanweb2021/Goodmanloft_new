@@ -41,6 +41,7 @@
                         <li><a href="#">Shopping Guide</a></li>
                         <li><a href="#">Delivery Information</a></li>
                         <li><a href="{{ route('faq') }}">FAQ</a></li>
+                        <li><a href="{{ route('term.condition') }}">Terms & Conditions</a></li>
 
                     </ul>
                 </div>

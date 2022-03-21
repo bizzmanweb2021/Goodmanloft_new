@@ -1,7 +1,7 @@
 @extends('Frontend.layouts.master')
 @section('content')
 <!-- Page Banner Section Start -->
-<div class="page-banner-section section bg-image" data-bg="assets/images/inner-breadcum.png">
+{{-- <div class="page-banner-section section bg-image" data-bg="assets/images/inner-breadcum.png"> --}}
     <div class="container">
         <div class="row">
             <div class="col">
@@ -15,8 +15,11 @@
             </div>
         </div>
     </div>
-</div>
+{{-- </div> --}}
 <!-- Page Banner Section End -->
+<div class="site-whatsapp">
+    <a href="https://wa.me/6596352229" target="_blank"><img src="assets/images/wp-logo.png" alt=""></a>
+  </div>
  <!--Checkout section start-->
  <div class="checkout-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 ">
     <div class="container sb-border pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20">
@@ -71,17 +74,15 @@
                                     <label>Zip Code*</label>
                                     <input type="text" name="zip">
                                 </div>
-                                <div class="col-md-6 col-12 mb-20">
-                                    <label>Address Type*</label>
-                                    <select class="nice-select" name="address_type">
-                                        <option value="Home">Home(7am - 7pm)</option>
-                                        <option value="Office">Office(9am - 6pm)</option>
-                                    </select>
-                                </div>
+
                                 <div class="col-12 mb-20">
                                     <div class="check-box">
                                         <input type="checkbox" id="shiping_address" name="shipping_address" data-shipping>
                                         <label for="shiping_address">Ship to Different Address</label>
+                                    </div>
+                                    <div class="check-box">
+                                        <input type="checkbox" id="info" name="info" >
+                                        <label for="info">Save this information for next time</label>
                                     </div>
                                 </div>
                             </div>
@@ -127,13 +128,6 @@
                                 <div class="col-md-6 col-12 mb-20">
                                     <label>Zip Code*</label>
                                     <input type="text" name="zip_ship">
-                                </div>
-                                <div class="col-md-6 col-12 mb-20">
-                                    <label>Address Type*</label>
-                                    <select class="nice-select" name="address_type_ship">
-                                        <option value="Home">Home(7am - 7pm)</option>
-                                        <option value="Office">Office(9am - 6pm)</option>
-                                    </select>
                                 </div>
                             </div>
                         </div>

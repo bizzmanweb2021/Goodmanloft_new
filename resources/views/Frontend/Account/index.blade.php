@@ -1,6 +1,6 @@
 @extends('Frontend.layouts.master')
 @section('content')
-<div class="page-banner-section section bg-image" data-bg="assets/images/inner-breadcum.png">
+{{-- <div class="page-banner-section section bg-image" data-bg="assets/images/inner-breadcum.png"> --}}
     <div class="container">
         <div class="row">
             <div class="col">
@@ -16,7 +16,10 @@
             </div>
         </div>
     </div>
-</div>
+{{-- </div> --}}
+<div class="site-whatsapp">
+    <a href="https://wa.me/6596352229" target="_blank"><img src="assets/images/wp-logo.png" alt=""></a>
+  </div>
 <!--My Account section start-->
 <div class="my-account-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50" style="background-image: url(assets/images/my-account-background.png);background-size: cover; background-repeat: repeat;">
     <div class="container sb-border pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">

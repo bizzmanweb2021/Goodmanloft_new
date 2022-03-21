@@ -44,6 +44,9 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::get('/productView',[ProductController::class,'index'])->name('productView');
     Route::get('/productAdd',[ProductController::class,'create'])->name('productAdd');
     Route::post('/productStore',[ProductController::class,'store'])->name('image.resize.pro');
+    Route::get('/stockView',[ProductController::class,'stockView'])->name('stockView');
+    Route::get('/stockAdd',[ProductController::class,'stockAdd'])->name('stockAdd');
+    Route::post('/stockStore',[ProductController::class,'stockStore'])->name('stockStore');
     Route::get('/getSubCategoryById',[ProductController::class,'getSubCategoryById'])->name('getSubCategoryById');
 
     Route::get('/categoryView',[CategoryController::class,'index'])->name('CategoryView');
@@ -76,6 +79,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
 });
 
 Route::get('/',[HomeController::class,'index'])->name('user.index');
+Route::get('search',[HomeController::class,'search'])->name('product.search');
 
 Route::get('/productShow/{product_id}',[ShopPageController::class,'show'])->name('productShow');
 Route::get('/product_show/{id}',[ShopPageController::class,'product_show'])->name('product_show');
@@ -88,6 +92,7 @@ Route::get('newest',[ShopPageController::class,'filterNewest'])->name('filter.ne
 Route::get('/nursery',[NurseryController::class,'index'])->name('nursery');
 Route::get('/loadcart',[AddToCartController::class,'loadCart']);
 Route::get('/faq',[FaqController::class,'index'])->name('faq');
+Route::get('/term',[FaqController::class,'term'])->name('term.condition');
 Route::get('/account',[AccountController::class,'index'])->name('account');
 Route::get('/about',[AboutController::class,'index'])->name('about.index');
 Route::get('/contact',[ContactController::class,'index'])->name('contact.index');
@@ -109,7 +114,9 @@ Route::middleware('auth')->group(function()
 
     Route::get('/checkout',[PlaceOrderController::class,'index'])->name('checkout');
     Route::post('/check',[PlaceOrderController::class,'saveAddress'])->name('check.fetch');
+    Route::get('/address',[PlaceOrderController::class,'addresShow'])->name('address.show');
     Route::post('/shipChange',[PlaceOrderController::class,'shipChange'])->name('update.shipping');
+    Route::get('/payment',[PlaceOrderController::class,'showPayment'])->name('show.payment');
 
     Route::get('/shippingShow',[ShippingController::class,'frontShow'])->name('shipping.show');
 

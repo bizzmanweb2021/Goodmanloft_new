@@ -241,6 +241,21 @@ img {
 .ft-border {
   border-top: 2px solid #ebebeb;
 }
+.site-whatsapp{
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 100%;
+    bottom: 90px;
+    right: 25px;
+    color: #fff;
+    text-align: center;
+    font-size: 25px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    position: fixed;
+    z-index: 999;
+  }
 
 #scrollUp {
   background: #222;
@@ -3046,7 +3061,7 @@ ul.cart-items li {
 }
 
 .about-us-content {
-  margin: 50px auto 0px auto;
+  margin: 20px auto 0px auto;
   max-width: 950px;
   text-align: center;
 }

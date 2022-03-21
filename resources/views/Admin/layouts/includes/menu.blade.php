@@ -80,6 +80,13 @@
                                 <span class="sidenav-normal"> Product Subcategory </span>
                               </a>
                             </li>
+                            <li class="nav-item ">
+                                <a class="nav-link {{ ($route=='admin.productView')? 'active': '' }}"
+                                href="{{ route('admin.stockView') }}">
+                                <span class="sidenav-mini-icon"> S </span>
+                                <span class="sidenav-normal"> Product Stock </span>
+                              </a>
+                            </li>
                           </ul>
                         </div>
                     </li>

@@ -37,7 +37,6 @@ class PlaceOrderController extends Controller
                 $check->city = $request->city;
                 $check->state = $request->state;
                 $check->zip = $request->zip;
-                $check->address_type = $request->address_type;
                 $check->save();
 
                 $check = new Shipping_address();
@@ -50,10 +49,9 @@ class PlaceOrderController extends Controller
                 $check->city_ship = $request->city_ship;
                 $check->state_ship = $request->state_ship;
                 $check->zip_ship = $request->zip_ship;
-                $check->address_type_ship = $request->address_type_ship;
                 $check->save();
 
-                return view('Frontend.Shipping.index');
+                return view('Frontend.Checkout.index');
             }
             else
             {
@@ -68,7 +66,6 @@ class PlaceOrderController extends Controller
                 $check->city = $request->city;
                 $check->state = $request->state;
                 $check->zip = $request->zip;
-                $check->address_type = $request->address_type;
                 $check->save();
 
 
@@ -82,10 +79,9 @@ class PlaceOrderController extends Controller
                 $check->city_ship = $request->city;
                 $check->state_ship = $request->state;
                 $check->zip_ship = $request->zip;
-                $check->address_type_ship = $request->address_type;
                 $check->save();
 
-                return view('Frontend.Shipping.index');
+                return view('Frontend.Checkout.index');
             }
 
     }
@@ -102,12 +98,20 @@ class PlaceOrderController extends Controller
                 'state_ship'=> $request->input('state_ship'),
                 'city_ship'=> $request->input('city_ship'),
                 'zip_ship'=> $request->input('zip_ship'),
-                'address_type_ship'=> $request->input('address_type_ship'),
 
         ]);
         if($data)
         {
             return view('Frontend.Shipping.index');
+        }
+
+    }
+    public function fetchAddress(Request $request)
+    {
+        if($request->info)
+        {
+            $data = Billing_address::orderBy('id','desc')->limit(1)->get();
+            return view('Frontend.Checkout.index')->with('Bill',$data);
         }
 
     }

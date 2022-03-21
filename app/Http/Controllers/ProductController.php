@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 use App\Models\category;
 use App\Models\product;
+use App\Models\Stock;
 use App\Models\subcategory;
 use DB;
 use ImageResize;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB as FacadesDB;
 
 class ProductController extends Controller
 {
@@ -86,6 +88,29 @@ class ProductController extends Controller
 
                         $notification1=array('alert-type'=>'success','message'=>'Product Added Successfully');
                         return redirect()->route('admin.productView')->with($notification1);
+
+    }
+    public function stockView()
+    {
+        // $data = Stock::orderBy('id')->get();
+        $data = DB::table('stocks')
+        ->select('stocks.id','stocks.product_name','stocks.stock_available','products.product_name')
+        ->join('products','products.id','=','stocks.product_name')->get();
+        return view('Admin.Stock.stockView')->with('Stocks',$data);
+    }
+    public function stockAdd()
+    {
+        return view('Admin.Stock.stockAdd');
+    }
+    public function stockStore(Request $request)
+    {
+        $stock = new Stock();
+        $stock->product_name = $request->product_name;
+        $stock->stock_available = $request->stock_available;
+        $stock->save();
+
+        $notification1=array('alert-type'=>'success','message'=>'Stock Added Successfully');
+                        return redirect()->route('admin.stockView')->with($notification1);
 
     }
 

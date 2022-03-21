@@ -19,6 +19,9 @@
     </div>
 </div>
 <!-- Shop Section Start -->
+<div class="site-whatsapp">
+    <a href="https://wa.me/6596352229" target="_blank"><img src="assets/images/wp-logo.png" alt=""></a>
+  </div>
 <div class="shop-section section" style="background-image: url(assets/images/shop-pattern.jpg); background-size: contain;">
     <div class="container-fluid">
         <div class="row">
