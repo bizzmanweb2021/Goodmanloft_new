@@ -20,6 +20,7 @@
                   <thead>
                     <tr>
                       <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Product Name</th>
+                      <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Product Price</th>
                       <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Stock Available</th>
                     </tr>
 
@@ -28,6 +29,7 @@
                       @foreach($Stocks as $item)
                       <tr>
                         <td>{{$item->product_name}}</td>
+                        <td>{{$item->Price}}</td>
                         <td>{{$item->stock_available}}</td>
                         </tr>
                       @endforeach

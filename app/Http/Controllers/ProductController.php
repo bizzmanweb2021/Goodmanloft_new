@@ -94,7 +94,7 @@ class ProductController extends Controller
     {
         // $data = Stock::orderBy('id')->get();
         $data = DB::table('stocks')
-        ->select('stocks.id','stocks.product_name','stocks.stock_available','products.product_name')
+        ->select('stocks.id','stocks.product_name','stocks.stock_available','products.product_name','products.Price')
         ->join('products','products.id','=','stocks.product_name')->get();
         return view('Admin.Stock.stockView')->with('Stocks',$data);
     }

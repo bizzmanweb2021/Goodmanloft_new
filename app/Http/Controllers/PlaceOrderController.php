@@ -51,7 +51,7 @@ class PlaceOrderController extends Controller
                 $check->zip_ship = $request->zip_ship;
                 $check->save();
 
-                return view('Frontend.Checkout.index');
+                return view('Frontend.Checkout.address');
             }
             else
             {
@@ -81,7 +81,7 @@ class PlaceOrderController extends Controller
                 $check->zip_ship = $request->zip;
                 $check->save();
 
-                return view('Frontend.Checkout.index');
+                return view('Frontend.Checkout.address');
             }
 
     }

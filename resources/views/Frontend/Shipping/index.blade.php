@@ -42,11 +42,10 @@
                  <div class="shipping-add-change">
                     <a href="{{ route('checkout') }}">Change</a>
                  </div>
-
              </div>
          </div>
          <hr>
-         <div class="row">
+        <div class="row">
             <div class="col-md-5">
                 <div class="row">
                     <div class="col-md-6">
@@ -139,35 +138,9 @@
                 </div>
             </div>
         </div>
-     </div>
+    </div>
 
      <div class="row">
-         <div class="col-md-7">
-            <div class="shipping-option">
-
-                <h3>Shipping Method</h3>
-
-               @foreach (App\Models\DeliveryRate::all() as $del)
-
-                <div class="shipping-option-mode">
-                   <div class="row">
-                       <div class="col-md-10">
-                           <div class="single-method">
-                               <input type="radio" id="payment_check" name="payment-method" value="check">
-                               <label for="payment_check">Delivery Rate</label>
-                           </div>
-                       </div>
-                       <div class="col-md-2">
-                            <div class="shipping-payment">
-                                <h4>${{ $del->rate }}</h4>
-                            </div>
-                       </div>
-                   </div>
-                </div>
-
-                @endforeach
-            </div>
-         </div>
          <div class="col-lg-5">
             <div class="row">
                 <!-- Cart Total -->
@@ -179,7 +152,7 @@
                         @foreach (App\Models\Cart::get() as $cart)
                         <?php $sub_total += $cart->total ?>
                         <ul>
-                            <li>{{ $cart->product_name }} <span>${{ $cart->total }}</span></li>
+                            <li><img src="{{ $cart->product_image }}" style="width: 75px; height:100px;">{{ $cart->product_name }} <span>${{ $cart->total }}</span></a></li>
                         </ul>
                         @endforeach
                         <p>Sub Total <span>${{ $sub_total }}</span></p>
