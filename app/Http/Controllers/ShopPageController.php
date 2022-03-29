@@ -40,4 +40,16 @@ class ShopPageController extends Controller
         return view ('Frontend.Product.product_page')->with('all',$all);
     }
 
+    public function paging()
+    {
+        $products = product::simplePaginate(10);
+        return view('Frontend.Product.product_page', compact('products'));
+    }
+
+    public function new()
+    {
+        $product = product::orderBy('id','desc')->limit(12)->get();
+        return view('Frontend.New_Product.index')->with('product',$product);
+    }
+
 }

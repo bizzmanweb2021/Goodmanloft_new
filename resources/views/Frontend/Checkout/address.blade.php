@@ -33,11 +33,11 @@
                         <div class="myaccount-content">
                             <h3>Billing Address</h3>
                             <address>
-                                @foreach (App\Models\Billing_address::orderBy('id','desc')->limit(2)->get() as $ship)
-                                <p><strong>{{ $ship->full_name }}</strong></p>
-                                <p>{{ $ship->address }},{{ $ship->city }}, {{ $ship->state }} <br>
-                                   {{ $ship->country }}, {{ $ship->zip }}</p>
-                                <p>{{ $ship->phone }}</p>
+                                @foreach (App\Models\Billing_address::orderBy('id','desc')->limit(1)->get() as $ship)
+                                <p>Full Name-<strong>{{ $ship->full_name }}</strong></p>
+                                <p>Address-{{ $ship->address }},<br>City-{{ $ship->city }},<br>State- {{ $ship->state }},<br>
+                                   Country-{{ $ship->country }}, <br>Zip-{{ $ship->zip }}</p>
+                                <p>Phone-{{ $ship->phone }}</p>
                                 @endforeach
                             </address>
                             <a href="{{ route('checkout') }}" class="btn d-inline-block edit-address-btn"><i class="fa fa-edit"></i>Change</a>
@@ -54,28 +54,36 @@
                                     @foreach (App\Models\Cart::get() as $cart)
                                     <?php $sub_total += $cart->total ?>
                                     <ul>
-                                        <li><img src="{{ $cart->product_image }}" style="width: 75px; height:100px;">{{ $cart->product_name }} <span>${{ $cart->total }}</span></a></li>
-                                    </ul>
+                                        <li><img src="{{ $cart->product_image }}" style="width: 75px; height:100px;"></li>
+                                        <li>{{ $cart->product_name }} <span>${{ $cart->total }}</span></li>                                    </ul>
                                     @endforeach
                                     <p>Sub Total <span>${{ $sub_total }}</span></p>
                                     <p>Shipping<span class="badge badge-secondary" style="float: none; color:black;">
                                         <a data-bs-toggle="modal" data-bs-target="#myModal">?</a>
-                                    </span><span  style="opacity: 0.8;">Calculated at next step</span></p>
+                                        </span><span  style="opacity: 0.8;">Calculated at next step</span></p>
                                         <div class="modal" id="myModal">
                                             <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h3 class="modal-title">Shipping Policy</h3>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                                        </p>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="btn" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                                    </div>
+                                              <div class="modal-content">
+
+                                                <!-- Modal Header -->
+                                                <div class="modal-header">
+                                                  <h1 class="modal-title">Shipping Policy</h1>
+                                                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                                 </div>
+
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+                                                </p>
+                                                </div>
+
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                                </div>
+
+                                              </div>
                                             </div>
                                         </div>
                                 </div>

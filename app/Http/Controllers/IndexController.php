@@ -23,7 +23,7 @@ class IndexController extends Controller
                                    'retype_password'=>'required'
 
                                  ]);
-                                 $value=Hash::make($request->password);
+                                $value=Hash::make($request->password);
 
                                 $Register=new User;
                                 $Register->name=$data['name'];

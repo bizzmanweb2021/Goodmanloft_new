@@ -6,10 +6,12 @@
         <a href="{{ route('user.index') }}"><img src="{{ url('/') }}/assets/images/logo.png" alt="" class="img-fluid"></a>
     </div>
     <ul>
-        <li><a href="#"> <img src="{{ url('/') }}/assets/images/icons/icons8-table-80.png" alt="" class="img-fluid"><span>Furniture</span> </a></li>
-        <li><a href="#"> <img src="{{ url('/') }}/assets/images/icons/icons8-salad-bowl-80.png" alt="" class="img-fluid"><span>Kitchenware</span> </a></li>
+        @foreach (App\Models\category::all() as $item )
+        <li><a href="{{ route('product_show',$item->id) }}"> <img src="{{ url('/') }}/assets/images/icons/icons8-table-80.png" alt="" class="img-fluid"><span>{{ $item->Category_Name }}</span> </a></li>
+        {{-- <li><a href="#"> <img src="{{ url('/') }}/assets/images/icons/icons8-salad-bowl-80.png" alt="" class="img-fluid"><span>Kitchenware</span> </a></li>
         <li><a href="#"> <img src="{{ url('/') }}/assets/images/icons/icons8-cushion-80.png" alt="" class="img-fluid"> <span>Accessories</span> </a></li>
-        <li><a href="#"> <img src="{{ url('/') }}/assets/images/icons/icons8-bed-80.png" alt="" class="img-fluid"> <span>Bed, Bath & Body</span> </a></li>
+        <li><a href="#"> <img src="{{ url('/') }}/assets/images/icons/icons8-bed-80.png" alt="" class="img-fluid"> <span>Bed, Bath & Body</span> </a></li> --}}
+        @endforeach
     </ul>
     <div class="clearfix"></div>
     <h2>nature’s living sanctuary</h2>
@@ -73,7 +75,7 @@
                                             <ul class="d-flex">
                                                 <li><a href="{{ route('wishlistShow',$product['id']) }}" tabindex="0"><i class="ion-android-favorite-outline"></i></a>
                                                 </li>
-                                                <li><a href="compare.html" tabindex="0"><i class="ion-ios-shuffle"></i></a></li>
+                                                {{-- <li><a href="compare.html" tabindex="0"><i class="ion-ios-shuffle"></i></a></li> --}}
                                             </ul>
                                         </div>
                                     </div>
@@ -90,7 +92,7 @@
                                         </div>
 
                                         <h3 class="title"> <a href="{{ route('productShow',$product['id']) }}" tabindex="0">{{($product['product_name']) }}</a></h3>
-                                                <p class="product-price"><span class="discounted-price">{{($product['Price']) }}</span> <span class="main-price discounted">$120.00</span></p>
+                                                <p class="product-price"><span class="discounted-price">${{($product['Price']) }}</span> <span class="main-price discounted">$120.00</span></p>
 
                                     </div>
                                 </div>
@@ -1081,7 +1083,7 @@
                                 <nav class="main-menu main-menu-two">
                                     <ul>
                                         <li><a href="{{ route('user.index') }}">Home</a></li>
-                                        <li><a href="#">New Products</a></li>
+                                        <li><a href="{{ route('new.product') }}">New Products</a></li>
                                         <li><a href="#">Shop</a>
                                             <ul class="mega-menu four-column left-0">
                                                 @foreach (App\Models\category::all() as $item )
@@ -1121,69 +1123,21 @@
                                     <div class="header-search">
                                         <button class="header-search-toggle"><i class="ion-ios-search-strong"></i></button>
                                         <div class="header-search-form">
-                                            <form action="/search" method="POST" role="search">
-                                                @csrf
-                                                <input type="text" placeholder="Type and hit enter"  name="q">
-                                                <button><i class="ion-ios-search-strong"></i></button>
+                                            <form action="{{ route('search') }}" method="GET" role="search">
+                                                <input type="text" name="search" placeholder="Type and hit enter" required/ >
+                                                <button type="submit"><i class="ion-ios-search-strong"></i></button>
                                             </form>
                                         </div>
                                     </div>
                                     <div class="header-cart">
                                         <a href="{{ route('cart.show') }}"><i class="fa fa-shopping-bag"></i><span class="cart-count">{{ App\Models\Cart::where('user_id',Auth::check()?Auth::user()->id:0)->count() }}</span></a>
-                                        <!--Mini Cart Dropdown Start-->
-                                        {{-- <div class="header-cart-dropdown"> --}}
-                                            {{-- <ul class="cart-items">
-                                                <li class="single-cart-item">
-                                                    <div class="cart-img">
-                                                        <a href="cart.html"><img src="{{ url('/') }}/assets/images/cart/cart-1.jpg"
-                                                                alt="" class="img-fluid"></a>
-                                                    </div>
-                                                    <div class="cart-content">
-                                                        <h5 class="product-name"><a href="single-product.html">Dell
-                                                                Inspiron
-                                                                24</a></h5>
-                                                        <span class="product-quantity">1 ×</span>
-                                                        <span class="product-price">$278.00</span>
-                                                    </div>
-                                                    <div class="cart-item-remove">
-                                                        <a title="Remove" href="#"><i class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </li>
-                                                <li class="single-cart-item">
-                                                    <div class="cart-img">
-                                                        <a href="cart.html"><img src="{{ url('/') }}/assets/images/cart/cart-2.jpg"
-                                                                alt="" class="img-fluid"></a>
-                                                    </div>
-                                                    <div class="cart-content">
-                                                        <h5 class="product-name"><a href="single-product.html">Lenovo
-                                                                Ideacentre
-                                                                300</a></h5>
-                                                        <span class="product-quantity">1 ×</span>
-                                                        <span class="product-price">$23.39</span>
-                                                    </div>
-                                                    <div class="cart-item-remove">
-                                                        <a title="Remove" href="#"><i class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            <div class="cart-total">
-                                                <h5>Subtotal :<span class="float-right">$39.79</span></h5>
-                                                <h5>Eco Tax (-2.00) :<span class="float-right">$7.00</span></h5>
-                                                <h5>VAT (20%) : <span class="float-right">$0.00</span></h5>
-                                                <h5>Total : <span class="float-right">$46.79</span></h5>
-                                            </div> --}}
-                                            {{-- <div class="cart-btn">
-                                                <a href="{{ route('cart.show') }}">View Cart</a>
-                                                <a href="{{ route('checkout') }}">checkout</a>
-                                            </div> --}}
-                                        {{-- </div> --}}
-                                        <!--Mini Cart Dropdown End-->
+
                                     </div>
                                     <ul class="ht-us-menu">
                                         @if(Auth::check())
                                         <li><a href="#"><i class="fa fa-user"></i></a>
                                             <ul class="ht-dropdown right">
-                                                <li><a href="compare.html">Compare Products</a></li>
+                                                {{-- <li><a href="compare.html">Compare Products</a></li> --}}
                                                 <li><a href="{{ route('account') }}">My Account</a></li>
                                                 <li><a href="{{ route('wish.show') }}">My Wish List</a></li>
                                                 <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -1305,8 +1259,7 @@
 
 
         <!--NewsLetter section start-->
-        <div
-            class="newsLetter-section section pt-95 pt-lg-75 pt-md-65 pt-sm-55 pt-xs-45 pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">
+        <div class="newsLetter-section section pt-95 pt-lg-75 pt-md-65 pt-sm-55 pt-xs-45">
             <div class="container">
                 <div class="row">
                     <div class="col-md-5">

@@ -59,16 +59,22 @@
                     <div class="col-lg-9 col-12">
                         <div class="contact-form-wrap">
                             <h3 class="contact-title">Get In Touch</h3>
-                            <form id="contact-form" action="" method="">
+                            <form action="{{ route('contact.save') }}" method="POST">
+                                @csrf
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="contact-form-style mb-20">
-                                            <input name="con_name" placeholder="Name*" type="text">
+                                            <input name="name" placeholder="Name*" type="text">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="contact-form-style mb-20">
-                                            <input name="con_email" placeholder="Email*" type="email">
+                                            <input name="phone" placeholder="Phone*" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="contact-form-style mb-20">
+                                            <input name="email" placeholder="Email*" type="email">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -78,14 +84,13 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="contact-form-style">
-                                            <textarea name="con_message" placeholder="Type your message here.."></textarea>
-                                            <button class="btn" type="submit"><span>Send message</span></button>
+                                            <textarea name="message" placeholder="Type your message here.."></textarea>
+                                            <button type="submit" class="btn"><span>Send message</span></button>
                                         </div>
                                     </div>
                                     <p>This Data Protection Notice (“Notice”) sets out the basis which Goodman’s Loft (“we”, “us”, or “our”) may collect, use, disclose or otherwise process personal data of our customers in accordance with the Personal Data Protection Act (“PDPA”). This Notice applies to personal data in our possession or under our control, including personal data in the possession of organisations which we have engaged to collect, use, disclose or process personal data for our purposes.</p>
                                 </div>
                             </form>
-                            <p class="form-messege"></p>
                         </div>
                     </div>
                 </div>

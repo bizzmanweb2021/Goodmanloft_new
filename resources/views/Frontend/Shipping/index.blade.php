@@ -90,11 +90,10 @@
                                             </div>
                                             <div class="col-md-12 col-12 mb-20">
                                                 <label style="float: left">Country*</label>
-                                                {{-- <input type="text" class="form-control" name="country_ship" value="{{ $ship->country_ship }}" > --}}
                                                 <select id="country_ship" name="country_ship" class="form-control w-100" >
-                                                    <option value="" >--Select--</option>
+                                                    <option value="" >Singapore</option>
                                                     @foreach (App\Models\Country::all() as $Country)
-                                                        <option {{ $Country->id == $ship->country_ship ? 'selected': ''}} value="{{$Country->id}}">{{$Country->name}} - {{$Country->code}}</option>
+                                                        <option {{ $Country->id == $ship->country_ship ? 'selected': ''}} value="{{$Country->id}}">{{$Country->name}}</option>
 
                                                     @endforeach
                                                 </select>
@@ -115,14 +114,6 @@
                                                 <label style="float: left">Zip Code*</label>
                                                 <input type="text" class="form-control" name="zip_ship" value="{{ $ship->zip_ship }}">
                                             </div>
-                                            <div class="col-md-12 col-12 mb-20">
-                                                <label style="float: left">Address Type*</label>
-                                                <select class="nice-select form-control" name="address_type_ship">
-
-                                                    <option {{ 'Home' == $ship->address_type_ship ? 'selected': ''}} value="Home">Home(7am - 7pm)</option>
-                                                    <option {{ 'Office' == $ship->address_type_ship ? 'selected': ''}} value="Office">Office(9am - 6pm)</option>
-                                                </select>
-                                            </div>
                                         </div>
                                         @endforeach
 
@@ -140,8 +131,9 @@
         </div>
     </div>
 
-     <div class="row">
-         <div class="col-lg-5">
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
             <div class="row">
                 <!-- Cart Total -->
                 <div class="col-12 mb-60 mt-5">
@@ -152,7 +144,8 @@
                         @foreach (App\Models\Cart::get() as $cart)
                         <?php $sub_total += $cart->total ?>
                         <ul>
-                            <li><img src="{{ $cart->product_image }}" style="width: 75px; height:100px;">{{ $cart->product_name }} <span>${{ $cart->total }}</span></a></li>
+                            <li><img src="{{ $cart->product_image }}" style="width: 75px; height:100px;"></li>
+                            <li>{{ $cart->product_name }} <span>${{ $cart->total }}</span></li>
                         </ul>
                         @endforeach
                         <p>Sub Total <span>${{ $sub_total }}</span></p>
@@ -172,15 +165,15 @@
                     </div>
                 </div>
             </div>
+            <div class="shipping-btn " style="">
+                <a href="javascript:void(0)" data-amount="1280" data-id="3" class="btn order_now"><span>Continue To Payment</span></a> &nbsp;
+                <a href="{{ route('checkout') }}">Return to information</a>
+             </div>
         </div>
+        <div class="col-lg-2"></div>
 
-    </div>
+    </div><br>
 
-     <br>
-     <div class="shipping-btn ">
-        <a href="javascript:void(0)" data-amount="1280" data-id="3" class="btn order_now"><span>Continue To Payment</span></a> &nbsp;
-        <a href="{{ route('checkout') }}">Return to information</a>
-     </div>
 
     </div>
 </div>

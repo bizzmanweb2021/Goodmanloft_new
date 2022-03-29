@@ -2,7 +2,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 @section('content')
-<div class="page-banner-section section bg-image" data-bg="{{ asset('assets/images/inner-breadcum.png') }}">
+{{-- <div class="page-banner-section section bg-image" data-bg="{{ asset('assets/images/inner-breadcum.png') }}"> --}}
     <div class="container">
         <div class="row">
             <div class="col">
@@ -17,12 +17,12 @@
             </div>
         </div>
     </div>
-</div>
+{{-- </div> --}}
 <!-- Shop Section Start -->
 <div class="site-whatsapp">
     <a href="https://wa.me/6596352229" target="_blank"><img src="assets/images/wp-logo.png" alt=""></a>
   </div>
-<div class="shop-section section" style="background-image: url(assets/images/shop-pattern.jpg); background-size: contain;">
+{{-- <div class="shop-section section" style="background-image: url(assets/images/shop-pattern.jpg); background-size: contain;"> --}}
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
@@ -126,6 +126,7 @@
                                             <div id="grid" class="tab-pane fade active show">
                                                 <div class="product-grid-view">
                                                     <div class="row">
+                                                        {{-- @if(count($products) > 0) --}}
                                                         @foreach ($product as $products )
                                                         <div class="col-lg-4 col-md-6 col-sm-6">
                                                             <!--  Single Grid product Start -->
@@ -133,7 +134,7 @@
                                                                 <div class="single-grid-product mb-30">
                                                                     <div class="product-image">
                                                                         <div class="product-label">
-                                                                            <span class="sale">-20%</span>
+                                                                            <span class="sale">Sale</span>
                                                                             <span class="new">New</span>
                                                                         </div>
                                                                         <a href="{{ route('productShow',$products->id) }}">
@@ -168,6 +169,7 @@
 
                                                         </div>
                                                         @endforeach
+                                                        {{-- @endif --}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -193,9 +195,9 @@
             </div>
         </div>
     </div>
-</div>
+{{-- </div> --}}
 <!-- Shop Section End -->
-@section('javascript')
+{{-- @section('javascript')
 
 
 <script>
@@ -211,5 +213,5 @@
 
 
 </script>
-@endsection
+@endsection --}}
 @endsection

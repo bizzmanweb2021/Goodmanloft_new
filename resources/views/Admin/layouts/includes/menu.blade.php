@@ -268,6 +268,13 @@
                                 <span class="sidenav-normal"> FAQ </span>
                               </a>
                             </li>
+                            <li class="nav-item ">
+                                <a class="nav-link {{ ($route=='admin.contactView')? 'active': '' }}"
+                                href="{{ route('admin.contactView') }}">
+                                <span class="sidenav-mini-icon"> C </span>
+                                <span class="sidenav-normal"> User_Contact </span>
+                              </a>
+                            </li>
 
                           </ul>
                         </div>

@@ -52,7 +52,7 @@
                             <nav class="main-menu main-menu-two">
                                 <ul>
                                     <li><a href="{{ route('user.index') }}">Home</a></li>
-                                    <li><a href="#">New Products</a></li>
+                                    <li><a href="{{ route('new.product') }}">New Products</a></li>
                                     <li><a href="#">Shop</a>
                                         <ul class="mega-menu four-column left-0">
                                             @foreach (App\Models\category::all() as $item )
@@ -69,30 +69,20 @@
                                     </li>
                                     <li><a href="{{ route('about.index') }}">About Us</a></li>
                                     <li class=""><a href="{{ route('faq') }}">Faq</a>
-                                        {{-- <ul class="sub-menu">
-                                            <li><a href="{{ route('about.index') }}">About Us</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="{{ route('about.index') }}">About Goodman loft</a></li>
-                                                <li><a href="#">Ratan Furniture</a></li>
-                                            </ul>
-                                            </li>
-                                            <li><a href="{{ route('faq') }}">Frequently Asked</a></li>
-
-                                        </ul> --}}
                                     </li>
                                     <li><a href="#">Promotions</a></li>
                                     <li><a href="{{ route('contact.index') }}">Contact Us</a></li>
                                 </ul>
                             </nav>
                             <div class="header-right_wrap d-flex">
-                                <form action="{{ route('product.search') }}" method="GET" role="search">
+                                <form action="#">
                                     <div class="header-search">
                                         <button class="header-search-toggle"><i
                                                 class="ion-ios-search-strong"></i></button>
                                         <div class="header-search-form">
-                                            <form action="#">
-                                                <input type="text" placeholder="Type and hit enter">
-                                                <button><i class="ion-ios-search-strong"></i></button>
+                                            <form action="{{ route('search') }}" method="GET" role="search">
+                                                <input type="text" name="search" placeholder="Type and hit enter" required/ >
+                                                <button type="submit"><i class="ion-ios-search-strong"></i></button>
                                             </form>
                                         </div>
                                     </div>
@@ -100,27 +90,12 @@
 
                                 <div class="header-cart">
                                     <a href="{{ route('cart.show') }}"><i class="fa fa-shopping-bag"></i><span class="cart-count">{{ App\Models\Cart::where('user_id',Auth::check()?Auth::user()->id:0)->count() }}</span></a>
-                                    <!--Mini Cart Dropdown Start-->
-                                    {{-- <div class="header-cart-dropdown"> --}}
-
-                                        {{-- <div class="cart-total">
-                                            <h5>Subtotal :<span class="float-right">$39.79</span></h5>
-                                            <h5>Eco Tax (-2.00) :<span class="float-right">$7.00</span></h5>
-                                            <h5>VAT (20%) : <span class="float-right">$0.00</span></h5>
-                                            <h5>Total : <span class="float-right">$46.79</span></h5>
-                                        </div> --}}
-                                        {{-- <div class="cart-btn">
-                                            <a href="{{ route('cart.show') }}">View Cart</a>
-                                            <a href="{{ route('checkout') }}">checkout</a>
-                                        </div> --}}
-                                    {{-- </div> --}}
-                                    <!--Mini Cart Dropdown End-->
                                 </div>
                                 <ul class="ht-us-menu">
                                     @if(Auth::check())
                                         <li><a href="#"><i class="fa fa-user"></i></a>
                                             <ul class="ht-dropdown right">
-                                                <li><a href="compare.html">Compare Products</a></li>
+                                                {{-- <li><a href="compare.html">Compare Products</a></li> --}}
                                                 <li><a href="{{ route('account') }}">My Account</a></li>
                                                 <li><a href="{{ route('wish.show') }}">My Wish List</a></li>
                                                 <li><a href="{{ route('logout') }}" onclick="event.preventDefault();

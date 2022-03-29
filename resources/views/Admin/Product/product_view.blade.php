@@ -38,7 +38,7 @@
                         <td><img src="{{ url('/' . $item["product_image"] )}}" width=80px; height=80px; /> </td>
                         <td>{{$item["Product_Size"]}}</td>
                         <td>{{$item["product_name"]}}</td>
-                        <td>{{$item["Price"]}}</td>
+                        <td>${{$item["Price"]}}</td>
                         <td>{{$item["Quantity"]}}</td>
                         <td>{{$item["Weight"]}}</td>
                         <td>{{$item["Color"]}}</td>

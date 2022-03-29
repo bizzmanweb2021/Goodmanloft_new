@@ -3634,7 +3634,7 @@ ul.cart-items li {
 .single-grid-product .product-image > a img:nth-child(1) {
   visibility: visible;
   opacity: 1;
-  border-radius: 10px;
+  /* border-radius: 10px; */
 }
 .single-grid-product .product-image > a img:nth-child(2) {
   position: absolute;

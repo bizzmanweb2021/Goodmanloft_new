@@ -68,7 +68,7 @@
                     <div class="row justify-content-between align-items-center">
                         <div class="col-lg-6 col-md-6 col-sm-12">
                             <div class="copyright text-left">
-                                <p>Copyright &copy;2022 <a href="#">CSS Office</a>. All rights reserved.</p>
+                                <p>Copyright &copy;2022 <a href="#">Goodman-loft</a>. All rights reserved.</p>
                             </div>
                         </div>
 

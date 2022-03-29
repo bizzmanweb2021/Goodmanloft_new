@@ -76,26 +76,27 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::get('/faqView',[FaqAdminController::class,'index'])->name('faqView');
     Route::get('/faqAdd',[FaqAdminController::class,'create'])->name('faqAdd');
     Route::post('/faqStore',[FaqAdminController::class,'show'])->name('faqStore');
+
+    Route::get('/contactView',[ContactController::class,'show'])->name('contactView');
+    Route::get('/contactSearch',[ContactController::class,'showSearch'])->name('show');
 });
 
 Route::get('/',[HomeController::class,'index'])->name('user.index');
-Route::get('search',[HomeController::class,'search'])->name('product.search');
+Route::get('/search/',[HomeController::class,'search'])->name('search');
 
 Route::get('/productShow/{product_id}',[ShopPageController::class,'show'])->name('productShow');
 Route::get('/product_show/{id}',[ShopPageController::class,'product_show'])->name('product_show');
-
-Route::get('filterAll',[ShopPageController::class,'filterAll'])->name('filter.all');
-Route::get('lowToHigh',[ShopPageController::class,'filterLow'])->name('filter.low');
-Route::get('highToLow',[ShopPageController::class,'filterHigh'])->name('filter.high');
-Route::get('newest',[ShopPageController::class,'filterNewest'])->name('filter.newest');
+Route::get('/new_product',[ShopPageController::class,'new'])->name('new.product');
 
 Route::get('/nursery',[NurseryController::class,'index'])->name('nursery');
 Route::get('/loadcart',[AddToCartController::class,'loadCart']);
 Route::get('/faq',[FaqController::class,'index'])->name('faq');
 Route::get('/term',[FaqController::class,'term'])->name('term.condition');
 Route::get('/account',[AccountController::class,'index'])->name('account');
+Route::post('/accountUpdate',[AccountController::class,'store'])->name('update.address');
 Route::get('/about',[AboutController::class,'index'])->name('about.index');
 Route::get('/contact',[ContactController::class,'index'])->name('contact.index');
+Route::post('/submitContact',[ContactController::class,'save'])->name('contact.save');
 Route::get('/privacy',[PrivacyController::class,'index'])->name('privacy');
 Route::get('/festive',[FestiveController::class,'index'])->name('festive');
 
