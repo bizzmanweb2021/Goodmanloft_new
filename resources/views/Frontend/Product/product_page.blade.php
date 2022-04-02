@@ -32,11 +32,8 @@
                             <!-- Grid & List View Start -->
                             <div class="shop-topbar-wrapper d-flex justify-content-between align-items-center">
                                 <div class="grid-list-option d-flex">
-                                        <ul class="nav">
-                                        <li>
-                                        <a class="active show" data-bs-toggle="tab" href="#grid"><i class="fa fa-th"></i></a>
-                                        </li>
-
+                                    <ul class="nav">
+                                        <li><a class="active show" data-bs-toggle="tab" href="#grid"><i class="fa fa-th"></i></a></li>
                                     </ul>
                                     <p>Showing 1–9 of 41 results</p>
                                     </div>
@@ -54,9 +51,9 @@
                                     </div>
                                     <div class="col-md-7">
                                         <select name="price" id="price">
-                                            <option value="volvo">$1000-$5000</option>
+                                            <option value="volvo">Above $1000</option>
                                             <option value="saab">$500-$1000</option>
-                                            <option value="mercedes">$100-500</option>
+                                            <option value="mercedes">$100-$500</option>
                                         </select>
                                     </div>
                                 </div>

@@ -137,10 +137,10 @@
                                         <p>Sub Total <span>${{ $sub_total }}</span></p>
                                         <p>Shipping
                                             <span class="badge badge-secondary" style="float: none; color:black;">
-                                            {{-- <a data-bs-toggle="modal" data-bs-target="#myModal">?</a> --}}
+                                            <a data-bs-toggle="modal" data-bs-target="#myModal">?</a>
                                         </span><span  style="opacity: 0.8;">Calculated at next step</span></p>
                                         <p>Coupon Code<span><input type="text" style="background-color: white; width:120px; height:40px;"></span></p>
-                                        {{-- <div class="modal" id="myModal">
+                                        <div class="modal" id="myModal">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
 
@@ -164,7 +164,7 @@
 
                                                 </div>
                                             </div>
-                                        </div> --}}
+                                        </div>
                                     </div>
                                 </div>
                                 <button class="place-order btn btn-sm btn-round">Next: Making Payment</button>

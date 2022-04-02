@@ -45,13 +45,9 @@ class ProductController extends Controller
         $this->validate($request,[ 'Product_name'=>'required',
                                    'Product_image'=>'required|mimes:jpg,png,jpeg',
                                    'gallery_photo'=>'required',
-                                   'Pattern'=>'required',
                                    'Quantity'=>'required',
                                    'Price'=>'required',
                                    'Weight'=>'required',
-                                   'Color'=>'required',
-                                   'Shape'=>'required',
-                                   'Brand'=>'required'
                                 ]);
                                  $image = $request->Product_image;
                                  $filename = $image->getClientOriginalName();
@@ -72,13 +68,9 @@ class ProductController extends Controller
                                 $Product->Product_Size=$request->Product_Size;
                                 $Product->Product_Dimension=$request->Product_Dimension;
                                 $Product->Product_Description=$request->Product_Description;
-                                $Product->Pattern=$request->Pattern;
                                 $Product->Quantity=$request->Quantity;
                                 $Product->Price=$request->Price;
                                 $Product->Weight=$request->Weight;
-                                $Product->Color=$request->Color;
-                                $Product->Shape=$request->Shape;
-                                $Product->Brand=$request->Brand;
                                 $Product->Product_image=$image_destination;
                                 $Product->gallery_photo=json_encode($data);
                                 $Product->Category_id=$request->Category_Name;

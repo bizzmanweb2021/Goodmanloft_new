@@ -52,4 +52,9 @@ class ShopPageController extends Controller
         return view('Frontend.New_Product.index')->with('product',$product);
     }
 
+    public function filter()
+    {
+
+    }
+
 }
