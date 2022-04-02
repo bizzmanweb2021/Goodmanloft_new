@@ -116,14 +116,7 @@
                                         </div> --}}
                                         <!--Product Nav End-->
                                         <h2>{!! $product->product_name !!}</h2>
-                                        <div class="single-product-reviews">
-                                            <i class="fa fa-star active"></i>
-                                            <i class="fa fa-star active"></i>
-                                            <i class="fa fa-star active"></i>
-                                            <i class="fa fa-star active"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <a class="review-link" href="#">(1 customer review)</a>
-                                        </div>
+
                                         <div class="single-product-price">
                                             <span class="price new-price">${!! $product->Price !!}</span>
                                             {{-- <span class="regular-price">$77.00</span> --}}

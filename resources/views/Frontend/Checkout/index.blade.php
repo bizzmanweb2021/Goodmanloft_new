@@ -96,7 +96,7 @@
                                     <div class="col-md-6 col-12 mb-5">
                                         <label>Country*</label>
                                         <select id="country_ship" name="country_ship" class="form-control" >
-                                            <option value="" >--Select--</option>
+                                            <option value="" >Singapore</option>
                                                 @foreach (App\Models\Country::all() as $Country)
                                                 <option value="{{$Country->id}}">{{$Country->name}} - {{$Country->code}}</option>
                                                 @endforeach
@@ -135,10 +135,12 @@
                                         </ul>
                                         @endforeach
                                         <p>Sub Total <span>${{ $sub_total }}</span></p>
-                                        <p>Shipping<span class="badge badge-secondary" style="float: none; color:black;">
-                                            <a data-bs-toggle="modal" data-bs-target="#myModal">?</a>
+                                        <p>Shipping
+                                            <span class="badge badge-secondary" style="float: none; color:black;">
+                                            {{-- <a data-bs-toggle="modal" data-bs-target="#myModal">?</a> --}}
                                         </span><span  style="opacity: 0.8;">Calculated at next step</span></p>
-                                        <div class="modal" id="myModal">
+                                        <p>Coupon Code<span><input type="text" style="background-color: white; width:120px; height:40px;"></span></p>
+                                        {{-- <div class="modal" id="myModal">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
 
@@ -162,7 +164,7 @@
 
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                                 <button class="place-order btn btn-sm btn-round">Next: Making Payment</button>

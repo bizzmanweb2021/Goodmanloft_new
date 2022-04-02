@@ -5369,7 +5369,7 @@ a.popup-img {
   font-weight: 600;
   color: #292929;
   padding: 10px 0;
-  border-bottom: 1px solid #292929;
+  /* border-bottom: 1px solid #292929; */
   margin: 0;
 }
 .checkout-cart-total p span {

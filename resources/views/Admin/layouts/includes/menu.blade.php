@@ -154,8 +154,8 @@
 
                     <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6" style="color: #bf9f6c; font-weight:bold; font-zise:14px !important;">Promotion/Coupon</h6>
                         <li class="nav-item mb-3">
-                        <a class="nav-link {{ ($route=='admin.promotions.index')? 'active': '' }}"
-                            href="{{ route('admin.promotions.index') }}">
+                        <a class="nav-link {{ ($route=='admin.promotionView')? 'active': '' }}"
+                            href="{{ route('admin.promotionView') }}">
                                 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                                     <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1"
                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -205,7 +205,7 @@
                                     <span class="nav-link-text ms-1">Coupon</span>
                             </a>
                         </li>
-                        <li class="nav-item mb-3">
+                        {{-- <li class="nav-item mb-3">
                             <a class="nav-link {{ ($route=='admin.shippingView')? 'active': '' }}"
                                 href="{{ route('admin.shippingView') }}">
                                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -230,7 +230,7 @@
                                     </div>
                                         <span class="nav-link-text ms-1">Shipping</span>
                             </a>
-                        </li>
+                        </li> --}}
 
                     <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6" style="color: #bf9f6c; font-weight:bold; font-zise:14px !important;">Frontend</h6>
                     <li class="nav-item mb-3" >

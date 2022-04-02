@@ -22,6 +22,7 @@ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\FestiveController;
 use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\NurseryController;
+use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\PlaceOrderController;
 use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\RatingController;
@@ -63,7 +64,10 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
 
     Route::resource('/orders',OrderController::class);
     Route::resource('/payments',PaymentController::class);
-    Route::resource('/promotions',PromotionController::class);
+
+    Route::get('/promotionView',[PromotionController::class,'index'])->name('promotionView');
+    Route::get('/promotionAdd',[PromotionController::class,'create'])->name('promotionAdd');
+    Route::post('promotionStore',[PromotionController::class,'store'])->name('promotionStore');
 
     Route::get('/shippingView',[ShippingController::class,'index'])->name('shippingView');
     Route::get('/shippingAdd',[ShippingController::class,'create'])->name('ShippingAdd');
@@ -124,5 +128,11 @@ Route::middleware('auth')->group(function()
     Route::get('/wishlist/{id}',[WishlistController::class,'index'])->name('wishlistShow');
     Route::get('/wishShow',[WishlistController::class,'wishShow'])->name('wish.show');
     Route::get('/removeWish/{id}', [WishlistController::class, 'removeWishlist'])->name('wish.remove');
+
+    Route::get('paymentPal',[PaypalController::class,'payment'])->name('payment.Paypal');
+    Route::get('payment/success', [PaypalController::class,'success'])->name('payment.success');
+    Route::get('cancel',[PaypalController::class,'cancel'])->name('payment.cancel');
+
+
 
 });

@@ -1100,6 +1100,15 @@
             'reference' => '6a3ed627cee28a552b5176c172ae0abc5eb30925',
             'dev_requirement' => false,
         ),
+        'srmklive/paypal' => array(
+            'pretty_version' => '1.10.0',
+            'version' => '1.10.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../srmklive/paypal',
+            'aliases' => array(),
+            'reference' => '188bb21f06f58aa3ad3dd6a25e91a1fc34bff68c',
+            'dev_requirement' => false,
+        ),
         'swiftmailer/swiftmailer' => array(
             'pretty_version' => 'v6.3.0',
             'version' => '6.3.0.0',

@@ -7,10 +7,7 @@
     </div>
     <ul>
         @foreach (App\Models\category::all() as $item )
-        <li><a href="{{ route('product_show',$item->id) }}"> <img src="{{ url('/') }}/assets/images/icons/icons8-table-80.png" alt="" class="img-fluid"><span>{{ $item->Category_Name }}</span> </a></li>
-        {{-- <li><a href="#"> <img src="{{ url('/') }}/assets/images/icons/icons8-salad-bowl-80.png" alt="" class="img-fluid"><span>Kitchenware</span> </a></li>
-        <li><a href="#"> <img src="{{ url('/') }}/assets/images/icons/icons8-cushion-80.png" alt="" class="img-fluid"> <span>Accessories</span> </a></li>
-        <li><a href="#"> <img src="{{ url('/') }}/assets/images/icons/icons8-bed-80.png" alt="" class="img-fluid"> <span>Bed, Bath & Body</span> </a></li> --}}
+        <li><a href="{{ route('product_show',$item->id) }}"> <img src="{{ $item->Category_image }}" style="height:50px; width:40px;" alt="" class="img-fluid"><span>{{ $item->Category_Name }}</span> </a></li>
         @endforeach
     </ul>
     <div class="clearfix"></div>
@@ -39,7 +36,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="section-title text-left  pt-20">
-                            <h2>Featured<span>Products</span> </h2>
+                            <h2>Featured<span> Products</span> </h2>
 
                         </div>
                     </div>
@@ -47,7 +44,6 @@
             </div>
                 <div class="product-bg-pattern">
                     <div class="container">
-
                         <div class="row">
                             @foreach ($product as $product )
                             <div class="col-md-4 col-sm-6 ">
@@ -61,7 +57,6 @@
                                         <a href="{{ route('productShow',$product['id']) }}" tabindex="0">
                                             <img src=" {{ asset($product['product_image']) }}" class="img-fluid" alt="" >
                                         </a>
-
                                         <div class="product-action d-flex justify-content-between">
                                                 <input type="hidden" value="{{ $product['id'] }}" name="id">
                                                 <input type="hidden" value="{{ $product['product_name'] }}" name="name">
@@ -80,178 +75,14 @@
                                         </div>
                                     </div>
                                     <div class="product-content">
-                                        <div class="product-category-rating">
-                                            <span class="category"><a href="shop.html" tabindex="0"></a></span>
-                                            <span class="rating">
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star-outline"></i>
-                                            </span>
-                                        </div>
-
                                         <h3 class="title"> <a href="{{ route('productShow',$product['id']) }}" tabindex="0">{{($product['product_name']) }}</a></h3>
                                                 <p class="product-price"><span class="discounted-price">${{($product['Price']) }}</span> <span class="main-price discounted">$120.00</span></p>
 
                                     </div>
                                 </div>
-                                {{-- @endif --}}
-                                {{-- @if(!empty($product[2]['id'])) --}}
-                                {{-- <div class="single-grid-product mb-40">
-                                    <div class="product-image">
-                                        <div class="product-label">
-                                            <span class="sale">-20%</span>
-                                            <span class="new">New</span>
-                                        </div>
-                                        <a href="{{ route('productShow',$product[2]['id']) }}" tabindex="0">
-                                            <img src="{{ asset($product[2]['product_image']) }}" class="img-fluid" alt="">
-                                        </a>
-
-                                        <div class="product-action d-flex justify-content-between">
-                                            <a class="product-btn" href="{{ route('add.wish',$product[2]['id']) }}" tabindex="0">Add to Cart</a>
-                                            <ul class="d-flex">
-                                                <li><a href="{{ route('wishlistShow',$product[2]['id']) }}" tabindex="0"><i class="ion-android-favorite-outline"></i></a>
-                                                </li>
-                                                <li><a href="compare.html" tabindex="0"><i class="ion-ios-shuffle"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-category-rating">
-                                            <span class="category"><a href="shop.html" tabindex="0"></a></span>
-                                            <span class="rating">
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star-outline"></i>
-                                            </span>
-                                        </div>
-
-                                        <h3 class="title"> <a href="{{ route('productShow',$product[2]['id']) }}" tabindex="0">{{($product[1]['product_name']) }}</a></h3>
-                                        <p class="product-price"><span class="discounted-price">{{($product[2]['Price']) }}</span> <span class="main-price discounted">$120.00</span></p>
-                                    </div>
-                                </div> --}}
-                                {{-- @endif --}}
                             </div>
-
-                            {{-- <div class="col-md-4 col-sm-6 ">
-                                @if(!empty($product[3]['id']))
-                                <div class="single-grid-product mb-40">
-                                    <div class="product-image">
-                                        <div class="product-label">
-                                            <span class="sale">-20%</span>
-                                            <span class="new">New</span>
-                                        </div>
-                                        <a href="{{ route('productShow',$product[3]['id']) }}" tabindex="0">
-                                            <img src="{{ asset($product[3]['product_image']) }}" class="img-fluid" alt="">
-                                        </a>
-
-                                        <div class="product-action d-flex justify-content-between">
-
-                                                <a class="product-btn" href="{{ route('add.wish',$product[3]['id']) }}" tabindex="0">Add to Cart</a>
-
-                                            <ul class="d-flex">
-                                                <li><a href="{{ route('wishlistShow',$product[3]['id']) }}" tabindex="0"><i class="ion-android-favorite-outline"></i></a>
-                                                </li>
-                                                <li><a href="compare.html" tabindex="0"><i class="ion-ios-shuffle"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-category-rating">
-                                            <span class="category"><a href="shop.html" tabindex="0"></a></span>
-                                            <span class="rating">
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star-outline"></i>
-                                            </span>
-                                        </div>
-                                        <h3 class="title"> <a href="single-product.html" tabindex="0">{{($product[3]['product_name']) }}</a></h3>
-                                        <p class="product-price"><span class="discounted-price">{{($product[3]['Price']) }}</span> <span class="main-price discounted">$120.00</span></p>
-                                    </div>
-                                </div>
-                                @endif
-                            </div> --}}
-                            {{-- <div class="col-md-4 col-sm-6 ">
-                                @if(!empty($product[1]['id']))
-                                <div class="single-grid-product mb-40 ">
-                                    <div class="product-image">
-                                        <div class="product-label">
-                                            <span class="sale">-20%</span>
-                                            <span class="new">New</span>
-                                        </div>
-                                        <a href="{{ route('productShow',$product[1]['id']) }}" tabindex="0">
-                                            <img src="{{ asset($product[1]['product_image']) }}" class="img-fluid" alt="">
-                                        </a>
-
-                                        <div class="product-action d-flex justify-content-between">
-                                            <a class="product-btn" href="{{ route('add.wish',$product[1]['id']) }}" tabindex="0">Add to Cart</a>
-                                            <ul class="d-flex">
-                                                <li><a href="{{ route('wishlistShow',$product[1]['id']) }}" tabindex="0"><i class="ion-android-favorite-outline"></i></a>
-                                                </li>
-                                                <li><a href="compare.html" tabindex="0"><i class="ion-ios-shuffle"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-category-rating">
-                                            <span class="category"><a href="shop.html" tabindex="0"></a></span>
-                                            <span class="rating">
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star-outline"></i>
-                                            </span>
-                                        </div>
-                                        <h3 class="title"> <a href="single-product.html" tabindex="0">{{($product[1]['product_name']) }}</a></h3>
-                                        <p class="product-price"><span class="discounted-price">{{($product[1]['Price']) }}</span> <span class="main-price discounted">$120.00</span></p>
-                                    </div>
-                                </div>
-                                @endif
-                                @if(!empty($product[0]['id']))
-                                <div class="single-grid-product mb-40">
-                                    <div class="product-image">
-                                        <div class="product-label">
-                                            <span class="sale">-20%</span>
-                                            <span class="new">New</span>
-                                        </div>
-                                        <a href="{{ route('productShow',$product[0]['id']) }}" tabindex="0">
-                                            <img src="{{ asset($product[0]['product_image']) }}" class="img-fluid" alt="">
-                                        </a>
-                                        <div class="product-action d-flex justify-content-between">
-                                            <a class="product-btn" href="{{ route('add.wish',$product[0]['id']) }}" tabindex="0">Add to Cart</a>
-                                            <ul class="d-flex">
-                                                <li><a href="{{ route('wishlistShow',$product[0]['id']) }}" tabindex="0"><i class="ion-android-favorite-outline"></i></a>
-                                                </li>
-                                                <li><a href="#" tabindex="0"><i class="ion-ios-shuffle"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-category-rating">
-                                            <span class="category"><a href="#" tabindex="0"></a></span>
-                                            <span class="rating">
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star-outline"></i>
-                                            </span>
-                                        </div>
-                                        <h3 class="title"> <a href="#" tabindex="0">{{($product[0]['product_name']) }}</a></h3>
-                                        <p class="product-price"><span class="discounted-price">{{($product[0]['Price']) }}</span> <span class="main-price discounted">$120.00</span></p>
-                                    </div>
-                                </div>
-                                @endif
-                            </div> --}}
                             @endforeach
                         </div>
-
                     </div>
                 </div>
         </div>
@@ -267,35 +98,26 @@
         <div class="banner-section section pt-45 pt-lg-25">
             <div class="container">
                 <div class="row">
+                    @foreach (App\Models\Promotion::all() as $item )
                     <div class="col-md-6">
                         <!-- Single Banner Start -->
                         <div class="single-banner-item mb-30">
                             <div class="banner-image">
                                 <a href="shop.html">
-                                    <img src="{{ url('/') }}/assets/images/banner/home3-banner5.jpg" alt="" class="img-fluid">
+                                    <img src="{{ $item->banner }}"  style="height:260px; width:570px;" alt="" class="img-fluid">
                                 </a>
                             </div>
                         </div>
                         <!-- Single Banner End -->
                     </div>
-                    <div class="col-md-6">
-                        <!-- Single Banner Start -->
-                        <div class="single-banner-item mb-30">
-                            <div class="banner-image">
-                                <a href="shop.html">
-                                    <img src="{{ url('/') }}/assets/images/banner/home3-banner6.jpg" alt="" class="img-fluid">
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Single Banner End -->
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
         <!--Banner section end-->
         <div class="site-whatsapp">
             <a href="https://wa.me/6596352229" target="_blank"><img src="assets/images/wp-logo.png" alt=""></a>
-          </div>
+        </div>
 
         <!-- List Product Section Start -->
         <div class="list-product-section section pt-80 pt-lg-60 pt-md-50 pt-sm-40 pt-xs-20">
@@ -347,15 +169,7 @@
                                     <div class="list-mode-content">
                                         <span class="category"><a href="shop.html"></a></span>
                                         <h3 class="title"> <a href="single-product.html">Cillum dolore lorem</a></h3>
-                                        <div class="product-category-rating">
-                                            <span class="rating float-none">
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star-outline"></i>
-                                            </span>
-                                        </div>
+
                                         <p class="product-price"><span class="discounted-price">$80.00</span> <span
                                                 class="main-price discounted">$100.00</span></p>
                                     </div>
@@ -804,7 +618,7 @@
                         <div class="product-list-widget-wrapper">
                             <!-- widget product list title -->
                             <div class="list-product-section-title mb-35">
-                                <h3>Top Rated <span> Products</span></h3>
+                                <h3>Popular<span> Products</span></h3>
                                 <div class="top-rated-nav slick-btns"></div>
                             </div>
                             <!-- widget product list title -->
@@ -1083,7 +897,6 @@
                                 <nav class="main-menu main-menu-two">
                                     <ul>
                                         <li><a href="{{ route('user.index') }}">Home</a></li>
-                                        <li><a href="{{ route('new.product') }}">New Products</a></li>
                                         <li><a href="#">Shop</a>
                                             <ul class="mega-menu four-column left-0">
                                                 @foreach (App\Models\category::all() as $item )
@@ -1095,27 +908,12 @@
                                                     @endforeach
                                                 </li>
                                                 @endforeach
-
-                                                {{-- <li><a href="#" class="item-link">
-                                                    <img src="{{ url('/') }}/assets/images/sale-banner.jpg" alt="" class="img-fluid">
-                                                </a>
-
-                                                </li> --}}
                                             </ul>
                                         </li>
                                         <li><a href="{{ route('about.index') }}">About Us</a></li>
-                                            <li class=""><a href="{{ route('faq') }}">Faq</a>
-                                            {{-- <ul class="sub-menu">
-                                                <li><a href="{{ route('about.index') }}">About Us</a>
-                                                <ul class="sub-menu">
-                                                    <li><a href="{{ route('about.index') }}">About Goodman loft</a></li>
-                                                <li><a href="#">Ratan Furniture</a></li>
-                                                </ul>
-                                                </li>
-                                                <li><a href="{{ route('faq') }}">Frequently Asked</a></li>
-                                            </ul> --}}
-                                        </li>
+                                        <li class=""><a href="{{ route('faq') }}">Faq</a></li>
                                         <li><a href="#">Promotions</a></li>
+                                        <li><a href="#}">News</a></li>
                                         <li><a href="{{ route('contact.index') }}">Contact Us</a></li>
                                     </ul>
                                 </nav>
@@ -1131,13 +929,11 @@
                                     </div>
                                     <div class="header-cart">
                                         <a href="{{ route('cart.show') }}"><i class="fa fa-shopping-bag"></i><span class="cart-count">{{ App\Models\Cart::where('user_id',Auth::check()?Auth::user()->id:0)->count() }}</span></a>
-
                                     </div>
                                     <ul class="ht-us-menu">
                                         @if(Auth::check())
                                         <li><a href="#"><i class="fa fa-user"></i></a>
                                             <ul class="ht-dropdown right">
-                                                {{-- <li><a href="compare.html">Compare Products</a></li> --}}
                                                 <li><a href="{{ route('account') }}">My Account</a></li>
                                                 <li><a href="{{ route('wish.show') }}">My Wish List</a></li>
                                                 <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -1159,6 +955,179 @@
                 </div>
             </div>
         </header>
+         {{-- <!--Header Mobile section start-->
+        <header class="header-mobile d-block d-lg-none">
+            <div class="header-bottom menu-right">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="header-mobile-navigation d-block d-lg-none">
+                                <div class="row align-items-center">
+                                    <div class="col-6 col-md-6">
+                                        <div class="header-logo">
+                                            <a href="{{ route('user.index') }}">
+                                                <img src="{{ asset('assets/images/logo.png') }}" class="img-fluid" alt="">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-6">
+                                        <div class="mobile-navigation text-right">
+                                            <div class="header-icon-wrapper">
+                                                <ul class="icon-list justify-content-end">
+                                                    <li>
+                                                        <div class="header-cart-icon">
+                                                            <a href="{{ route('cart.list') }}"><i class="ion-bag"></i><span>2</span></a>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0)" class="mobile-menu-icon"
+                                                            id="mobile-menu-trigger"><i class="fa fa-bars"></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Mobile Menu start-->
+                    <div class="row">
+                        <div class="col-12 d-flex d-lg-none">
+                            <div class="mobile-menu"></div>
+                        </div>
+                    </div>
+                    <!--Mobile Menu end-->
+                </div>
+            </div>
+        </header>
+        <!--Header Mobile section end-->
+        <!-- Offcanvas Menu Start -->
+        <div class="offcanvas-mobile-menu" id="offcanvas-mobile-menu">
+            <a href="javascript:void(0)" class="offcanvas-menu-close" id="offcanvas-menu-close-trigger">
+                <i class="ion-android-close"></i>
+            </a>
+            <div class="offcanvas-wrapper">
+                <div class="offcanvas-inner-content">
+                    <div class="offcanvas-mobile-search-area">
+                        <form action="#">
+                            <input type="search" placeholder="Search ...">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                    <nav class="offcanvas-navigation">
+                        <ul>
+                            <li class=""><a href="index.html">Home</a></li>
+                            <li class="menu-item-has-children"><a href="#">Shop</a>
+                                <ul class="submenu2">
+                                    <li class="menu-item-has-children"><a href="#">Furniture</a>
+                                        <ul class="submenu2">
+                                          <li><a href="shop.html">Nursery</a></li>
+                                          <li><a href="#">Bedroom</a></li>
+                                          <li><a href="#">Chairs & Benches</a></li>
+                                          <li><a href="#">Shelves, Cabinets & Consoles</a></li>
+                                          <li><a href="#">Tables</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children"><a href="#"> Decor & Accesories</a>
+                                        <ul class="submenu2">
+                                            <li><a href="#">Baskets</a></li>
+                                            <li><a href="#">Cushions & Thorws</a></li>
+                                            <li><a href="#">Decorative Ornaments</a></li>
+                                            <li><a href="#">Lighting & Shades</a></li>
+                                            <li><a href="#">Mirrors</a></li>
+                                            <li><a href="#">Planters Vases & Pots</a></li>
+                                            <li><a href="#">Wall Decor</a></li>
+                                            <li><a href="#">Mats & Rugs</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children"><a href="#">Kitchenware</a>
+                                        <ul class="submenu2">
+                                            <li><a href="#">Bowls & Plate</a></li>
+                                            <li><a href="#">Kitchen Textile</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children"><a href="#">Bed, Bath & Body</a>
+                                        <ul class="submenu2">
+                                           <li><a href="#">Bed Runners</a></li>
+                                           <li><a href="#">Beddings </a></li>
+                                           <li><a href="#">Candles and Diffusers</a></li>
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+
+
+                            </li>
+                            <li class=""><a href="#">About us</a>
+
+                            </li>
+                            <li class="menu-item-has-children"><a href="#">Festive Decoration</a>
+                            </li>
+                            <li class=""><a href="faq.html">Faq</a></li>
+                            <li class="menu-item-has-children"><a href="#">Contact Us</a>
+                            </li>
+
+                        </ul>
+                    </nav>
+
+                    <div class="offcanvas-settings">
+                        <nav class="offcanvas-navigation">
+                            <ul>
+                                <li class="menu-item-has-children"><a href="#">MY ACCOUNT </a>
+                                    <ul class="submenu2">
+                                        <li><a href="login-register.html">Register</a></li>
+                                        <li><a href="login-register.html">Login</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children"><a href="#">CURRENCY: USD </a>
+                                    <ul class="submenu2">
+                                        <li><a href="javascript:void(0)">€ Euro</a></li>
+                                        <li><a href="javascript:void(0)">$ US Dollar</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children"><a href="#">LANGUAGE: EN-GB </a>
+                                    <ul class="submenu2">
+                                        <li><a href="javascript:void(0)"><img src="assets/images/icons/en-gb.png"
+                                                    alt=""> English</a></li>
+                                        <li><a href="javascript:void(0)"><img src="assets/images/icons/de-de.png"
+                                                    alt=""> Germany</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <div class="offcanvas-widget-area">
+                        <div class="off-canvas-contact-widget">
+                            <div class="header-contact-info">
+                                <ul class="header-contact-info-list">
+                                    <li><i class="ion-android-phone-portrait"></i> <a href="tel:+6596352229">(+65)
+                                        96352229
+
+                                    </a></li>
+                                    <li><i class="ion-android-mail"></i> <a
+                                            href="mailto:Loft@goodmaninterior.com">Loft@goodmaninterior.com</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--Off Canvas Widget Social Start-->
+                        <div class="off-canvas-widget-social">
+                            <a href="#" title="Facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="#" title="Twitter"><i class="fa fa-twitter"></i></a>
+                            <a href="#" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+                            <a href="#" title="Youtube"><i class="fa fa-youtube-play"></i></a>
+                            <a href="#" title="Vimeo"><i class="fa fa-vimeo-square"></i></a>
+                        </div>
+                        <!--Off Canvas Widget Social End-->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Offcanvas Menu End --> --}}
         <div class="testimonial-section section">
             <div class="container-fluid">
                 <div class="row">
@@ -1255,9 +1224,6 @@
             </div>
         </div>
         <!-- Testimonial Area End -->
-
-
-
         <!--NewsLetter section start-->
         <div class="newsLetter-section section pt-95 pt-lg-75 pt-md-65 pt-sm-55 pt-xs-45">
             <div class="container">
@@ -1283,7 +1249,7 @@
                             <div class="col-12 mb-20">
                                 <div class="check-box">
                                     <input type="checkbox" id="subscribe">
-                                    <label for="create_account">I agree to subscribe the newsletter in accordance with<a data-bs-toggle="modal" data-bs-target="#myModal" style="color:#b49f64"> Singapore's Data Protection and Privacy Act</a></label>
+                                    <label for="create_account">I agree to subscribe the newsletter in accordance with <a data-bs-toggle="modal" data-bs-target="#myModal" style="color:#b49f64"> Singapore's Data Protection and Privacy Act</a></label>
                                     <div class="modal" id="myModal">
                                         <div class="modal-dialog">
                                           <div class="modal-content">

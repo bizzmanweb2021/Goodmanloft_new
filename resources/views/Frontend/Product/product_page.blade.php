@@ -40,83 +40,40 @@
                                     </ul>
                                     <p>Showing 1–9 of 41 results</p>
                                     </div>
-                                    <!--Toolbar Short Area Start-->
-                                    {{-- <div class="toolbar-short-area d-md-flex align-items-center">
-                                        <div class="toolbar-shorter ">
-                                        <label>Sort By:</label>
-                                            <select class="wide  testing" id="filter" >
-                                                <option data-display="Select">Nothing</option>
-                                                <option value="1">All</option>
-                                                <option value="2">Price-low to high</option>
-                                                <option value="3">Price-high to low</option>
-                                                <option value="4">Newest</option>
-                                            </select>
-                                        </div>
-                                    </div> --}}
-                                    <!--Toolbar Short Area End-->
-                                    <input type="hidden" id="" value="">
                             </div>
                             <!-- Grid & List View End -->
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-3 order-lg-1 order-2">
-                            <!-- Single Sidebar Start  -->
-                            {{-- <div class="common-sidebar-widget">
-                                <h3 class="sidebar-title">Product categories</h3>
-                                <ul class="sidebar-list">
-                                    <li><a href="#"><i class="ion-plus"></i>Accessories <span class="count">(14)</span></a></li>
-                                    <li><a href="#"><i class="ion-plus"></i>Decor <span class="count">(14)</span></a></li>
-                                    <li><a href="#"><i class="ion-plus"></i>Furniture <span class="count">(28)</span></a></li>
-                                    <li><a href="#"><i class="ion-plus"></i>Lighting <span class="count">(14)</span></a></li>
-                                    <li><a href="#"><i class="ion-plus"></i>Outdoor <span class="count">(14)</span></a></li>
-                                    <li><a href="#"><i class="ion-plus"></i>Sports <span class="count">(13)</span></a></li>
-                                    <li><a href="#"><i class="ion-plus"></i>Storage <span class="count">(9)</span></a></li>
-                                    <li><a href="#"><i class="ion-plus"></i>Toys <span class="count">(9)</span></a></li>
-                                    <li><a href="#"><i class="ion-plus"></i>Uncategorized <span class="count">(0)</span></a></li>
-                                </ul>
-                            </div> --}}
-                            <!-- Single Sidebar End  -->
-                            <!-- Single Sidebar Start  -->
-                            {{-- <div class="common-sidebar-widget">
-                                <h3 class="sidebar-title">Filter by price</h3>
-                                <div class="sidebar-price">
-                                    <div id="price-range" class="mb-20"></div>
-                                    <button type="button" class="btn">Filter</button>
-                                    <input type="text" id="price-amount" class="price-amount" readonly>
-                                </div>
-                            </div> --}}
-                            <!-- Single Sidebar End  -->
-                            <!-- Single Sidebar Start  -->
                             <div class="common-sidebar-widget">
                                 <h3 class="sidebar-title">Filter by</h3>
-                                <ul class="sidebar-list">
-                                    <li><a href="#"><i class="ion-plus"></i>Gold <span class="count">(1)</span></a></li>
-                                    <li><a href="#"><i class="ion-plus"></i>Green <span class="count">(1)</span></a></li>
-                                    <li><a href="#"><i class="ion-plus"></i>White <span class="count">(1)</span></a></li>
-                                </ul>
-                            </div>
-                            <!-- Single Sidebar End  -->
-                            <!-- Single Sidebar Start  -->
-                            {{-- <div class="common-sidebar-widget">
-                                <h3 class="sidebar-title">Compare Products</h3>
-                                <div class="compare-products-list">
-                                    <ul>
-                                        <li>
-                                            <a href="#" class="title">Cras neque metus</a>
-                                            <a href="#" class="remove-compare"><i class="fa fa-close"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="title">Cras neque metus</a>
-                                            <a href="#" class="remove-compare"><i class="fa fa-close"></i></a>
-                                        </li>
-                                    </ul>
-                                    <a href="#" class="clear-btn">Clear all</a>
-                                    <button type="button" class="btn compare-btn">Compare</button>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <h4>Price</h4>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <select name="price" id="price">
+                                            <option value="volvo">$1000-$5000</option>
+                                            <option value="saab">$500-$1000</option>
+                                            <option value="mercedes">$100-500</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div> --}}
-                            <!-- Single Sidebar End  -->
-
+                            </div>
+                            <div class="common-sidebar-widget">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <h4>Popularity</h4>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <select name="price" id="price">
+                                            <option value="volvo">Lowest To Highest</option>
+                                            <option value="saab">Highest To Lowest</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-lg-9 order-lg-2 order-1">
                             <div class="row">
@@ -149,17 +106,6 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="product-content">
-                                                                        <div class="product-category-rating">
-                                                                            <span class="category"><a href="#">{{ $products->product_name }}</a></span>
-                                                                            <span class="rating">
-                                                                            <i class="ion-android-star active"></i>
-                                                                            <i class="ion-android-star active"></i>
-                                                                            <i class="ion-android-star active"></i>
-                                                                            <i class="ion-android-star active"></i>
-                                                                            <i class="ion-android-star-outline"></i>
-                                                                        </span>
-                                                                        </div>
-
                                                                         <p class="product-price"><span class="discounted-price">${{ $products->Price }}</span> <span class="main-price discounted">${{ $products->Price }}</span></p>
                                                                         <p class="text-success" style="color:#2ebe2c">{{ $products->stock_availability }}</p>
                                                                     </div>

@@ -1,11 +1,13 @@
 @extends('Frontend.layouts.master')
 @section('content')
+<head>
+    <script src="https://www.paypal.com/sdk/js?client-id={{env('PAYPAL_SANDBOX_CLIENT_ID')}}"></script>
+
+</head>
 <!-- Page Banner Section Start -->
-{{-- <div class="page-banner-section section bg-image" data-bg="assets/images/inner-breadcum.png"> --}}
     <div class="container">
         <div class="row">
             <div class="col">
-
                 <div class="page-banner text-center">
                     <h2>Shipping Information</h2>
                     <ul class="page-breadcrumb">
@@ -17,7 +19,6 @@
             </div>
         </div>
     </div>
-{{-- </div> --}}
 <!-- Page Banner Section End -->
 <!--Contact section start-->
 <div class="conact-section section pt-95 pt-lg-75 pt-md-65 pt-sm-55 pt-xs-45">
@@ -122,7 +123,6 @@
                                         <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Save</button>
                                     </div>
                                 </form>
-
                             </div>
                         </div>
                     </div>
@@ -132,8 +132,7 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-2"></div>
-        <div class="col-lg-8">
+        <div class="col-lg-6">
             <div class="row">
                 <!-- Cart Total -->
                 <div class="col-12 mb-60 mt-5">
@@ -148,33 +147,50 @@
                             <li>{{ $cart->product_name }} <span>${{ $cart->total }}</span></li>
                         </ul>
                         @endforeach
-                        <p>Sub Total <span>${{ $sub_total }}</span></p>
-
-                        @if ( $sub_total >= 250)
-                        @php $del = 0 @endphp
-                            <p>Delivery Rate <span>${{ $del }}</span></p>
-                            <?php $tot = $sub_total + $del ?>
-                            <p>Total<span>${{ $tot }}</span></p>
-                        @else
-                        @php $del = 20 @endphp
-                            <p>Delivery Rate <span>${{ $del }}</span></p>
-                            <?php $tot = $sub_total + $del ?>
-                            <p>Total<span>${{ $tot }}</span></p>
-
-                        @endif
+                        <p>Sub Total <span>${{ $sub_total }}</span></p><hr>
+                        <input type="hidden" value="{{ $sub_total }}" id="sub_total">
+                        <p>Coupon Code<span></span></p><hr>
+                        <select class="shipCharge" width=200 style="width: 100px; color:black;">
+                            <option value='' selected>Select Shipping</option>
+                            <option value='1'>Local Shipping</option>
+                            <option value='2'>Express Local Shipping </option>
+                            <option value='3'>Self Collection</option>
+                        </select><p ><span class="ship5"></span></p><hr>
+                        <div class="clearfix"></div>
+                        <p >Total <span class="tot"></span></p>
                     </div>
                 </div>
             </div>
-            <div class="shipping-btn " style="">
-                <a href="javascript:void(0)" data-amount="1280" data-id="3" class="btn order_now"><span>Continue To Payment</span></a> &nbsp;
-                <a href="{{ route('checkout') }}">Return to information</a>
-             </div>
         </div>
-        <div class="col-lg-2"></div>
-
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="col-12 mb-60 mt-5">
+                    <h3 style="margin-top:30px;">Payment Method</h3>
+                    <div class="checkout-payment-method">
+                        <div class="single-method">
+                            <input type="radio" id="payment_cash" name="payment-method" value="cash">
+                            <label for="payment_cash">Google Pay</label>
+                            <p data-method="cash">Please send a Check to Store name with Store Street, Store Town, Store State, Store Postcode, Store Country.</p>
+                        </div>
+                        <div class="single-method">
+                            <input type="radio" id="payment_paypal" name="payment-method" value="paypal">
+                            <label for="payment_paypal">Paypal</label>
+                            <p data-method="paypal">Please send a Check to Store name with Store Street, Store Town, Store State, Store Postcode, Store Country.</p>
+                        </div>
+                        <div class="single-method">
+                            <input type="radio" id="payment_cash" name="payment-method" value="cash">
+                            <label for="payment_cash">Cash on Delivery</label>
+                            <p data-method="cash">Please send a Check to Store name with Store Street, Store Town, Store State, Store Postcode, Store Country.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div><br>
-
-
+    <div class="shipping-btn ">
+        <a href="#" data-amount="1280" data-id="3" class="btn order_now"><span>Continue To Payment</span></a> &nbsp;
+        <a href="{{ route('checkout') }}">Return to information</a>
+    </div>
     </div>
 </div>
 <!--Contact section end-->
@@ -200,36 +216,37 @@
             });
 
         });
-        var SITEURL = '{{URL::to('')}}';
-        $.ajaxSetup({
-        headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-        });
-        $('body').on('click', '.buy_now', function(e){
-        var totalAmount = $(this).attr("data-amount");
-        var product_id =  $(this).attr("data-id");
-        var options = {
-        "key": "rzp_test_jOCPSrfkSUVcWD",
-        "amount": (totalAmount*100), // 2000 paise = INR 20
-        "name": "Tutsmake",
-        "description": "Payment",
-        "image": "//www.tutsmake.com/wp-content/uploads/2018/12/cropped-favicon-1024-1-180x180.png",
-        "handler": function (response){
-        window.location.href = SITEURL +'/'+ 'paysuccess?payment_id='+response.razorpay_payment_id+'&product_id='+product_id+'&amount='+totalAmount;
-        },
-        "prefill": {
-        "contact": '9988665544',
-        "email":   'tutsmake@gmail.com',
-        },
-        "theme": {
-        "color": "#528FF0"
-        }
-        };
-        var rzp1 = new Razorpay(options);
-        rzp1.open();
-        e.preventDefault();
-        });
+
     });
+</script>
+<script>
+     $('.shipCharge').change(function(){
+            var ship = ($(this).val());
+            if(ship==1){
+                var sub = $('#sub_total').val();
+                if(sub >= 250){
+                    var a = 0;
+                    $('.ship5').html('$'+a);
+                    var e = parseInt(sub) + parseInt(a);
+                    $('.tot').html('$'+sub);
+                }
+                else{
+                    var b = 20;
+                    $('.ship5').html('$'+b);
+                    var c = parseInt(sub) + parseInt(b);
+                    $('.tot').html('$'+c);
+                }
+            }
+            else if(ship==2){
+
+            }
+            else{
+                var sub = $('#sub_total').val();
+                var d = 0;
+                $('.ship5').html('$'+d);
+                var f = parseInt(sub) + parseInt(d);
+                $('.tot').html('$'+f);
+            }
+        });
 </script>
 @endsection

@@ -39,11 +39,8 @@
     </div>
     <header class="header header-sticky d-none d-lg-block">
         <div class="header-default">
-            <div
-                class="container-fluid pl-115 pl-lg-15 pl-md-15 pl-sm-15 pl-xs-15 pr-115 pr-lg-15 pr-md-15 pr-sm-15 pr-xs-15">
+            <div class="container-fluid pl-115 pl-lg-15 pl-md-15 pl-sm-15 pl-xs-15 pr-115 pr-lg-15 pr-md-15 pr-sm-15 pr-xs-15">
                 <div class="row align-items-center">
-
-                    <!-- Header Logo Start -->
                     <div class="col-lg-12">
                         <div class="header-nav d-flex justify-content-between align-items-center">
                             <div class="header-logo text-center">
@@ -52,7 +49,6 @@
                             <nav class="main-menu main-menu-two">
                                 <ul>
                                     <li><a href="{{ route('user.index') }}">Home</a></li>
-                                    <li><a href="{{ route('new.product') }}">New Products</a></li>
                                     <li><a href="#">Shop</a>
                                         <ul class="mega-menu four-column left-0">
                                             @foreach (App\Models\category::all() as $item )
@@ -68,9 +64,9 @@
                                         </ul>
                                     </li>
                                     <li><a href="{{ route('about.index') }}">About Us</a></li>
-                                    <li class=""><a href="{{ route('faq') }}">Faq</a>
-                                    </li>
+                                    <li class=""><a href="{{ route('faq') }}">Faq</a></li>
                                     <li><a href="#">Promotions</a></li>
+                                    <li><a href="#">News</a></li>
                                     <li><a href="{{ route('contact.index') }}">Contact Us</a></li>
                                 </ul>
                             </nav>
@@ -95,7 +91,6 @@
                                     @if(Auth::check())
                                         <li><a href="#"><i class="fa fa-user"></i></a>
                                             <ul class="ht-dropdown right">
-                                                {{-- <li><a href="compare.html">Compare Products</a></li> --}}
                                                 <li><a href="{{ route('account') }}">My Account</a></li>
                                                 <li><a href="{{ route('wish.show') }}">My Wish List</a></li>
                                                 <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -114,9 +109,7 @@
                         </div>
                     </div>
                     <!-- Header Logo Start -->
-
                 </div>
-
             </div>
         </div>
     </header>
@@ -130,7 +123,7 @@
                                 <div class="col-6 col-md-6">
                                     <div class="header-logo">
                                         <a href="index.html">
-                                            <img src="assets/images/logo.png" class="img-fluid" alt="">
+                                            <img src="{{ asset('assets/images/logo.png') }}" class="img-fluid" alt="">
                                         </a>
                                     </div>
                                 </div>
@@ -168,5 +161,93 @@
             </div>
         </div>
     </header>
+    <!-- Offcanvas Menu Start -->
+    <div class="offcanvas-mobile-menu" id="offcanvas-mobile-menu">
+        <a href="javascript:void(0)" class="offcanvas-menu-close" id="offcanvas-menu-close-trigger">
+            <i class="ion-android-close"></i>
+        </a>
+        <div class="offcanvas-wrapper">
+            <div class="offcanvas-inner-content">
+                <div class="offcanvas-mobile-search-area">
+                        <form action="{{ route('search') }}" method="GET" role="search">
+                            <input type="text" name="search" placeholder="Type and hit enter" required/ >
+                            <button type="submit"><i class="ion-ios-search-strong"></i></button>
+                        </form>
+                </div>
+                <nav class="offcanvas-navigation">
+                    <ul>
+                        <li class=""><a href="{{ route('user.index') }}">Home</a></li>
+                        <li class="menu-item-has-children"><a href="#">Shop</a>
+                            <ul class="mega-menu four-column left-0">
+                                @foreach (App\Models\category::all() as $item )
+                                    <li><a href="{{ route('product_show',$item->id) }}" class="item-link">{{ $item->Category_Name }}</a>
+                                        @foreach ( App\Models\subcategory::where('Category_id', $item->id)->get() as $data )
+                                        <ul>
+                                            <li><a href="{{ route('product_show',['id'=>$item->id,"sub_id"=>$data->id]) }}">{{  $data->SubCategory_Name }}</a></li>
+                                        </ul>
+                                        @endforeach
+                                    </li>
+                                    @endforeach
+                            </ul>
+                        </li>
+                        <li><a href="{{ route('about.index') }}">About Us</a></li>
+                        <li class=""><a href="{{ route('faq') }}">Faq</a></li>
+                        <li><a href="#">Promotions</a></li>
+                        <li><a href="#">News</a></li>
+                        <li><a href="{{ route('contact.index') }}">Contact Us</a></li>
+                    </ul>
+                </nav>
+
+                {{-- <div class="offcanvas-settings">
+                    <nav class="offcanvas-navigation">
+                        <ul class="ht-us-menu">
+                            @if(Auth::check())
+                                <li><a href="#"><i class="fa fa-user"></i></a>
+                                    <ul class="ht-dropdown right">
+                                        <li><a href="{{ route('account') }}">My Account</a></li>
+                                        <li><a href="{{ route('wish.show') }}">My Wish List</a></li>
+                                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">LogOut</a></li>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </ul>
+                                </li>
+                            @else
+                                    <li><a href="{{ route('login') }}"><i class="fa fa-user"></i></a></li>
+                            @endif
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="offcanvas-widget-area">
+                    <div class="off-canvas-contact-widget">
+                        <div class="header-contact-info">
+                            <ul class="header-contact-info-list">
+                                <li><i class="ion-android-phone-portrait"></i> <a href="tel:+6596352229">(+65)
+                                    96352229
+
+                                </a></li>
+                                <li><i class="ion-android-mail"></i> <a
+                                        href="mailto:Loft@goodmaninterior.com">Loft@goodmaninterior.com</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--Off Canvas Widget Social Start-->
+                    <div class="off-canvas-widget-social">
+                        <a href="#" title="Facebook"><i class="fa fa-facebook"></i></a>
+                        <a href="#" title="Twitter"><i class="fa fa-twitter"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+                        <a href="#" title="Youtube"><i class="fa fa-youtube-play"></i></a>
+                        <a href="#" title="Vimeo"><i class="fa fa-vimeo-square"></i></a>
+                    </div>
+                    <!--Off Canvas Widget Social End-->
+                </div> --}}
+            </div>
+        </div>
+
+    </div>
+    <!-- Offcanvas Menu End -->
 
 </body>

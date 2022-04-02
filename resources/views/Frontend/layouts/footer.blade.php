@@ -26,18 +26,20 @@
                 <div class="footer-widget col-lg-3 col-md-6 col-sm-6 col-12 mb-40 mb-xs-35">
                     <h4 class="title"><span class="text">My Account</span></h4>
                     <ul class="ft-menu">
-                        <li><a href="{{ route('account') }}">My account</a></li>
+                        <li><a href="{{ route('account') }}">Profile Setting</a></li>
                         <li><a href="#">Order Tracking</a></li>
-                        <li><a href="{{ route('privacy') }}">Privacy Policy</a></li>
+                        <li><a href="#">Order History</a></li>
+
                     </ul>
                 </div>
                 <!--Footer Widget end-->
 
                 <!--Footer Widget start-->
                 <div class="footer-widget col-lg-3 col-md-6 col-sm-6 col-12 mb-40 mb-xs-35">
-                    <h4 class="title"><span class="text">About Us</span></h4>
+                    <h4 class="title"><span class="text">Quick Link</span></h4>
                     <ul class="ft-menu">
                         <li><a href="{{ route('about.index') }}">About Us</a></li>
+                        <li><a href="{{ route('privacy') }}">Privacy Policy</a></li>
                         <li><a href="#">Shopping Guide</a></li>
                         <li><a href="#">Delivery Information</a></li>
                         <li><a href="{{ route('faq') }}">FAQ</a></li>
