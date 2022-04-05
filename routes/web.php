@@ -28,6 +28,7 @@ use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\ShippingController;
 use App\Http\Controllers\WishlistController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 
@@ -50,13 +51,34 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::post('/stockStore',[ProductController::class,'stockStore'])->name('stockStore');
     Route::get('/getSubCategoryById',[ProductController::class,'getSubCategoryById'])->name('getSubCategoryById');
 
+    Route::get('/editProduct/{id}',function($id){
+        $prod = DB::table('products')->select('id','product_name','Product_Description','Product_Dimension','Price','Weight','Quantity')->where('id','=',$id)->get();
+        return view('Admin.Product.product_edit',['prod'=>$prod]);
+    })->name('edit.product');
+
+    Route::post('/updateProduct/{id}',[ProductController::class,'updateProduct'])->name('update.prod');
+
     Route::get('/categoryView',[CategoryController::class,'index'])->name('CategoryView');
     Route::get('/CategoryAdd',[CategoryController::class,'create'])->name('CategoryAdd');
     Route::post('/Category',[CategoryController::class, 'show'])->name('image.resize');
 
+    Route::get('/editCategory/{id}',function($id){
+        $data = DB::table('categories')->select('id','Category_Name')->where('id','=',$id)->get();
+        return view('Admin.Category.category_edit',['data'=>$data]);
+    })->name('edit.cate');
+    Route::post('/updateCate/{id}',[CategoryController::class,'update'])->name('update.cate');
+
     Route::get('/SubCategoryView',[SubCategoryController::class,'index'])->name('SubCategoryView');
     Route::get('/SubCategoryAdd',[SubCategoryController::class,'create'])->name('SubCategoryAdd');
     Route::post('/SubCategory',[SubCategoryController::class, 'show'])->name('image.resize.sub');
+
+    Route::get('/editSubcategory/{sub_id}',function($id){
+        $sub = DB::table('subcategories')->select('id','SubCategory_Name')->where('id','=',$id)->get();
+        return view('Admin.SubCategory.subcategory_edit',['sub'=>$sub]);
+    })->name('edit.sub');
+
+    Route::post('/updateSubCate/{id}',[SubCategoryController::class,'updateSub'])->name('update.Subcate');
+
 
     Route::get('/couponView',[CouponController::class,'create'])->name('CouponView');
     Route::get('/couponAdd',[CouponController::class,'index'])->name('CouponAdd');
@@ -77,9 +99,24 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::get('/aboutAdd',[AboutAdminController::class,'create'])->name('aboutAdd');
     Route::post('/aboutStore',[AboutAdminController::class,'show'])->name('aboutStore');
 
+    Route::get('/editAbout/{id}',function($id){
+        $about = DB::table('about_us')->select('id','Title','Description')->where('id','=',$id)->get();
+        return view('Admin.About Us.aboutEdit',['about'=>$about]);
+    })->name('edit.about');
+
+    Route::post('/updateAbout/{id}',[AboutAdminController::class,'updateAbout'])->name('update.about');
+
     Route::get('/faqView',[FaqAdminController::class,'index'])->name('faqView');
     Route::get('/faqAdd',[FaqAdminController::class,'create'])->name('faqAdd');
     Route::post('/faqStore',[FaqAdminController::class,'show'])->name('faqStore');
+
+    Route::get('/editFaq/{id}',function($id){
+        $faq = DB::table('f_a_q_s')->select('id','Question','Answer')->where('id','=',$id)->get();
+        return view('Admin.FAQ.faqEdit',['faq'=>$faq]);
+    })->name('edit.faq');
+
+    Route::post('/updateFaq/{id}',[FAQController::class,'updateFaq'])->name('update.Faq');
+
 
     Route::get('/contactView',[ContactController::class,'show'])->name('contactView');
     Route::get('/contactSearch',[ContactController::class,'showSearch'])->name('show');
@@ -90,7 +127,7 @@ Route::get('/search/',[HomeController::class,'search'])->name('search');
 
 Route::get('/productShow/{product_id}',[ShopPageController::class,'show'])->name('productShow');
 Route::get('/product_show/{id}',[ShopPageController::class,'product_show'])->name('product_show');
-Route::get('/new_product',[ShopPageController::class,'new'])->name('new.product');
+Route::get('/getPrice',[ShopPageController::class,'filter'])->name('get.price');
 
 Route::get('/nursery',[NurseryController::class,'index'])->name('nursery');
 Route::get('/loadcart',[AddToCartController::class,'loadCart']);

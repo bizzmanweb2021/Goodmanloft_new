@@ -3,7 +3,6 @@
 <div class="container">
     <div class="row">
         <div class="col">
-
             <div class="page-banner text-center">
                 <h2>Product Detail</h2>
                 <ul class="page-breadcrumb">
@@ -11,7 +10,6 @@
                     <li>Product Detail</li>
                 </ul>
             </div>
-
         </div>
     </div>
 </div>
@@ -37,33 +35,23 @@
                                             }'>
                                             <div class="lg-image">
                                                 <img src="{{ asset($product->product_image )}}" alt="">
-                                                <a href="#"
-                                                    class="popup-img venobox" data-gall="myGallery"><i
-                                                        class="fa fa-expand"></i></a>
+                                                <a href="#" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
                                             </div>
                                             <div class="lg-image">
                                                 <img src="{{ asset($product->product_image )}}" alt="">
-                                                <a href="#"
-                                                    class="popup-img venobox" data-gall="myGallery"><i
-                                                        class="fa fa-expand"></i></a>
+                                                <a href="#" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
                                             </div>
                                             <div class="lg-image">
                                                 <img src="{{ asset($product->product_image )}}" alt="">
-                                                <a href="#"
-                                                    class="popup-img venobox" data-gall="myGallery"><i
-                                                        class="fa fa-expand"></i></a>
+                                                <a href="#" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
                                             </div>
                                             <div class="lg-image">
                                                 <img src="{{ asset($product->product_image )}}" alt="">
-                                                <a href="#"
-                                                    class="popup-img venobox" data-gall="myGallery"><i
-                                                        class="fa fa-expand"></i></a>
+                                                <a href="#" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
                                             </div>
                                             <div class="lg-image">
                                                 <img src="{{ asset($product->product_image )}}" alt="">
-                                                <a href="#"
-                                                    class="popup-img venobox" data-gall="myGallery"><i
-                                                        class="fa fa-expand"></i></a>
+                                                <a href="#" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
                                             </div>
                                         </div>
                                         <div class="product-details-thumbs slider-thumbs-1 tf-element-carousel"
@@ -85,23 +73,12 @@
                                             }},
                                             {"breakpoint":479, "settings": {
                                                 "slidesToShow": 2
-                                            }}
-                                        ]'>
-                                            <div class="sm-image"><img
-                                                    src="{{ asset($product->product_image )}}"
-                                                    alt="product image thumb"></div>
-                                            <div class="sm-image"><img
-                                                    src="{{ asset($product->product_image )}}"
-                                                    alt="product image thumb"></div>
-                                            <div class="sm-image"><img
-                                                    src="{{ asset($product->product_image )}}"
-                                                    alt="product image thumb"></div>
-                                            <div class="sm-image"><img
-                                                    src="{{ asset($product->product_image )}}"
-                                                    alt="product image thumb"></div>
-                                            <div class="sm-image"><img
-                                                    src="{{ asset($product->product_image )}}"
-                                                    alt="product image thumb"></div>
+                                            }}]'>
+                                            <div class="sm-image"><img src="{{ asset($product->product_image )}}" alt="product image thumb"></div>
+                                            <div class="sm-image"><img src="{{ asset($product->product_image )}}" alt="product image thumb"></div>
+                                            <div class="sm-image"><img src="{{ asset($product->product_image )}}" alt="product image thumb"></div>
+                                            <div class="sm-image"><img src="{{ asset($product->product_image )}}" alt="product image thumb"></div>
+                                            <div class="sm-image"><img src="{{ asset($product->product_image )}}" alt="product image thumb"></div>
                                         </div>
                                     </div>
                                     <!--Product Details Left -->
@@ -109,22 +86,13 @@
                                 <div class="col-md-6">
                                     <!--Product Details Content Start-->
                                     <div class="product-details-content">
-                                        <!--Product Nav Start-->
-                                        {{-- <div class="product-nav">
-                                            <a href="#"><i class="fa fa-angle-left"></i></a>
-                                            <a href="#"><i class="fa fa-angle-right"></i></a>
-                                        </div> --}}
-                                        <!--Product Nav End-->
                                         <h2>{!! $product->product_name !!}</h2>
-
                                         <div class="single-product-price">
                                             <span class="price new-price">${!! $product->Price !!}</span>
-                                            {{-- <span class="regular-price">$77.00</span> --}}
                                         </div>
                                         <div class="product-description">
                                             <p>{!! $product->Product_Description !!}</p>
                                         </div>
-
                                         <div class="single-product-quantity">
                                             <form class="add-quantity" action="{{ route('cart.store') }}" method="POST">
                                                 @csrf
@@ -140,13 +108,6 @@
                                         <div class="wishlist-compare-btn">
                                             <a href="{{ route('wishlistShow',$product['id']) }}" class="wishlist-btn">Add to Wishlist</a>
                                         </div>
-                                        {{-- <div class="product-meta">
-                                            <span class="posted-in">
-                                                Categories:
-                                                <a href="#">Accessories</a>,
-                                                <a href="#">Electronics</a>
-                                            </span>
-                                        </div> --}}
                                         <div class="single-product-sharing">
                                             <h3>Share this product</h3>
                                             <ul>
@@ -164,7 +125,4 @@
             </div>
         </div>
         <!-- Single Product Section End -->
-
-
-
 @endsection

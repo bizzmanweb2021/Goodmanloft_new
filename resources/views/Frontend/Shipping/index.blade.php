@@ -75,7 +75,6 @@
                                     <div class="modal-body">
                                         @foreach (App\Models\Shipping_address::orderBy('id','desc')->limit(1)->get() as $ship)
                                         <input type="hidden" id="ship1" name="ship1" value="{{ $ship->id }}">
-
                                         <div class="row">
                                             <div class="col-md-12 col-12 mb-20">
                                                 <label style="float: left">Full Name*</label>

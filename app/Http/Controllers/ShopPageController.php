@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\category;
 use App\Models\product;
-use Request;
+use Illuminate\Support\Facades\Request;
+
 class ShopPageController extends Controller
 {
     //
@@ -46,15 +47,15 @@ class ShopPageController extends Controller
         return view('Frontend.Product.product_page', compact('products'));
     }
 
-    public function new()
+    public function filter(Request $request)
     {
-        $product = product::orderBy('id','desc')->limit(12)->get();
-        return view('Frontend.New_Product.index')->with('product',$product);
-    }
-
-    public function filter()
-    {
-
+        $sId = $request->get();
+        // print_r($sId);
+        // if($sId==1)
+        // {
+        //     echo "hi";
+        // }
+        echo json_encode($sId);
     }
 
 }

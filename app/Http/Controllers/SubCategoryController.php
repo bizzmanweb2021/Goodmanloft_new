@@ -7,6 +7,7 @@ use App\Models\subcategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use DB;
+use Illuminate\Support\Facades\DB as FacadesDB;
 use Intervention\Image\ImageManagerStatic as Image;
 
 
@@ -16,7 +17,7 @@ class SubCategoryController extends Controller
     public function index()
     {
         $data = DB::table('subcategories')
-        ->select('categories.Category_Name','subcategories.SubCategory_image','subcategories.SubCategory_Name')
+        ->select('categories.Category_Name','subcategories.SubCategory_image','subcategories.SubCategory_Name','subcategories.id as sub_id')
         ->join('categories','categories.id','=','subcategories.Category_id')->get();
         return view('Admin.SubCategory.subcategory_view')->with('subcategory',$data);
 
@@ -52,9 +53,14 @@ class SubCategoryController extends Controller
                                 );
                                 return redirect()->route('admin.SubCategoryView')->with($notification1);
 
+    }
+    public function updateSub(Request $request)
+    {
 
-
-
+        $category = DB::table('subcategories')->where('id','=', $request->id)->update([
+            'SubCategory_Name' => $request->input('SubCategory_Name')
+        ]);
+        return redirect()->route('admin.SubCategoryView');
 
     }
 

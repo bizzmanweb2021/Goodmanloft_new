@@ -19,6 +19,7 @@
                 <table class="table align-items-center justify-content-center mb-0">
                   <thead>
                     <tr>
+                        <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Edit</th>
                       <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Question</th>
                       <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Answer</th>
 
@@ -28,6 +29,7 @@
                     <tbody>
                     @foreach($faq as $item)
                       <tr>
+                        <td><a href="{{ route('admin.edit.faq',$item["id"]) }}"><i class="fa fa-edit"></i></a></td>
                         <td>{{$item["Question"]}}</td>
                         <td>{!! $item["Answer"]  !!}</td>
                         </tr>

@@ -19,6 +19,7 @@
                 <table class="table align-items-center justify-content-center mb-0">
                   <thead>
                     <tr>
+                        <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Edit</th>
                       <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7 ps-2"> Image</th>
                       <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7 ps-2"> Title</th>
                       <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Description</th>
@@ -27,14 +28,14 @@
 
                   </thead>
                     <tbody>
-                      @foreach($about as $item)
-                      <tr>
-                        <td><img src="{{ url('/' . $item["Image"] )}}" width=80px; height=80px; /> </td>
-                        <td>{{$item["Title"]}}</td>
-                        <td>{{$item["Description"]}}</td>
-
+                        @foreach($about as $item)
+                        <tr>
+                            <td><a href="{{ route('admin.edit.about',$item["id"]) }}"><i class="fa fa-edit"></i></a></td>
+                            <td><img src="{{ url('/' . $item["Image"] )}}" width=80px; height=80px; /> </td>
+                            <td>{{$item["Title"]}}</td>
+                            <td>{{$item["Description"]}}</td>
                         </tr>
-                      @endforeach
+                        @endforeach
 
                 </tbody>
                 </table>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Intervention\Image\ImageManagerStatic as Image;
 use App\Models\AboutUs;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AboutAdminController extends Controller
 {
@@ -38,5 +39,14 @@ class AboutAdminController extends Controller
                                 'message'=>'Product-category Added Successfully'
                                 );
                                 return redirect()->route('admin.aboutView')->with($notification1);
+    }
+
+    public function updateAbout(Request $request)
+    {
+        $about = DB::table('about_us')->where('id','=',$request->id)->update([
+            'Title' => $request->input('Title'),
+            'Description' => $request->input('Description')
+        ]);
+        return redirect()->route('admin.aboutView');
     }
 }

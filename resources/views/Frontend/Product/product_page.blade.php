@@ -51,9 +51,9 @@
                                     </div>
                                     <div class="col-md-7">
                                         <select name="price" id="price">
-                                            <option value="volvo">Above $1000</option>
-                                            <option value="saab">$500-$1000</option>
-                                            <option value="mercedes">$100-$500</option>
+                                            <option value="1">Above $1000</option>
+                                            <option value="2">$500-$1000</option>
+                                            <option value="3">$100-$500</option>
                                         </select>
                                     </div>
                                 </div>
@@ -64,7 +64,7 @@
                                         <h4>Popularity</h4>
                                     </div>
                                     <div class="col-md-7">
-                                        <select name="price" id="price">
+                                        <select name="price" id="popularity">
                                             <option value="volvo">Lowest To Highest</option>
                                             <option value="saab">Highest To Lowest</option>
                                         </select>
@@ -79,7 +79,7 @@
                                         <div id="myTabContent-2" class="tab-content">
                                             <div id="grid" class="tab-pane fade active show">
                                                 <div class="product-grid-view">
-                                                    <div class="row">
+                                                    <div class="row" id="product_range">
                                                         {{-- @if(count($products) > 0) --}}
                                                         @foreach ($product as $products )
                                                         <div class="col-lg-4 col-md-6 col-sm-6">
@@ -120,7 +120,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mb-30 mb-sm-40 mb-xs-30">
+                            {{-- <div class="row mb-30 mb-sm-40 mb-xs-30">
                                 <div class="col">
                                     <ul class="page-pagination">
                                         <li class="active"><a href="#">01</a></li>
@@ -131,30 +131,26 @@
                                         <li><a href="#">Next</a></li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-{{-- </div> --}}
 <!-- Shop Section End -->
-{{-- @section('javascript')
-
-
+@section('javascript')
 <script>
-    $('.testing').change(function(){
-        if($(this).val()== '1')
-        {
-            $.ajax({
-                url: {{ route('filter.all') }},
-                data:
-            })
-        }
-    });
 
+        $('#price').change(function(){
+            // $('#product_range').empty();
+            $.ajax({
+                url : '{{ route('get.price') }}',
+                type : 'GET',
+                data :
+            })
+        });
 
 </script>
-@endsection --}}
+@endsection
 @endsection

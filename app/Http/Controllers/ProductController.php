@@ -71,6 +71,7 @@ class ProductController extends Controller
                                 $Product->Quantity=$request->Quantity;
                                 $Product->Price=$request->Price;
                                 $Product->Weight=$request->Weight;
+                                $Product->sale = $request->sale;
                                 $Product->Product_image=$image_destination;
                                 $Product->gallery_photo=json_encode($data);
                                 $Product->Category_id=$request->Category_Name;
@@ -104,5 +105,20 @@ class ProductController extends Controller
                         return redirect()->route('admin.stockView')->with($notification1);
 
     }
+
+    public function updateProduct(Request $request)
+    {
+
+        $Products = DB::table('products')->where('id','=', $request->id)->update([
+            'product_name' => $request->input('product_name'),
+            'Product_Description' => $request->input('Product_Description'),
+            'Product_Dimension' => $request->input('Product_Dimension'),
+            'Weight' => $request->input('Weight'),
+            'Price' => $request->input('Price'),
+            'Quantity' => $request->input('Quantity')
+        ]);
+        return redirect()->route('admin.productView');
+    }
+
 
 }

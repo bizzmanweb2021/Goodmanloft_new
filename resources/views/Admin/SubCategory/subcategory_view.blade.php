@@ -22,6 +22,7 @@
                       <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">SubCategory Image</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">SubCategory Name</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Category Name</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Edit</th>
 
                     </tr>
 
@@ -32,6 +33,8 @@
                         <td><img src="{{ url('/' . $item->SubCategory_image )}}" width=80px; height=80px; /> </td>
                         <td>{{$item->SubCategory_Name}}</td>
                         <td>{{$item->Category_Name}}</td>
+                        <td><a href="{{ route('admin.edit.sub',$item->sub_id) }}"><i class="fa fa-edit"></i></a></td>
+
                       </tr>
                       @endforeach
                     </tbody>

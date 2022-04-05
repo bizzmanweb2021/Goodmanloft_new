@@ -21,6 +21,7 @@
                     <tr>
                       <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Category Image</th>
                       <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Product Category Name</th>
+                      <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Edit</th>
 
                     </tr>
 
@@ -30,6 +31,7 @@
                       <tr>
                         <td><img src="{{ url('/' . $item["Category_image"] )}}" width=80px; height=80px; /> </td>
                         <td>{{$item["Category_Name"]}}</td>
+                        <td><a href="{{route('admin.edit.cate',$item["id"])}}"><i class="fa fa-edit"></i></a></td>
 
                         </tr>
                       @endforeach

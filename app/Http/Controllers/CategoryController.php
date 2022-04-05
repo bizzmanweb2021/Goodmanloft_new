@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Intervention\Image\ImageManagerStatic as Image;
 
 
@@ -38,6 +39,14 @@ class CategoryController extends Controller
                                 'message'=>'Product-category Added Successfully'
                                 );
                                 return redirect()->route('admin.CategoryView')->with($notification1);
+    }
+    public function update(Request $request)
+    {
+
+        $category = DB::table('categories')->where('id','=', $request->id)->update([
+            'Category_Name' => $request->input('Category_Name')
+        ]);
+        return redirect()->route('admin.CategoryView');
     }
 
 }
