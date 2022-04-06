@@ -96,9 +96,15 @@ class ProductController extends Controller
     }
     public function stockStore(Request $request)
     {
+        $images = $request->stock_image;
+        $filename = $images->getClientOriginalName();
+        $image_resize = Image::make($images->getRealPath())->resize(300,300)->save(public_path('images/'.$filename));
+        $image_destinations =  'images/'.$filename;
+
         $stock = new Stock();
         $stock->product_name = $request->product_name;
         $stock->stock_available = $request->stock_available;
+        $stock->stock_image=$image_destinations;
         $stock->save();
 
         $notification1=array('alert-type'=>'success','message'=>'Stock Added Successfully');
@@ -118,6 +124,13 @@ class ProductController extends Controller
             'Quantity' => $request->input('Quantity')
         ]);
         return redirect()->route('admin.productView');
+    }
+    public function updateStock(Request $request)
+    {
+        $stock = DB::table('stocks')->where('id','=',$request->id)->update([
+            'stock_available' => $request->input('stock_available'),
+        ]);
+        return redirect()->route('admin.stockView');
     }
 
 

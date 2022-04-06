@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\category;
 use App\Models\product;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ShopPageController extends Controller
 {
@@ -49,13 +50,15 @@ class ShopPageController extends Controller
 
     public function filter(Request $request)
     {
-        $sId = $request->get();
-        // print_r($sId);
-        // if($sId==1)
-        // {
-        //     echo "hi";
-        // }
-        echo json_encode($sId);
+        $category_id = $request->category_id;
+        $sub_id = $request->sub_id;
+        $fromrange = $request->fromrange;
+        $torange = $request->torange;
+        $data = product::where('Category_id',$category_id)
+        ->where('SubCategory_id',$sub_id)
+        ->where('Price','>=',(int)$fromrange)
+        ->where('Price','<=',(int)$torange)->get();
+        echo json_encode($data);
     }
 
 }

@@ -2,6 +2,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 @section('content')
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 {{-- <div class="page-banner-section section bg-image" data-bg="{{ asset('assets/images/inner-breadcum.png') }}"> --}}
     <div class="container">
         <div class="row">
@@ -49,12 +51,10 @@
                                     <div class="col-md-5">
                                         <h4>Price</h4>
                                     </div>
-                                    <div class="col-md-7">
-                                        <select name="price" id="price">
-                                            <option value="1">Above $1000</option>
-                                            <option value="2">$500-$1000</option>
-                                            <option value="3">$100-$500</option>
-                                        </select>
+                                    <div class="sidebar-price">
+                                        <div id="price-range" class="mb-20"></div>
+                                        {{-- <button type="button" class="btn">Filter</button> --}}
+                                        <input type="text" id="price-amount" class="price-amount" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -82,8 +82,7 @@
                                                     <div class="row" id="product_range">
                                                         {{-- @if(count($products) > 0) --}}
                                                         @foreach ($product as $products )
-                                                        <div class="col-lg-4 col-md-6 col-sm-6">
-                                                            <!--  Single Grid product Start -->
+                                                        <div class="col-lg-4 col-md-6 col-sm-6" >
                                                             <a href="#">
                                                                 <div class="single-grid-product mb-30">
                                                                     <div class="product-image">
@@ -107,7 +106,6 @@
                                                                         <p class="text-success" style="color:#2ebe2c">{{ $products->stock_availability }}</p>
                                                                     </div>
                                                                 </div>
-                                                            <!--  Single Grid product End -->
                                                             </a>
 
                                                         </div>
@@ -141,15 +139,81 @@
 <!-- Shop Section End -->
 @section('javascript')
 <script>
-
-        $('#price').change(function(){
-            // $('#product_range').empty();
-            $.ajax({
-                url : '{{ route('get.price') }}',
+    $('#price-range').slider({
+    range: true,
+    min: 0,
+    max: 1000,
+    values: [ 0, 900 ],
+    slide: function( event, ui )
+    {
+        $('#price-amount').val( '$' + ui.values[ 0 ] + ' - $' + ui.values[ 1 ] );
+        var fromRange = ui.values[0];
+        var toRange = ui.values[1];
+        $.ajax({
+                url : "{{ route('get.price') }}",
                 type : 'GET',
-                data :
-            })
-        });
+                data :{
+                    category_id: "{{ request()->id }}",
+                    sub_id: "{{ request()->sub_id }}",
+                    fromrange: fromRange,
+                    torange: toRange
+                } ,
+                dataType: 'json',
+                success:function(data){
+                   var len = data.length;
+                   $('#product_range').empty();
+                   console.log(data);
+                   var url = "{{ asset('') }}"
+                   for (let index = 0; index < len; index++) {
+                    //    const element = array[index];
+                    var image = data[index]['product_image'];
+                    var product_link = "{{ route('productShow',':id') }}";
+                    var product_add = "{{ route('add.wish',':id') }}"
+                    product_link = product_link.replace(':id',data[index]['id']);
+                    product_add = product_add.replace(':id',data[index]['id']);
+
+                    $('#product_range').append(`<div class="col-lg-4 col-md-6 col-sm-6" >
+                                                            <a href="#">
+                                                                <div class="single-grid-product mb-30">
+                                                                    <div class="product-image">
+                                                                        <div class="product-label">
+                                                                            <span class="sale">Sale</span>
+                                                                            <span class="new">New</span>
+                                                                        </div>
+                                                                        <a href="${product_link}">
+                                                                            <img src="${url+image}" class="img-fluid" alt="">
+                                                                        </a>
+                                                                        <div class="product-action d-flex justify-content-between">
+                                                                            <a class="product-btn" href="${product_add}">Add to Cart</a>
+                                                                            <ul class="d-flex">
+                                                                                <li><a href="#"><i class="ion-android-favorite-outline"></i></a></li>
+                                                                                <li><a href="compare.html"><i class="ion-ios-shuffle"></i></a></li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="product-content">
+                                                                        <h3 class="title"> <a href="${product_link}" tabindex="0">${data[index]['product_name']}</a></h3>
+                                                                        <p class="product-price"><span class="discounted-price">$ ${data[index]['Price']}</span> <span class="main-price discounted">${data[index]['Price']}</span></p>
+                                                                        <p class="text-success" style="color:#2ebe2c"> ${data[index]['stock_availability']}</p>
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+
+                                                        </div>`);
+
+                   }
+
+                }
+            });
+    }
+    });
+        // $('#price-range').change(function(){
+        //     console.log($(this).val());
+        //     // $('#product_range').empty();
+
+        // });
+
+
 
 </script>
 @endsection

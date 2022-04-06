@@ -22,6 +22,8 @@
                       <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Product Name</th>
                       <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Product Price</th>
                       <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Stock Available</th>
+                      <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Edit</th>
+
                     </tr>
 
                   </thead>
@@ -31,6 +33,8 @@
                         <td>{{$item->product_name}}</td>
                         <td>{{$item->Price}}</td>
                         <td>{{$item->stock_available}}</td>
+                        <td><a href="{{ route('admin.edit.stock',$item->id) }}"><i class="fa fa-edit"></i></a></td>
+
                         </tr>
                       @endforeach
 

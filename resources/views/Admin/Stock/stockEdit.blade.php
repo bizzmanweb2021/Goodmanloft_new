@@ -1,13 +1,13 @@
 @extends('Admin.layouts.main')
 @section('title')
-<h6 class="font-weight-bolder mb-0">Add Stock</h6>
+<h6 class="font-weight-bolder mb-0">Edit Stock</h6>
 @endsection
 @section('content')
 <div class="container-fluid py-4 pt-5">
     <div class="col-12">
     <div class="card h-100">
         <div class="card-body p-3">
-            <form method="POST" action="{{route('admin.stockStore')}}" id="Product_form" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('admin.update.stock',$stock[0]->id) }}" id="Product_form" enctype="multipart/form-data">
                 @csrf
                     <div class="row mb-4">
                         <div class="col-md-4">
@@ -21,20 +21,20 @@
                         </div><br>
                         <div class="col-md-4">
                             <label class="text-truncate  text-body ms-3 w-80 mb-0">Stock Quantity</label>
-                            <input type="number" name="stock_available" class="form-control" style="width:100%" min="1" max="100">
+                            <input type="number" name="stock_available" value="{{ $stock[0]->stock_available }}" class="form-control" style="width:100%" min="1" max="100">
                         </div><br>
                     </div>
-                    <div class="row mb-4">
+                    {{-- <div class="row mb-4">
                         <div class="col-md-4">
                             <div class="upload">
                                 <label class="text-truncate  text-body ms-3 w-80 mb-0">Upload Stock Image</label>
-                                <input type="file" name="stock_image" class="form-control" id="stock_image">
+                                <input type="file" name="stock_image" value="{{ $stock[0]->stock_image }}" class="form-control" id="stock_image">
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 <div class="row mb-4">
                     <div class="col-md-4">
-                    <button type="submit" class="btn btn-info btn-sm" style="background-color: #bf9f6c">ADDto</button>
+                    <button type="submit" class="btn btn-info btn-sm" style="background-color: #bf9f6c">Save</button>
                     <button type="reset" class="btn btn-light btn-sm" name="submit">Return</button>
                     </div>
                   </div>

@@ -58,6 +58,13 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
 
     Route::post('/updateProduct/{id}',[ProductController::class,'updateProduct'])->name('update.prod');
 
+    Route::get('/editStock/{id}',function($id){
+        $stock = DB::table('stocks')->select('id','stock_available')->where('id','=',$id)->get();
+        return view('Admin.Stock.stockEdit',['stock'=>$stock]);
+    })->name('edit.stock');
+
+    Route::post('/updateStock/{id}',[ProductController::class,'updateStock'])->name('update.stock');
+
     Route::get('/categoryView',[CategoryController::class,'index'])->name('CategoryView');
     Route::get('/CategoryAdd',[CategoryController::class,'create'])->name('CategoryAdd');
     Route::post('/Category',[CategoryController::class, 'show'])->name('image.resize');
