@@ -102,6 +102,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="product-content">
+                                                                        <h3 class="title"> <a href="{{ route('productShow',$products['id']) }}" tabindex="0">{{($products->product_name) }}</a></h3>
                                                                         <p class="product-price"><span class="discounted-price">${{ $products->Price }}</span> <span class="main-price discounted">${{ $products->Price }}</span></p>
                                                                         <p class="text-success" style="color:#2ebe2c">{{ $products->stock_availability }}</p>
                                                                     </div>

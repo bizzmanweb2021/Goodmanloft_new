@@ -52,7 +52,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::get('/getSubCategoryById',[ProductController::class,'getSubCategoryById'])->name('getSubCategoryById');
 
     Route::get('/editProduct/{id}',function($id){
-        $prod = DB::table('products')->select('id','product_name','Product_Description','Product_Dimension','Price','Weight','Quantity')->where('id','=',$id)->get();
+        $prod = DB::table('products')->select('id','product_name','stock_availability','sale','Product_Size','Product_Description','Product_Dimension','Price','Weight','Quantity')->where('id','=',$id)->get();
         return view('Admin.Product.product_edit',['prod'=>$prod]);
     })->name('edit.product');
 
@@ -176,6 +176,11 @@ Route::middleware('auth')->group(function()
     Route::get('paymentPal',[PaypalController::class,'payment'])->name('payment.Paypal');
     Route::get('payment/success', [PaypalController::class,'success'])->name('payment.success');
     Route::get('cancel',[PaypalController::class,'cancel'])->name('payment.cancel');
+
+    Route::get('create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
+Route::get('process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
+Route::get('success-transaction', [PayPalController::class, 'successTransaction'])->name('successTransaction');
+Route::get('cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
 
 
 

@@ -121,7 +121,10 @@ class ProductController extends Controller
             'Product_Dimension' => $request->input('Product_Dimension'),
             'Weight' => $request->input('Weight'),
             'Price' => $request->input('Price'),
-            'Quantity' => $request->input('Quantity')
+            'Quantity' => $request->input('Quantity'),
+            'Product_Size' => $request->input('Product_Size'),
+            'stock_availability' => $request->input('stock_availability'),
+            'sale' => $request->input('sale')
         ]);
         return redirect()->route('admin.productView');
     }

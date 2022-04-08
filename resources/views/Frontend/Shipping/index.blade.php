@@ -1,7 +1,6 @@
 @extends('Frontend.layouts.master')
 @section('content')
 <head>
-    <script src="https://www.paypal.com/sdk/js?client-id={{env('PAYPAL_SANDBOX_CLIENT_ID')}}"></script>
 
 </head>
 <!-- Page Banner Section Start -->
@@ -163,7 +162,7 @@
         </div>
         <div class="col-lg-6">
             <div class="row">
-                <div class="col-12 mb-60 mt-5">
+                {{-- <div class="col-12 mb-60 mt-5">
                     <h3 style="margin-top:30px;">Payment Method</h3>
                     <div class="checkout-payment-method">
                         <div class="single-method">
@@ -182,7 +181,9 @@
                             <p data-method="cash">Please send a Check to Store name with Store Street, Store Town, Store State, Store Postcode, Store Country.</p>
                         </div>
                     </div>
-                </div>
+                </div> --}}
+                <div id="paypal-button-container"></div>
+
             </div>
         </div>
     </div><br>
@@ -195,8 +196,45 @@
 <!--Contact section end-->
 
 @endsection
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
 @section('javascript')
+<script src="https://www.paypal.com/sdk/js?client-id=Adizxf9OQ6bntDa6O2iLB9_9hWyX-5W-rkMcqDZ6ieQ4bWtv51gdIFopTgG7ZrENQrDoDmAAkT6BuW1n&currency=USD"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+    paypal.Buttons({
+      // Sets up the transaction when a payment button is clicked
+      createOrder: (data, actions) => {
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+              value: '{{ $sub_total }}' // Can also reference a variable or function
+            }
+          }]
+        });
+      },
+      // Finalize the transaction after payer approval
+      onApprove: (data, actions) => {
+        return actions.order.capture().then(function(orderData) {
+          // Successful capture! For dev/demo purposes:
+          console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+          const transaction = orderData.purchase_units[0].payments.captures[0];
+          alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
+
+          $.ajax({
+              method: "POST",
+              url: "{{ route('payment.Paypal') }}",
+              data: {
+
+
+              },
+
+          });
+        });
+      }
+    }).render('#paypal-button-container');
+</script>
+
 <script>
     $(document).ready({
         $('#ship2').on('submit', '#ship2', function(e){
