@@ -115,4 +115,9 @@ class PlaceOrderController extends Controller
         }
 
     }
+
+    public function confirmPayment()
+    {
+        return view('Frontend.Shipping.confirm');
+    }
 }

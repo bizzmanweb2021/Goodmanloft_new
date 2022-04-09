@@ -33,7 +33,7 @@
                     </thead>
                     <tbody>
                         @foreach($Products as $item)
-                        <tr>
+                        <tr style="text-align: center">
                             <td><a href="{{ route('admin.edit.product',$item["id"]) }}"><i class="fa fa-edit"></i></a></td>
                             <td><img src="{{ url('/' . $item["product_image"] )}}" width=80px; height=80px; /> </td>
                             <td>{{$item["product_name"]}}</td>

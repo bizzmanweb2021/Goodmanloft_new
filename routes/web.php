@@ -173,6 +173,8 @@ Route::middleware('auth')->group(function()
     Route::get('/wishShow',[WishlistController::class,'wishShow'])->name('wish.show');
     Route::get('/removeWish/{id}', [WishlistController::class, 'removeWishlist'])->name('wish.remove');
 
+    Route::get('/confirmPayment',[PlaceOrderController::class,'confirmPayment'])->name('confirm.payment');
+
     Route::get('paymentPal',[PaypalController::class,'payment'])->name('payment.Paypal');
     Route::get('payment/success', [PaypalController::class,'success'])->name('payment.success');
     Route::get('cancel',[PaypalController::class,'cancel'])->name('payment.cancel');

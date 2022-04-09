@@ -47,6 +47,7 @@
                 <div class="col-md-4">
                     <label class="text-truncate  text-body ms-3 w-80 mb-0">Product Size</label>
                     <select type="Product_Size" name="Product_Size" id="Product_Size" class="form-control" style="width:100%">
+                    <option>--Select--</option>
                     <option value="Small">Small</option>
                     <option value="Medium">Medium</option>
                     <option value="Large">Large</option>
@@ -61,6 +62,7 @@
                     <div class="col-md-4">
                         <label class="text-truncate  text-body ms-3 w-80 mb-0">Product on Sale/Not Sale</label>
                         <select type="sale" name="sale" id="sale" class="form-control" style="width:100%">
+                            <option>--Select--</option>
                         <option value="Sale">On Sale</option>
                         <option value="Not Sale">Not On Sale</option>
                         </select>
@@ -95,7 +97,8 @@
                     <div class="col-md-4">
                         <label class="text-truncate  text-body ms-3 w-80 mb-0">Stock Availability</label>
                         <select type="stock_availability" name="stock_availability" id="stock_availability" class="form-control" style="width:100%">
-                        <option value="Unavailable">Unavailable</option>
+                            <option>--Select--</option>
+                            <option value="Unavailable">Unavailable</option>
                         <option value="Available">Available</option>
                         </select>
                     </div><br>

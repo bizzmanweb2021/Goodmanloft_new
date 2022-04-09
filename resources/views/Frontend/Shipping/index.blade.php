@@ -188,7 +188,7 @@
         </div>
     </div><br>
     <div class="shipping-btn ">
-        <a href="#" data-amount="1280" data-id="3" class="btn order_now"><span>Continue To Payment</span></a> &nbsp;
+        <a href="{{ route('confirm.payment') }}" data-amount="1280" data-id="3" class="btn order_now"><span>Continue To Payment</span></a> &nbsp;
         <a href="{{ route('checkout') }}">Return to information</a>
     </div>
     </div>

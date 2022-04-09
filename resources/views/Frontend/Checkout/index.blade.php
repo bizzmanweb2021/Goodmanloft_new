@@ -139,7 +139,9 @@
                                             <span class="badge badge-secondary" style="float: none; color:black;">
                                             <a data-bs-toggle="modal" data-bs-target="#myModal">?</a>
                                         </span><span  style="opacity: 0.8;">Calculated at next step</span></p>
-                                        <p>Coupon Code<span><input type="text" style="background-color: white; width:120px; height:40px;"></span></p>
+                                        <p>Coupon Code<span>
+                                            <input type="text" style="background-color: white; width:120px; height:40px;">
+                                        </span></p>
                                         <div class="modal" id="myModal">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">

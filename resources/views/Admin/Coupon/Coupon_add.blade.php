@@ -49,17 +49,17 @@
                     </div><br>
                     <div class="col-md-4">
                         <label class="text-truncate  text-body ms-3 w-80 mb-2">Status</label></br>
-                        <input type="radio" id="status" name="status" value="1"><label for="">Active</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="radio" name="status" value="0"><label for="">Inactive</label>
+                        <input type="radio" id="status" name="status" value="active"><label for="">Active</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="radio" name="status" value="inactive"><label for="">Inactive</label>
                     </div><br>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
                         <label class="text-truncate  text-body ms-3 w-80 mb-0">Discount Type</label>
                         <select  name="discount_type" id="amount_discount" class="form-control amount_discount">
-                            <option value="">Choose Amount</option>
-                            <option value="0">Flat Amount</option>
-                            <option value="1">Percentage Amount</option>
+                            <option value="">--Choose Amount--</option>
+                            <option value="flatAmount">Flat Amount</option>
+                            <option value="percentAmount">Percentage Amount</option>
                         </select>
                     </div>
                     <div class="col-md-4 amount">
@@ -75,24 +75,6 @@
                     @error('Banner')
                     <span style="color:red">{{ $message }}</span>
                     @enderror
-                    <div class="row">
-                        <div class="col-md-4">
-                            <label class="text-truncate  text-body ms-3 w-80 mb-2">Grouped By Users</label></br>
-                            <input type="radio" name="grouped_by_users"><label for="">All User</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="radio" name="grouped_by_users"><label for="">New User</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="radio" name="grouped_by_users"><label for="">Some User</label>
-                        </div><br>
-                        <div class="col-md-4">
-                            <label class="text-truncate  text-body ms-3 w-80 mb-2">Grouped By Products</label></br>
-                            <input type="radio" name="grouped_by_products"><label for="">All Products</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="radio" name="grouped_by_products"><label for="">Some User</label>
-                        </div><br>
-                        <div class="col-md-4">
-                            <label class="text-truncate  text-body ms-3 w-80 mb-2">Grouped By Category</label></br>
-                            <input type="radio" name="grouped_by_category"><label for="">All User</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="radio" name="grouped_by_category"><label for="">Some User</label>
-                        </div><br>
-                    </div>
                 </div>
                 </div>
                 <div class="row mb-4">

@@ -27,9 +27,6 @@ class CouponController extends Controller
                                    'status'=>'required',
                                    'discount_type'=>'required',
                                    'Banner'=>'required',
-                                //    'grouped_by_users'=>'required',
-                                //    'grouped_by_products'=>'required',
-                                //    'grouped_by_category'=>'required'
                         ]);
 
                         $image = $request->Banner;

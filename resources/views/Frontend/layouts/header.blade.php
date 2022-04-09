@@ -177,6 +177,7 @@
                 <nav class="offcanvas-navigation">
                     <ul>
                         <li class=""><a href="{{ route('user.index') }}">Home</a></li>
+
                         <li class="menu-item-has-children"><a href="#">Shop</a>
                             <ul class="mega-menu four-column left-0">
                                 @foreach (App\Models\category::all() as $item )
