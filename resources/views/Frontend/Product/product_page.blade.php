@@ -53,7 +53,6 @@
                                     </div>
                                     <div class="sidebar-price">
                                         <div id="price-range" class="mb-20"></div>
-                                        {{-- <button type="button" class="btn">Filter</button> --}}
                                         <input type="text" id="price-amount" class="price-amount" readonly>
                                     </div>
                                 </div>

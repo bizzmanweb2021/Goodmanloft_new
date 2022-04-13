@@ -49,24 +49,23 @@
                             <nav class="main-menu main-menu-two">
                                 <ul>
                                     <li><a href="{{ route('user.index') }}">Home</a></li>
+                                    <li><a href="{{ route('about.index') }}">About Us</a></li>
                                     <li><a href="#">Shop</a>
                                         <ul class="mega-menu four-column left-0">
                                             @foreach (App\Models\category::all() as $item )
-                                                <li><a href="{{ route('product_show',$item->id) }}" class="item-link">{{ $item->Category_Name }}</a>
-                                                    @foreach ( App\Models\subcategory::where('Category_id', $item->id)->get() as $data )
-                                                    <ul>
-                                                        <li><a href="{{ route('product_show',['id'=>$item->id,"sub_id"=>$data->id]) }}">{{  $data->SubCategory_Name }}</a></li>
-                                                    </ul>
-                                                    @endforeach
-
-                                                </li>
+                                            <li><a href="{{ route('product_show',$item->id) }}" class="item-link">{{ $item->Category_Name }}</a>
+                                                @foreach ( App\Models\subcategory::where('Category_id', $item->id)->get() as $data )
+                                                <ul>
+                                                    <li><a href="{{ route('product_show',['id'=>$item->id,"sub_id"=>$data->id]) }}">{{  $data->SubCategory_Name }}</a></li>
+                                                </ul>
                                                 @endforeach
+                                            </li>
+                                            @endforeach
                                         </ul>
                                     </li>
-                                    <li><a href="{{ route('about.index') }}">About Us</a></li>
-                                    <li class=""><a href="{{ route('faq') }}">Faq</a></li>
                                     <li><a href="#">Promotions</a></li>
-                                    <li><a href="#">News</a></li>
+                                    <li><a href="#}">News</a></li>
+                                    <li class=""><a href="{{ route('faq') }}">Faq</a></li>
                                     <li><a href="{{ route('contact.index') }}">Contact Us</a></li>
                                 </ul>
                             </nav>

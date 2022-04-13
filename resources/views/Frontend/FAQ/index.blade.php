@@ -40,7 +40,7 @@
                                 </div>
                             </div>
                         @endforeach
-                        <p><strong>Contact us at <a href="#"> loft@goodmaninterior.com</a>  to find out more.</strong></p>
+                        <p><strong>Contact us at <a href="mailto:hello@goodmansloft.com">hello@goodmansloft.com</a>  to find out more.</strong></p>
                     </div>
                 </div>
             </div>

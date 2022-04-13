@@ -27,6 +27,7 @@ use App\Http\Controllers\PlaceOrderController;
 use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\ShippingController;
+use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -52,7 +53,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::get('/getSubCategoryById',[ProductController::class,'getSubCategoryById'])->name('getSubCategoryById');
 
     Route::get('/editProduct/{id}',function($id){
-        $prod = DB::table('products')->select('id','product_name','stock_availability','sale','Product_Size','Product_Description','Product_Dimension','Price','Weight','Quantity')->where('id','=',$id)->get();
+        $prod = DB::table('products')->select('id','product_name','Product_Description','Product_Dimension','Price','Weight','Quantity')->where('id','=',$id)->get();
         return view('Admin.Product.product_edit',['prod'=>$prod]);
     })->name('edit.product');
 
@@ -127,6 +128,16 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
 
     Route::get('/contactView',[ContactController::class,'show'])->name('contactView');
     Route::get('/contactSearch',[ContactController::class,'showSearch'])->name('show');
+
+    Route::get('/testimonialView',[TestimonialController::class,'show'])->name('testimonialView');
+    Route::get('/testimonialCreate',[TestimonialController::class,'create'])->name('testimonialCreate');
+    Route::post('/testimonialStore',[TestimonialController::class,'store'])->name('testimonialStore');
+    Route::get('/editTestimonial/{id}',function($id){
+        $test = DB::table('testimonials')->select('id','name','review')->where('id','=',$id)->get();
+        return view('Admin.Testimonial.testimonialEdit',['test'=>$test]);
+
+    })->name('edit.testimonial');
+    Route::post('/updateTestimonial/{id}',[TestimonialController::class,'updateTestimonial'])->name('update.Testimonial');
 });
 
 Route::get('/',[HomeController::class,'index'])->name('user.index');
@@ -176,13 +187,12 @@ Route::middleware('auth')->group(function()
     Route::get('/confirmPayment',[PlaceOrderController::class,'confirmPayment'])->name('confirm.payment');
 
     Route::get('paymentPal',[PaypalController::class,'payment'])->name('payment.Paypal');
-    Route::get('payment/success', [PaypalController::class,'success'])->name('payment.success');
+    Route::post('payment/success', [PaypalController::class,'success'])->name('payment.success');
     Route::get('cancel',[PaypalController::class,'cancel'])->name('payment.cancel');
 
-    Route::get('create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
-Route::get('process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
-Route::get('success-transaction', [PayPalController::class, 'successTransaction'])->name('successTransaction');
-Route::get('cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
+    Route::get('/payment/create',[PaypalController::class,'create_Payment'])->name('create_Payment.paypal');
+
+    Route::post('/place-order',[PaypalController::class,'PlaceOrder'])->name('place-order');
 
 
 

@@ -36,7 +36,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="section-title text-left  pt-20">
-                            <h2>Featured<span> Products</span> </h2>
+                            <h2><span> Products</span> </h2>
 
                         </div>
                     </div>
@@ -897,6 +897,7 @@
                                 <nav class="main-menu main-menu-two">
                                     <ul>
                                         <li><a href="{{ route('user.index') }}">Home</a></li>
+                                        <li><a href="{{ route('about.index') }}">About Us</a></li>
                                         <li><a href="#">Shop</a>
                                             <ul class="mega-menu four-column left-0">
                                                 @foreach (App\Models\category::all() as $item )
@@ -910,10 +911,9 @@
                                                 @endforeach
                                             </ul>
                                         </li>
-                                        <li><a href="{{ route('about.index') }}">About Us</a></li>
-                                        <li class=""><a href="{{ route('faq') }}">Faq</a></li>
                                         <li><a href="#">Promotions</a></li>
                                         <li><a href="#}">News</a></li>
+                                        <li class=""><a href="{{ route('faq') }}">Faq</a></li>
                                         <li><a href="{{ route('contact.index') }}">Contact Us</a></li>
                                     </ul>
                                 </nav>
@@ -1130,6 +1130,7 @@
         <!-- Offcanvas Menu End --> --}}
         <div class="testimonial-section section">
             <div class="container-fluid">
+
                 <div class="row">
                     <div class="col-12">
                         <div class="testimonial-wrap testi-bg">
@@ -1150,70 +1151,20 @@
                                                     "slidesToShow": 1
                                                     }}
                                                     ]'>
+                                            @foreach (App\Models\Testimonial::all() as $test)
                                             <div class="item">
                                                 <!-- single testimonial item Strat-->
                                                 <div class="single-testimonial-item">
-                                                    <div class="testimonial-image">
-                                                        <img src="{{ url('/') }}/assets/images/testimonial/testimonial1.jpg"
-                                                            class="img-fluid" alt="">
-                                                    </div>
                                                     <div class="testimonial-content">
-                                                        <p class="testimonial-text"> Sed vel urna at dui iaculis
-                                                            gravida. Maecenas pretium, velit vitae placerat faucibus,
-                                                            velit quam facilisis elit, sit amet lacinia est est id
-                                                            ligula. Duis feugiat quam non justo faucibus, in gravida
-                                                            diam tempor. Nam viverra enim non ipsum ornare, condimentum
-                                                            blandit diam mattis. Maecenas gravida mol..</p>
+                                                        <p class="testimonial-text"> {{ $test->review }}</p>
                                                         <img src="{{ url('/') }}/assets/images/icons/quote-icon.png" alt="">
-                                                        <p class="testimonial-author">Magdalena Valencia</p>
-                                                        <span class="post">Customer</span>
+                                                        <p class="testimonial-author">{{ $test->name }}</p>
                                                     </div>
                                                 </div>
+
                                                 <!-- single testimonial item End-->
                                             </div>
-                                            <div class="item">
-                                                <!-- single testimonial item Strat-->
-                                                <div class="single-testimonial-item">
-                                                    <div class="testimonial-image">
-                                                        <img src="{{ url('/') }}/assets/images/testimonial/testimonial2.jpg"
-                                                            class="img-fluid" alt="">
-                                                    </div>
-                                                    <div class="testimonial-content">
-                                                        <p class="testimonial-text"> Sed vel urna at dui iaculis
-                                                            gravida. Maecenas pretium, velit vitae placerat faucibus,
-                                                            velit quam facilisis elit, sit amet lacinia est est id
-                                                            ligula. Duis feugiat quam non justo faucibus, in gravida
-                                                            diam tempor. Nam viverra enim non ipsum ornare, condimentum
-                                                            blandit diam mattis. Maecenas gravida mol..</p>
-                                                        <img src="{{ url('/') }}/assets/images/icons/quote-icon.png" alt="">
-                                                        <p class="testimonial-author">Magdalena Valencia</p>
-                                                        <span class="post">Customer</span>
-                                                    </div>
-                                                </div>
-                                                <!-- single testimonial item Strat-->
-                                            </div>
-                                            <div class="item">
-                                                <!-- single testimonial item Strat-->
-                                                <div class="single-testimonial-item">
-                                                    <div class="testimonial-image">
-                                                        <img src="{{ url('/') }}/assets/images/testimonial/testimonial3.jpg"
-                                                            class="img-fluid" alt="">
-                                                    </div>
-                                                    <div class="testimonial-content">
-                                                        <p class="testimonial-text"> Sed vel urna at dui iaculis
-                                                            gravida. Maecenas pretium, velit vitae placerat faucibus,
-                                                            velit quam facilisis elit, sit amet lacinia est est id
-                                                            ligula. Duis feugiat quam non justo faucibus, in gravida
-                                                            diam tempor. Nam viverra enim non ipsum ornare, condimentum
-                                                            blandit diam mattis. Maecenas gravida mol..</p>
-                                                        <img src="{{ url('/') }}/assets/images/icons/quote-icon.png" alt="">
-                                                        <p class="testimonial-author">Magdalena Valencia</p>
-                                                        <span class="post">Customer</span>
-
-                                                    </div>
-                                                </div>
-                                                <!-- single testimonial item Strat-->
-                                            </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -1221,6 +1172,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
         <!-- Testimonial Area End -->
@@ -1229,7 +1181,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-5">
-                        <img src="{{ url('/') }}/assets/images/blog/blog-details-4.jpg" alt="" class="img-fluid">
+                        <img src="{{ url('/') }}/assets/images/newslatter.jpg" alt="" class="img-fluid">
                     </div>
                     <div class="col-lg-7">
                         <div class="newsletter-wrapper">

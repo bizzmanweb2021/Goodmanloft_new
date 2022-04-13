@@ -60,20 +60,21 @@
                         <input type="text" name="Quantity" class="form-control" style="width:100%">
                     </div><br>
                     <div class="col-md-4">
+                        <label class="text-truncate  text-body ms-3 w-80 mb-0">Price</label>
+                        <input type="text" name="Price" class="form-control" style="width:100%" placeholder="In $">
+                    </div><br>
+                    {{-- <div class="col-md-4">
                         <label class="text-truncate  text-body ms-3 w-80 mb-0">Product on Sale/Not Sale</label>
                         <select type="sale" name="sale" id="sale" class="form-control" style="width:100%">
                             <option>--Select--</option>
                         <option value="Sale">On Sale</option>
                         <option value="Not Sale">Not On Sale</option>
                         </select>
-                    </div><br>
+                    </div><br> --}}
                 </div>
 
                 <div class="row mb-4">
-                    <div class="col-md-4">
-                        <label class="text-truncate  text-body ms-3 w-80 mb-0">Price</label>
-                        <input type="text" name="Price" class="form-control" style="width:100%" placeholder="In $">
-                    </div><br>
+
                     <div class="col-md-4">
                         <label class="text-truncate  text-body ms-3 w-80 mb-0">Product Category Name</label>
                         <div class="col-75">
@@ -92,8 +93,6 @@
                             </select>
                         </div>
                     </div><br>
-                </div>
-                <div class="row mb-4">
                     <div class="col-md-4">
                         <label class="text-truncate  text-body ms-3 w-80 mb-0">Stock Availability</label>
                         <select type="stock_availability" name="stock_availability" id="stock_availability" class="form-control" style="width:100%">
@@ -102,6 +101,9 @@
                         <option value="Available">Available</option>
                         </select>
                     </div><br>
+                </div>
+                <div class="row mb-4">
+
                     <div class="col-md-4">
                         <div class="upload">
                             <label class="text-truncate  text-body ms-3 w-80 mb-0">Upload Product Image</label>
@@ -113,7 +115,7 @@
                     @enderror
                     <div class="col-md-4">
                         <div class="upload">
-                            <label class="text-truncate  text-body ms-3 w-80 mb-0">Upload Gallery Photo</label>
+                            <label class="text-truncate  text-body ms-3 w-80 mb-0">Upload Gallery Image</label>
                             <input type="file" class="form-control" id="gallery_photo" name="gallery_photo[]" multiple>
                         </div>
                     </div>

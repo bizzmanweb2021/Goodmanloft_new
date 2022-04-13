@@ -213,21 +213,43 @@
           }]
         });
       },
-      // Finalize the transaction after payer approval
-      onApprove: (data, actions) => {
-        return actions.order.capture().then(function(orderData) {
-          // Successful capture! For dev/demo purposes:
-          console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-          const transaction = orderData.purchase_units[0].payments.captures[0];
-          alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
+        // Finalize the transaction after payer approval
+        onApprove: (data, actions) => {
+            return actions.order.capture().then(function(orderData) {
+            // Successful capture! For dev/demo purposes:
+            console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+            const transaction = orderData.purchase_units[0].payments.captures[0];
+            alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
 
-          $.ajax({
-              method: "POST",
-              url: "{{ route('payment.Paypal') }}",
-              data: {
+               var user_id = $('user_id').val();
+               var user_email = $('user_email').val();
+               var coupon_code = $('coupon_code').val();
+               var payment_method = $('payment_method').val();
+               var order_total = $('order_total').val();
+               var currency = $('currency').val();
+               var payment_status = $('payment_status').val();
 
 
-              },
+            $.ajax(
+            {
+                method: "POST",
+                url: "/place-order",
+                data:
+                {
+                    user_id : 'user_id',
+                    user_email:'user_email',
+                    coupon_code : 'coupon_code',
+                    payment_method : 'Paid by Paypal',
+                    order_total : 'order_total',
+                    amount : 'amount',
+                    currency : 'currency',
+                    payment_status:'payment_status',
+                },
+                success:function(response)
+                {
+                    swat(response.status)
+                    window.location.href="/confirmPayment"
+            }
 
           });
         });
@@ -236,13 +258,16 @@
 </script>
 
 <script>
-    $(document).ready({
-        $('#ship2').on('submit', '#ship2', function(e){
+    $(document).ready(
+    {
+        $('#ship2').on('submit', '#ship2', function(e)
+        {
             e.PreventDefault();
             var url = $(this).attr('action');
             var method = $(this).attr('method');
 
-            $.ajax({
+            $.ajax(
+            {
                 type: method,
                 url: url,
                 data: $(this).serialize(),
@@ -251,15 +276,15 @@
 
                 }
             });
-
         });
-
     });
 </script>
 <script>
-     $('.shipCharge').change(function(){
+    $('.shipCharge').change(function()
+        {
             var ship = ($(this).val());
-            if(ship==1){
+            if(ship==1)
+            {
                 var sub = $('#sub_total').val();
                 if(sub >= 250){
                     var a = 0;
@@ -267,17 +292,20 @@
                     var e = parseInt(sub) + parseInt(a);
                     $('.tot').html('$'+sub);
                 }
-                else{
+                else
+                {
                     var b = 20;
                     $('.ship5').html('$'+b);
                     var c = parseInt(sub) + parseInt(b);
                     $('.tot').html('$'+c);
                 }
             }
-            else if(ship==2){
+            else if(ship==2)
+            {
 
             }
-            else{
+            else
+            {
                 var sub = $('#sub_total').val();
                 var d = 0;
                 $('.ship5').html('$'+d);
