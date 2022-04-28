@@ -19,7 +19,6 @@
                 <table class="table align-items-center justify-content-center mb-0">
                   <thead>
                     <tr>
-                        <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Stock Image</th>
                       <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Product Name</th>
                       <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Product Price</th>
                       <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Stock Available</th>
@@ -31,7 +30,6 @@
                   <tbody>
                       @foreach($Stocks as $item)
                       <tr>
-                         <td><img src="{{ url('/' . $item->stock_image )}}" width=80px; height=80px; /></td>
                         <td>{{$item->product_name}}</td>
                         <td>{{$item->Price}}</td>
                         <td>{{$item->stock_available}}</td>

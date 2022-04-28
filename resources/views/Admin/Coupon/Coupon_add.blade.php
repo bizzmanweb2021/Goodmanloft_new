@@ -63,7 +63,7 @@
                         </select>
                     </div>
                     <div class="col-md-4 amount">
-                        <label class="text-truncate  text-body ms-3 w-80 mb-0">Value</label>
+                        <label class="text-truncate  text-body ms-3 w-80 mb-0"></label>
                         <input type="text" name="discount_amount" class="form-control" style="width:100%">
                     </div><br>
                     <div class="col-md-4">

@@ -3594,6 +3594,7 @@ ul.cart-items li {
   -webkit-transition: 0.6s;
   transition: 0.6s;
   height: 438px;
+  text-align: center;
 }
 .single-grid-product .product-label span {
   position: absolute;
@@ -3626,7 +3627,7 @@ ul.cart-items li {
   width: 100%;
 }
 .single-grid-product .product-image > a img {
-  width: 100%;
+  width: 300px;
   -webkit-transition: 0.6s;
   transition: 0.6s;
   height: 300px;

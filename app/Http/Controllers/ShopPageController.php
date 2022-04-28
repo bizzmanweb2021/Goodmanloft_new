@@ -54,14 +54,11 @@ class ShopPageController extends Controller
         $sub_id = $request->sub_id;
         $fromrange = $request->fromrange;
         $torange = $request->torange;
-        $data = DB::table('products')->select('products.*');
-        $data->where('Category_id',$category_id);
-        if(!empty($sub_id)){
-            $data->where('SubCategory_id',$sub_id);
-        }
-        $data->where('Price','>=',(int)$fromrange);
-        $data->where('Price','<=',(int)$torange);
-        echo json_encode($data->get());
+        $data = product::where('Category_id',$category_id)
+        ->where('SubCategory_id',$sub_id)
+        ->where('Price','>=',(int)$fromrange)
+        ->where('Price','<=',(int)$torange)->get();
+        echo json_encode($data);
     }
 
 }

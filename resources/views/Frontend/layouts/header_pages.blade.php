@@ -27,8 +27,8 @@
                 <div class="col-md-6">
                     <ul>
                         <li><a href="https://wa.me/6596352229" target="_blank"><i class="fa fa-phone"></i> <i class="fa fa-whatsapp"></i> &nbsp; +65 96352229</a></li>
-                        <li><a href="https://www.facebook.com/Goodmanloft"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="https://www.instagram.com/goodmansloft/"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href=""><i class="fa fa-facebook"></i></a></li>
+                        <li><a href=""><i class="fa fa-instagram"></i></a></li>
                     </ul>
                 </div>
             </div>

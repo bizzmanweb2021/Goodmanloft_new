@@ -31,12 +31,12 @@
                     <label class="text-truncate  text-body ms-3 w-80 mb-0">Weight</label>
                     <input type="text" name="Weight" value="{{ $prod[0]->Weight }}" class="form-control" style="width:100%">
                 </div><br>
-                {{-- <div class="col-md-4">
+                <div class="col-md-4">
                     <label class="text-truncate  text-body ms-3 w-80 mb-0">Product Size</label>
                         @foreach (App\Models\product::orderBy('id')->limit(1)->get() as $product )
                         <input type="text"  value="{{$prod[0]->Product_Size}}"  class="form-control" style="width:100%">
                         @endforeach
-                </div><br> --}}
+                </div><br>
             </div>
             <div class="row mb-4">
                 <div class="col-md-4">
@@ -44,16 +44,45 @@
                     <input type="text" name="Quantity" value="{{ $prod[0]->Quantity }}" class="form-control" style="width:100%">
                 </div><br>
                 <div class="col-md-4">
+                    <label class="text-truncate  text-body ms-3 w-80 mb-0">Product on Sale/Not Sale</label>
+                        @foreach (App\Models\product::orderBy('id')->limit(1)->get() as $product )
+                        <input type="text"  value="{{$prod[0]->sale}}"  class="form-control" style="width:100%">
+                        @endforeach
+                </div><br>
+                <div class="col-md-4">
                     <label class="text-truncate  text-body ms-3 w-80 mb-0">Price</label>
                     <input type="text" name="Price" value="{{ $prod[0]->Price }}" class="form-control" style="width:100%" placeholder="In $">
                 </div><br>
-                {{-- <div class="col-md-4">
-                    <label class="text-truncate  text-body ms-3 w-80 mb-0">Stock Availability</label>
-                    @foreach (App\Models\product::orderBy('id')->limit(1)->get() as $product )
-                    <input type="text"  value="{{$prod[0]->stock_availability}}"  class="form-control" style="width:100%">
-                    @endforeach
-                </div><br> --}}
             </div>
+                <div class="row mb-4">
+                    {{-- <div class="col-md-4">
+                        <label class="text-truncate  text-body ms-3 w-80 mb-0">Product Category Name</label>
+                        <div class="col-75">
+                            <select id="Category_Name" name="Category_Name" class="form-control" style="width:95%">
+                            <option value="">--Select--</option>
+                                @foreach(App\Models\Category::all() as $item)
+                            <option value="{{ $item->id }}">{{ $item->Category_Name }}</option>
+                            @endforeach
+                            </select>
+                        </div>
+                    </div><br>
+                    <div class="col-md-4">
+                        <label class="text-truncate  text-body ms-3 w-80 mb-0">Product SubCategory Name</label>
+                        <div class="col-75">
+                            <select id="SubCategory_name" name="SubCategory_name" class="form-control" style="width:95%">
+                            </select>
+                        </div>
+                    </div><br> --}}
+                    <div class="col-md-4">
+                        <label class="text-truncate  text-body ms-3 w-80 mb-0">Stock Availability</label>
+                        @foreach (App\Models\product::orderBy('id')->limit(1)->get() as $product )
+                        <input type="text"  value="{{$prod[0]->stock_availability}}"  class="form-control" style="width:100%">
+                        @endforeach
+                    </div><br>
+                </div>
+                {{-- <div class="row mb-4">
+
+                </div> --}}
             <div class="row mb-4">
               <div class="col-md-4">
               <button type="submit" class="btn btn-info btn-sm" style="background-color: #bf9f6c">Save</button>

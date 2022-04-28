@@ -23,10 +23,10 @@
   </div>
 <!--About Us Area Start-->
 <div class="about-us-area section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             @foreach (App\Models\AboutUs::orderBy('id')->get() as $item )
-            <div class="col-md-6">
+            <div class="col-md-5">
                     <!--About Us Image Start-->
                 <div class="about-us-img-wrapper">
                     <div class="about-us-image">
@@ -35,7 +35,7 @@
                 </div>
                 <!--About Us Image End-->
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-7">
                     <!--About Us Content Start-->
                 <div class="about-us-content">
                    <h4>{{ $item->Title }}</h4>

@@ -104,7 +104,7 @@
                         <div class="single-banner-item mb-30">
                             <div class="banner-image">
                                 <a href="shop.html">
-                                    <img src="{{ $item->banner }}"  style="height:260px; width:570px;" alt="" class="img-fluid">
+                                    <img src="{{ $item->banner }}" style="height:300px;" alt="" class="img-fluid">
                                 </a>
                             </div>
                         </div>
@@ -618,7 +618,7 @@
                         <div class="product-list-widget-wrapper">
                             <!-- widget product list title -->
                             <div class="list-product-section-title mb-35">
-                                <h3>Popular<span> Products</span></h3>
+                                <h3>Popular <span> Products</span></h3>
                                 <div class="top-rated-nav slick-btns"></div>
                             </div>
                             <!-- widget product list title -->
@@ -1185,7 +1185,7 @@
                     </div>
                     <div class="col-lg-7">
                         <div class="newsletter-wrapper">
-                            <p class="small-text">Special Ofers For Subscribers</p>
+                            
                             <h3 class="title">Subscribe Our<span> Newsletter</span></h3>
                             <p class="short-desc">Subscribe to our Newsletter and be the first to know about
                                 any special offers and latest updates.

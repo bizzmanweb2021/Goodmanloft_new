@@ -55,19 +55,19 @@
                                     </div>
                                     <div class="col-12 mb-5">
                                         <label>Address*</label>
-                                        <input type="text" name="address" placeholder="Billing/Shipping Address" >
+                                        <input type="text" name="address" placeholder="Billing/Shipping Address" value="{{ Auth::user()->address }}" >
                                     </div>
                                     <div class="col-md-6 col-12 mb-5">
                                         <label>City*</label>
-                                        <input type="text" name="city" >
+                                        <input type="text" name="city" value="{{ Auth::user()->city }}">
                                     </div>
                                     <div class="col-md-6 col-12 mb-5">
                                         <label>State*</label>
-                                        <input type="text" name="state">
+                                        <input type="text" name="state" value="{{ Auth::user()->state }}">
                                     </div>
                                     <div class="col-md-6 col-12 mb-5">
                                         <label>Zip Code*</label>
-                                        <input type="text" name="zip">
+                                        <input type="text" name="zip" value="{{ Auth::user()->zip }}">
                                     </div>
                                     <div class="col-12 mb-5">
                                         <div class="check-box">

@@ -61,7 +61,7 @@
                                                 <td class="pro-remove"><a href="{{ route('cart.remove',$detail['id']) }}"><i class="fa fa-trash-o"></i></a></td>
                                             </tr>
                                     @endforeach
-                                <?php>
+                                <?php ?>
                             </tbody>
                         </table>
                     </div>
