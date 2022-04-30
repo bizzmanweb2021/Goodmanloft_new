@@ -1,13 +1,6 @@
 @extends('Frontend.layouts.master')
 @section('content')
-   <!-- Page Banner Section Start -->
-   <div class="page-banner-section section bg-image" data-bg="assets/images/inner-breadcum.png">
-    <div class="container">
-
-    </div>
-</div>
-<!-- Page Banner Section End -->
-
+  
 <!-- this is login section-->
 <div class="container">
 <div class="row">

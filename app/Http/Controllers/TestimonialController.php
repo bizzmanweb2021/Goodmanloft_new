@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TestimonialController extends Controller
 {
@@ -31,5 +32,14 @@ class TestimonialController extends Controller
             'message'=>'Review Added Successfully'
             );
             return view('Admin.Testimonial.testimonialView')->with($notification1);
-            }
+    }
+
+    public function updateTestimonial(Request $request)
+    {
+        $test = DB::table('testimonials')->where('id','=', $request->id)->update([
+            'name' => $request->input('name'),
+            'review' => $request->input('review')
+        ]);
+        return redirect()->route('admin.testimonialView');
+    }
 }

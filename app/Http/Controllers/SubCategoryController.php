@@ -45,7 +45,7 @@ class SubCategoryController extends Controller
                                 $SubCategory->SubCategory_name=$request->SubCategory_name;
                                 $SubCategory->SubCategory_Image=$image_destination;
                                 $SubCategory->Category_id=$request->Category_Name;
-                                $SubCategory->Category_Name = $request->Category_Name;
+                                // $SubCategory->Category_Name = $request->Category_Name;
                                 $SubCategory->save();
 
                                 $notification1=array('alert-type'=>'success',

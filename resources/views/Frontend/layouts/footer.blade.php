@@ -15,8 +15,8 @@
                     <img src="{{ asset('assets/images/qr.jpg') }}" style="height:70px; width:70px"/></br>
                     <a href=" https://linktr.ee/" style="color:#b49f64">Follow Us!</a>
                     <div class="footer-social">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/Goodmanloft"><i class="fa fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/goodmansloft/"><i class="fa fa-instagram"></i></a>
 
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                 <div class="footer-widget col-lg-3 col-md-6 col-sm-6 col-12 mb-40 mb-xs-35">
                     <h4 class="title"><span class="text">My Account</span></h4>
                     <ul class="ft-menu">
-                        <li><a href="{{ route('account') }}">Profile Setting</a></li>
+                        <li><a href="{{ route('account'),$user['id']) }}">Account Details</a></li>
                         <li><a href="#">Order Tracking</a></li>
                         <li><a href="#">Order History</a></li>
 
@@ -40,8 +40,8 @@
                     <ul class="ft-menu">
                         <li><a href="{{ route('about.index') }}">About Us</a></li>
                         <li><a href="{{ route('privacy') }}">Privacy Policy</a></li>
-                        <li><a href="#">Shopping Guide</a></li>
-                        <li><a href="#">Delivery Information</a></li>
+                        <li><a href="{{ route('faq') }}">Shopping Guide</a></li>
+                        <li><a href="{{ route('faq') }}">Delivery Information</a></li>
                         <li><a href="{{ route('faq') }}">FAQ</a></li>
                         <li><a href="{{ route('term.condition') }}">Terms & Conditions</a></li>
 

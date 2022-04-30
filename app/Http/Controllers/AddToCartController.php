@@ -37,7 +37,7 @@ class AddToCartController extends Controller
             $cart->price = $product->Price;
             $cart->product_id = $product->id;
             $cart->quantity = $request->quantity;
-            $cart->total = $request->quantity *$product->price;
+            $cart->total = $request->quantity * $product->price;
             $cart->save();
         session()->put('cart', $cart);
         }

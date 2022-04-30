@@ -1185,7 +1185,7 @@
                     </div>
                     <div class="col-lg-7">
                         <div class="newsletter-wrapper">
-                            
+                        <p class="small-text">Special Offers For Subscribers</p>
                             <h3 class="title">Subscribe Our<span> Newsletter</span></h3>
                             <p class="short-desc">Subscribe to our Newsletter and be the first to know about
                                 any special offers and latest updates.

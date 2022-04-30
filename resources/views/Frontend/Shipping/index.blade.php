@@ -127,6 +127,30 @@
                 </div>
             </div>
         </div>
+        <hr>
+        <div class="row">
+             <div class="col-md-10">
+                 <div class="row">
+                     <div class="col-md-6">
+                         <h4>Shipping Method</h4>
+                     </div>
+                     <div class="col-md-6">
+                         
+                     </div>
+                 </div>
+             </div>
+             <div class="col-md-2">
+                 <div class="shipping-add-change">
+                 <select class="shipCharge" width=200 style="width: 100px; color:black;">
+                            <option value='' selected>Select Shipping</option>
+                            <option value='1'>Local Shipping</option>
+                            <option value='2'>Express Local Shipping </option>
+                            <option value='3'>Self Collection</option>
+                        </select>
+                 </div>
+             </div>
+         </div>
+        
     </div>
 
     <div class="row">
@@ -148,12 +172,6 @@
                         <p>Sub Total <span>${{ $sub_total }}</span></p><hr>
                         <input type="hidden" value="{{ $sub_total }}" id="sub_total">
                         <p>Coupon Code<span></span></p><hr>
-                        <select class="shipCharge" width=200 style="width: 100px; color:black;">
-                            <option value='' selected>Select Shipping</option>
-                            <option value='1'>Local Shipping</option>
-                            <option value='2'>Express Local Shipping </option>
-                            <option value='3'>Self Collection</option>
-                        </select><p ><span class="ship5"></span></p><hr>
                         <div class="clearfix"></div>
                         <p >Total <span class="tot"></span></p>
                     </div>

@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col">
             <div class="page-banner text-center">
-                <h2>Product Detail</h2>
+                <h2>Description</h2>
                 <ul class="page-breadcrumb">
                     <li><a href="{{ route('user.index') }}">Home</a></li>
                     <li>Product Detail</li>
@@ -111,8 +111,8 @@
                                         <div class="single-product-sharing">
                                             <h3>Share this product</h3>
                                             <ul>
-                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                                <li><a href="https://www.facebook.com/Goodmanloft"><i class="fa fa-facebook"></i></a></li>
+                                                <li><a href="https://www.instagram.com/goodmansloft/"><i class="fa fa-instagram"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>

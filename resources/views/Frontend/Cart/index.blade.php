@@ -36,12 +36,13 @@
                         <table class="table" style="background-color: #fff;">
                             <thead>
                                 <tr>
+                                    <th class="pro-remove">Remove</th>
                                     <th class="pro-thumbnail">Image</th>
                                     <th class="pro-title">Product</th>
-                                    <th class="pro-price">Price</th>
+                                    <th class="pro-price">Unit Price</th>
                                     <th class="pro-quantity">Quantity</th>
                                     <th class="pro-subtotal">Total</th>
-                                    <th class="pro-remove">Remove</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -49,19 +50,20 @@
                                     @foreach($data as $detail)
                                         <?php $total += $detail['price'] * $detail['quantity'] ?>
                                             <tr>
+                                             <td class="pro-remove"><a href="{{ route('cart.remove',$detail['id']) }}"><i class="fa fa-trash-o"></i></a></td>
                                                 <td class="pro-thumbnail"><a href="#"><img src="{{ asset($detail['product_image']) }}" alt="Product"></a></td>
                                                 <td class="pro-title"><a href="#">{{ $detail['product_name'] }}</a></td>
                                                 <td class="pro-price"><span>${{ $detail['price'] }}</span></td>
                                                 <td class="pro-quantity">
                                                     <div class="pro-qty">
-                                                        <input type="number" data-id="{{ $detail['id']}}" class="update-cart" value="{{ $detail['quantity'] }}" min="1">
+                                                        <input type="text" data-id="{{ $detail['id']}}" class="update-cart" value="{{ $detail['quantity'] }}" min="1">
                                                     </div>
                                                 </td>
                                                 <td class="pro-subtotal"><span>${{ $detail['price'] * $detail['quantity'] }}</span></td>
-                                                <td class="pro-remove"><a href="{{ route('cart.remove',$detail['id']) }}"><i class="fa fa-trash-o"></i></a></td>
+                                                
                                             </tr>
                                     @endforeach
-                                <?php ?>
+                                <?php>
                             </tbody>
                         </table>
                     </div>
@@ -70,17 +72,15 @@
             <div class="cart-summary ">
                 <div class="cart-summary-wrap" style="padding: 20px; background-color: Transparent; font-family: 'Montserrat', sans-serif; font-size:18px;">
                     <p> Sub Total<span> ${{ $total }}</span></p>
+                    <p style="font-size: 12px">(The sub total are not inclusive of any additional charges such as delivery)</p>
                 </div>
                 <div class="cart-summary-button" style="text-align: right;">
                     <a class="btn" onclick="window.location.href='/checkout'">Checkout</a>
                 </div>
             </div>
             </div>
-
         </div>
     </div>
-
-
 </div>
 <!--Cart section end-->
 @section('javascript')
@@ -88,7 +88,6 @@
         $(".dec, .inc").click(function(){
             var quantity = $(this).parent().find('input').val();
             var cart_id = $(this).parent().find('input').attr('data-id');
-
             $.ajax({
             url:"{{ route('cart.update') }}",
             type: "POST",
@@ -97,7 +96,6 @@
                 cart_id: cart_id,
                 quantity: quantity,
                 _token:"{{ csrf_token() }}",
-
             },
             success:function(data)
             {

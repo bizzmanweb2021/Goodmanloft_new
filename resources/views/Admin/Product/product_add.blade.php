@@ -63,14 +63,14 @@
                         <label class="text-truncate  text-body ms-3 w-80 mb-0">Price</label>
                         <input type="text" name="Price" class="form-control" style="width:100%" placeholder="In $">
                     </div><br>
-                    {{-- <div class="col-md-4">
+                    <div class="col-md-4">
                         <label class="text-truncate  text-body ms-3 w-80 mb-0">Product on Sale/Not Sale</label>
                         <select type="sale" name="sale" id="sale" class="form-control" style="width:100%">
                             <option>--Select--</option>
                         <option value="Sale">On Sale</option>
                         <option value="Not Sale">Not On Sale</option>
                         </select>
-                    </div><br> --}}
+                    </div><br> 
                 </div>
 
                 <div class="row mb-4">

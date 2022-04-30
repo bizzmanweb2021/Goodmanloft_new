@@ -85,7 +85,7 @@ class ProductController extends Controller
     public function stockView()
     {
         $data = DB::table('stocks')
-        ->select('stocks.id','stocks.product_name','stocks.stock_available','products.product_name','products.Price')
+        ->select('stocks.id','stocks.product_name','stocks.stock_image','stocks.stock_available','products.product_name','products.Price')
         ->join('products','products.id','=','stocks.product_name')->get();
         return view('Admin.Stock.stockView')->with('Stocks',$data);
     }
@@ -120,10 +120,9 @@ class ProductController extends Controller
             'Product_Dimension' => $request->input('Product_Dimension'),
             'Weight' => $request->input('Weight'),
             'Price' => $request->input('Price'),
-            'Quantity' => $request->input('Quantity'),
-            'Product_Size' => $request->input('Product_Size'),
-            'stock_availability' => $request->input('stock_availability'),
-            'sale' => $request->input('sale')
+            'Quantity' => $request->input('Quantity')
+            // 'Product_Size' => $request->input('Product_Size'),
+            // 'stock_availability' => $request->input('stock_availability')
         ]);
         return redirect()->route('admin.productView');
     }

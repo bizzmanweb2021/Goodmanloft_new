@@ -33,15 +33,15 @@
                                 <h4 class="checkout-title">Billing / Shipping Address</h4>
                                 <div class="row">
                                     <div class="col-md-6 col-12 mb-5">
-                                        <label>Full Name*</label>
+                                        <label>Name*</label>
                                         <input type="text" name="full_name" value="{{ Auth::user()->name }}" >
                                     </div>
                                     <div class="col-md-6 col-12 mb-5">
-                                        <label>Email Address*</label>
+                                        <label>Email*</label>
                                         <input type="email" name="email" value="{{ Auth::user()->email }}" >
                                     </div>
                                     <div class="col-md-6 col-12 mb-5">
-                                        <label>Phone no*</label>
+                                        <label>Mobile*</label>
                                         <input type="text" name="phone" value="{{ Auth::user()->phone }}" >
                                     </div>
                                     <div class="col-md-6 col-12 mb-5">

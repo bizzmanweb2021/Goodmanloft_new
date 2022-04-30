@@ -9,42 +9,19 @@
                    <img src="assets/images/checked.png" alt="" class="img-fluid" style="width: 50px;">
                    <span>Jhon Doe</span>
                </div>
-               <div class="confirmation-box">
-                   <h4>Your Order is confirmed</h4>
-                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-               </div>
-               <div class="confirmation-box">
-                <h4>Download Your Tickets</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-                <hr>
-                <div class="row">
-                    <div class="col-md-4">
-                        <h4>Jhon Doe</h4>
-                        <p>#145786</p>
-                    </div>
-                    <div class="col-md-8">
-                        <ul>
-                            <li><a href="#">Transfer</a></li>
-                            <li><a href="#">PDF</a></li>
-                            <li><a href="#"><img src="assets/images/apple-store.jpg" alt="" class="img-fluid" style="width: 100px;"></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-md-4">
-                        <h4>Jhon Doe</h4>
-                        <p>#145786</p>
-                    </div>
-                    <div class="col-md-8">
-                        <ul>
-                            <li><a href="#">Transfer</a></li>
-                            <li><a href="#">PDF</a></li>
-                            <li><a href="#"><img src="assets/images/apple-store.jpg" alt="" class="img-fluid" style="width: 100px;"></a></li>
-                        </ul>
-                    </div>
-                </div>
 
+               <div class="confirmation-box">
+                   <div class="row">
+                       <div class="col-md-10">
+                       <h4>Your Order is confirmed</h4>
+                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+              </div>
+            <div class="col-md-2">
+                <img src="assets/images/check.png" alt="" class="img-fluid" style="width:30px;">
+            </div>
+            </div>
+          </div>
+               
             </div>
             <div class="myaccount-content" style="border: 1px solid #e3e3e3;">
                 <h3>Billing Address</h3>

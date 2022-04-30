@@ -53,7 +53,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::get('/getSubCategoryById',[ProductController::class,'getSubCategoryById'])->name('getSubCategoryById');
 
     Route::get('/editProduct/{id}',function($id){
-        $prod = DB::table('products')->select('id','product_name','stock_availability','sale','Product_Size','Product_Description','Product_Dimension','Price','Weight','Quantity')->where('id','=',$id)->get();
+        $prod = DB::table('products')->select('id','product_name','Product_Description','Product_Dimension','Price','Weight','Quantity')->where('id','=',$id)->get();
         return view('Admin.Product.product_edit',['prod'=>$prod]);
     })->name('edit.product');
 
@@ -132,6 +132,12 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::get('/testimonialView',[TestimonialController::class,'show'])->name('testimonialView');
     Route::get('/testimonialCreate',[TestimonialController::class,'create'])->name('testimonialCreate');
     Route::post('/testimonialStore',[TestimonialController::class,'store'])->name('testimonialStore');
+    Route::get('/editTestimonial/{id}',function($id){
+        $test = DB::table('testimonials')->select('id','name','review')->where('id','=',$id)->get();
+        return view('Admin.Testimonial.testimonialEdit',['test'=>$test]);
+
+    })->name('edit.testimonial');
+    Route::post('/updateTestimonial/{id}',[TestimonialController::class,'updateTestimonial'])->name('update.Testimonial');
 });
 
 Route::get('/',[HomeController::class,'index'])->name('user.index');
