@@ -53,22 +53,24 @@
                                                 @endforeach
                                         </select>
                                     </div>
-                                    <div class="col-12 mb-5">
-                                        <label>Address*</label>
-                                        <input type="text" name="address" placeholder="Billing/Shipping Address" value="{{ Auth::user()->address }}" >
-                                    </div>
-                                    <div class="col-md-6 col-12 mb-5">
-                                        <label>City*</label>
-                                        <input type="text" name="city" value="{{ Auth::user()->city }}">
-                                    </div>
-                                    <div class="col-md-6 col-12 mb-5">
-                                        <label>State*</label>
-                                        <input type="text" name="state" value="{{ Auth::user()->state }}">
-                                    </div>
-                                    <div class="col-md-6 col-12 mb-5">
-                                        <label>Zip Code*</label>
-                                        <input type="text" name="zip" value="{{ Auth::user()->zip }}">
-                                    </div>
+                                    @foreach (App\Models\Billing_address::orderBy('id','desc')->limit(1)->get() as $bill)
+                                        <div class="col-12 mb-5">
+                                            <label>Address*</label>
+                                            <input type="text" name="address"  value="{{ $bill->address }}" >
+                                        </div>
+                                        <div class="col-md-6 col-12 mb-5">
+                                            <label>City*</label>
+                                            <input type="text" name="city" value="{{ $bill->city }}">
+                                        </div>
+                                        <div class="col-md-6 col-12 mb-5">
+                                            <label>State*</label>
+                                            <input type="text" name="state" value="{{ $bill->state }}">
+                                        </div>
+                                        <div class="col-md-6 col-12 mb-5">
+                                            <label>Zip Code*</label>
+                                            <input type="text" name="zip" value="{{ $bill->zip }}">
+                                        </div>
+                                    @endforeach
                                     <div class="col-12 mb-5">
                                         <div class="check-box">
                                             <input type="checkbox" id="shiping_address" name="shipping_address" data-shipping>
@@ -102,22 +104,24 @@
                                                 @endforeach
                                         </select>
                                     </div>
+                                    @foreach (App\Models\Shipping_address::orderBy('id','desc')->limit(1)->get() as $shipping)
                                     <div class="col-12 mb-5">
                                         <label>Address*</label>
-                                        <input type="text" name="address_ship">
+                                        <input type="text" name="address_ship" value="{{ $shipping->address_ship }}">
                                     </div>
                                     <div class="col-md-6 col-12 mb-5">
                                         <label>City*</label>
-                                        <input type="text" name="city_ship">
+                                        <input type="text" name="city_ship" value="{{ $shipping->city_ship }}">
                                     </div>
                                     <div class="col-md-6 col-12 mb-5">
                                         <label>State*</label>
-                                        <input type="text" name="state_ship">
+                                        <input type="text" name="state_ship" value="{{ $shipping->state_ship }}">
                                     </div>
                                     <div class="col-md-6 col-12 mb-5">
                                         <label>Zip Code*</label>
-                                        <input type="text" name="zip_ship">
+                                        <input type="text" name="zip_ship" value="{{ $shipping->zip_ship }}">
                                     </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -127,7 +131,7 @@
                                     <div class="checkout-cart-total">
                                         <h4>Product <span>Total</span></h4>
                                         @php $sub_total = 0 @endphp
-                                        @foreach (App\Models\Cart::get() as $cart)
+                                        @foreach (App\Models\Cart::where("user_id",Auth::user()->id)->get() as $cart)
                                         <?php $sub_total += $cart->total ?>
                                         <ul>
                                             <li><img src="{{ $cart->product_image }}" style="width: 75px; height:100px;"></li>

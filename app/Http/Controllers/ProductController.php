@@ -70,6 +70,7 @@ class ProductController extends Controller
                                 $Product->Product_Description=$request->Product_Description;
                                 $Product->Quantity=$request->Quantity;
                                 $Product->Price=$request->Price;
+                                $Product->sale=$request->sale;
                                 $Product->Weight=$request->Weight;
                                 $Product->Product_image=$image_destination;
                                 $Product->gallery_photo=json_encode($data);
@@ -85,7 +86,7 @@ class ProductController extends Controller
     public function stockView()
     {
         $data = DB::table('stocks')
-        ->select('stocks.id','stocks.product_name','stocks.stock_image','stocks.stock_available','products.product_name','products.Price')
+        ->select('stocks.id','stocks.product_name','stocks.stock_image','stocks.stock_available','stocks.stock_input_date','products.product_name','products.Price')
         ->join('products','products.id','=','stocks.product_name')->get();
         return view('Admin.Stock.stockView')->with('Stocks',$data);
     }
@@ -103,6 +104,7 @@ class ProductController extends Controller
         $stock = new Stock();
         $stock->product_name = $request->product_name;
         $stock->stock_available = $request->stock_available;
+        $stock->stock_input_date = $request->stock_input_date;
         $stock->stock_image=$image_destinations;
         $stock->save();
 

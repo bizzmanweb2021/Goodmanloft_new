@@ -31,6 +31,10 @@
                                 <input type="file" name="stock_image" value="{{ $stock[0]->stock_image }}" class="form-control" id="stock_image">
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <label class="text-truncate  text-body ms-3 w-80 mb-0">Stock Input Date</label>
+                            <input type="date" name="stock_input_date" value="{{ $stock[0]->stock_input_date }}" class="form-control" style="width:100%" min="1" max="100">
+                        </div><br>
                     </div> --}}
                 <div class="row mb-4">
                     <div class="col-md-4">

@@ -63,7 +63,7 @@
                                             @endforeach
                                         </ul>
                                     </li>
-                                    <li><a href="#">Promotions</a></li>
+                                    <li><a href="{{ route('promotion') }}">Promotions</a></li>
                                     <li><a href="#}">News</a></li>
                                     <li class=""><a href="{{ route('faq') }}">Faq</a></li>
                                     <li><a href="{{ route('contact.index') }}">Contact Us</a></li>

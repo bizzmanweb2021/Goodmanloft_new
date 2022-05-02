@@ -64,11 +64,11 @@
                         <input type="text" name="Price" class="form-control" style="width:100%" placeholder="In $">
                     </div><br>
                     <div class="col-md-4">
-                        <label class="text-truncate  text-body ms-3 w-80 mb-0">Product on Sale/Not Sale</label>
+                        <label class="text-truncate  text-body ms-3 w-80 mb-0">Product on Sale/New</label>
                         <select type="sale" name="sale" id="sale" class="form-control" style="width:100%">
                             <option>--Select--</option>
-                        <option value="Sale">On Sale</option>
-                        <option value="Not Sale">Not On Sale</option>
+                        <option value="Sale">Sale</option>
+                        <option value="New">New</option>
                         </select>
                     </div><br> 
                 </div>
@@ -125,7 +125,7 @@
                 </div>
             <div class="row mb-4">
               <div class="col-md-4">
-              <button type="submit" class="btn btn-info btn-sm" style="background-color: #bf9f6c">ADDto</button>
+              <button type="submit" class="btn btn-info btn-sm" style="background-color: #bf9f6c">ADD</button>
               <button type="reset" class="btn btn-light btn-sm" name="submit">Return</button>
               </div>
             </div>

@@ -64,4 +64,9 @@ class ShopPageController extends Controller
         echo json_encode($data->get());
     }
 
+    public function promotion()
+    {
+        return view('Frontend.Promotions.index');
+    }
+
 }

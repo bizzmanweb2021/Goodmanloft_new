@@ -22,16 +22,18 @@ class PromotionController extends Controller
     }
     public function store(Request $request)
     {
-        $this->validate($request,['banner'=>'required|mimes:jpg,png,jpeg'
+        $this->validate($request,['banner'=>'required|mimes:jpg,png,jpeg',
                                  ]);
 
                                  $image = $request->banner;
+                                 $form_description = $request->form_description;
                                  $filename = $image->getClientOriginalName();
                                  $image_resize = Image::make($image->getRealPath())->resize(300,200)->save(public_path('images/'.$filename));
                                  $image_destination =  'images/'.$filename;
 
                                 $promo = new Promotion();
                                 $promo->banner=$image_destination;
+                                $promo->form_description=$form_description;
                                 $promo->save();
 
                                 $notification1=array('alert-type'=>'success',
@@ -40,5 +42,14 @@ class PromotionController extends Controller
                                 return redirect()->route('admin.promotionView')->with($notification1);
 
     }
+    public function updatePromotion(Request $request)
+    {
+
+        $Promotions = DB::table('promotions')->where('id','=', $request->id)->update([
+            'form_description' => $request->input('form_description'),
+            ]);
+        return redirect()->route('admin.promotionView');
+    }
+   
 
 }

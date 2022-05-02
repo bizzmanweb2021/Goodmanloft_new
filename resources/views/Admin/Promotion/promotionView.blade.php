@@ -19,16 +19,20 @@
                 <table class="table align-items-center justify-content-center mb-0">
                   <thead>
                     <tr>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Id</th>
+                    <th class="text-uppercase text-center text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2" style="width:50px">Edit</th>
+                        <!-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Id</th> -->
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Promotion/Banner</th>
+                      <th class="text-uppercase text-secondary text-secondary text-xxs font-weight-bolder opacity-7 ps-2" style="width:600px">Form_Description</th>
                     </tr>
 
                   </thead>
                   <tbody>
                       @foreach($Promotions as $item)
                       <tr>
-                          <td>{{ $item["id"] }}</td>
+                          <!-- <td>{{ $item["id"] }}</td> -->
+                          <td><a href="{{ route('admin.edit.promotion',$item["id"]) }}"><i class="fa fa-edit"></i></a></td>
                         <td><img src="{{ url('/' . $item["banner"] )}}" width=200px; height=80px; /> </td>
+                        <td>{{$item["form_description"]}}</td>
                         </tr>
                       @endforeach
 

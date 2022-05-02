@@ -103,7 +103,7 @@
                         <!-- Single Banner Start -->
                         <div class="single-banner-item mb-30">
                             <div class="banner-image">
-                                <a href="shop.html">
+                                <a href="{{ route('promotion') }}">
                                     <img src="{{ $item->banner }}" style="height:300px;" alt="" class="img-fluid">
                                 </a>
                             </div>
@@ -911,7 +911,7 @@
                                                 @endforeach
                                             </ul>
                                         </li>
-                                        <li><a href="#">Promotions</a></li>
+                                        <li><a href="{{ route('promotion') }}">Promotions</a></li>
                                         <li><a href="#}">News</a></li>
                                         <li class=""><a href="{{ route('faq') }}">Faq</a></li>
                                         <li><a href="{{ route('contact.index') }}">Contact Us</a></li>

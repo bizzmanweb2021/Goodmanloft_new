@@ -43,7 +43,7 @@
           </div><br>
 
             <div class="col-md-4">
-              <button type="add" class="btn btn-info btn-sm " style="background-color: #bf9f6c" name="submit" value="Addto">ADDto</button>
+              <button type="add" class="btn btn-info btn-sm " style="background-color: #bf9f6c" name="submit" value="Addto">ADD</button>
               <button type="reset" class="btn btn-light btn-sm" name="submit">Return</button>
             </div>
 

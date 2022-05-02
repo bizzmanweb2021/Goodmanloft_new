@@ -98,7 +98,12 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::get('/promotionView',[PromotionController::class,'index'])->name('promotionView');
     Route::get('/promotionAdd',[PromotionController::class,'create'])->name('promotionAdd');
     Route::post('promotionStore',[PromotionController::class,'store'])->name('promotionStore');
+    Route::get('/editPromotion/{id}',function($id){
+        $promo = DB::table('promotions')->select('id','banner','form_description')->where('id','=',$id)->get();
+        return view('Admin.Promotion.promotion_edit',['promo'=>$promo]);
+    })->name('edit.promotion');
 
+    Route::post('/updatePromotion/{id}',[PromotionController::class,'updatePromotion'])->name('update.promo');
     Route::get('/shippingView',[ShippingController::class,'index'])->name('shippingView');
     Route::get('/shippingAdd',[ShippingController::class,'create'])->name('ShippingAdd');
     Route::post('/shippingStore',[ShippingController::class,'store'])->name('ShippingStore');
@@ -158,6 +163,7 @@ Route::get('/contact',[ContactController::class,'index'])->name('contact.index')
 Route::post('/submitContact',[ContactController::class,'save'])->name('contact.save');
 Route::get('/privacy',[PrivacyController::class,'index'])->name('privacy');
 Route::get('/festive',[FestiveController::class,'index'])->name('festive');
+Route::get('/promotion',[ShopPageController::class,'promotion'])->name('promotion');
 
 
 

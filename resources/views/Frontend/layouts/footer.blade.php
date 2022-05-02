@@ -26,10 +26,9 @@
                 <div class="footer-widget col-lg-3 col-md-6 col-sm-6 col-12 mb-40 mb-xs-35">
                     <h4 class="title"><span class="text">My Account</span></h4>
                     <ul class="ft-menu">
-                        <li><a href="{{ route('account'),$user['id']) }}">Account Details</a></li>
+                        <li><a href="{{route('account')}}">Account Details</a></li>
                         <li><a href="#">Order Tracking</a></li>
                         <li><a href="#">Order History</a></li>
-
                     </ul>
                 </div>
                 <!--Footer Widget end-->

@@ -42,7 +42,6 @@
                                     <th class="pro-price">Unit Price</th>
                                     <th class="pro-quantity">Quantity</th>
                                     <th class="pro-subtotal">Total</th>
-                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -50,7 +49,7 @@
                                     @foreach($data as $detail)
                                         <?php $total += $detail['price'] * $detail['quantity'] ?>
                                             <tr>
-                                             <td class="pro-remove"><a href="{{ route('cart.remove',$detail['id']) }}"><i class="fa fa-trash-o"></i></a></td>
+                                                <td class="pro-remove"><a href="{{ route('cart.remove',$detail['id']) }}"><i class="fa fa-trash-o"></i></a></td>
                                                 <td class="pro-thumbnail"><a href="#"><img src="{{ asset($detail['product_image']) }}" alt="Product"></a></td>
                                                 <td class="pro-title"><a href="#">{{ $detail['product_name'] }}</a></td>
                                                 <td class="pro-price"><span>${{ $detail['price'] }}</span></td>
@@ -60,7 +59,6 @@
                                                     </div>
                                                 </td>
                                                 <td class="pro-subtotal"><span>${{ $detail['price'] * $detail['quantity'] }}</span></td>
-                                                
                                             </tr>
                                     @endforeach
                                 <?php>
