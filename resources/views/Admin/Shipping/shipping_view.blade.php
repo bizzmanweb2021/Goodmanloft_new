@@ -30,7 +30,7 @@
                     @foreach($shipping as $key=> $item)
                     <tr>
                         <td>{{$key+1}}</td>
-                      <td>{{$item->name}}</td>
+                      <td>{{$item->country_name}}</td>
                       <td>{{$item->delivery_amount}}</td>
                       </tr>
                     @endforeach

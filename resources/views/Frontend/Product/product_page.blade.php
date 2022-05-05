@@ -81,6 +81,10 @@
                                                     <div class="row" id="product_range">
                                                         {{-- @if(count($products) > 0) --}}
                                                         @foreach ($product as $products )
+
+                                                        @if($products->sale == 'New')
+
+                                                       
                                                         <div class="col-lg-4 col-md-6 col-sm-6" >
                                                             <a href="#">
                                                                 <div class="single-grid-product mb-30">
@@ -109,9 +113,10 @@
                                                             </a>
 
                                                         </div>
+                                                        @endif 
+
                                                         @endforeach
-                                                        {{-- @endif --}}
-                                                    </div>
+                                                                                                            </div>
                                                 </div>
                                             </div>
                                         </div>

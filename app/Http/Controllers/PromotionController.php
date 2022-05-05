@@ -6,6 +6,7 @@ use App\Models\Promotion;
 use Illuminate\Http\Request;
 use ImageResize;
 use Intervention\Image\ImageManagerStatic as Image;
+Use DB;
 
 class PromotionController extends Controller
 {

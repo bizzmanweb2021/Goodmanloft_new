@@ -27,6 +27,7 @@
             <div class="container sb-border pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">
 
                 <div class="row">
+                @foreach (App\Models\ContactUs::orderBy('id')->get() as $item )
                     <div class="col-lg-3 col-12">
                         <div class="contact-information">
                             <h3>Contact Us</h3>
@@ -34,27 +35,25 @@
                                 <li>
                                     <span class="icon"><i class="fa fa-home"></i></span>
                                     <h4 class="text">Address</h4>
-                                    <p>  1 Pemimpin Dr, #04-01/02, One Pemimpin,
-                                        Singapore 576151
-                                        </p>
+                                    <p>{{ $item->Address }}</p>
                                 </li>
                                 <li>
                                     <span class="icon"><i class="fa fa-envelope-open-o"></i></span>
                                     <h4 class="text">Email</h4>
-                                   <p><a href="mailto:hello@goodmansloft.com">hello@goodmansloft.com</a>
-
+                                   <!-- <p><a href="mailto:hello@goodmansloft.com">hello@goodmansloft.com</a></p> -->
+                                   <p>{{ $item->Email_Id }}</p>
                                 </p>
                                 </li>
                                 <li>
                                     <span class="icon"><i class="fa fa-phone"></i></span>
                                     <h4 class="text">Phone</h4>
-                                    <p>Mobile: +65 96352229
-
+                                    <p>Mobile:{{ $item->Phone_No}}</p>
                                         <br>
-                                        </p>
-                                </li>
+                                                                       
+                            </li>
                             </ul>
                         </div>
+                        @endforeach
                     </div>
                     <div class="col-lg-9 col-12">
                         <div class="contact-form-wrap">

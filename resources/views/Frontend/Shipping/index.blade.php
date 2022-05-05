@@ -151,7 +151,7 @@
              </div>
          </div>
         
-    </div>
+    </div>&nbsp;&nbsp;&nbsp;
 
     <div class="row">
         <div class="col-lg-6">
@@ -162,18 +162,23 @@
                     <div class="checkout-cart-total">
                         <h4>Product <span>Total</span></h4>
                         @php $sub_total = 0 @endphp
-                        @foreach (App\Models\Cart::get() as $cart)
-                        <?php $sub_total += $cart->total ?>
-                        <ul>
-                            <li><img src="{{ $cart->product_image }}" style="width: 75px; height:100px;"></li>
-                            <li>{{ $cart->product_name }} <span>${{ $cart->total }}</span></li>
-                        </ul>
-                        @endforeach
-                        <p>Sub Total <span>${{ $sub_total }}</span></p><hr>
-                        <input type="hidden" value="{{ $sub_total }}" id="sub_total">
-                        <p>Coupon Code<span></span></p><hr>
-                        <div class="clearfix"></div>
-                        <p >Total <span class="tot"></span></p>
+                                        @foreach (App\Models\Cart::where("user_id",Auth::user()->id)->get() as $cart)
+                                        <?php $sub_total += $cart->total ?>
+                                        <ul>
+                                            <!-- <li><img src="{{ $cart->product_image }}" style="width: 75px; height:100px;"></li> -->
+                                            <li>{{ $cart->product_name }} <span>${{ $cart->total }}</span></li>
+                                        </ul>
+                                        @endforeach
+                                        <p>Sub Total <span>${{ $sub_total }}</span></p>
+                                        <p>Shipping
+                                            <span class="badge badge-secondary" style="float: none; color:black;">
+                                            <a data-bs-toggle="modal" data-bs-target="#myModal">?</a>
+                                        </span><span  style="opacity: 0.8;">Calculated at next step</span></p>
+                                        <p>Coupon Code<span>
+                                            <input type="text" style="background-color: white; width:120px; height:40px;">
+                                        </span></p>
+                                        
+                        <p >Total <span class="tot">${{ $sub_total }}</span></p>
                     </div>
                 </div>
             </div>
@@ -207,7 +212,7 @@
     </div><br>
     <div class="shipping-btn ">
         <a href="{{ route('confirm.payment') }}" data-amount="1280" data-id="3" class="btn order_now"><span>Continue To Payment</span></a> &nbsp;
-        <a href="{{ route('checkout') }}">Return to information</a>
+        <a href="{{ route('checkout') }}"data-amount="1280" data-id="3" class="btn order_now"><span>Return to information</span></a>
     </div>
     </div>
 </div>

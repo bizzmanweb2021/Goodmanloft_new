@@ -119,6 +119,18 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
 
     Route::post('/updateAbout/{id}',[AboutAdminController::class,'updateAbout'])->name('update.about');
 
+    Route::get('/contactViews',[ContactAdminController::class,'index'])->name('contactViews');
+    Route::get('/contactAdd',[ContactAdminController::class,'create'])->name('contactAdd');
+    Route::post('/contactStore',[ContactAdminController::class,'show'])->name('contactStore');
+
+    Route::get('/editContact/{id}',function($id){
+        $contact = DB::table('contact_us')->select('id','Address','Email_Id','Phone_No')->where('id','=',$id)->get();
+        return view('Admin.Contact Us.contactEdit',['contact'=>$contact]);
+    })->name('edit.contact');
+
+    Route::post('/updateContact/{id}',[ContactAdminController::class,'updateContact'])->name('update.contact');
+
+
     Route::get('/faqView',[FaqAdminController::class,'index'])->name('faqView');
     Route::get('/faqAdd',[FaqAdminController::class,'create'])->name('faqAdd');
     Route::post('/faqStore',[FaqAdminController::class,'show'])->name('faqStore');
@@ -151,7 +163,7 @@ Route::get('/search/',[HomeController::class,'search'])->name('search');
 Route::get('/productShow/{product_id}',[ShopPageController::class,'show'])->name('productShow');
 Route::get('/product_show/{id}',[ShopPageController::class,'product_show'])->name('product_show');
 Route::get('/getPrice',[ShopPageController::class,'filter'])->name('get.price');
-
+Route::get('/getPrice',[ShopPageController::class,'filters'])->name('get.price');
 Route::get('/nursery',[NurseryController::class,'index'])->name('nursery');
 Route::get('/loadcart',[AddToCartController::class,'loadCart']);
 Route::get('/faq',[FaqController::class,'index'])->name('faq');

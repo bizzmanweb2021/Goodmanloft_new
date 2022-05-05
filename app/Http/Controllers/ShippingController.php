@@ -20,7 +20,7 @@ class ShippingController extends Controller
     public function index()
     {
         $data = DB::table('shipping_charges')
-        ->select('countries.name','shipping_charges.delivery_amount')
+        ->select('shipping_charges.country_name','shipping_charges.delivery_amount')
         ->join('countries','countries.id','=','shipping_charges.Country_id')->get();
         return view('Admin.Shipping.shipping_view')->with('shipping',$data);
     }
@@ -36,8 +36,9 @@ class ShippingController extends Controller
     {
         $ship = new Shipping_charge();
         $ship->delivery_amount = $request->delivery_amount;
-        $ship->country_id = $request->country_name;
-         $ship->country_name = $request->country_name;
+        $ship->Country_id = $request->Country_name;
+        $ship->country_name = $request->country_name;
+       // print_r('called');exit();
         $ship->save();
 
         $notification1=array('alert-type'=>'success',

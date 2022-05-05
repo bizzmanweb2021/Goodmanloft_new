@@ -22,10 +22,10 @@
                 <div class="col-md-6">
                     <label class="text-truncate  text-body ms-3 w-80 mb-0">Country</label>
                     <div class="col-75">
-                        <select id="country_name"" name="country_name" class="form-control" style="width:95%">
+                        <select id="country_name" name="country_name" class="form-control" style="width:95%">
                             <option value="">Select</option>
                             @foreach ($Getcountrylist as $Country)
-                            <option value="{{$Country->id}}">{{$Country->name}} - {{$Country->code}}</option>
+                            <option value="{{$Country->id}}">{{$Country->name}} </option>
                             @endforeach
                     </select>
                     </div>
@@ -36,7 +36,7 @@
                 </div><br>
             </div>
             <div class="col-md-4">
-                <button type="add" class="btn btn-info btn-sm" style="background-color: #bf9f6c" name="submit" value="Addto">ADDto</button>
+                <button type="add" class="btn btn-info btn-sm" style="background-color: #bf9f6c" name="submit" value="Addto">ADD</button>
                 <button type="reset" class="btn btn-light btn-sm" name="submit">Return</button>
             </div>
           </form>

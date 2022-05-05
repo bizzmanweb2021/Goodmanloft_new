@@ -12,13 +12,13 @@ class ShopPageController extends Controller
     //
     public function index()
     {
-        return view('Frontend.Product.index');
+        return view('Frontend.');
     }
     public function show($id)
     {
         $product = product::find( $id );
         if($product)
-            return view( 'Frontend.Product.index' )->with( 'product', $product );
+            return view( 'Frontend.' )->with( 'product', $product );
         else
             return abort(404,"something went wrong");
     }
@@ -66,7 +66,21 @@ class ShopPageController extends Controller
 
     public function promotion()
     {
-        return view('Frontend.Promotions.index');
+       // print_r('called');exit();
+       $products = product::all();
+      // print_r($products);exit();
+       return view('Frontend.Promotions.index')->with('product',$products);
+       // return view('Frontend.Promotions.index');
     }
+    public function filters(Request $request)
+    {
+        $fromrange = $request->fromrange;
+        $torange = $request->torange;
+        $data = DB::table('products')->select('products.*');
+        $data->where('Price','>=',(int)$fromrange);
+        $data->where('Price','<=',(int)$torange);
+        echo json_encode($data->get());
+    }
+
 
 }

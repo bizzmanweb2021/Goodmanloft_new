@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-12">
                 <!-- Checkout Form Start-->
-                <form action="{{ route('check.fetch') }}" method="POST" class="checkout-form">
+                <form action="{{ route('shipping.show') }}" method="GET" class="checkout-form">
                     @csrf
                     <div class="row">
                         <div class="col-lg-7">
@@ -134,7 +134,7 @@
                                         @foreach (App\Models\Cart::where("user_id",Auth::user()->id)->get() as $cart)
                                         <?php $sub_total += $cart->total ?>
                                         <ul>
-                                            <li><img src="{{ $cart->product_image }}" style="width: 75px; height:100px;"></li>
+                                            <!-- <li><img src="{{ $cart->product_image }}" style="width: 75px; height:100px;"></li> -->
                                             <li>{{ $cart->product_name }} <span>${{ $cart->total }}</span></li>
                                         </ul>
                                         @endforeach
