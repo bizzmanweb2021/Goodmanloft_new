@@ -185,7 +185,7 @@
         </div>
         <div class="col-lg-6">
             <div class="row">
-                {{-- <div class="col-12 mb-60 mt-5">
+                 <div class="col-12 mb-60 mt-5">
                     <h3 style="margin-top:30px;">Payment Method</h3>
                     <div class="checkout-payment-method">
                         <div class="single-method">
@@ -204,7 +204,7 @@
                             <p data-method="cash">Please send a Check to Store name with Store Street, Store Town, Store State, Store Postcode, Store Country.</p>
                         </div>
                     </div>
-                </div> --}}
+                </div> 
                 <div id="paypal-button-container"></div>
 
             </div>

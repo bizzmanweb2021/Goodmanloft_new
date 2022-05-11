@@ -63,17 +63,30 @@
                         <label class="text-truncate  text-body ms-3 w-80 mb-0">Price</label>
                         <input type="text" name="Price" class="form-control" style="width:100%" placeholder="In $">
                     </div><br>
-                    <div class="col-md-4">
-                        <label class="text-truncate  text-body ms-3 w-80 mb-0">Product on Sale/New</label>
+                    <div class="col-md-2">
+                        <label for="sale" class="text-truncate  text-body ms-3 w-80 mb-0">Sale</label>
                         <select type="sale" name="sale" id="sale" class="form-control" style="width:100%">
                             <option>--Select--</option>
-                        <option value="Sale">Sale</option>
-                        <option value="New">New</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
                         </select>
                     </div><br> 
+                    <div class="col-md-2">
+                        <label class="discount text-truncate  text-body ms-3 w-80 mb-0">Discount %</label>
+                        <input type="text" name="discount" class="discount form-control" style="width:100%">
+                    </div><br>
+                     
                 </div>
 
                 <div class="row mb-4">
+                <div class="col-md-4">
+                        <label class="text-truncate  text-body ms-3 w-80 mb-0">New</label>
+                        <select type="new" name="new" id="sale" class="form-control" style="width:100%">
+                            <option>--Select--</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        </select>
+                    </div><br>
 
                     <div class="col-md-4">
                         <label class="text-truncate  text-body ms-3 w-80 mb-0">Product Category Name</label>
@@ -93,7 +106,10 @@
                             </select>
                         </div>
                     </div><br>
-                    <div class="col-md-4">
+                    
+                </div>
+                <div class="row mb-4">
+                <div class="col-md-4">
                         <label class="text-truncate  text-body ms-3 w-80 mb-0">Stock Availability</label>
                         <select type="stock_availability" name="stock_availability" id="stock_availability" class="form-control" style="width:100%">
                             <option>--Select--</option>
@@ -101,8 +117,6 @@
                         <option value="Available">Available</option>
                         </select>
                     </div><br>
-                </div>
-                <div class="row mb-4">
 
                     <div class="col-md-4">
                         <div class="upload">
@@ -123,6 +137,7 @@
                     <span style="color:red">{{ $message }}</span>
                     @enderror
                 </div>
+                
             <div class="row mb-4">
               <div class="col-md-4">
               <button type="submit" class="btn btn-info btn-sm" style="background-color: #bf9f6c">ADD</button>
@@ -135,6 +150,51 @@
   </div>
 </div>
 <script type="text/javascript">
+    //alert('hello');
+    jQuery('.discount').hide();
+    jQuery('#sale').on('change',function(){
+    if(jQuery(this).val()=='yes'){
+        jQuery('.discount').show();
+    } else {
+        jQuery('.discount').hide();
+    }
+});
+
+// $('#sale').on('change', function() {
+//         if($(this).val() === 'no') {
+//             $('.discount').hide();
+//         } else {
+//             $('.discount').show();
+//         }
+//  });
+// $("#toshow").change(function(){   //which element you want to hide or show
+          
+//         var sale =$("#sale").val();
+
+//         if(sale == yes){
+//           $("#toshow").show();
+//         }else{
+//           $("#toshow").hide();
+//         }
+
+//       }
+
+// $(function () {
+
+// $('#sale').on('change', function() {
+    
+//         if ( this.value == 'yes')
+//             {
+//                 $("#discount").show();
+//                 // alert("Died");
+//             }
+//         else
+//             {
+//                 $("#discount").hide();
+//                 // alert("Not Died");
+//             }
+//     });
+// }); 
     $('#Category_Name').change(function(){
         $.ajax({
             url: "{{ route('admin.getSubCategoryById') }}",
@@ -155,7 +215,4 @@
         })
     });
 </script>
-
-
-
 @endsection

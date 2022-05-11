@@ -30,7 +30,7 @@
     <div class="cart-pattern" >
         <div class="container">
             <div class="row">
-                <div class="col-12">
+                <div class="col-lg-8">
                     <!-- Cart Table -->
                     <div class="cart-table table-responsive mb-30">
                         <table class="table" style="background-color: #fff;">
@@ -66,6 +66,57 @@
                         </table>
                     </div>
                 </div>
+                <div class="col-lg-4">
+                                <div class="col-12 mb-60">
+                                    <h4 class="checkout-title">Cart Total</h4>
+                                    <div class="checkout-cart-total">
+                                        <h4>Product <span>Total</span></h4>
+                                        @php $sub_total = 0 @endphp
+                                        @foreach (App\Models\Cart::where("user_id",Auth::user()->id)->get() as $cart)
+                                        <?php $sub_total += $cart->total ?>
+                                        <ul>
+                                            <!-- <li><img src="{{ $cart->product_image }}" style="width: 75px; height:100px;"></li> -->
+                                            <li>{{ $cart->product_name }} <span>${{ $cart->total }}</span></li>
+                                        </ul>
+                                        @endforeach
+                                        <p>Sub Total <span>${{ $sub_total }}</span></p>
+                                        <p>Shipping
+                                            <span class="badge badge-secondary" style="float: none; color:black;">
+                                            <a data-bs-toggle="modal" data-bs-target="#myModal">?</a>
+                                        </span><span  style="opacity: 0.8;">Calculated at next step</span></p>
+                                        <p>Coupon Code<span>
+                                            <input type="text" style="background-color: white; width:120px; height:40px;">
+                                        </span></p>
+                                        <div class="modal" id="myModal">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                    <h1 class="modal-title">Shipping Policy</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                                    </div>
+
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+                                                    </p>
+                                                    </div>
+
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="place-order btn btn-sm btn-round">Next: Making Payment</button>
+
+                        </div>
             </div>
             <div class="cart-summary ">
                 <div class="cart-summary-wrap" style="padding: 20px; background-color: Transparent; font-family: 'Montserrat', sans-serif; font-size:18px;">

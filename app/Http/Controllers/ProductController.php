@@ -6,6 +6,8 @@ use App\Models\product;
 use App\Models\Stock;
 use App\Models\subcategory;
 use DB;
+use Excel;
+use App\Imports\productImport;
 use ImageResize;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Http\Request;
@@ -42,11 +44,14 @@ class ProductController extends Controller
     }
     public function store(Request $request)
     {
+        //print_r('called');exit();
         $this->validate($request,[ 'Product_name'=>'required',
                                    'Product_image'=>'required|mimes:jpg,png,jpeg',
                                    'gallery_photo'=>'required',
                                    'Quantity'=>'required',
                                    'Price'=>'required',
+                                   'sale'=>'required',
+                                   'new'=>'required',
                                    'Weight'=>'required',
                                 ]);
                                  $image = $request->Product_image;
@@ -71,6 +76,8 @@ class ProductController extends Controller
                                 $Product->Quantity=$request->Quantity;
                                 $Product->Price=$request->Price;
                                 $Product->sale=$request->sale;
+                                $Product->new=$request->new;
+                                $Product->discount=$request->discount;
                                 $Product->Weight=$request->Weight;
                                 $Product->Product_image=$image_destination;
                                 $Product->gallery_photo=json_encode($data);
@@ -120,9 +127,12 @@ class ProductController extends Controller
             'product_name' => $request->input('product_name'),
             'Product_Description' => $request->input('Product_Description'),
             'Product_Dimension' => $request->input('Product_Dimension'),
+            'sale' => $request->input('sale'),
+            'new' => $request->input('new'),
+            'discount' => $request->input('discount'),
             'Weight' => $request->input('Weight'),
             'Price' => $request->input('Price'),
-            'Quantity' => $request->input('Quantity')
+            'Quantity' => $request->input('Quantity'),
             // 'Product_Size' => $request->input('Product_Size'),
             // 'stock_availability' => $request->input('stock_availability')
         ]);
@@ -135,6 +145,22 @@ class ProductController extends Controller
         ]);
         return redirect()->route('admin.stockView');
     }
+    public function importForm()
+    {
+        return view('admin.import-form');
+    }
+    public function import(Request $request)
+    {
+       Excel::import(new productImport,$request->file);
+       return "Products Imported Successfully";
+    }
+    
+    // public function search()
+    // {
+    //     $search_text=$_GET['query'];
+    //     $products=products::where('product_name','LIKE','%' .$search_text. '%')->with('Price')->get();
+    //     return view('productView.search',compact('products'));
+    // }
 
 
 }

@@ -62,13 +62,16 @@
                                     <div class="col-md-5">
                                         <h4 style="margin-top:10px;">Popularity</h4>
                                     </div>
-                                    <div class="col-md-7">
+                                    
+                                </div><br>
+                                <div class="row">
+                                <div class="col-md-7">
                                         <select name="price" id="popularity">
                                             <option value="volvo">Lowest To Highest</option>
                                             <option value="saab">Highest To Lowest</option>
                                         </select>
                                     </div>
-                                </div>
+                             </div>
                             </div>
                         </div>
                         <div class="col-lg-9 order-lg-2 order-1">
@@ -82,7 +85,7 @@
                                                         {{-- @if(count($products) > 0) --}}
                                                         @foreach ($product as $products )
 
-                                                        @if($products->sale == 'New')
+                                                        @if($products->new == 'yes')
 
                                                        
                                                         <div class="col-lg-4 col-md-6 col-sm-6" >
@@ -99,9 +102,8 @@
                                                                         <div class="product-action d-flex justify-content-between">
                                                                             <a class="product-btn" href="{{ route('add.wish',$products->id) }}">Add to Cart</a>
                                                                             <ul class="d-flex">
-                                                                                <li><a href="{{ route('wishlistShow',$products['id']) }}"><i class="ion-android-favorite-outline"></i></a></li>
-                                                                                <li><a href="compare.html"><i class="ion-ios-shuffle"></i></a></li>
-                                                                            </ul>
+                                                                                <li style="padding-top:16px;"><a href="{{ route('wishlistShow',$products['id']) }}"><i class="ion-android-favorite-outline"></i></a></li>
+                                                                                </ul>
                                                                         </div>
                                                                     </div>
                                                                     <div class="product-content">

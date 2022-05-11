@@ -51,7 +51,7 @@
                                 <div class="single-grid-product mb-40">
                                     <div class="product-image">
                                         <div class="product-label">
-                                            <span class="sale">Sale</span>
+                                            <!-- <span class="sale">Sale</span> -->
                                             <span class="new">New</span>
                                         </div>
                                         <a href="{{ route('productShow',$product['id']) }}" tabindex="0">
@@ -1181,7 +1181,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-5">
-                        <img src="{{ url('/') }}/assets/images/newslatter.jpg" alt="" class="img-fluid">
+                        <img src="{{ url('/') }}/assets/images/newslatter.png" alt="" class="img-fluid">
                     </div>
                     <div class="col-lg-7">
                         <div class="newsletter-wrapper">

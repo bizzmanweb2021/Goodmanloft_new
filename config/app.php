@@ -165,6 +165,8 @@ return [
         \Intervention\Image\ImageServiceProvider::class,
         Darryldecode\Cart\CartServiceProvider::class,
         Srmklive\PayPal\Providers\PayPalServiceProvider::class,
+        \Maatwebsite\Excel\ExcelServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -240,6 +242,8 @@ return [
         'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
         'Countries' => Monarobase\CountryList\CountryListFacade::class,
         'PayPal' => Srmklive\PayPal\Facades\PayPal::class,
+        'Excel' => \Maatwebsite\Excel\Facades\Excel::class,
+        'PDF' => \Barryvdh\DomPDF\Facades::class,
 
 
 

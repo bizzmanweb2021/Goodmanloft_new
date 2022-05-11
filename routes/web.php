@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\AboutAdminController;
+use App\Http\Controllers\ArticleAdminController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\AddToCartController;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminDashboardController;
@@ -52,8 +54,11 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::post('/stockStore',[ProductController::class,'stockStore'])->name('stockStore');
     Route::get('/getSubCategoryById',[ProductController::class,'getSubCategoryById'])->name('getSubCategoryById');
 
+    Route::get('/import-form',[ProductController::class,'importForm'])->name('importForm');
+    Route::post('/import',[ProductController::class,'import'])->name('import');
+
     Route::get('/editProduct/{id}',function($id){
-        $prod = DB::table('products')->select('id','product_name','Product_Description','Product_Dimension','Price','Weight','Quantity')->where('id','=',$id)->get();
+        $prod = DB::table('products')->select('id','product_name','Product_Description','Product_Dimension','Price','Weight','Quantity','sale')->where('id','=',$id)->get();
         return view('Admin.Product.product_edit',['prod'=>$prod]);
     })->name('edit.product');
 
@@ -119,6 +124,18 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
 
     Route::post('/updateAbout/{id}',[AboutAdminController::class,'updateAbout'])->name('update.about');
 
+    Route::get('/articleView',[ArticleAdminController::class,'index'])->name('articleView');
+    Route::get('/articleAdd',[ArticleAdminController::class,'create'])->name('articleAdd');
+    Route::post('/articleStore',[ArticleAdminController::class,'show'])->name('articleStore');
+
+    Route::get('/editArticle/{id}',function($id){
+        $article = DB::table('articles')->select('id','Title','Description')->where('id','=',$id)->get();
+        return view('Admin.Article.articleEdit',['article'=>$article]);
+    })->name('edit.article');
+
+    Route::post('/updateArticle/{id}',[ArticleAdminController::class,'updateArticle'])->name('update.article');
+
+
     Route::get('/contactViews',[ContactAdminController::class,'index'])->name('contactViews');
     Route::get('/contactAdd',[ContactAdminController::class,'create'])->name('contactAdd');
     Route::post('/contactStore',[ContactAdminController::class,'show'])->name('contactStore');
@@ -157,6 +174,11 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::post('/updateTestimonial/{id}',[TestimonialController::class,'updateTestimonial'])->name('update.Testimonial');
 });
 
+
+Route::get('/search','ProductDetailsController@search');
+Route::get('get-all-products',[PDFController::class,'getAllproducts']);
+Route::get('/download-pdf',[PDFController::class,'downloadPDF']);
+
 Route::get('/',[HomeController::class,'index'])->name('user.index');
 Route::get('/search/',[HomeController::class,'search'])->name('search');
 
@@ -172,6 +194,9 @@ Route::get('/account',[AccountController::class,'index'])->name('account');
 Route::post('/accountUpdate',[AccountController::class,'store'])->name('update.address');
 Route::get('/about',[AboutController::class,'index'])->name('about.index');
 Route::get('/contact',[ContactController::class,'index'])->name('contact.index');
+Route::get('/blog',[NewsController::class,'index'])->name('blog.index');
+Route::get('/blogDetails',[NewsController::class,'show'])->name('blogDetails.show');
+
 Route::post('/submitContact',[ContactController::class,'save'])->name('contact.save');
 Route::get('/privacy',[PrivacyController::class,'index'])->name('privacy');
 Route::get('/festive',[FestiveController::class,'index'])->name('festive');

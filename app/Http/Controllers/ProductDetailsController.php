@@ -20,5 +20,9 @@ class ProductDetailsController extends Controller
             echo "bye";
         }
     }
+    public function search(Request $request)
+    {
+        $search_text = $request->get('query');
+    }
 
 }

@@ -277,6 +277,13 @@
                               </a>
                             </li>
                             <li class="nav-item ">
+                                <a class="nav-link {{ ($route=='admin.articleView')? 'active': '' }}"
+                                href="{{ route('admin.articleView') }}">
+                                <span class="sidenav-mini-icon"> A </span>
+                                <span class="sidenav-normal"> Article </span>
+                              </a>
+                            </li>
+                            <li class="nav-item ">
                                 <a class="nav-link {{ ($route=='admin.testimonialView')? 'active': '' }}"
                                 href="{{ route('admin.testimonialView') }}">
                                 <span class="sidenav-mini-icon"> T </span>

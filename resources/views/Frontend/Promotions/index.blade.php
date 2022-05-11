@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col">
                 <div class="page-banner text-center">
-                    <h2>Promotions</h2>
+                    <!-- <h2>Promotions</h2> -->
                     <img src="assets/images/promotional-banner.jpg" alt=""  >
                 </div>
             </div>
@@ -54,6 +54,8 @@
                                     <div class="col-md-5">
                                         <h4 style="margin-top:10px;">Popularity</h4>
                                     </div>
+                                    </div><br>
+                                    <div class="row">
                                     <div class="col-md-7">
                                         <select name="price" id="popularity">
                                             <option value="volvo">Lowest To Highest</option>
@@ -74,7 +76,7 @@
                                                         {{-- @if(count($products) > 0) --}}
                                                         @foreach ($product as $products )
 
-                                                        @if($products->sale == 'Sale')
+                                                        @if($products->sale == 'yes')
 
                                                        
                                                         <div class="col-lg-4 col-md-6 col-sm-6" >
@@ -82,7 +84,7 @@
                                                                 <div class="single-grid-product mb-30">
                                                                     <div class="product-image">
                                                                         <div class="product-label">
-                                                                            <span class="sale">Discount</span>
+                                                                            <span class="sale">{{($products->discount)}}%</span>
                                                                             <span class="new">Sale</span>
                                                                         </div>
                                                                         <a href="{{ route('productShow',$products->id) }}">
@@ -98,17 +100,17 @@
                                                                     </div>
                                                                     <div class="product-content">
                                                                         <h3 class="title"> <a href="{{ route('productShow',$products['id']) }}" tabindex="0">{{($products->product_name) }}</a></h3>
-                                                                        <p class="product-price"><span class="discounted-price">${{ $products->Price }}</span> <span class="main-price discounted">${{ $products->Price }}</span></p>
+                                                                        <p class="product-price"><span class="discounted-price">${{ $products->Price -$products->Price*(($products->discount)/100) }}</span> <span class="main-price discounted">${{ $products->Price }}</span></p>
                                                                         <p class="text-success" style="color:#2ebe2c">{{ $products->stock_availability }}</p>
                                                                     </div>
                                                                 </div>
                                                             </a>
-
                                                         </div>
                                                         @endif 
 
                                                         @endforeach
-                                                                                                            </div>
+                                                                                                          
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

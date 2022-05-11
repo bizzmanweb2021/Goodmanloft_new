@@ -31,11 +31,25 @@
                     <label class="text-truncate  text-body ms-3 w-80 mb-0">Weight</label>
                     <input type="text" name="Weight" value="{{ $prod[0]->Weight }}" class="form-control" style="width:100%">
                 </div><br>
+
                 <div class="col-md-4">
-                    <label class="text-truncate  text-body ms-3 w-80 mb-0">Product on Sale/New</label>
-                    <input type="text" name="sale" value="{{ $prod[0]->Weight }}" class="form-control" style="width:100%">
-                </div><br>
-               
+                        <label class="text-truncate  text-body ms-3 w-80 mb-0">Product on Sale/New</label>
+                        <select type="sale" name="sale" value="{{ $prod[0]->sale }}" class="form-control" style="width:100%" >
+                        <option value="Sale">Sale</option>
+                        <option value="New">New</option>
+                        </select>
+                    </div><br>
+                
+                
+                <!-- <div class="col-md-4 form-check">
+                <input class="form-check-input" type="checkbox" value="" id="sale">
+                <label class="form-check-label" for="flexCheckDefault"> Sale  </label>
+               </div><br>
+               <div class="col-md-4 form-check">
+                <input class="form-check-input" type="checkbox" value="" id="New">
+                <label class="form-check-label" for="flexCheckDefault"> New</label>
+               </div><br> -->
+                
                 {{-- <div class="col-md-4">
                     <label class="text-truncate  text-body ms-3 w-80 mb-0">Product Size</label>
                         @foreach (App\Models\product::orderBy('id')->limit(1)->get() as $product )

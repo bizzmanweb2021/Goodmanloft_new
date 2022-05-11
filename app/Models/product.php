@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class product extends Model
 {
     use HasFactory;
-    protected $fillable=['Product_name','Category_id','SubCategory_id','gallery_photo','product_id','Product_Size','Product_Dimension','Product_Description','Quantity','Pattern','Price','color','Weight','Shape','Brand','Product_image'];
+
+    protected $table= "products" ;
+
+    protected $fillable=['product_name','Category_id','SubCategory_id','stock_availability','gallery_photo','Product_Size','Product_Dimension','Product_Description','Quantity','Pattern','Price','Color','Weight','Shape','sale','new','discount','Brand','product_image'];
 
     // public function wishlist()
     // {
