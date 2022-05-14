@@ -93,7 +93,7 @@
                                                                 <div class="single-grid-product mb-30">
                                                                     <div class="product-image">
                                                                         <div class="product-label">
-                                                                            <span class="sale">Sale</span>
+                                                                            <!-- <span class="sale">Sale</span> -->
                                                                             <span class="new">New</span>
                                                                         </div>
                                                                         <a href="{{ route('productShow',$products->id) }}">

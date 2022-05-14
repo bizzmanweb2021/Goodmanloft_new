@@ -7816,6 +7816,12 @@ h2.entry-title:before {
   .text-right{
     text-align: right;
   }
+  .table-right{
+    table-align: right;
+  }
+  .pull-right {
+    text-align: right;
+  }
   .header-logo{
     width: 250px;
   }

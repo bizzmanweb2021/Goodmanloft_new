@@ -99,7 +99,19 @@
 
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
-                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                                    <p>We ship direct from Singapore via Easyparcel for Singapore orders. International orders are currently not available. All orders shipped are trackable. You'll be able to track and manage your delivery by using the Shipping Confirmation email that we send as soon as your order begins its journey.
+
+                                                    Based on your location, delivery times are:
+                                                    
+                                                    Singapore
+                                                    
+                                                    1.Delivers Next Business Day after order processing.
+                                                    2.You’ll be asked to select a Delivery Window of either 9am to 5pm or 5pm to 10pm.
+                                                    Please note that shipping and delivery charges are also based on size and weight of choice of product.
+                                                    
+                                                    Please take note that our delivery charge does not include unpacking of your items, assembly, and packaging removal. Most of our items do not require assembly, however if you need us to arrange any of these services do contact us so we can arrange it at a small additional cost.
+                                                    
+                                                    We offer free delivery for orders above SGD$250.
 
                                                     </p>
                                                     </div>

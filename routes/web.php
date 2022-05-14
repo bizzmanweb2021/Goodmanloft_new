@@ -10,6 +10,7 @@ use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\BillingAddressController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactAdminController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
@@ -190,7 +191,7 @@ Route::get('/nursery',[NurseryController::class,'index'])->name('nursery');
 Route::get('/loadcart',[AddToCartController::class,'loadCart']);
 Route::get('/faq',[FaqController::class,'index'])->name('faq');
 Route::get('/term',[FaqController::class,'term'])->name('term.condition');
-Route::get('/account',[AccountController::class,'index'])->name('account');
+// Route::get('/account',[AccountController::class,'index'])->name('account');
 Route::post('/accountUpdate',[AccountController::class,'store'])->name('update.address');
 Route::get('/about',[AboutController::class,'index'])->name('about.index');
 Route::get('/contact',[ContactController::class,'index'])->name('contact.index');
@@ -212,6 +213,7 @@ Route::middleware('auth')->group(function()
     Route::post('/update_cart', [AddToCartController::class, 'update_cart'])->name('cart.update');
     Route::get('/addwish/{id}',[AddToCartController::class,'addWish'])->name('add.wish');
     Route::get('cart', [AddToCartController::class, 'cartList'])->name('cart.list');
+    Route::get('/account',[AccountController::class,'index'])->name('account');
 
     Route::get('/countryShow',[AddToCartController::class,'show'])->name('countryShow');
 

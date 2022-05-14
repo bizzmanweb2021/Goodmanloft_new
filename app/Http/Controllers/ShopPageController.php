@@ -18,7 +18,7 @@ class ShopPageController extends Controller
     {
         $product = product::find( $id );
         if($product)
-            return view( 'Frontend.' )->with( 'product', $product );
+            return view( 'Frontend.Product.index' )->with( 'product', $product );
         else
             return abort(404,"something went wrong");
     }
