@@ -7843,3 +7843,6 @@ h2.entry-title:before {
   .element {
     @include invisible(hidden);
   }
+  .googlepay:active{
+    visibility: visible; 
+  }
