@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 13, 2022 at 11:54 AM
+-- Generation Time: May 16, 2022 at 01:39 PM
 -- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- PHP Version: 8.0.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,7 +41,7 @@ CREATE TABLE `about_us` (
 --
 
 INSERT INTO `about_us` (`id`, `Description`, `Title`, `Image`, `updated_at`, `created_at`) VALUES
-(1, 'Inspired by nature, Goodman’s loft embodies a raw and natural approach to your sacred living\r\nenvironment. The brand represents the apotheosis of natural, handcrafted furniture as well as home\r\naccessories made from quality materials with a clean, elegant and bohemian-inspired style. From\r\nsustainable rattan to reclaimed teakwood, every single item is beautifully handmade by our trusted\r\ngroup of talented craftsmen and craftswomen. Every single product in our curation is painstakingly\r\nhandmade, so each piece has a character of its own. The slight imperfections ensure that each piece\r\nhas its own human touch and is just as perfect, if not better.\r\nShop online to view our entire collection or visit us at our showroom located One Pemimpin to see and\r\nfeel our products before you purchase!', 'About Goodman\'s Loft', 'images/about-us.jpg', '2022-04-13 05:33:13.000000', '2022-04-13 05:33:13.000000');
+(8, 'Inspired by nature, Goodman’s loft embodies a raw and natural approach to your sacred living environment. The brand represents the apotheosis of natural, handcrafted furniture as well as home accessories made from quality materials with a clean, elegant and bohemian-inspired style. From sustainable rattan to reclaimed teakwood, every single item is beautifully handmade by our trusted group of talented craftsmen and craftswomen. Every single product in our curation is painstakingly handmade, so each piece has a character of its own. The slight imperfections ensure that each piece has its own human touch and is just as perfect, if not better. Shop online to view our entire collection or visit us at our showroom located One Pemimpin to see and feel our products before you purchase!', 'About Goodman\'s Loft', 'images/About_Us (1).png', '2022-05-06 10:03:28.000000', '2022-05-06 10:03:28.000000');
 
 -- --------------------------------------------------------
 
@@ -67,6 +67,21 @@ INSERT INTO `admins` (`id`, `name`, `email`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `articles`
+--
+
+CREATE TABLE `articles` (
+  `id` int(10) NOT NULL,
+  `Description` longtext NOT NULL,
+  `Title` varchar(255) NOT NULL,
+  `Image` varchar(255) NOT NULL,
+  `updated_at` datetime(6) NOT NULL,
+  `created_at` datetime(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `billing_addresses`
 --
 
@@ -75,7 +90,7 @@ CREATE TABLE `billing_addresses` (
   `full_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
-  `country` varchar(255) NOT NULL,
+  `country` varchar(255) DEFAULT NULL,
   `address` varchar(255) NOT NULL,
   `city` varchar(255) NOT NULL,
   `state` varchar(255) NOT NULL,
@@ -91,14 +106,13 @@ CREATE TABLE `billing_addresses` (
 
 INSERT INTO `billing_addresses` (`user_id`, `full_name`, `email`, `phone`, `country`, `address`, `city`, `state`, `zip`, `id`, `updated_at`, `created_at`) VALUES
 (1, 'test123', 'test123@gmail.com', '8967565467', '1', 'Bihar', 'Muzaffarpur', 'Bihar', '785300', 1, '2022-03-16 10:48:59.000000', '2022-03-16 10:48:59.000000'),
-(1, 'test123', 'test123@gmail.com', '8967565467', '1', 'Bihar', 'Muzaffarpur', 'Bihar', '785300', 2, '2022-03-16 10:49:56.000000', '2022-03-16 10:49:56.000000'),
-(1, 'test123', 'test123@gmail.com', '8967565467', '1', 'Bihar', 'Muzaffarpur', 'Bihar', '785300', 3, '2022-03-16 10:53:25.000000', '2022-03-16 10:53:25.000000'),
-(1, 'test123', 'test123@gmail.com', '8967565467', '1', 'Bihar', 'Muzaffarpur', 'Bihar', '785300', 4, '2022-03-16 10:54:09.000000', '2022-03-16 10:54:09.000000'),
-(1, 'test123', 'test123@gmail.com', '8967565467', '1', 'hfshgh', 'Erode', 'Tamilnadu', '638455', 5, '2022-03-23 09:53:24.000000', '2022-03-23 09:53:24.000000'),
-(1, 'test123', 'test123@gmail.com', '8967565467', '4', 'Bihar', 'Bihar', 'Bihar', '87654', 6, '2022-03-25 07:41:41.000000', '2022-03-25 07:41:41.000000'),
-(1, 'test123', 'test123@gmail.com', '8967565467', '5', 'gfhsj', 'vcnb', 'khjgkh', '786987', 7, '2022-03-28 06:57:47.000000', '2022-03-28 06:57:47.000000'),
-(1, 'test123', 'test123@gmail.com', '8967565467', '3', 'fadsfa', 'jgbkg', 'uti', '85789', 8, '2022-03-28 13:07:19.000000', '2022-03-28 13:07:19.000000'),
-(1, 'test123', 'test123@gmail.com', '8967565467', '2', 'Singapore', 'Singapore', 'Singapore', '7689354', 9, '2022-04-13 06:53:49.000000', '2022-04-13 06:53:49.000000');
+(1, 'test123', 'test123@gmail.com', '8967565467', NULL, '155/179A,second street,MVP', 'Erode', 'Tamilnadu', '638655', 19, '2022-04-28 11:26:45.000000', '2022-04-28 11:26:45.000000'),
+(2, 'test', 'test@gmail.com', '9788671878', NULL, '155/179A,Second street', 'singapore', 'singapore', '638455', 20, '2022-04-28 11:29:13.000000', '2022-04-28 11:29:13.000000'),
+(3, 'Nandhu', 'nandhini.laravel@gmail.com', '9788671878', NULL, '155/179A,Second street', 'singapore', 'singapore', '638455', 21, '2022-04-28 11:31:54.000000', '2022-04-28 11:31:54.000000'),
+(1, 'test123', 'test123@gmail.com', '8967565467', NULL, '155/179A,second street,MVP', 'Erode', 'Tamilnadu', '638655', 22, '2022-04-29 08:34:56.000000', '2022-04-29 08:34:56.000000'),
+(1, 'test123', 'test123@gmail.com', '8967565467', NULL, '155/179A,second street,MVP', 'Erode', 'Tamilnadu', '638655', 23, '2022-05-04 08:41:01.000000', '2022-05-04 08:41:01.000000'),
+(1, 'test123', 'test123@gmail.com', '8967565467', NULL, '155/179A,second street,MVP', 'Erode', 'Tamilnadu', '638655', 24, '2022-05-04 13:44:17.000000', '2022-05-04 13:44:17.000000'),
+(1, 'test123', 'test123@gmail.com', '8967565467', NULL, '155/179A,second street,MVP', 'Erode', 'Tamilnadu', '638655', 25, '2022-05-04 13:46:07.000000', '2022-05-04 13:46:07.000000');
 
 -- --------------------------------------------------------
 
@@ -112,7 +126,7 @@ CREATE TABLE `carts` (
   `product_name` varchar(255) NOT NULL,
   `price` bigint(20) NOT NULL,
   `quantity` bigint(20) NOT NULL,
-  `total` double NOT NULL,
+  `total` bigint(20) NOT NULL,
   `updated_at` timestamp(6) NULL DEFAULT NULL,
   `created_at` timestamp(6) NULL DEFAULT NULL,
   `user_id` bigint(20) NOT NULL,
@@ -124,7 +138,12 @@ CREATE TABLE `carts` (
 --
 
 INSERT INTO `carts` (`id`, `product_image`, `product_name`, `price`, `quantity`, `total`, `updated_at`, `created_at`, `user_id`, `product_id`) VALUES
-(3, 'images/8 (2).jpg', 'Thrive Tribal Wood Candle', 59, 3, 177, '2022-04-01 02:50:23.000000', '2022-03-25 05:34:42.000000', 1, '5');
+(43, 'images/f.jpg', 'Jojon Long High Water Hyacinth Bench With Wooden Legs', 209, 1, 209, '2022-05-04 03:22:34.000000', '2022-05-04 03:22:34.000000', 2, '7'),
+(46, 'images/pic.png', 'Chair', 2500, 1, 2500, '2022-05-05 05:02:15.000000', '2022-05-05 05:02:15.000000', 5, '36'),
+(47, 'images/g.jpg', 'Pedro Long Woven Straw Grass and Wood Bench', 219, 1, 219, '2022-05-05 06:24:37.000000', '2022-05-05 06:24:37.000000', 5, '8'),
+(49, 'images/f.jpg', 'Jojon Long High Water Hyacinth Bench With Wooden Legs', 209, 2, 418, '2022-05-14 03:49:40.000000', '2022-05-06 00:57:55.000000', 1, '7'),
+(50, 'images/g.jpg', 'Pedro Long Woven Straw Grass and Wood Bench', 219, 1, 219, '2022-05-06 04:26:25.000000', '2022-05-06 04:26:25.000000', 1, '8'),
+(51, 'images/2.jpg', 'Joveno Teakwood Candle', 49, 1, 49, '2022-05-10 23:31:25.000000', '2022-05-10 23:31:25.000000', 1, '75');
 
 -- --------------------------------------------------------
 
@@ -148,7 +167,8 @@ INSERT INTO `categories` (`id`, `Category_Name`, `Category_image`, `created_at`,
 (1, 'Furniture', 'images/8 (1).png', '2022-04-13 04:22:57', '2022-04-13 04:22:57'),
 (2, 'Decor & Accessories', 'images/7 (1).png', '2022-04-13 04:23:11', '2022-04-13 04:23:11'),
 (3, 'KitchenWare', 'images/KITCHENWARE.png', '2022-04-13 04:23:38', '2022-04-13 04:23:38'),
-(4, 'Bed. Bath & Body', 'images/1 (1).png', '2022-04-13 04:23:52', '2022-04-13 04:23:52');
+(4, 'Bed. Bath & Body', 'images/1 (1).png', '2022-04-13 04:23:52', '2022-04-13 04:23:52'),
+(5, 'Pre-Order', 'images/add2.jpg', '2022-05-06 03:32:03', '2022-05-06 03:32:03');
 
 -- --------------------------------------------------------
 
@@ -195,7 +215,30 @@ CREATE TABLE `contacts` (
 
 INSERT INTO `contacts` (`id`, `name`, `email`, `phone`, `message`, `subject`, `updated_at`, `created_at`) VALUES
 (1, 'Harsha', 'harsha123@gmail.com', 987654433, 'Defective product please change them soon.', 'Product Related Query', '2022-03-25 09:57:36.000000', '2022-03-25 09:57:36.000000'),
-(2, 'Twinkal', 'twinkal123@gmail.com', 9087766556, 'use, disclose or otherwise process personal data of our customers in accordance with the Personal Data Protection Act', 'Product Related Query', '2022-03-25 10:14:15.000000', '2022-03-25 10:14:15.000000');
+(2, 'Twinkal', 'twinkal123@gmail.com', 9087766556, 'use, disclose or otherwise process personal data of our customers in accordance with the Personal Data Protection Act', 'Product Related Query', '2022-03-25 10:14:15.000000', '2022-03-25 10:14:15.000000'),
+(4, 'Nandhu', 'nandhini.laravel@gmail.com', 8870296295, 'abc', 'abc', '2022-05-02 11:47:37.000000', '2022-05-02 11:47:37.000000');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact_us`
+--
+
+CREATE TABLE `contact_us` (
+  `id` int(255) NOT NULL,
+  `Address` varchar(500) NOT NULL,
+  `Phone_No` varchar(12) NOT NULL,
+  `Email_Id` varchar(255) NOT NULL,
+  `updated_at` datetime(6) NOT NULL,
+  `created_at` datetime(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `contact_us`
+--
+
+INSERT INTO `contact_us` (`id`, `Address`, `Phone_No`, `Email_Id`, `updated_at`, `created_at`) VALUES
+(5, '1 Pemimpin Dr, #04-01/02, One Pemimpin,\r\n Singapore 576151', '6596352229', 'hello@goodmansloft.com', '2022-05-04 13:33:01.000000', '2022-05-04 13:33:01.000000');
 
 -- --------------------------------------------------------
 
@@ -582,13 +625,38 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `orders` (
-  `id` bigint(20) NOT NULL,
-  `user_id` bigint(20) NOT NULL,
-  `total` varchar(255) NOT NULL,
-  `coupon_code` varchar(255) NOT NULL,
-  `payment_method` varchar(255) NOT NULL,
-  `order_total` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `order_unique` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `user_unique` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payment_method` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `shipping_method` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_ip` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `order_currency` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `is_bill_same_ship` int(20) NOT NULL,
+  `billing_id` int(11) NOT NULL,
+  `shipping_id` int(11) DEFAULT NULL,
+  `status_id` int(11) NOT NULL DEFAULT 0,
+  `order_sum` decimal(20,2) NOT NULL,
+  `total_pv` decimal(20,2) NOT NULL,
+  `in_house_status` int(11) DEFAULT NULL,
+  `coupon_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `discount_amount` decimal(20,2) DEFAULT NULL,
+  `how_may_discount` decimal(20,2) NOT NULL,
+  `discount_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `after_discount_price` decimal(20,2) DEFAULT NULL,
+  `shipping_charge` decimal(20,2) DEFAULT NULL,
+  `total` decimal(20,2) NOT NULL,
+  `payment_status` int(11) DEFAULT NULL,
+  `self_pick_order_status` int(11) NOT NULL DEFAULT 0,
+  `status_for_matching_bonus` int(11) NOT NULL DEFAULT 0,
+  `status_for_direct_bonus` int(11) NOT NULL DEFAULT 0,
+  `status_of_leadership_bonus` int(11) NOT NULL DEFAULT 0,
+  `status_for_old_order` int(6) NOT NULL DEFAULT 1 COMMENT '0. Not MLM member 1. MLM Member 2. MAtching Bonus received for this order',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -667,53 +735,54 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `products` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `Category_id` bigint(20) NOT NULL,
-  `SubCategory_id` bigint(20) NOT NULL,
-  `product_name` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Product_Size` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `stock_availability` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Weight` int(10) NOT NULL,
-  `product_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Category_id` bigint(20) DEFAULT NULL,
+  `SubCategory_id` bigint(20) DEFAULT NULL,
+  `product_name` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Product_Size` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `stock_availability` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Weight` int(10) DEFAULT NULL,
+  `product_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL,
   `Color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Shape` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Brand` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Product_Dimension` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Quantity` int(10) NOT NULL,
+  `Product_Dimension` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Quantity` int(10) DEFAULT NULL,
   `Pattern` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Product_Description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Price` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `gallery_photo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `sale` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `Product_Description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Price` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sale` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `new` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `discount` int(10) DEFAULT NULL,
+  `gallery_photo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `Category_id`, `SubCategory_id`, `product_name`, `Product_Size`, `stock_availability`, `Weight`, `product_image`, `created_at`, `updated_at`, `Color`, `Shape`, `Brand`, `Product_Dimension`, `Quantity`, `Pattern`, `Product_Description`, `Price`, `gallery_photo`, `sale`) VALUES
-(3, 4, 8, 'Joveno Teakwood Candle', 'Medium', 'Available', 1, 'images/2.jpg', '2022-03-05 05:00:51', '2022-02-15 06:54:07', 'Brown', 'Curved', 'Wax', '16 x 13 x 8', 1, 'Dotted', 'Looking for a way of capturing that wonderful exotic feeling you always enjoy while on vacation or at the beach? The Joveno teakwood candle is the perfect solution! Add a tropical touch to your home décor with these elegantly handcrafted candles, featuring a unique wooden shell design which is easy to mix and match with any style or room!', '49', '[\"1644927847_1.jpg\",\"1644927847_2.jpg\"]', ''),
-(4, 4, 6, 'Freya Bed Runner With All Sides Fringe', 'Medium', 'Available', 1, 'images/4.jpg', '2022-03-05 05:01:03', '2022-02-15 06:59:45', 'Mustard', 'Square', 'Bombay Dyeing.', '246 x 75', 1, 'Dotted', 'Our bed runner is beautiful and luxurious. \r\nOur handmade bed runner comes in a unique mustard\r\ncolour, with a white hem and matching\r\nmustard fringe. This bed runner is a perfect accessory \r\nfor a bed, sitting room, or chair and it also\r\ncomplements different types of cushions especially white.\r\n\r\nDue to it being handmade, \r\nplease allow some variations \r\nas the item will not be identical.\r\nCare instruction: Wash separately the first time. Hand wash cold, or machine wash cold on a gentle cycle. Avoid the use of bleach and air dry or tumble dry on low to keep your blanket soft.', '109', '[\"1644928185_2.jpg\",\"1644928185_4.jpg\"]', ''),
-(5, 4, 8, 'Thrive Tribal Wood Candle', 'Small', 'Unavailable', 1, 'images/8 (2).jpg', '2022-03-05 05:01:14', '2022-02-15 07:02:39', 'Brown', 'Round', 'Wax', '13 x 13 x 10', 1, 'Dotted', 'Specially crafted with an amazing tribal carvings in wood, this candle makes for an outstanding decoration for your tribal home decor. Suitable for all home designs esp. Boho and Moroccan styles!', '59', '[\"1644928359_8 (2).jpg\",\"1644928359_9 (2).jpg\"]', ''),
-(6, 4, 8, 'Josina Cowrie Shell Candle Light Holder', 'Small', 'Unavailable', 1, 'images/9 (2).jpg', '2022-03-05 05:01:22', '2022-02-15 07:04:42', 'white', 'Round', 'Wax', '12 x 13', 1, 'Dotted', 'Our Cowrie Shell Candle Light Holder is beautifully hand crafted \r\nwith seashells.  The jagged pattern on the candle holder is made up \r\nby rows of cowrie seashells.  In the African legend, the shell \r\nsymbolize wealth and fertility.  A nice home warming décor for\r\nyour living space, office, bedroom.', '49', '[\"1644928482_6 (2).jpg\",\"1644928482_9 (2).jpg\"]', ''),
-(7, 1, 3, 'Jojon Long High Water Hyacinth Bench With Wooden Legs', 'Large', 'Available', 20, 'images/f.jpg', '2022-03-04 05:17:33', '2022-02-15 07:11:06', 'Brown', 'Round', 'Jute', '90 x 50 x 30', 1, 'Dotted', 'This rectangle-shaped bench is made of woven \r\nwater hyacinth to produce a beautiful soft seat. \r\nThis bench seat comes in one size and a natural\r\n colour and has four wooden legs. This bench will\r\n look great anywhere in the home and is a \r\ngreat accessory in any room. This bench is 90cm long,\r\n50cm high and 30cm wide. Due to it being handmade, \r\nplease allow some variations as the item will not be identical.', '209', '[\"1644928866_f.jpg\",\"1644928866_g.jpg\"]', ''),
-(8, 1, 3, 'Pedro Long Woven Straw Grass and Wood Bench', 'Medium', 'Available', 25, 'images/g.jpg', '2022-03-04 05:17:41', '2022-02-15 07:13:33', 'Brown', 'Square', 'Wooden', '90 x 30 x 50', 1, 'Dotted', 'This rectangle-shaped bench is made of strong\r\nwoven straw grass to produce a beautiful \r\nnatural bench. This bench seat comes in one size and features wooden frame and legs. This bench will look great anywhere\r\n in the home and is a great accessory in any room.\r\nThis bench is 90cm long, 50cm high and 30cm wide. \r\nDue to it being handmade, please allow some variations as the item will not be identical.', '219', '[\"1644929013_g.jpg\",\"1644929013_h.jpg\"]', ''),
-(9, 1, 3, 'Marcelo Round Low Water Hyacinth Stool', 'Medium', 'Unavailable', 15, 'images/h.jpg', '2022-03-04 05:17:53', '2022-02-15 07:16:35', 'Brown', 'Round', 'Jute', '40 x 45', 1, 'Plain', 'This round shaped stool is made of woven \r\nwater hyacinth, woven to produce a beautiful pattern.\r\nThis stool comes in one size and natural colour \r\nand has four long wooden legs. This stool will look \r\ngreat anywhere in the house and is a great accessory in any room.', '139', '[\"1644929195_h.jpg\",\"1644929195_i.jpg\"]', ''),
-(10, 1, 3, 'Roma Round Water Hyacinth Stool With Long Wooden Legs', 'Medium', 'Unavailable', 15, 'images/i.jpg', '2022-03-04 05:18:03', '2022-02-15 07:18:26', 'white', 'Round', 'Wooden', '47 x 55', 1, 'Dotted', 'This natural colour, cylinder shaped stool is handcrafted\r\n with woven water hyacinth.   The stool has a beautiful pattern \r\nand comes with four wooden legs.  It looks great any where in the\r\n house, it is certainly a nice piece of furniture to own.', '229', '[\"1644929306_i.jpg\",\"1644929306_j.jpg\"]', ''),
-(11, 1, 3, 'Malena Rattan Storage Bench with Cushion', 'Large', 'Available', 28, 'images/d.jpg', '2022-03-04 05:18:15', '2022-02-15 07:31:13', 'white&Brown', 'Square', 'Wooden', '118 x 46 x 64', 1, 'Plain', 'This rattan storage bench is great for storage use as well as a unique piece of furniture in your interior spaces. The dark brown rattan material with a tough thick rope brings out a rustic character.', '729', '[\"1644930073_d.jpg\",\"1644930073_f.jpg\"]', ''),
-(12, 1, 3, 'Vienna Teakwood Branch Occasional Chair', 'Medium', 'Available', 14, 'images/e.jpg', '2022-03-04 05:18:22', '2022-02-15 07:33:08', 'white', 'Round', 'Plastic', '67 x 81 x 71', 1, 'Dotted', 'Our teakwood branch occasional chair is specially designed with cotton rope mesh. The chair plays with themes of permanency and fluidity creating new ways of sitting. The rope moulds and conforms when leaning back. Suitable to be placed as a centerpiece as part of home decor.', '359', '[\"1644930188_e.jpg\",\"1644930188_f.jpg\"]', ''),
-(13, 1, 3, 'Lana Vintage Rattan ArmChair with Cushion (Natural)', 'Medium', 'Available', 10, 'images/a.jpg', '2022-03-04 05:18:30', '2022-02-15 07:36:21', 'Brown', 'Square', 'Wooden', '70 x 70 x 92', 1, 'Dotted', 'This hand-crafted vintage rattan & woven wicker framed \r\narmchair will transform your home.  Add your favourite cushions,\r\n grab a coffee & a book and watch how quickly this chair becomes \r\nyour new hangout.', '699', '[\"1644930381_a.jpg\",\"1644930381_c.jpg\"]', ''),
-(14, 1, 4, 'Havana 4 Tier Rattan Arch Shaped Bookshelf (Natural)', 'Large', 'Unavailable', 34, 'images/k.jpg', '2022-03-04 05:18:40', '2022-02-15 07:41:36', 'Brown', 'Curved', 'Wooden', '63 x 42 x 166', 1, 'Plain', 'Our bookshelf is unique as it is handmade from rattan. You can place it at any part of the house, and it will blend in well as it has a nature feel.', '599', '[\"1644930696_k.jpg\",\"1644930696_m.jpg\"]', ''),
-(15, 1, 4, 'Siena 5 Step Wooden Ladder (Natural)', 'Large', 'Unavailable', 16, 'images/n.jpg', '2022-03-04 05:18:50', '2022-02-15 07:45:03', 'Brown', 'Square', 'Wooden', '50 x 50 x 160', 1, 'Plain', 'This natural wooden ladder is perfect for displaying throws, towels and tea towels for your kitchens, bathrooms or bedrooms. Great piece that brings a rustic feel to your homes.', '69', '[\"1644930903_n.jpg\",\"1644930903_o.jpg\"]', ''),
-(16, 2, 11, 'Felipe Large Two Tone Blue Rafia and Straw Grass Basket', 'Medium', '', 2, 'images/ac.jpg', '2022-02-15 07:56:59', '2022-02-15 07:56:59', 'Natural & Blue', 'Round', 'jute', '35 x 53', 1, 'Dotted', 'This cylinder-shaped basket is made from a\r\n combination of natural straw grass and synthetic blue raffia, \r\nwoven together to create an amazing two-tone pattern. \r\nThis basket comes in one size only (35cm in diameter x 53cm tall). \r\nThese baskets can be used for a wide variety \r\nof purposes around the home, and are a \r\ngreat accessory in any room. Due to it being \r\nhandmade, please allow some \r\nvariations as the item will not be identical.', '89', '[\"1644931619_ab.jpg\",\"1644931619_ac.jpg\"]', ''),
-(17, 2, 11, 'Natural Straw Grass & White Raffia Basket Set(4)  (Natural; White)', 'Medium', '', 25, 'images/ad.jpg', '2022-02-15 08:00:20', '2022-02-15 08:00:20', 'Natural & White', 'Round', 'Jute', '26 x 35', 1, 'Plain', 'Our basket set is handmade, \r\nand has a nice cylinder shape. Our baskets \r\nare made from a combination of natural straw\r\ngrass and synthetic white raffia, woven together to\r\ncreate the beautiful patterns on the basket. \r\nThese baskets can be use for a wide variety of purposes \r\naround your home or office. It also acts as a good\r\naesthetic for an object.\r\n\r\nDue to it being handmade, \r\nplease allow some variations \r\nas the item will not be identical.', '209', '[\"1644931820_ad.jpg\",\"1644931820_ae.jpg\"]', ''),
-(18, 2, 11, 'Woven Rattan Basket Set', 'Medium', '', 16, 'images/af.jpg', '2022-02-16 03:09:37', '2022-02-16 03:09:37', 'white', 'Round', 'Jute', '22 x 21', 1, 'Dotted', 'This set of baskets are made from woven rattan and \r\ncome in one colour, whitewash.\r\nThese versatile and practical baskets can be \r\nused for any number of purposes, from a decor piece, \r\nto a waste bin, and everything in between! \r\nDue to it being handmade, please allow some\r\n variations as the item will not be identical.', '49', '[\"1645000777_af.jpg\",\"1645000777_ag.jpg\"]', ''),
-(19, 2, 11, 'Bamboo Laundry  Style Baskets With Lids', 'Medium', '', 6, 'images/ah.jpg', '2022-02-16 03:19:07', '2022-02-16 03:19:07', 'Grey', 'Round', 'Jute', '40 x 50', 1, 'Dotted', 'These lovely large round baskets are made from woven bamboo,\r\n with a natural straw jute rim on the top and handles on the lids.\r\n These baskets come in set of two sizes - a large size and a medium\r\n size, and in a grey or white color. These versatile and useful baskets \r\ncan be used for any purposes, from a decor piece, to a waste bin, \r\nto a laundry bin!', '250', '[\"1645001347_ah.jpg\",\"1645001347_ai.jpg\"]', ''),
-(20, 2, 11, 'Bamboo Laundry  Style Baskets With Lids', 'Medium', '', 8, 'images/ai.jpg', '2022-02-16 03:20:38', '2022-02-16 03:20:38', 'white', 'Round', 'Jute', '50 x 60', 1, 'Plain', 'These lovely large round baskets are made from woven bamboo,\r\n with a natural straw jute rim on the top and handles on the lids.\r\n These baskets come in set of two sizes - a large size and a medium\r\n size, and in a grey or white color. These versatile and useful baskets \r\ncan be used for any purposes, from a decor piece, to a waste bin, \r\nto a laundry bin!', '250', '[\"1645001438_ah.jpg\",\"1645001438_ai.jpg\"]', ''),
-(22, 2, 18, 'Hand-Woven Round Floor Rug with White Tassel (Natural)', 'Small', '', 1, 'images/re.jpg', '2022-03-01 10:25:40', '2022-03-01 04:51:54', 'white&Brown', 'Round', 'Sleepwell', '45 x 45 x 45', 1, 'Printed', 'Perfect round floor rug for your living room, bedroom, kitchen, entryway, laundry room, office. This hand-woven round floor rug with tassel can be a perfect gift for your family and friends on occasions such as holidays, birthdays and Christmas too!', '29.9', '[\"1646130113_re.jpg\",\"1646130114_ve.jpg\"]', ''),
-(23, 2, 18, 'Hand-Woven Round Floor Rug with White Tassel (Natural)', 'Medium', '', 1, 'images/pe.jpg', '2022-03-01 04:54:01', '2022-03-01 04:54:01', 'white&Brown', 'Round', 'Bombay Dyeing.', '80 x 80 x 80', 1, 'Plain', 'Perfect round floor rug for your living room, bedroom, kitchen, entryway, laundry room, office. This hand-woven round floor rug with tassel can be a perfect gift for your family and friends on occasions such as holidays, birthdays and Christmas too!', '39.9', '[\"1646130241_pe.jpg\",\"1646130241_re.jpg\"]', ''),
-(24, 2, 18, 'Hand-Woven Floor Rugs', 'Medium', '', 1, 'images/se.jpg', '2022-04-13 08:17:07', '2022-03-01 04:58:26', 'White & Grey', 'Square', 'Bombay Dyeing.', '60 x 90 x 61', 2, 'Printed', 'This good quality hand-woven floor rug adopts minimalist design and modern style concept, use of solid color and simple line to adds warmth and elegance to room of your home, soft lightweight but not fade; the soft fluffy carpet is available in multiple colors and sizes to suit your different style and need.', '39.99', '[\"1646130506_se.jpg\",\"1646130506_te.jpg\"]', '');
+INSERT INTO `products` (`id`, `Category_id`, `SubCategory_id`, `product_name`, `Product_Size`, `stock_availability`, `Weight`, `product_image`, `created_at`, `updated_at`, `Color`, `Shape`, `Brand`, `Product_Dimension`, `Quantity`, `Pattern`, `Product_Description`, `Price`, `sale`, `new`, `discount`, `gallery_photo`) VALUES
+(3, 4, 8, 'Joveno Teakwood Candle', 'Medium', 'Available', 1, 'images/2.jpg', '2022-05-11 11:14:37', '2022-02-15 06:54:07', 'Brown', 'Curved', 'Wax', '16 x 13 x 8', 1, 'Dotted', 'Looking for a way of capturing that wonderful exotic feeling you always enjoy while on vacation or at the beach? The Joveno teakwood candle is the perfect solution! Add a tropical touch to your home décor with these elegantly handcrafted candles, featuring a unique wooden shell design which is easy to mix and match with any style or room!', '49', 'no', 'yes', 0, '[\"1644927847_1.jpg\",\"1644927847_2.jpg\"]'),
+(4, 4, 6, 'Freya Bed Runner With All Sides Fringe', 'Medium', 'Available', 1, 'images/4.jpg', '2022-05-11 11:17:59', '2022-02-15 06:59:45', 'Mustard', 'Square', 'Bombay Dyeing.', '246 x 75', 1, 'Dotted', 'Our bed runner is beautiful and luxurious. \r\nOur handmade bed runner comes in a unique mustard\r\ncolour, with a white hem and matching\r\nmustard fringe. This bed runner is a perfect accessory \r\nfor a bed, sitting room, or chair and it also\r\ncomplements different types of cushions especially white.\r\n\r\nDue to it being handmade, \r\nplease allow some variations \r\nas the item will not be identical.\r\nCare instruction: Wash separately the first time. Hand wash cold, or machine wash cold on a gentle cycle. Avoid the use of bleach and air dry or tumble dry on low to keep your blanket soft.', '109', 'no', 'yes', 0, '[\"1644928185_2.jpg\",\"1644928185_4.jpg\"]'),
+(5, 4, 8, 'Thrive Tribal Wood Candle', 'Small', 'Unavailable', 1, 'images/8 (2).jpg', '2022-05-11 11:18:39', '2022-02-15 07:02:39', 'Brown', 'Round', 'Wax', '13 x 13 x 10', 1, 'Dotted', 'Specially crafted with an amazing tribal carvings in wood, this candle makes for an outstanding decoration for your tribal home decor. Suitable for all home designs esp. Boho and Moroccan styles!', '59', 'no', 'yes', 0, '[\"1644928359_8 (2).jpg\",\"1644928359_9 (2).jpg\"]'),
+(6, 4, 8, 'Josina Cowrie Shell Candle Light Holder', 'Small', 'Unavailable', 1, 'images/9 (2).jpg', '2022-05-11 11:18:51', '2022-02-15 07:04:42', 'white', 'Round', 'Wax', '12 x 13', 1, 'Dotted', 'Our Cowrie Shell Candle Light Holder is beautifully hand crafted \r\nwith seashells.  The jagged pattern on the candle holder is made up \r\nby rows of cowrie seashells.  In the African legend, the shell \r\nsymbolize wealth and fertility.  A nice home warming décor for\r\nyour living space, office, bedroom.', '49', 'no', 'yes', 0, '[\"1644928482_6 (2).jpg\",\"1644928482_9 (2).jpg\"]'),
+(7, 1, 3, 'Jojon Long High Water Hyacinth Bench With Wooden Legs', 'Large', 'Available', 20, 'images/f.jpg', '2022-05-11 11:19:03', '2022-02-15 07:11:06', 'Brown', 'Round', 'Jute', '90 x 50 x 30', 1, 'Dotted', 'This rectangle-shaped bench is made of woven \r\nwater hyacinth to produce a beautiful soft seat. \r\nThis bench seat comes in one size and a natural\r\n colour and has four wooden legs. This bench will\r\n look great anywhere in the home and is a \r\ngreat accessory in any room. This bench is 90cm long,\r\n50cm high and 30cm wide. Due to it being handmade, \r\nplease allow some variations as the item will not be identical.', '209', 'no', 'yes', 0, '[\"1644928866_f.jpg\",\"1644928866_g.jpg\"]'),
+(8, 1, 3, 'Pedro Long Woven Straw Grass and Wood Bench', 'Medium', 'Available', 25, 'images/g.jpg', '2022-05-11 11:19:17', '2022-02-15 07:13:33', 'Brown', 'Square', 'Wooden', '90 x 30 x 50', 1, 'Dotted', 'This rectangle-shaped bench is made of strong\r\nwoven straw grass to produce a beautiful \r\nnatural bench. This bench seat comes in one size and features wooden frame and legs. This bench will look great anywhere\r\n in the home and is a great accessory in any room.\r\nThis bench is 90cm long, 50cm high and 30cm wide. \r\nDue to it being handmade, please allow some variations as the item will not be identical.', '219', 'no', 'yes', 0, '[\"1644929013_g.jpg\",\"1644929013_h.jpg\"]'),
+(9, 1, 3, 'Marcelo Round Low Water Hyacinth Stool', 'Medium', 'Unavailable', 15, 'images/h.jpg', '2022-05-11 11:19:29', '2022-02-15 07:16:35', 'Brown', 'Round', 'Jute', '40 x 45', 1, 'Plain', 'This round shaped stool is made of woven \r\nwater hyacinth, woven to produce a beautiful pattern.\r\nThis stool comes in one size and natural colour \r\nand has four long wooden legs. This stool will look \r\ngreat anywhere in the house and is a great accessory in any room.', '139', 'no', 'yes', 0, '[\"1644929195_h.jpg\",\"1644929195_i.jpg\"]'),
+(10, 1, 3, 'Roma Round Water Hyacinth Stool With Long Wooden Legs', 'Medium', 'Unavailable', 15, 'images/i.jpg', '2022-05-11 11:44:09', '2022-02-15 07:18:26', 'white', 'Round', 'Wooden', '47 x 55', 1, 'Dotted', 'This natural colour, cylinder shaped stool is handcrafted\r\n with woven water hyacinth.   The stool has a beautiful pattern \r\nand comes with four wooden legs.  It looks great any where in the\r\n house, it is certainly a nice piece of furniture to own.', '229', 'no', 'yes', 0, '[\"1644929306_i.jpg\",\"1644929306_j.jpg\"]'),
+(11, 1, 3, 'Malena Rattan Storage Bench with Cushion', 'Large', 'Available', 28, 'images/d.jpg', '2022-05-11 11:20:27', '2022-02-15 07:31:13', 'white&Brown', 'Square', 'Wooden', '118 x 46 x 64', 1, 'Plain', 'This rattan storage bench is great for storage use as well as a unique piece of furniture in your interior spaces. The dark brown rattan material with a tough thick rope brings out a rustic character.', '729', 'no', 'yes', 0, '[\"1644930073_d.jpg\",\"1644930073_f.jpg\"]'),
+(12, 1, 3, 'Vienna Teakwood Branch Occasional Chair', 'Medium', 'Available', 14, 'images/e.jpg', '2022-05-11 11:21:19', '2022-02-15 07:33:08', 'white', 'Round', 'Plastic', '67 x 81 x 71', 1, 'Dotted', 'Our teakwood branch occasional chair is specially designed with cotton rope mesh. The chair plays with themes of permanency and fluidity creating new ways of sitting. The rope moulds and conforms when leaning back. Suitable to be placed as a centerpiece as part of home decor.', '359', 'no', 'yes', 0, '[\"1644930188_e.jpg\",\"1644930188_f.jpg\"]'),
+(13, 1, 3, 'Lana Vintage Rattan ArmChair with Cushion (Natural)', 'Medium', 'Available', 10, 'images/a.jpg', '2022-05-11 11:21:30', '2022-02-15 07:36:21', 'Brown', 'Square', 'Wooden', '70 x 70 x 92', 1, 'Dotted', 'This hand-crafted vintage rattan & woven wicker framed \r\narmchair will transform your home.  Add your favourite cushions,\r\n grab a coffee & a book and watch how quickly this chair becomes \r\nyour new hangout.', '699', 'no', 'yes', 0, '[\"1644930381_a.jpg\",\"1644930381_c.jpg\"]'),
+(14, 1, 4, 'Havana 4 Tier Rattan Arch Shaped Bookshelf (Natural)', 'Large', 'Unavailable', 34, 'images/k.jpg', '2022-05-11 11:43:34', '2022-02-15 07:41:36', 'Brown', 'Curved', 'Wooden', '63 x 42 x 166', 1, 'Plain', 'Our bookshelf is unique as it is handmade from rattan. You can place it at any part of the house, and it will blend in well as it has a nature feel.', '599', 'yes', 'no', 20, '[\"1644930696_k.jpg\",\"1644930696_m.jpg\"]'),
+(15, 1, 4, 'Siena 5 Step Wooden Ladder (Natural)', 'Large', 'Unavailable', 16, 'images/n.jpg', '2022-05-11 11:21:42', '2022-02-15 07:45:03', 'Brown', 'Square', 'Wooden', '50 x 50 x 160', 1, 'Plain', 'This natural wooden ladder is perfect for displaying throws, towels and tea towels for your kitchens, bathrooms or bedrooms. Great piece that brings a rustic feel to your homes.', '69', 'no', 'yes', 0, '[\"1644930903_n.jpg\",\"1644930903_o.jpg\"]'),
+(16, 2, 11, 'Felipe Large Two Tone Blue Rafia and Straw Grass Basket', 'Medium', '', 2, 'images/ac.jpg', '2022-05-11 11:21:58', '2022-02-15 07:56:59', 'Natural & Blue', 'Round', 'jute', '35 x 53', 1, 'Dotted', 'This cylinder-shaped basket is made from a\r\n combination of natural straw grass and synthetic blue raffia, \r\nwoven together to create an amazing two-tone pattern. \r\nThis basket comes in one size only (35cm in diameter x 53cm tall). \r\nThese baskets can be used for a wide variety \r\nof purposes around the home, and are a \r\ngreat accessory in any room. Due to it being \r\nhandmade, please allow some \r\nvariations as the item will not be identical.', '89', 'yes', 'no', 20, '[\"1644931619_ab.jpg\",\"1644931619_ac.jpg\"]'),
+(17, 2, 11, 'Natural Straw Grass & White Raffia Basket Set(4)  (Natural; White)', 'Medium', '', 25, 'images/ad.jpg', '2022-05-11 11:22:41', '2022-02-15 08:00:20', 'Natural & White', 'Round', 'Jute', '26 x 35', 1, 'Plain', 'Our basket set is handmade, \r\nand has a nice cylinder shape. Our baskets \r\nare made from a combination of natural straw\r\ngrass and synthetic white raffia, woven together to\r\ncreate the beautiful patterns on the basket. \r\nThese baskets can be use for a wide variety of purposes \r\naround your home or office. It also acts as a good\r\naesthetic for an object.\r\n\r\nDue to it being handmade, \r\nplease allow some variations \r\nas the item will not be identical.', '209', 'yes', 'no', 20, '[\"1644931820_ad.jpg\",\"1644931820_ae.jpg\"]'),
+(18, 2, 11, 'Woven Rattan Basket Set', 'Medium', '', 16, 'images/af.jpg', '2022-05-11 11:22:54', '2022-02-16 03:09:37', 'white', 'Round', 'Jute', '22 x 21', 1, 'Dotted', 'This set of baskets are made from woven rattan and \r\ncome in one colour, whitewash.\r\nThese versatile and practical baskets can be \r\nused for any number of purposes, from a decor piece, \r\nto a waste bin, and everything in between! \r\nDue to it being handmade, please allow some\r\n variations as the item will not be identical.', '49', 'yes', 'no', 20, '[\"1645000777_af.jpg\",\"1645000777_ag.jpg\"]'),
+(19, 2, 11, 'Bamboo Laundry  Style Baskets With Lids', 'Medium', '', 6, 'images/ah.jpg', '2022-05-11 11:23:12', '2022-02-16 03:19:07', 'Grey', 'Round', 'Jute', '40 x 50', 1, 'Dotted', 'These lovely large round baskets are made from woven bamboo,\r\n with a natural straw jute rim on the top and handles on the lids.\r\n These baskets come in set of two sizes - a large size and a medium\r\n size, and in a grey or white color. These versatile and useful baskets \r\ncan be used for any purposes, from a decor piece, to a waste bin, \r\nto a laundry bin!', '250', 'yes', 'no', 20, '[\"1645001347_ah.jpg\",\"1645001347_ai.jpg\"]'),
+(20, 2, 11, 'Bamboo Laundry  Style Baskets With Lids', 'Medium', '', 8, 'images/ai.jpg', '2022-05-11 11:23:38', '2022-02-16 03:20:38', 'white', 'Round', 'Jute', '50 x 60', 1, 'Plain', 'These lovely large round baskets are made from woven bamboo,\r\n with a natural straw jute rim on the top and handles on the lids.\r\n These baskets come in set of two sizes - a large size and a medium\r\n size, and in a grey or white color. These versatile and useful baskets \r\ncan be used for any purposes, from a decor piece, to a waste bin, \r\nto a laundry bin!', '250', 'yes', 'no', 20, '[\"1645001438_ah.jpg\",\"1645001438_ai.jpg\"]'),
+(22, 2, 18, 'Hand-Woven Round Floor Rug with White Tassel (Natural)', 'Small', '', 1, 'images/re.jpg', '2022-05-11 11:44:34', '2022-03-01 04:51:54', 'white&Brown', 'Round', 'Sleepwell', '45 x 45 x 45', 1, 'Printed', 'Perfect round floor rug for your living room, bedroom, kitchen, entryway, laundry room, office. This hand-woven round floor rug with tassel can be a perfect gift for your family and friends on occasions such as holidays, birthdays and Christmas too!', '29.9', 'yes', 'no', 20, '[\"1646130113_re.jpg\",\"1646130114_ve.jpg\"]'),
+(23, 2, 18, 'Hand-Woven Round Floor Rug with White Tassel (Natural)', 'Medium', '', 1, 'images/pe.jpg', '2022-05-11 11:44:48', '2022-03-01 04:54:01', 'white&Brown', 'Round', 'Bombay Dyeing.', '80 x 80 x 80', 1, 'Plain', 'Perfect round floor rug for your living room, bedroom, kitchen, entryway, laundry room, office. This hand-woven round floor rug with tassel can be a perfect gift for your family and friends on occasions such as holidays, birthdays and Christmas too!', '39.9', 'no', 'yes', 0, '[\"1646130241_pe.jpg\",\"1646130241_re.jpg\"]');
 
 -- --------------------------------------------------------
 
@@ -724,6 +793,7 @@ INSERT INTO `products` (`id`, `Category_id`, `SubCategory_id`, `product_name`, `
 CREATE TABLE `promotions` (
   `id` bigint(20) NOT NULL,
   `banner` varchar(255) NOT NULL,
+  `form_description` text NOT NULL,
   `updated_at` datetime(6) NOT NULL,
   `created_at` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -732,9 +802,9 @@ CREATE TABLE `promotions` (
 -- Dumping data for table `promotions`
 --
 
-INSERT INTO `promotions` (`id`, `banner`, `updated_at`, `created_at`) VALUES
-(1, 'images/add2.jpg', '2022-04-13 05:29:45.000000', '2022-04-13 05:29:45.000000'),
-(2, 'images/add1.jpg', '2022-04-13 05:29:56.000000', '2022-04-13 05:29:56.000000');
+INSERT INTO `promotions` (`id`, `banner`, `form_description`, `updated_at`, `created_at`) VALUES
+(10, 'images/Free_Shipping (1).png', '1', '2022-05-06 10:23:04.000000', '2022-05-06 10:23:04.000000'),
+(11, 'images/Your_Birthday_Promo (1).png', '2', '2022-05-06 10:23:18.000000', '2022-05-06 10:23:18.000000');
 
 -- --------------------------------------------------------
 
@@ -764,14 +834,13 @@ CREATE TABLE `shipping_addresses` (
 
 INSERT INTO `shipping_addresses` (`user_id`, `full_name_ship`, `email_ship`, `phone_ship`, `country_ship`, `address_ship`, `city_ship`, `state_ship`, `zip_ship`, `address_type_ship`, `id`, `updated_at`, `created_at`) VALUES
 (1, 'test123', 'test123@gmail.com', '8967565467', '1', 'Bihar', 'Muzaffarpur', 'Bihar', '785300', 'Home', 1, '2022-03-16 10:48:59.000000', '2022-03-16 10:48:59.000000'),
-(1, 'test123', 'test123@gmail.com', '8967565467', '1', 'Bihar', 'Muzaffarpur', 'Bihar', '785300', 'Office', 2, '2022-03-16 10:49:56.000000', '2022-03-16 10:49:56.000000'),
-(1, 'test123', 'test123@gmail.com', '8967565467', '1', 'Bihar', 'Muzaffarpur', 'Bihar', '785300', 'Office', 3, '2022-03-16 10:53:25.000000', '2022-03-16 10:53:25.000000'),
-(1, 'test123', 'test123@gmail.com', '8967565467', '1', 'Bi', 'Muzaffar', 'Biha', '7853', 'Office', 4, '2022-03-16 10:54:09.000000', '2022-03-16 10:54:09.000000'),
-(1, 'test123', 'test123@gmail.com', '8967565467', '1', 'hfshgh', 'Erode', 'Tamilnadu', '638455', NULL, 5, '2022-03-23 09:53:24.000000', '2022-03-23 09:53:24.000000'),
-(1, 'test123', 'test123@gmail.com', '8967565467', '4', 'Bihar', 'Bihar', 'Bihar', '87654', NULL, 6, '2022-03-25 07:41:41.000000', '2022-03-25 07:41:41.000000'),
-(1, 'test123', 'test123@gmail.com', '8967565467', '5', 'gfhsj', 'vcnb', 'khjgkh', '786987', NULL, 7, '2022-03-28 06:57:47.000000', '2022-03-28 06:57:47.000000'),
-(1, 'test123', 'test123@gmail.com', '8967565467', '3', 'fadsfa', 'jgbkg', 'uti', '85789', NULL, 8, '2022-03-28 13:07:19.000000', '2022-03-28 13:07:19.000000'),
-(1, 'test123', 'test123@gmail.com', '8967565467', '2', 'Singapore', 'Singapore', 'Singapore', '7689354', NULL, 9, '2022-04-13 06:53:49.000000', '2022-04-13 06:53:49.000000');
+(1, 'test123', 'test123@gmail.com', '8967565467', NULL, '155/179A,second street,MVP', 'Erode', 'Tamilnadu', '638655', NULL, 19, '2022-04-28 11:26:45.000000', '2022-04-28 11:26:45.000000'),
+(2, 'test', 'test@gmail.com', '9788671878', NULL, '155/179A,Second street', 'singapore', 'singapore', '638455', NULL, 20, '2022-04-28 11:29:13.000000', '2022-04-28 11:29:13.000000'),
+(3, 'Nandhu', 'nandhini.laravel@gmail.com', '9788671878', NULL, '155/179A,Second street', 'singapore', 'singapore', '638455', NULL, 21, '2022-04-28 11:31:54.000000', '2022-04-28 11:31:54.000000'),
+(1, 'test123', 'test123@gmail.com', '8967565467', NULL, '155/179A,second street,MVP', 'Erode', 'Tamilnadu', '638655', NULL, 22, '2022-04-29 08:34:56.000000', '2022-04-29 08:34:56.000000'),
+(1, 'test123', 'test123@gmail.com', '8967565467', NULL, '155/179A,second street,MVP', 'Erode', 'Tamilnadu', '638655', NULL, 23, '2022-05-04 08:41:01.000000', '2022-05-04 08:41:01.000000'),
+(1, 'test123', 'test123@gmail.com', '8967565467', NULL, '155/179A,second street,MVP', 'Erode', 'Tamilnadu', '638655', NULL, 24, '2022-05-04 13:44:17.000000', '2022-05-04 13:44:17.000000'),
+(1, 'test123', 'test123@gmail.com', '8967565467', NULL, '155/179A,second street,MVP', 'Erode', 'Tamilnadu', '638655', NULL, 25, '2022-05-04 13:46:07.000000', '2022-05-04 13:46:07.000000');
 
 -- --------------------------------------------------------
 
@@ -781,7 +850,8 @@ INSERT INTO `shipping_addresses` (`user_id`, `full_name_ship`, `email_ship`, `ph
 
 CREATE TABLE `shipping_charges` (
   `id` bigint(20) NOT NULL,
-  `country_id` bigint(100) NOT NULL,
+  `country_id` int(255) DEFAULT NULL,
+  `country_name` varchar(255) NOT NULL,
   `delivery_amount` varchar(255) NOT NULL,
   `updated_at` datetime(6) NOT NULL,
   `created_at` datetime(6) NOT NULL
@@ -791,8 +861,20 @@ CREATE TABLE `shipping_charges` (
 -- Dumping data for table `shipping_charges`
 --
 
-INSERT INTO `shipping_charges` (`id`, `country_id`, `delivery_amount`, `updated_at`, `created_at`) VALUES
-(1, 1, '90', '2022-02-18 13:00:51.000000', '2022-02-18 13:00:51.000000');
+INSERT INTO `shipping_charges` (`id`, `country_id`, `country_name`, `delivery_amount`, `updated_at`, `created_at`) VALUES
+(1, 0, '', '90', '2022-02-18 13:00:51.000000', '2022-02-18 13:00:51.000000'),
+(2, 0, '3', '500', '2022-05-05 09:00:35.000000', '2022-05-05 09:00:35.000000'),
+(3, 0, '5', '500', '2022-05-05 09:02:00.000000', '2022-05-05 09:02:00.000000'),
+(4, 0, '10', '500', '2022-05-05 09:02:18.000000', '2022-05-05 09:02:18.000000'),
+(5, 0, '4', '500', '2022-05-05 09:04:03.000000', '2022-05-05 09:04:03.000000'),
+(6, NULL, '4', '500', '2022-05-05 09:07:36.000000', '2022-05-05 09:07:36.000000'),
+(7, NULL, '2', '500', '2022-05-05 09:07:52.000000', '2022-05-05 09:07:52.000000'),
+(8, NULL, '2', '500', '2022-05-05 09:09:01.000000', '2022-05-05 09:09:01.000000'),
+(9, 1, 'India', '500', '2022-05-05 09:10:21.000000', '2022-05-05 09:10:21.000000'),
+(10, 2, 'Albania', '600', '2022-05-05 09:35:03.000000', '2022-05-05 09:35:03.000000'),
+(11, 3, 'Belgium', '1000', '2022-05-05 09:37:02.000000', '2022-05-05 09:37:02.000000'),
+(12, 4, 'Canada', '500', '2022-05-05 09:37:58.000000', '2022-05-05 09:37:58.000000'),
+(13, 5, 'China', '300', '2022-05-06 03:31:08.000000', '2022-05-06 03:31:08.000000');
 
 -- --------------------------------------------------------
 
@@ -805,6 +887,7 @@ CREATE TABLE `stocks` (
   `product_name` varchar(255) NOT NULL,
   `stock_image` varchar(255) NOT NULL,
   `stock_available` varchar(255) NOT NULL,
+  `stock_input_date` date DEFAULT NULL,
   `updated_at` datetime(6) NOT NULL,
   `created_at` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -813,9 +896,10 @@ CREATE TABLE `stocks` (
 -- Dumping data for table `stocks`
 --
 
-INSERT INTO `stocks` (`id`, `product_name`, `stock_image`, `stock_available`, `updated_at`, `created_at`) VALUES
-(1, '4', '', '40', '2022-03-23 10:00:03.000000', '2022-03-23 10:00:03.000000'),
-(2, '5', 'images/banner1.jpg', '57', '2022-04-13 07:18:27.000000', '2022-04-13 07:18:27.000000');
+INSERT INTO `stocks` (`id`, `product_name`, `stock_image`, `stock_available`, `stock_input_date`, `updated_at`, `created_at`) VALUES
+(1, '4', '', '40', NULL, '2022-03-23 10:00:03.000000', '2022-03-23 10:00:03.000000'),
+(2, '5', 'images/banner1.jpg', '57', NULL, '2022-04-13 07:18:27.000000', '2022-04-13 07:18:27.000000'),
+(3, '7', 'images/pic.png', '3', '2022-05-05', '2022-05-02 07:53:17.000000', '2022-05-02 07:53:17.000000');
 
 -- --------------------------------------------------------
 
@@ -854,7 +938,8 @@ INSERT INTO `subcategories` (`Category_id`, `id`, `SubCategory_Name`, `SubCatego
 (2, 15, 'Mirrors', 'images/2- Farm Garden Painting with Beautiful Greens and Lake (38cm x 38cm) - Set of 3.png', '2022-02-15 05:24:36', '2022-02-15 05:24:36'),
 (2, 16, 'Planters, Vases & Pots', 'images/10 to 12 - Hanging Planter (White, Small, Medium, Large) - Single.png', '2022-02-15 05:25:17', '2022-02-15 05:25:17'),
 (2, 17, 'Wall Decors', 'images/82 - Wall Decor.png', '2022-02-15 05:25:45', '2022-02-15 05:25:45'),
-(2, 18, 'Mats and Rugs', 'images/52 &53 - Hand-Woven Round Floor Rug with Tassel (Dia 45cm) or (Dia 80cm) v2 (1).png', '2022-02-15 05:26:24', '2022-02-15 05:26:24');
+(2, 18, 'Mats and Rugs', 'images/52 &53 - Hand-Woven Round Floor Rug with Tassel (Dia 45cm) or (Dia 80cm) v2 (1).png', '2022-02-15 05:26:24', '2022-02-15 05:26:24'),
+(5, 19, 'xxx', 'images/pic.png', '2022-05-09 01:52:15', '2022-05-09 01:52:15');
 
 -- --------------------------------------------------------
 
@@ -900,15 +985,23 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `id` int(20) NOT NULL,
   `unique_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `city` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `state` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `zip` int(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`name`, `email`, `email_verified_at`, `password`, `image`, `remember_token`, `created_at`, `updated_at`, `id`, `unique_id`, `phone`) VALUES
-('test123', 'test123@gmail.com', NULL, '$2y$10$Kko/XU41zH02Bmvz13ecwOl3SGZJTc38fV0Jv7k4EODy/Qi7Mhgda', NULL, NULL, '2022-02-07 04:54:12', '2022-02-07 04:54:12', 1, 'GML0000001', '8967565467');
+INSERT INTO `users` (`name`, `email`, `email_verified_at`, `password`, `image`, `remember_token`, `created_at`, `updated_at`, `id`, `unique_id`, `phone`, `address`, `city`, `state`, `zip`) VALUES
+('test123', 'test123@gmail.com', NULL, '$2y$10$Kko/XU41zH02Bmvz13ecwOl3SGZJTc38fV0Jv7k4EODy/Qi7Mhgda', NULL, NULL, '2022-02-07 04:54:12', '2022-02-07 04:54:12', 1, 'GML0000001', '8967565467', '155/179A,second street,MVP', 'Erode', 'Tamilnadu', 638655),
+('test', 'test@gmail.com', NULL, '$2y$10$z94Q6zqAFjEMMsrlFWhxGuqmRpTEvye7O.qCaImbheZbVkT2vEE6W', NULL, NULL, '2022-04-28 05:58:10', '2022-04-28 05:58:10', 2, 'GML0000002', '9788671878', '28/19,3rd street', 'singapore', 'singapore', 765432),
+('Nandhu', 'nandhini.laravel@gmail.com', NULL, '$2y$10$BmJVEbFMr3b07Uc3kKIh6.BRFgH6Lvfb8c/tagaQcjW3tEw2Lw74K', NULL, NULL, '2022-04-28 06:01:23', '2022-04-28 06:01:23', 3, 'GML0000003', '9788671878', '54B,Park Avenue', 'Erode', 'Tamilnadu', 638655),
+('Nandhini', 'nandhutamil1997@gmail.com', NULL, '$2y$10$mMaCEKhZoJzJ4KwRSnJmnOuKL9mFo1kCEtJ7J7XjJrhZi6OVyndKS', NULL, NULL, '2022-04-29 05:01:50', '2022-04-29 05:01:50', 4, 'GML0000004', '9788671878', NULL, NULL, NULL, NULL),
+('new', 'new@gmail.com', NULL, '$2y$10$D7RCrZA/M67/KK9.X5Awyu1cL1sbQTWtXCDW/b76Uz7NaCNuXjv1G', NULL, NULL, '2022-05-05 05:01:58', '2022-05-05 05:01:58', 5, 'GML0000005', '8870296295', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -934,7 +1027,11 @@ INSERT INTO `wishlists` (`id`, `product_id`, `user_id`, `updated_at`, `created_a
 (3, 6, '1', NULL, NULL),
 (4, 13, '1', NULL, NULL),
 (5, 4, '1', NULL, NULL),
-(6, 19, '1', NULL, NULL);
+(6, 19, '1', NULL, NULL),
+(7, 12, '1', NULL, NULL),
+(8, 22, '1', NULL, NULL),
+(9, 7, '2', NULL, NULL),
+(10, 7, '1', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -961,6 +1058,12 @@ CREATE TABLE `_registers` (
 -- Indexes for table `about_us`
 --
 ALTER TABLE `about_us`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `articles`
+--
+ALTER TABLE `articles`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -994,6 +1097,12 @@ ALTER TABLE `contacts`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `contact_us`
+--
+ALTER TABLE `contact_us`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `countries`
 --
 ALTER TABLE `countries`
@@ -1016,6 +1125,12 @@ ALTER TABLE `f_a_q_s`
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1107,25 +1222,31 @@ ALTER TABLE `_registers`
 -- AUTO_INCREMENT for table `about_us`
 --
 ALTER TABLE `about_us`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `articles`
+--
+ALTER TABLE `articles`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `billing_addresses`
 --
 ALTER TABLE `billing_addresses`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `checkouts`
@@ -1137,7 +1258,13 @@ ALTER TABLE `checkouts`
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `contact_us`
+--
+ALTER TABLE `contact_us`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `countries`
@@ -1164,6 +1291,12 @@ ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
@@ -1179,37 +1312,37 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT for table `promotions`
 --
 ALTER TABLE `promotions`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `shipping_addresses`
 --
 ALTER TABLE `shipping_addresses`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `shipping_charges`
 --
 ALTER TABLE `shipping_charges`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `stocks`
 --
 ALTER TABLE `stocks`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `subcategories`
 --
 ALTER TABLE `subcategories`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `testimonials`
@@ -1221,13 +1354,13 @@ ALTER TABLE `testimonials`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `wishlists`
 --
 ALTER TABLE `wishlists`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `_registers`

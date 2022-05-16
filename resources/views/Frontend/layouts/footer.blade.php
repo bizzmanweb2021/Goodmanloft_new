@@ -43,6 +43,7 @@
                         <li><a href="{{ route('login') }}">Delivery Information</a></li>
                         <li><a href="{{ route('faq') }}">FAQ</a></li>
                         <li><a href="{{ route('term.condition') }}">Terms & Conditions</a></li>
+                        
 
                     </ul>
                 </div>

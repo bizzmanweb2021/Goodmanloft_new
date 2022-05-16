@@ -67,23 +67,28 @@
                                         <table class="table table-bordered">
                                             <thead class="thead-light">
                                             <tr>
-                                                <th>No</th>
-                                                <th>Name</th>
+                                                <!-- <th>No</th> -->
+                                                <th>Product Name</th>
+                                                <th>Product Image</th>
+                                                <th>Quantity</th>
+                                                <th>Total</th>
                                                 <th>Date</th>
                                                 <th>Status</th>
-                                                <th>Total</th>
-                                                <th>Action</th>
                                             </tr>
                                             </thead>
                                             <tbody>
+                                            @foreach (App\Models\Cart::where("user_id",Auth::user()->id)->get() as $cart)
+                                            
                                             <tr>
-                                                <td>1</td>
-                                                <td>Coconut Oil</td>
-                                                <td>Aug 22, 2022</td>
-                                                <td>Pending</td>
-                                                <td>$45</td>
+                                                <td>{{ $cart->product_name }}</td>
+                                                <td><img src="{{ $cart->product_image }}"></td>  
+                                                <td>{{ $cart->quantity }}</td>
+                                                <td>${{ $cart->total }}</td>
+                                                <td>{{ $cart->updated_at }}</td>
                                                 <td><a href="cart.html" class="btn">View</a></td>
                                             </tr>
+                                            @endforeach
+
                                             </tbody>
                                         </table>
                                     </div>
