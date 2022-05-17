@@ -206,9 +206,9 @@
                     </div>
                 </div> 
                 <div id="paypal-button-container"></div>
-                <div id="googlepay" class="googlepay">
-                 <button id="googlepay" class="googlepay"></button>
-               </div>
+                
+                <button id="gpay" class="gpay  btn-block w-100" style="width:96% !important; margin: 0 13px !important; padding: 0 !important; border: none  !important;">
+</button>
                 <!-- <div id="googlepay"></div> -->
                 
 
@@ -228,8 +228,8 @@
 @section('javascript')
 <script type="text/javascript">
     //alert('hello');
-    jQuery('#googlepay').show();
-    jQuery('.googlepay').show();
+    jQuery('#gpay').show();
+    //jQuery('.gpay').show();
 
 </script>    
 <script async
@@ -553,7 +553,7 @@ function addGooglePayButton() {
   const paymentsClient = getGooglePaymentsClient();
   const button =
       paymentsClient.createButton({onClick: onGooglePaymentButtonClicked});
-  document.getElementById('googlepay').appendChild(button);
+  document.getElementById('gpay').appendChild(button);
 }
 
 /**

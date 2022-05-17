@@ -7843,6 +7843,6 @@ h2.entry-title:before {
   .element {
     @include invisible(hidden);
   }
-  .googlepay:active{
-    visibility: visible; 
+  .gpay-card-info-container.black, .gpay-card-info-animation-container.black{
+    width: 100% !important;
   }
