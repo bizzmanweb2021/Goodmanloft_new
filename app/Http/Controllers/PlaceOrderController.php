@@ -120,4 +120,8 @@ class PlaceOrderController extends Controller
     {
         return view('Frontend.Shipping.confirm');
     }
+    public function saveOrders(Request $request)
+    {
+        
+    }
 }

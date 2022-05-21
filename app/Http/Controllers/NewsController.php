@@ -8,10 +8,10 @@ class NewsController extends Controller
 {
      public function index()
     {
-        return view('Frontend.News.blog');
+        return view('Frontend.News.news');
     }
     public function show()
     {
-        return view('Frontend.News.blogDetails');
+        return view('Frontend.News.newsDetails');
     }
 }

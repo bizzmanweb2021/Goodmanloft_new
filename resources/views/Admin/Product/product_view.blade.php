@@ -47,7 +47,7 @@
                             <td>{{$item["Quantity"]}}</td>
                             <td>{{$item["sale"]}}</td>
                             <td>{{$item["Weight"]}}</td>
-                            <td>{{ $item["Product_Dimension"] }}</td>
+                            <td>{{$item["Product_Dimension"] }}</td>
                             <td>{{$item["stock_availability"]}}</td>
 
                         </tr>

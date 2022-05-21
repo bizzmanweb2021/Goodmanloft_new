@@ -22,7 +22,7 @@ class ShopPageController extends Controller
         else
             return abort(404,"something went wrong");
     }
-    public function product_show($id)
+    public function shop($id)
     {
 
         if(!empty(request()->sub_id))

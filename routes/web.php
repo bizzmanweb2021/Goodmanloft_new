@@ -54,6 +54,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::get('/stockAdd',[ProductController::class,'stockAdd'])->name('stockAdd');
     Route::post('/stockStore',[ProductController::class,'stockStore'])->name('stockStore');
     Route::get('/getSubCategoryById',[ProductController::class,'getSubCategoryById'])->name('getSubCategoryById');
+    Route::get('/orderDetails',[OrderController::class,'orderDetails'])->name('orderDetails');
 
     Route::get('/import-form',[ProductController::class,'importForm'])->name('importForm');
     Route::post('/import',[ProductController::class,'import'])->name('import');
@@ -99,6 +100,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::post('/couponStore',[CouponController::class,'store'])->name('CouponStore');
 
     Route::resource('/orders',OrderController::class);
+    // Route::get('/orderDetails',[OrderController::class,'show_order_details'])->name('show_order_details');
     Route::resource('/payments',PaymentController::class);
 
     Route::get('/promotionView',[PromotionController::class,'index'])->name('promotionView');
@@ -184,7 +186,7 @@ Route::get('/',[HomeController::class,'index'])->name('user.index');
 Route::get('/search/',[HomeController::class,'search'])->name('search');
 
 Route::get('/productShow/{product_id}',[ShopPageController::class,'show'])->name('productShow');
-Route::get('/product_show/{id}',[ShopPageController::class,'product_show'])->name('product_show');
+Route::get('/shop/{id}',[ShopPageController::class,'shop'])->name('shop');
 Route::get('/getPrice',[ShopPageController::class,'filter'])->name('get.price');
 Route::get('/getPrice',[ShopPageController::class,'filters'])->name('get.price');
 Route::get('/nursery',[NurseryController::class,'index'])->name('nursery');
@@ -195,8 +197,8 @@ Route::get('/term',[FaqController::class,'term'])->name('term.condition');
 Route::post('/accountUpdate',[AccountController::class,'store'])->name('update.address');
 Route::get('/about',[AboutController::class,'index'])->name('about.index');
 Route::get('/contact',[ContactController::class,'index'])->name('contact.index');
-Route::get('/blog',[NewsController::class,'index'])->name('blog.index');
-Route::get('/blogDetails',[NewsController::class,'show'])->name('blogDetails.show');
+Route::get('/news',[NewsController::class,'index'])->name('news.index');
+Route::get('/newsDetails',[NewsController::class,'show'])->name('newsDetails.show');
 
 Route::post('/submitContact',[ContactController::class,'save'])->name('contact.save');
 Route::get('/privacy',[PrivacyController::class,'index'])->name('privacy');

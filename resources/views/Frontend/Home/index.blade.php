@@ -7,7 +7,7 @@
     </div>
     <ul>
         @foreach (App\Models\category::all() as $item )
-        <li><a href="{{ route('product_show',$item->id) }}"> <img src="{{ $item->Category_image }}" style="height:50px; width:40px;" alt="" class="img-fluid"><span>{{ $item->Category_Name }}</span> </a></li>
+        <li><a href="{{ route('shop',$item->id) }}"> <img src="{{ $item->Category_image }}" style="height:50px; width:40px;" alt="" class="img-fluid"><span>{{ $item->Category_Name }}</span> </a></li>
         @endforeach
     </ul>
     <div class="clearfix"></div>
@@ -16,7 +16,7 @@
         $obj = App\Models\category::first();
     @endphp
     <div class="explore-btn">
-        <a href="{{ route('product_show',$obj->id) }}">Explore Now</a>
+        <a href="{{ route('shop',$obj->id) }}">Explore Now</a>
 
     </div>
 
@@ -901,10 +901,10 @@
                                         <li><a href="#">Shop</a>
                                             <ul class="mega-menu four-column left-0">
                                                 @foreach (App\Models\category::all() as $item )
-                                                <li><a href="{{ route('product_show',$item->id) }}" class="item-link">{{ $item->Category_Name }}</a>
+                                                <li><a href="{{ route('shop',$item->id) }}" class="item-link">{{ $item->Category_Name }}</a>
                                                     @foreach ( App\Models\subcategory::where('Category_id', $item->id)->get() as $data )
                                                     <ul>
-                                                        <li><a href="{{ route('product_show',['id'=>$item->id,"sub_id"=>$data->id]) }}">{{  $data->SubCategory_Name }}</a></li>
+                                                        <li><a href="{{ route('shop',['id'=>$item->id,"sub_id"=>$data->id]) }}">{{  $data->SubCategory_Name }}</a></li>
                                                     </ul>
                                                     @endforeach
                                                 </li>
@@ -912,7 +912,7 @@
                                             </ul>
                                         </li>
                                         <li><a href="{{ route('promotion') }}">Promotions</a></li>
-                                        <li><a href="#}">News</a></li>
+                                        <li><a href="{{ route('news.index') }}">News</a></li>
                                         <li class=""><a href="{{ route('faq') }}">Faq</a></li>
                                         <li><a href="{{ route('contact.index') }}">Contact Us</a></li>
                                     </ul>

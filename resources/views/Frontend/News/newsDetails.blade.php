@@ -15,7 +15,7 @@
                             <h2>Blog Details</h2>
                             <ul class="page-breadcrumb">
                             <li><a href="{{ route('user.index') }}">Home</a></li>
-                            <li><a href="{{ route('blogDetails.show') }}">Article</a></li>   
+                            <li><a href="{{ route('newsDetails.show') }}">Article</a></li>   
                             </ul>
                         </div>
 
@@ -45,30 +45,30 @@
                         <div class="common-sidebar-widget">
                             <h3 class="sidebar-title">Recent posts</h3>
                             <div class="sidebar-blog">
-                                <a href="{{ route('blogDetails.show') }}" class="image"><img src="assets/images/rc-post/blog1.jpg" alt=""></a>
+                                <a href="{{ route('newsDetails.show') }}" class="image"><img src="assets/images/rc-post/blog1.jpg" alt=""></a>
                                 <div class="content">
-                                    <h5><a href="{{ route('blogDetails.show') }}">Blog image post (sticky)</a></h5>
+                                    <h5><a href="{{ route('newsDetails.show') }}">Blog image post (sticky)</a></h5>
                                     <span>April 24, 2018</span>
                                 </div>
                             </div>
                             <div class="sidebar-blog">
-                                <a href="{{ route('blogDetails.show') }}" class="image"><img src="assets/images/rc-post/blog2.jpg" alt=""></a>
+                                <a href="{{ route('newsDetails.show') }}" class="image"><img src="assets/images/rc-post/blog2.jpg" alt=""></a>
                                 <div class="content">
-                                    <h5><a href="{{ route('blogDetails.show') }}">Post with Gallery</a></h5>
+                                    <h5><a href="{{ route('newsDetails.show') }}">Post with Gallery</a></h5>
                                     <span>April 24, 2018</span>
                                 </div>
                             </div>
                             <div class="sidebar-blog">
-                                <a href="{{ route('blogDetails.show') }}" class="image"><img src="assets/images/rc-post/blog3.jpg" alt=""></a>
+                                <a href="{{ route('newsDetails.show') }}" class="image"><img src="assets/images/rc-post/blog3.jpg" alt=""></a>
                                 <div class="content">
-                                    <h5><a href="{{ route('blogDetails.show') }}">Post with Audio</a></h5>
+                                    <h5><a href="{{ route('newsDetails.show') }}">Post with Audio</a></h5>
                                     <span>April 24, 2018</span>
                                 </div>
                             </div>
                             <div class="sidebar-blog">
-                                <a href="{{ route('blogDetails.show') }}" class="image"><img src="assets/images/rc-post/blog4.jpg" alt=""></a>
+                                <a href="{{ route('newsDetails.show') }}" class="image"><img src="assets/images/rc-post/blog4.jpg" alt=""></a>
                                 <div class="content">
-                                    <h5><a href="{{ route('blogDetails.show') }}">Post with Video</a></h5>
+                                    <h5><a href="{{ route('newsDetails.show') }}">Post with Video</a></h5>
                                     <span>April 24, 2018</span>
                                 </div>
                             </div>

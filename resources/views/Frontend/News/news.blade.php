@@ -18,7 +18,7 @@
                             </div>
                             <ul class="page-breadcrumb">
                                 <li><a href="{{ route('user.index') }}">Home</a></li>
-                                <li><a href="{{ route('blogDetails.show') }}">Article</a></li>
+                                <li><a href="{{ route('newsDetails.show') }}">Article</a></li>
                             </ul>
                         </div>
 

@@ -101,10 +101,10 @@
                         <li class="menu-item-has-children"><a href="#">Shop</a>
                             <ul class="mega-menu four-column left-0">
                                 @foreach (App\Models\category::all() as $item )
-                                    <li><a href="{{ route('product_show',$item->id) }}" class="item-link">{{ $item->Category_Name }}</a>
+                                    <li><a href="{{ route('shop',$item->id) }}" class="item-link">{{ $item->Category_Name }}</a>
                                         @foreach ( App\Models\subcategory::where('Category_id', $item->id)->get() as $data )
                                         <ul>
-                                            <li><a href="{{ route('product_show',['id'=>$item->id,"sub_id"=>$data->id]) }}">{{  $data->SubCategory_Name }}</a></li>
+                                            <li><a href="{{ route('shop',['id'=>$item->id,"sub_id"=>$data->id]) }}">{{  $data->SubCategory_Name }}</a></li>
                                         </ul>
                                         @endforeach
                                     </li>

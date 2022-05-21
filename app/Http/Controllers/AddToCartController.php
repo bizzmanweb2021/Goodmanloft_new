@@ -29,6 +29,7 @@ class AddToCartController extends Controller
         else
         {
             $user_id = Auth::user()->id;
+           
             $product = product::find($request->id);
             $cart = new Cart();
             $cart->product_image = $product->product_image;

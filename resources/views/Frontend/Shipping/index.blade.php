@@ -141,11 +141,11 @@
              </div>
              <div class="col-md-2">
                  <div class="shipping-add-change">
-                 <select class="shipCharge" width=200 style="width: 100px; color:black;">
-                            <option value='' selected>Select Shipping</option>
-                            <option value='1'>Local Shipping</option>
-                            <option value='2'>Express Local Shipping </option>
-                            <option value='3'>Self Collection</option>
+                 <select id="shipping_method" name="shipping_method" class="shipping_method" width=200 style="width: 100px; color:black;">
+                            <option value='Select Shipping' selected>Select Shipping</option>
+                            <option value='Local Shipping'>Local Shipping</option>
+                            <option value='Express Local Shipping'>Express Local Shipping </option>
+                            <option value='Self Collection'>Self Collection</option>
                         </select>
                  </div>
              </div>
@@ -207,10 +207,8 @@
                 </div> 
                 <div id="paypal-button-container"></div>
                 
-                <button id="gpay" class="gpay  btn-block w-100" style="width:96% !important; margin: 0 13px !important; padding: 0 !important; border: none  !important;">
-</button>
-                <!-- <div id="googlepay"></div> -->
-                
+               
+                <div id="container"></div>
 
             </div>
         </div>
@@ -231,10 +229,10 @@
     jQuery('#gpay').show();
     //jQuery('.gpay').show();
 
-</script>    
+</script>  
 <script async
   src="https://pay.google.com/gp/p/js/pay.js"
-  onload="onGooglePayLoaded()"></script>
+  onload="onGooglePayLoaded()"></script>  
 
 <script src="https://www.paypal.com/sdk/js?client-id=Adizxf9OQ6bntDa6O2iLB9_9hWyX-5W-rkMcqDZ6ieQ4bWtv51gdIFopTgG7ZrENQrDoDmAAkT6BuW1n&currency=USD"></script>
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
@@ -354,7 +352,8 @@
 </script>
 
 <script>
-    /**
+
+  /**
  * Define the version of the Google Pay API referenced when creating your
  * configuration
  *
@@ -470,9 +469,6 @@ function getGooglePaymentDataRequest() {
     // merchantId: '01234567890123456789',
     merchantName: 'Example Merchant'
   };
-
-  paymentDataRequest.callbackIntents = ["PAYMENT_AUTHORIZATION"];
-
   return paymentDataRequest;
 }
 
@@ -484,43 +480,9 @@ function getGooglePaymentDataRequest() {
  */
 function getGooglePaymentsClient() {
   if ( paymentsClient === null ) {
-    paymentsClient = new google.payments.api.PaymentsClient({
-        environment: 'TEST',
-      paymentDataCallbacks: {
-        onPaymentAuthorized: onPaymentAuthorized
-      }
-    });
+    paymentsClient = new google.payments.api.PaymentsClient({environment: 'TEST'});
   }
   return paymentsClient;
-}
-
-/**
- * Handles authorize payments callback intents.
- *
- * @param {object} paymentData response from Google Pay API after a payer approves payment through user gesture.
- * @see {@link https://developers.google.com/pay/api/web/reference/response-objects#PaymentData object reference}
- *
- * @see {@link https://developers.google.com/pay/api/web/reference/response-objects#PaymentAuthorizationResult}
- * @returns Promise<{object}> Promise of PaymentAuthorizationResult object to acknowledge the payment authorization status.
- */
-function onPaymentAuthorized(paymentData) {
-  return new Promise(function(resolve, reject){
-    // handle the response
-    processPayment(paymentData)
-      .then(function() {
-        resolve({transactionState: 'SUCCESS'});
-      })
-      .catch(function() {
-        resolve({
-          transactionState: 'ERROR',
-          error: {
-            intent: 'PAYMENT_AUTHORIZATION',
-            message: 'Insufficient funds, try again. Next attempt should work.',
-            reason: 'PAYMENT_DATA_INVALID'
-          }
-        });
-	    });
-  });
 }
 
 /**
@@ -532,15 +494,17 @@ function onPaymentAuthorized(paymentData) {
 function onGooglePayLoaded() {
   const paymentsClient = getGooglePaymentsClient();
   paymentsClient.isReadyToPay(getGoogleIsReadyToPayRequest())
-    .then(function(response) {
-      if (response.result) {
-        addGooglePayButton();
-      }
-    })
-    .catch(function(err) {
-      // show error in developer console for debugging
-      console.error(err);
-    });
+      .then(function(response) {
+        if (response.result) {
+          addGooglePayButton();
+          // @todo prefetch payment data to improve performance after confirming site functionality
+          // prefetchGooglePaymentData();
+        }
+      })
+      .catch(function(err) {
+        // show error in developer console for debugging
+        console.error(err);
+      });
 }
 
 /**
@@ -553,7 +517,7 @@ function addGooglePayButton() {
   const paymentsClient = getGooglePaymentsClient();
   const button =
       paymentsClient.createButton({onClick: onGooglePaymentButtonClicked});
-  document.getElementById('gpay').appendChild(button);
+  document.getElementById('container').appendChild(button);
 }
 
 /**
@@ -564,26 +528,29 @@ function addGooglePayButton() {
  */
 function getGoogleTransactionInfo() {
   return {
-        displayItems: [
-        {
-          label: "Subtotal",
-          type: "SUBTOTAL",
-          price: "11.00",
-        },
-      {
-          label: "Tax",
-          type: "TAX",
-          price: "1.00",
-        }
-    ],
     countryCode: 'US',
-    currencyCode: "SGD",
-    totalPriceStatus: "FINAL",
-    totalPrice: "12.00",
-    totalPriceLabel: "Total"
+    currencyCode: 'USD',
+    totalPriceStatus: 'FINAL',
+    // set to cart total
+    totalPrice: '1.00'
   };
 }
 
+/**
+ * Prefetch payment data to improve performance
+ *
+ * @see {@link https://developers.google.com/pay/api/web/reference/client#prefetchPaymentData|prefetchPaymentData()}
+ */
+function prefetchGooglePaymentData() {
+  const paymentDataRequest = getGooglePaymentDataRequest();
+  // transactionInfo must be set but does not affect cache
+  paymentDataRequest.transactionInfo = {
+    totalPriceStatus: 'NOT_CURRENTLY_KNOWN',
+    currencyCode: 'USD'
+  };
+  const paymentsClient = getGooglePaymentsClient();
+  paymentsClient.prefetchPaymentData(paymentDataRequest);
+}
 
 /**
  * Show Google Pay payment sheet when Google Pay payment button is clicked
@@ -593,10 +560,17 @@ function onGooglePaymentButtonClicked() {
   paymentDataRequest.transactionInfo = getGoogleTransactionInfo();
 
   const paymentsClient = getGooglePaymentsClient();
-  paymentsClient.loadPaymentData(paymentDataRequest);
+  paymentsClient.loadPaymentData(paymentDataRequest)
+      .then(function(paymentData) {
+        // handle the response
+        processPayment(paymentData);
+      })
+      .catch(function(err) {
+        // show error in developer console for debugging
+        console.error(err);
+      });
 }
 
-let attempts = 0;
 /**
  * Process payment data returned by the Google Pay API
  *
@@ -604,18 +578,10 @@ let attempts = 0;
  * @see {@link https://developers.google.com/pay/api/web/reference/response-objects#PaymentData|PaymentData object reference}
  */
 function processPayment(paymentData) {
-  return new Promise(function(resolve, reject) {
-    setTimeout(function() {
-      // @todo pass payment token to your gateway to process payment
-      paymentToken = paymentData.paymentMethodData.tokenizationData.token;
-
-			if (attempts++ % 2 == 0) {
-	      reject(new Error('Every other attempt fails, next one should succeed'));      
-      } else {
-	      resolve({});      
-      }
-    }, 500);
-  });
-}
+  // show returned data in developer console for debugging
+    console.log(paymentData);
+  // @todo pass payment token to your gateway to process payment
+  paymentToken = paymentData.paymentMethodData.tokenizationData.token;
+}     
 </script>
 @endsection

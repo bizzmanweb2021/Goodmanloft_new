@@ -85,7 +85,7 @@
                                                 <td>{{ $cart->quantity }}</td>
                                                 <td>${{ $cart->total }}</td>
                                                 <td>{{ $cart->updated_at }}</td>
-                                                <td><a href="cart.html" class="btn">View</a></td>
+                                                <td>Pending</td>
                                             </tr>
                                             @endforeach
 

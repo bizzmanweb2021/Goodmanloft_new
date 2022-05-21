@@ -13,6 +13,12 @@
                     <ul class="page-breadcrumb">
                         <li><a href="{{ route('user.index') }}">Home</a></li>
                         <li>Shop</li>
+                        @foreach (App\Models\category::orderBy('id','desc')->limit(1)->get() as $cate)
+                        <li>{{ $cate->Category_Name }}</li>
+                        @endforeach<br>
+                        @foreach (App\Models\subcategory::orderBy('id','asc')->limit(1)->get() as $sub)
+                        <li>{{ $sub->SubCategory_Name }}</li>
+                        @endforeach
                     </ul>
                 </div>
 

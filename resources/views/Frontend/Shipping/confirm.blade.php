@@ -15,14 +15,14 @@
                         <div class="row">
                             <div class="col-xl-8 mx-auto">
                                 <div class="row aiz-steps arrow-divider">
-                                    <div class="col active">
-                                        <div class="text-center text-primary confirmation-check">
+                                    <!-- <div class="col active">
+                                        <div class="text-center text-primary confirmation-check"> -->
                                             <!-- <i class="la-3x mb-2 las la-check-circle"></i> -->
-                                            <img src="assets/images/confirmation.png" alt="" class="img-fluid" style="width: 50px;">
+                                            <!-- <img src="assets/images/confirmation.png" alt="" class="img-fluid" style="width: 50px;">
                                             <h3 class="fs-14 fw-600 d-none d-lg-block"> Confirmation
                                             </h3>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                             </div>
@@ -39,7 +39,7 @@
                                     <div class="card-body">
                                         <div class="text-center py-4 mb-4 confirmation-check">
                                             <!-- <i class="la la-check-circle la-3x text-success mb-3"></i> -->
-                                            <img src="assets/images/images.jpg" alt="" class="img-fluid" style="width: 50px;">
+                                            <img src="assets/images/confirmation.png" alt="" class="img-fluid" style="width: 50px;">
                                             <h1 class="h3 mb-3 fw-600">Thank You for Your Order!</h1>
                                             
                                         </div>

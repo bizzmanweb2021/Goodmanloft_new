@@ -26,157 +26,98 @@
                         <h1 class="h3 fs-16 mb-0">Order Details</h1>
                     </div>
 
-                    @php
-                        $data = json_decode(json_encode($order_summary));
-                    @endphp
+                   
 
                     {{-- card body --}}
                     <div class="card-body">
                         <div class="row gutters-5">
-                            @if ($data->status_id > 0)
-                                <div class="col-md-3 ml-auto">
-                                    <label for="update_delivery_status">Order Status</label>
-                                    <select class="form-control aiz-selectpicker" data-minimum-results-for-search="Infinity"
-                                        id="update_order_status">
-                                        @foreach ($order_status as $item)
-                                            <option value="{{ $item->id }}"
-                                                {{ $data->status_id == $item->id ? 'selected' : '' }}>{{ $item->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            @endif
-                            <div class="col-md-3 ml-auto">
+                           
+
+                              
+                            <div class="col-md-4 ml-auto">
                                 <label for="update_delivery_point_status">Payment Status</label>
                                 <select class="form-control aiz-selectpicker" data-minimum-results-for-search="Infinity"
                                     id="update_payment_status">
-                                    <option value="0" {{ $data->payment_status == 0 ? 'selected' : '' }}>Unpaid</option>
-                                    <option value="1" {{ $data->payment_status == 1 ? 'selected' : '' }}>Paid</option>
+                                    <option value="0" >Unpaid</option>
+                                    <option value="1" >Paid</option>
                                 </select>
                             </div>
-                            @if ($data->status_id == 0)
-                                <div class="col-md-3 ml-auto">
+                           
+                                <div class="col-md-4 ml-auto">
                                     <label for="update_delivery_point_status">Order Status</label>
                                     <select class="form-control aiz-selectpicker" data-minimum-results-for-search="Infinity"
                                         id="update_self_pick_order_status">
                                         <option value="">--Select--</option>
-                                        <option value="4" {{ $data->self_pick_order_status == 4 ? 'selected' : '' }}>
+                                        <option value="4">
                                             Pending Collection</option>
-                                        <option value="5" {{ $data->self_pick_order_status == 5 ? 'selected' : '' }}>
+                                        <option value="5">
                                             Complete</option>
-                                        <option value="6" {{ $data->self_pick_order_status == 6 ? 'selected' : '' }}>
+                                        <option value="6" >
                                             Cancelled</option>
                                     </select>
                                 </div>
+                               
 
-                                <div class="col-md-3 ml-auto">
+                                <div class="col-md-4 ml-auto">
                                     <label for="update_delivery_point_status">Pick Up Point</label>
                                     <select class="form-control aiz-selectpicker" data-minimum-results-for-search="Infinity"
                                         id="update_pick_point_status">
                                         <option value="">--Select--</option>
-                                        @foreach ($branch as $item)
-                                            <option value="{{ $item->id }}"
-                                                {{ $data->in_house_status == $item->id ? 'selected' : '' }}>
-                                                {{ $item->name }}</option>
-                                        @endforeach
+                                       
                                     </select>
                                 </div>
-                            @endif
-                        </div>
+                            
+                        </div>&nbsp;&nbsp;
 
                         {{-- address --}}
+                        
                         <div class="row gutters-5">
-                            <div class="col text-center text-md-left">
-                                <td class="strong small gry-color">Ship to:</td>
-                                <address>
-                                    <strong class="text-main">
-                                        {{ $data->name }}
-                                    </strong><br>
-                                    {{ $data->email }}<br>
-                                    {{ $data->phone }}<br>
-                                    {{ $data->shipping_address }},
-                                </address>
+                            <div class="col text-left text-md-left">
+                            @foreach (App\Models\Shipping_address::orderBy('id','desc')->limit(1)->get() as $shipping)
+                                         
+                               <ul style="list-style:none"> 
+                                   <li>
+                                   <strong class="text-main">Ship To:</strong>
+                                    </li>
+                                    <li>{{ $shipping->address_ship }}</li>
+                                    <li>{{ $shipping->city_ship }}</li>
+                                    <li>{{ $shipping->state_ship }}</li>
+                                    <li>{{ $shipping->zip_ship }}</li>
+
+                             </ul>
+                                @endforeach 
                             </div>
-                            <div class="col text-center text-md-left">
-                                <td class="strong small gry-color">Bill to:</td>
-                                <address>
-                                    <strong class="text-main">
-                                        {{ $data->name }}
-                                    </strong><br>
-                                    {{ $data->email }}<br>
-                                    {{ $data->phone }}<br>
-                                    {{ $data->billing_address }},
-                                </address>
+                            <div class="col text-left text-md-left">
+                            @foreach (App\Models\Billing_address::orderBy('id','desc')->limit(1)->get() as $billing)
+                             
+                            <ul style="list-style:none"> 
+                                   <li>
+                                   <strong class="text-main">Bill To:</strong>
+                                    </li>
+                                    <li>{{ $billing->full_name }}</li>
+                                    <li>{{ $billing->email }}</li>
+                                    <li>{{ $billing->phone }}</li>
+                                    <li>{{ $billing->address }}</li>
+                                    <li>{{ $billing->city }}</li>
+                                    <li>{{ $billing->state }}</li>
+                                    <li>{{ $billing->zip }}</li>
+                             </ul>
+                            @endforeach 
 
                             </div>
-                            <div class="col-md-4 ml-auto">
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <td class="text-main text-bold">Order #</td>
-                                            <td class="text-right text-info text-bold">{{ $data->order_no }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-main text-bold">Order Status</td>
-                                            <td class="text-right">
-                                                @if ($data->status_id == 1)
-                                                    <span class="badge badge-inline badge-primary">Processing</span>
-                                                @elseif($data->status_id == 2)
-                                                    <span class="badge badge-inline badge-dark">Order Placed
-                                                    </span>
-                                                @elseif($data->status_id == 3)
-                                                    <span class="badge badge-inline badge-info">In transit</span>
-                                                @elseif($data->status_id == 4)
-                                                    <span class="badge badge-inline badge-success">On The Way</span>
-                                                @elseif($data->status_id == 5)
-                                                    <span class="badge badge-inline badge-success">Delivered</span>
-                                                @elseif($data->status_id == 6)
-                                                    <span class="badge badge-inline badge-danger">Cancelled</span>
-                                                @else
-                                                    <span class="badge badge-inline badge-success">Self Pick</span>
-                                                    @if ($data->self_pick_order_status == 4)
-                                                        <span class="badge badge-inline badge-warning">Pending
-                                                            Collection</span>
-                                                    @elseif ($data->self_pick_order_status == 5)
-                                                        <span class="badge badge-inline badge-success">Complete</span>
-                                                    @elseif($data->self_pick_order_status == 6)
-                                                        <span class="badge badge-inline badge-danger">Cancelled</span>
-                                                    @endif
-                                                @endif
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-main text-bold">Payment status</td>
-                                            <td class="text-right">
-                                                @if ($data->payment_status == 1)
-                                                    <span class="badge badge-inline badge-success">Approve</span>
-                                                @else
-                                                    <span class="badge badge-inline badge-danger">Pending</span>
-                                                @endif
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-main text-bold">Order Date</td>
-                                            <td class="text-right">
-                                            {{ date('d-m-Y h:i A', strtotime($data->order_date)) }}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-main text-bold">
-                                                Total amount
-                                            </td>
-                                            <td class="text-right">
-                                            ${{ $data->total_amount }}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-main text-bold">Payment method</td>
-                                            <td class="text-right">
-                                            {{ $data->payment_method }}
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div class="col-md-5 text-left text-md-left">
+                           
+                             
+                            <ul style="list-style:none"> 
+                            &nbsp;  
+                                    <li><strong class="text-main text-bold">Order Status:Completed</strong></li>&nbsp;
+                                    <li><strong class="text-main text-bold">Payment Status:Paid</strong></li>&nbsp;
+                                    <li><strong class="text-main text-bold">Order Date:2022-18-05</strong></li>&nbsp;
+                                    <li><strong class="text-main text-bold">Payment Status:Approved</strong></li>&nbsp;
+                                    <li><strong class="text-main text-bold">Payment Method:Paypal</strong></li> &nbsp;                             
+                             </ul>
+                           
+
                             </div>
                         </div>
                         {{-- end address --}}
@@ -187,13 +128,10 @@
                                 <table class="table table-bordered aiz-table invoice-summary">
                                     <thead>
                                         <tr class="bg-trans-dark">
-                                            <th data-breakpoints="lg" class="min-col">#</th>
-                                            <th width="10%">Photo</th>
+                                            <th width="10%">Product_Image</th>
                                             <th class="text-uppercase">Product Name</th>
                                             <th data-breakpoints="lg" class="text-uppercase">
-                                                Delivery Type</th>
-                                            <th data-breakpoints="lg" class="min-col text-center text-uppercase">
-                                                Qty</th>
+                                                Quantity</th>
                                             <th data-breakpoints="lg" class="min-col text-center text-uppercase">
                                                 Price</th>
                                             <th data-breakpoints="lg" class="min-col text-right text-uppercase">
@@ -201,27 +139,25 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($order_details as $key => $item)
+                                    @foreach (App\Models\Cart::where("user_id",Auth::user()->id)->get() as $cart)
                                             <tr>
-                                                <td>{{ $key + 1 }}</td>
-                                                <td>
-                                                    <img src="{{ asset($item->image) }}" alt="" class="img-fluid">
+                                                
+                                                <td><img src="{{ $cart->product_image }}">
                                                 </td>
                                                 <td>
-                                                    {{ $item->title }}
+                                                {{ $cart->product_name }}
                                                 </td>
                                                 <td>
-                                                    {{ $item->shipping_method }}
+                                                {{ $cart->quantity }}
                                                 </td>
                                                 <td>
-                                                    {{ $item->qun }}
+                                                    {{ $cart->price }}
                                                 </td>
+                                               
                                                 <td>
-                                                    {{ $item->shipping_method }}
+                                                ${{ $cart->total }}
                                                 </td>
-                                                <td class="">
-                                                    ${{ $item->saleprice * $item->qun }}
-                                                </td>
+                                               
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -231,61 +167,7 @@
                         {{-- end order list --}}
 
                         {{-- footer --}}
-                        <div class="clearfix float-left">
-                            <div class="text-right no-print">
-                                @if ($show_pay_btn == 1)
-                                    <a href="{{ route('admin.payment.show_details', $payment_id) }}" type="button"
-                                        class="btn btn-primary btn-light" target="_blank">Show Payment Details</a>
-                                @endif
-
-                                @if ($show_pay_btn == 2)
-                                    <a href="{{ route('admin.mct.show', $payment_id) }}" type="button"
-                                        class="btn btn-primary btn-light" target="_blank">Show Payment Details</a>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="clearfix float-right">
-                            <table class="table">
-                            <tbody>
-                                    <tr>
-                                        <td class="w-50 fw-600 bold">Subtotal</td>
-                                        <td class="text-right">
-                                            <span class="strong-600">${{ $data->sub_total }}</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-50 fw-600 bold">Shipping</td>
-                                        <td class="text-right">
-                                            <span class="text-italic">${{ $data->shipping_charge }}</span>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="w-50 fw-600 bold">Coupon</td>
-                                        <td class="text-right">
-                                            <span class="text-italic">${{ $data->coupon_discount }}</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-50 fw-600 bold">Total</td>
-                                        <td class="text-right bold">
-                                            <strong><span>${{ $data->total_amount }}</span></strong>
-                                        </td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                            {{-- end footer --}}
-
-                            <div class="text-right no-print">
-                                <a href="{{ route('admin.invoice.show', $data->order_id) }}" type="button"
-                                    class="btn btn-icon btn-light"><i class="las la-print"></i></a>
-                            </div>
-                        </div>
-                        {{-- end card body --}}
-
-
+                       
                     </div>
                     {{-- end --}}
 
@@ -296,8 +178,6 @@
 
 
 
-    <div id="order_details_loder" style="display: none">
-        @include('loder.index')
-    </div>
+   
 
 @endsection
