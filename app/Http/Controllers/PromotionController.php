@@ -28,6 +28,7 @@ class PromotionController extends Controller
 
                                  $image = $request->banner;
                                  $form_description = $request->form_description;
+                                 $remarks = $request->remarks;
                                  $filename = $image->getClientOriginalName();
                                  $image_resize = Image::make($image->getRealPath())->resize(300,200)->save(public_path('images/'.$filename));
                                  $image_destination =  'images/'.$filename;
@@ -35,6 +36,7 @@ class PromotionController extends Controller
                                 $promo = new Promotion();
                                 $promo->banner=$image_destination;
                                 $promo->form_description=$form_description;
+                                $promo->remarks=$remarks;
                                 $promo->save();
 
                                 $notification1=array('alert-type'=>'success',

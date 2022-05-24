@@ -94,5 +94,4 @@ class AddToCartController extends Controller
         return view('Frontend.Cart.index',compact('Getcountrylist'));
     }
 
-
 }

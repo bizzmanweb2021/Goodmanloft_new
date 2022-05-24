@@ -21,6 +21,10 @@
               <label class="text-truncate  text-body ms-3 w-80 mb-0">Upload Promotion/Banner Image</label>
               <input type="file" name="banner" class="form-control" id="banner" value="{{ $promo[0]->banner }}">
             </div><br>
+            <div class="col-md-6">
+                <label class="text-truncate  text-body ms-3 w-80 mb-0">Remarks</label>
+                <input type="text" name="remarks" class="form-control" id="remarks" value="{{ $promo[0]->remarks}}">
+                </div><br>
             </div>
             <div class="row mb-4">
               <div class="col-md-4">

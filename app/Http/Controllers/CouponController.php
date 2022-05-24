@@ -26,7 +26,7 @@ class CouponController extends Controller
                                    'end_date' => 'required',
                                    'status'=>'required',
                                    'discount_type'=>'required',
-                                   'Banner'=>'required',
+                                   'Banner'=>'required|mimes:jpg,png,jpeg',
                         ]);
 
                         $image = $request->Banner;
@@ -43,7 +43,7 @@ class CouponController extends Controller
                         $coupon->status = $request->status;
                         $coupon->discount_type = $request->discount_type;
                         $coupon->discount_amount = $request->discount_amount;
-                        $coupon->Banner = $request->Banner;
+                        $coupon->Banner = $image_destination;
                         $coupon->grouped_by_users = $request->grouped_by_users;
                         $coupon->grouped_by_products = $request->grouped_by_products;
                         $coupon->grouped_by_category = $request->grouped_by_category;

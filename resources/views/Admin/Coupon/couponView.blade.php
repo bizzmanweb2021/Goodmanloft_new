@@ -20,15 +20,15 @@
                   <thead>
                     <tr>
                       <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Coupon Image</th>
+                      <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Coupon Name </th>
                       <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Coupon Code</th>
-                      <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Coupon Name</th>
                     </tr>
 
                   </thead>
                     <tbody>
                     @foreach($cop as $item)
                     <tr>
-                        <td><img src="{{$item->Banner}}" width=80px; height=80px; /> </td>
+                        <td><img src="{{ url('/' . $item["Banner"] )}}" width=80px; height=80px; /> </td>
                         <td>{{$item["coupon_name"]}}</td>
                         <td>{{$item["coupon_code"]}}</td>
                     </tr>

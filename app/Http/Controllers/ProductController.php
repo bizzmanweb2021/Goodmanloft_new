@@ -83,6 +83,7 @@ class ProductController extends Controller
                                 $Product->gallery_photo=json_encode($data);
                                 $Product->Category_id=$request->Category_Name;
                                 $Product->SubCategory_id=$request->SubCategory_name;
+                                $Product->popular_products=$request->popular_products;
                                 $Product->stock_availability=$request->stock_availability;
                                 $Product->save();
 
@@ -133,6 +134,8 @@ class ProductController extends Controller
             'Weight' => $request->input('Weight'),
             'Price' => $request->input('Price'),
             'Quantity' => $request->input('Quantity'),
+            'popular_products' => $request->input('popular_products'),
+            
             // 'Product_Size' => $request->input('Product_Size'),
             // 'stock_availability' => $request->input('stock_availability')
         ]);

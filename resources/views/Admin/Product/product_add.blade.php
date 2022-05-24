@@ -137,6 +137,9 @@
                     <span style="color:red">{{ $message }}</span>
                     @enderror
                 </div>
+                <div class="col-md-4">            
+                        <input type="radio" id="popular_products" name="popular_products" value="popular_products"><label for="">Popular Products</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div><br>
                 
             <div class="row mb-4">
               <div class="col-md-4">

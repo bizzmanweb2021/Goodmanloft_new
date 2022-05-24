@@ -123,16 +123,19 @@
         <div class="list-product-section section pt-80 pt-lg-60 pt-md-50 pt-sm-40 pt-xs-20">
             <div class="container sb-border  pb-75 pb-lg-55 pb-md-45 pb-sm-35 pb-xs-25">
                 <div class="row">
+               
                     <div class="col-lg-4 col-md-6">
                         <!--  Product List Widget Wrapper -->
+                        
                         <div class="product-list-widget-wrapper">
+                       
                             <!-- widget product list title -->
                             <div class="list-product-section-title mb-35">
-                                <h3>Sale <span>50%</span></h3>
+                                <h3>Sale <span>20%</span></h3>
                                 <div class="on-sale-nav slick-btns"></div>
                             </div>
                             <!-- widget product list title -->
-
+                           
                             <!--  widget product list wrapper -->
                             <div class="widget-product-list-wrapper tf-element-carousel top-nav" data-slick-options='{
                                         "slidesToShow": 1,
@@ -160,213 +163,40 @@
                                         }}
                                         ]'>
                                 <!--  single widget product -->
+                                @foreach (App\Models\product::all() as $products )
+                                @if($products->sale == 'yes')
                                 <div class="single-grid-product list-mode" style="height: auto" >
                                     <div class="list-mode-image">
-                                        <a href="single-product.html">
-                                            <img src="{{ url('/') }}/assets/images/product/5-100x133.jpg" class="img-fluid" alt="">
+                                        <a href="{{ route('productShow',$products['id']) }}">
+                                            <img src="{{ asset($products->product_image) }}" class="img-fluid" alt="">
                                         </a>
                                     </div>
                                     <div class="list-mode-content">
                                         <span class="category"><a href="shop.html"></a></span>
-                                        <h3 class="title"> <a href="single-product.html">Cillum dolore lorem</a></h3>
+                                        <h3 class="title"> <a href="{{ route('productShow',$products['id']) }}">{{($products->product_name) }}</a></h3>
 
-                                        <p class="product-price"><span class="discounted-price">$80.00</span> <span
-                                                class="main-price discounted">$100.00</span></p>
+                                        <p class="product-price"><span class="discounted-price">${{ $products->Price -$products->Price*(($products->discount)/100) }}</span> <span
+                                                class="main-price discounted">${{ $products->Price }}</span></p>
                                     </div>
                                 </div>
                                 <!--  single widget product -->
-
-                                <!--  single widget product -->
-                                <div class="single-grid-product list-mode" style="height: auto">
-                                    <div class="list-mode-image">
-                                        <a href="single-product.html">
-                                            <img src="{{ url('/') }}/assets/images/product/6-100x133.jpg" class="img-fluid" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="list-mode-content">
-                                        <span class="category"><a href="shop.html">Sports</a></span>
-                                        <h3 class="title"> <a href="single-product.html">Pellentesque posuere
-                                                hendrerit</a></h3>
-                                        <div class="product-category-rating">
-                                            <span class="rating float-none">
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star-outline"></i>
-                                            </span>
-                                        </div>
-                                        <p class="product-price"><span class="discounted-price">$58.00</span></p>
-                                    </div>
-                                </div>
-                                <!--  single widget product -->
-
-                                <!--  single widget product -->
-                                <div class="single-grid-product list-mode" style="height: auto" >
-                                    <div class="list-mode-image">
-                                        <a href="single-product.html">
-                                            <img src="{{ url('/') }}/assets/images/product/7-100x133.jpg" class="img-fluid" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="list-mode-content">
-                                        <span class="category"><a href="shop.html">Toys</a></span>
-                                        <h3 class="title"> <a href="single-product.html">Auctor gravida enim</a></h3>
-                                        <div class="product-category-rating">
-                                            <span class="rating float-none">
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star-outline"></i>
-                                            </span>
-                                        </div>
-                                        <p class="product-price"><span class="discounted-price">$48.00</span> <span
-                                                class="main-price discounted">$78.00</span></p>
-                                    </div>
-                                </div>
-                                <!--  single widget product -->
-
-
-
-                                <!--  single widget product -->
-                                <div class="single-grid-product list-mode" style="height: auto">
-                                    <div class="list-mode-image">
-                                        <a href="single-product.html">
-                                            <img src="{{ url('/') }}/assets/images/product/9-100x133.jpg" class="img-fluid" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="list-mode-content">
-                                        <span class="category"><a href="shop.html">Furniture</a></span>
-                                        <h3 class="title"> <a href="single-product.html">Sit voluptatem rhoncus sem</a>
-                                        </h3>
-                                        <div class="product-category-rating">
-                                            <span class="rating float-none">
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star-outline"></i>
-                                            </span>
-                                        </div>
-                                        <p class="product-price"><span class="discounted-price">$70.00</span> <span
-                                                class="main-price discounted">$95.00</span></p>
-                                    </div>
-                                </div>
-                                <!--  single widget product -->
-
-                                <!--  single widget product -->
-                                <div class="single-grid-product list-mode" style="height: auto">
-                                    <div class="list-mode-image">
-                                        <a href="single-product.html">
-                                            <img src="{{ url('/') }}/assets/images/product/13-100x133.jpg" class="img-fluid" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="list-mode-content">
-                                        <span class="category"><a href="shop.html">Category</a></span>
-                                        <h3 class="title"> <a href="single-product.html">Nullam maximus eget nisi</a>
-                                        </h3>
-                                        <div class="product-category-rating">
-                                            <span class="rating float-none">
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star-outline"></i>
-                                            </span>
-                                        </div>
-                                        <p class="product-price"><span class="discounted-price">$60.00</span></p>
-                                    </div>
-                                </div>
-                                <!--  single widget product -->
-
-                                <!--  single widget product -->
-                                <div class="single-grid-product list-mode" style="height: auto">
-                                    <div class="list-mode-image">
-                                        <a href="single-product.html">
-                                            <img src="{{ url('/') }}/assets/images/product/12-100x133.jpg" class="img-fluid" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="list-mode-content">
-                                        <span class="category"><a href="shop.html">Category</a></span>
-                                        <h3 class="title"> <a href="single-product.html">Cillum dolore lorem ipsum</a>
-                                        </h3>
-                                        <div class="product-category-rating">
-                                            <span class="rating float-none">
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star-outline"></i>
-                                            </span>
-                                        </div>
-                                        <p class="product-price"><span class="discounted-price">$59.00</span> <span
-                                                class="main-price discounted">$70.00</span></p>
-                                    </div>
-                                </div>
-                                <!--  single widget product -->
-
-                                <!--  single widget product -->
-                                <div class="single-grid-product list-mode" style="height: auto">
-                                    <div class="list-mode-image">
-                                        <a href="single-product.html">
-                                            <img src="{{ url('/') }}/assets/images/product/11-100x133.jpg" class="img-fluid" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="list-mode-content">
-                                        <span class="category"><a href="shop.html">Accessories</a></span>
-                                        <h3 class="title"> <a href="single-product.html">Vestibulum suscipit sedt</a>
-                                        </h3>
-                                        <div class="product-category-rating">
-                                            <span class="rating float-none">
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star-outline"></i>
-                                            </span>
-                                        </div>
-                                        <p class="product-price"><span class="discounted-price">$90.00</span> <span
-                                                class="main-price discounted">$120.00</span></p>
-                                    </div>
-                                </div>
-                                <!--  single widget product -->
-
-                                <!--  single widget product -->
-                                <div class="single-grid-product list-mode" style="height: auto">
-                                    <div class="list-mode-image">
-                                        <a href="single-product.html">
-                                            <img src="{{ url('/') }}/assets/images/product/10-100x133.jpg" class="img-fluid" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="list-mode-content">
-                                        <span class="category"><a href="shop.html">Lighting</a></span>
-                                        <h3 class="title"> <a href="single-product.html">Donec eu libero ac dapibu</a>
-                                        </h3>
-                                        <div class="product-category-rating">
-                                            <span class="rating float-none">
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star-outline"></i>
-                                            </span>
-                                        </div>
-                                        <p class="product-price"><span class="discounted-price">$85.00</span> <span
-                                                class="main-price discounted">$100.00</span></p>
-                                    </div>
-                                </div>
-                                <!--  single widget product -->
+                                @endif
+                             @endforeach
+                               
                             </div>
+                            
                             <!-- End of widget product list wrapper -->
                         </div>
+                      
                         <!--  Product List Widget Wrapper -->
 
                     </div>
-
+                   
+                    
                     <div class="col-lg-4 col-md-6">
                         <!--  Product List Widget Wrapper -->
                         <div class="product-list-widget-wrapper">
-                            <!-- widget product list title -->
+                            <!-- widget product list title --> 
                             <div class="list-product-section-title mb-35">
                                 <h3>Latest <span>Arrivals</span></h3>
                                 <div class="latest-nav slick-btns"></div>
@@ -400,17 +230,18 @@
                                         }}
                                         ]'>
                                 <!--  single widget product -->
+                                @foreach (App\Models\product::all() as $products )
+                                @if($products->new == 'yes')
                                 <div class="single-grid-product list-mode" style="height: auto">
                                     <div class="list-mode-image">
-                                        <a href="single-product.html">
-                                            <img src="{{ url('/') }}/assets/images/product/9-100x133.jpg" class="img-fluid" alt="">
+                                        <a href="{{ route('productShow',$products['id']) }}">
+                                            <img src="{{ asset($products->product_image) }}" class="img-fluid" alt="">
                                         </a>
                                     </div>
                                     <div class="list-mode-content">
-                                        <span class="category"><a href="shop.html">Furniture</a></span>
-                                        <h3 class="title"> <a href="single-product.html">Sit voluptatem rhoncus sem</a>
+                                        <h3 class="title"> <a href="{{ route('productShow',$products['id']) }}">{{($products->product_name) }}</a>
                                         </h3>
-                                        <div class="product-category-rating">
+                                        <!-- <div class="product-category-rating">
                                             <span class="rating float-none">
                                                 <i class="ion-android-star active"></i>
                                                 <i class="ion-android-star active"></i>
@@ -418,193 +249,13 @@
                                                 <i class="ion-android-star active"></i>
                                                 <i class="ion-android-star-outline"></i>
                                             </span>
-                                        </div>
-                                        <p class="product-price"><span class="discounted-price">$70.00</span> <span
-                                                class="main-price discounted">$95.00</span></p>
+                                        </div> -->
+                                        <p class="product-price"><span class="discounted-price">${{ $products->Price -$products->Price*(($products->discount)/100) }}</span> <span
+                                                class="main-price discounted">${{ $products->Price }}</span></p>
                                     </div>
                                 </div>
-                                <!--  single widget product -->
-
-                                <!--  single widget product -->
-                                <div class="single-grid-product list-mode" style="height: auto">
-                                    <div class="list-mode-image">
-                                        <a href="single-product.html">
-                                            <img src="{{ url('/') }}/assets/images/product/13-100x133.jpg" class="img-fluid" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="list-mode-content">
-                                        <span class="category"><a href="shop.html">Category</a></span>
-                                        <h3 class="title"> <a href="single-product.html">Nullam maximus eget nisi</a>
-                                        </h3>
-                                        <div class="product-category-rating">
-                                            <span class="rating float-none">
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star-outline"></i>
-                                            </span>
-                                        </div>
-                                        <p class="product-price"><span class="discounted-price">$60.00</span></p>
-                                    </div>
-                                </div>
-                                <!--  single widget product -->
-
-                                <!--  single widget product -->
-                                <div class="single-grid-product list-mode" style="height: auto">
-                                    <div class="list-mode-image">
-                                        <a href="single-product.html">
-                                            <img src="{{ url('/') }}/assets/images/product/12-100x133.jpg" class="img-fluid" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="list-mode-content">
-                                        <span class="category"><a href="shop.html">Category</a></span>
-                                        <h3 class="title"> <a href="single-product.html">Cillum dolore lorem ipsum</a>
-                                        </h3>
-                                        <div class="product-category-rating">
-                                            <span class="rating float-none">
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star-outline"></i>
-                                            </span>
-                                        </div>
-                                        <p class="product-price"><span class="discounted-price">$59.00</span> <span
-                                                class="main-price discounted">$70.00</span></p>
-                                    </div>
-                                </div>
-                                <!--  single widget product -->
-
-                                <!--  single widget product -->
-                                <div class="single-grid-product list-mode" style="height: auto">
-                                    <div class="list-mode-image">
-                                        <a href="single-product.html">
-                                            <img src="{{ url('/') }}/assets/images/product/11-100x133.jpg" class="img-fluid" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="list-mode-content">
-                                        <span class="category"><a href="shop.html">Accessories</a></span>
-                                        <h3 class="title"> <a href="single-product.html">Vestibulum suscipit sed</a>
-                                        </h3>
-                                        <div class="product-category-rating">
-                                            <span class="rating float-none">
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star-outline"></i>
-                                            </span>
-                                        </div>
-                                        <p class="product-price"><span class="discounted-price">$90.00</span> <span
-                                                class="main-price discounted">$120.00</span></p>
-                                    </div>
-                                </div>
-                                <!--  single widget product -->
-
-                                <!--  single widget product -->
-                                <div class="single-grid-product list-mode" style="height: auto">
-                                    <div class="list-mode-image">
-                                        <a href="single-product.html">
-                                            <img src="{{ url('/') }}/assets/images/product/10-100x133.jpg" class="img-fluid" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="list-mode-content">
-                                        <span class="category"><a href="shop.html">Lighting</a></span>
-                                        <h3 class="title"> <a href="single-product.html">Donec eu libero ac dapibus</a>
-                                        </h3>
-                                        <div class="product-category-rating">
-                                            <span class="rating float-none">
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star-outline"></i>
-                                            </span>
-                                        </div>
-                                        <p class="product-price"><span class="discounted-price">$85.00</span> <span
-                                                class="main-price discounted">$100.00</span></p>
-                                    </div>
-                                </div>
-                                <!--  single widget product -->
-
-                                <!--  single widget product -->
-                                <div class="single-grid-product list-mode" style="height: auto">
-                                    <div class="list-mode-image">
-                                        <a href="single-product.html">
-                                            <img src="{{ url('/') }}/assets/images/product/5-100x133.jpg" class="img-fluid" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="list-mode-content">
-                                        <span class="category"><a href="shop.html">Category</a></span>
-                                        <h3 class="title"> <a href="single-product.html">Cillum dolore lorem ipsum</a>
-                                        </h3>
-                                        <div class="product-category-rating">
-                                            <span class="rating float-none">
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star-outline"></i>
-                                            </span>
-                                        </div>
-                                        <p class="product-price"><span class="discounted-price">$80.00</span> <span
-                                                class="main-price discounted">$100.00</span></p>
-                                    </div>
-                                </div>
-                                <!--  single widget product -->
-
-
-
-                                <!--  single widget product -->
-                                <div class="single-grid-product list-mode" style="height: auto">
-                                    <div class="list-mode-image">
-                                        <a href="single-product.html">
-                                            <img src="{{ url('/') }}/assets/images/product/7-100x133.jpg" class="img-fluid" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="list-mode-content">
-                                        <span class="category"><a href="shop.html">Toys</a></span>
-                                        <h3 class="title"> <a href="single-product.html">Auctor gravida enim</a></h3>
-                                        <div class="product-category-rating">
-                                            <span class="rating float-none">
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star-outline"></i>
-                                            </span>
-                                        </div>
-                                        <p class="product-price"><span class="discounted-price">$48.00</span> <span
-                                                class="main-price discounted">$78.00</span></p>
-                                    </div>
-                                </div>
-                                <!--  single widget product -->
-
-                                <!--  single widget product -->
-                                <div class="single-grid-product list-mode" style="height: auto">
-                                    <div class="list-mode-image">
-                                        <a href="single-product.html">
-                                            <img src="{{ url('/') }}/assets/images/product/8-100x133.jpg" class="img-fluid" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="list-mode-content">
-                                        <span class="category"><a href="shop.html">Storage</a></span>
-                                        <h3 class="title"> <a href="single-product.html">Kaoreet lobortis sagittis</a>
-                                        </h3>
-                                        <div class="product-category-rating">
-                                            <span class="rating float-none">
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star-outline"></i>
-                                            </span>
-                                        </div>
-                                        <p class="product-price"><span class="discounted-price">$80.00</span> <span
-                                                class="main-price discounted">$100.00</span></p>
-                                    </div>
-                                </div>
+                                @endif
+                                @endforeach
                                 <!--  single widget product -->
                             </div>
                             <!-- End of widget product list wrapper -->
@@ -650,17 +301,19 @@
                                         }}
                                         ]'>
                                 <!--  single widget product -->
+                                @foreach (App\Models\product::all() as $products)
+                                @if($products->popular_products == 'popular_products')
                                 <div class="single-grid-product list-mode" style="height: auto">
                                     <div class="list-mode-image">
-                                        <a href="#">
-                                            <img src="{{ url('/') }}/assets/images/product/8-100x133.jpg" class="img-fluid" alt="">
+                                        <a href="{{ route('productShow',$products['id']) }}">
+                                            <img src="{{ asset($products->product_image) }}" class="img-fluid" alt="">
                                         </a>
                                     </div>
                                     <div class="list-mode-content">
-                                        <span class="category"><a href="shop.html">Storage</a></span>
-                                        <h3 class="title"> <a href="single-product.html">Kaoreet lobortis sagittis</a>
+                                        
+                                        <h3 class="title"> <a href="{{ route('productShow',$products['id']) }}">{{($products->product_name) }}</a>
                                         </h3>
-                                        <div class="product-category-rating">
+                                        <!-- <div class="product-category-rating">
                                             <span class="rating float-none">
                                                 <i class="ion-android-star active"></i>
                                                 <i class="ion-android-star active"></i>
@@ -668,217 +321,16 @@
                                                 <i class="ion-android-star active"></i>
                                                 <i class="ion-android-star-outline"></i>
                                             </span>
-                                        </div>
-                                        <p class="product-price"><span class="discounted-price">$80.00</span> <span
-                                                class="main-price discounted">$100.00</span></p>
+                                        </div> -->
+                                        <p class="product-price"><span class="discounted-price">${{ $products->Price -$products->Price*(($products->discount)/100) }}</span> <span
+                                                class="main-price discounted">${{ $products->Price }}</span></p>
                                     </div>
                                 </div>
+                                @endif
+                                @endforeach
                                 <!--  single widget product -->
 
-                                <!--  single widget product -->
-                                <div class="single-grid-product list-mode" style="height: auto">
-                                    <div class="list-mode-image">
-                                        <a href="#">
-                                            <img src="{{ url('/') }}/assets/images/product/9-100x133.jpg" class="img-fluid" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="list-mode-content">
-                                        <span class="category"><a href="shop.html">Furniture</a></span>
-                                        <h3 class="title"> <a href="single-product.html">Sit voluptatem rhoncus sem</a>
-                                        </h3>
-                                        <div class="product-category-rating">
-                                            <span class="rating float-none">
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star-outline"></i>
-                                            </span>
-                                        </div>
-                                        <p class="product-price"><span class="discounted-price">$70.00</span> <span
-                                                class="main-price discounted">$95.00</span></p>
-                                    </div>
-                                </div>
-                                <!--  single widget product -->
 
-                                <!--  single widget product -->
-                                <div class="single-grid-product list-mode" style="height: auto">
-                                    <div class="list-mode-image">
-                                        <a href="#">
-                                            <img src="{{ url('/') }}/assets/images/product/13-100x133.jpg" class="img-fluid" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="list-mode-content">
-                                        <span class="category"><a href="shop.html">Category</a></span>
-                                        <h3 class="title"> <a href="single-product.html">Nullam maximus eget nisi</a>
-                                        </h3>
-                                        <div class="product-category-rating">
-                                            <span class="rating float-none">
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star-outline"></i>
-                                            </span>
-                                        </div>
-                                        <p class="product-price"><span class="discounted-price">$60.00</span></p>
-                                    </div>
-                                </div>
-                                <!--  single widget product -->
-
-                                <!--  single widget product -->
-                                <div class="single-grid-product list-mode" style="height: auto">
-                                    <div class="list-mode-image">
-                                        <a href="#">
-                                            <img src="{{ url('/') }}/assets/images/product/12-100x133.jpg" class="img-fluid" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="list-mode-content">
-                                        <span class="category"><a href="shop.html">Category</a></span>
-                                        <h3 class="title"> <a href="single-product.html">Cillum dolore lorem ipsum</a>
-                                        </h3>
-                                        <div class="product-category-rating">
-                                            <span class="rating float-none">
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star-outline"></i>
-                                            </span>
-                                        </div>
-                                        <p class="product-price"><span class="discounted-price">$59.00</span> <span
-                                                class="main-price discounted">$70.00</span></p>
-                                    </div>
-                                </div>
-                                <!--  single widget product -->
-
-                                <!--  single widget product -->
-                                <div class="single-grid-product list-mode" style="height: auto">
-                                    <div class="list-mode-image">
-                                        <a href="#">
-                                            <img src="{{ url('/') }}/assets/images/product/5-100x133.jpg" class="img-fluid" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="list-mode-content">
-                                        <span class="category"><a href="shop.html">Category</a></span>
-                                        <h3 class="title"> <a href="single-product.html">Cillum dolore lorem ipsum</a>
-                                        </h3>
-                                        <div class="product-category-rating">
-                                            <span class="rating float-none">
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star-outline"></i>
-                                            </span>
-                                        </div>
-                                        <p class="product-price"><span class="discounted-price">$80.00</span> <span
-                                                class="main-price discounted">$100.00</span></p>
-                                    </div>
-                                </div>
-                                <!--  single widget product -->
-
-                                <!--  single widget product -->
-                                <div class="single-grid-product list-mode" style="height: auto">
-                                    <div class="list-mode-image">
-                                        <a href="#">
-                                            <img src="{{ url('/') }}/assets/images/product/6-100x133.jpg" class="img-fluid" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="list-mode-content">
-                                        <span class="category"><a href="shop.html">Sports</a></span>
-                                        <h3 class="title"> <a href="single-product.html">Pellentesque posuere
-                                                hendrerit</a></h3>
-                                        <div class="product-category-rating">
-                                            <span class="rating float-none">
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star-outline"></i>
-                                            </span>
-                                        </div>
-                                        <p class="product-price"><span class="discounted-price">$58.00</span></p>
-                                    </div>
-                                </div>
-                                <!--  single widget product -->
-
-                                <!--  single widget product -->
-                                <div class="single-grid-product list-mode" style="height: auto">
-                                    <div class="list-mode-image">
-                                        <a href="#">
-                                            <img src="{{ url('/') }}/assets/images/product/7-100x133.jpg" class="img-fluid" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="list-mode-content">
-                                        <span class="category"><a href="shop.html">Toys</a></span>
-                                        <h3 class="title"> <a href="single-product.html">Auctor gravida enim</a></h3>
-                                        <div class="product-category-rating">
-                                            <span class="rating float-none">
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star-outline"></i>
-                                            </span>
-                                        </div>
-                                        <p class="product-price"><span class="discounted-price">$48.00</span> <span
-                                                class="main-price discounted">$78.00</span></p>
-                                    </div>
-                                </div>
-                                <!--  single widget product -->
-
-                                <!--  single widget product -->
-                                <div class="single-grid-product list-mode" style="height: auto">
-                                    <div class="list-mode-image">
-                                        <a href="#">
-                                            <img src="{{ url('/') }}/assets/images/product/11-100x133.jpg" class="img-fluid" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="list-mode-content">
-                                        <span class="category"><a href="shop.html">Accessories</a></span>
-                                        <h3 class="title"> <a href="single-product.html">Vestibulum suscipit sed</a>
-                                        </h3>
-                                        <div class="product-category-rating">
-                                            <span class="rating float-none">
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star-outline"></i>
-                                            </span>
-                                        </div>
-                                        <p class="product-price"><span class="discounted-price">$90.00</span> <span
-                                                class="main-price discounted">$120.00</span></p>
-                                    </div>
-                                </div>
-                                <!--  single widget product -->
-
-                                <!--  single widget product -->
-                                <div class="single-grid-product list-mode" style="height: auto">
-                                    <div class="list-mode-image">
-                                        <a href="#">
-                                            <img src="{{ url('/') }}/assets/images/product/10-100x133.jpg" class="img-fluid" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="list-mode-content">
-                                        <span class="category"><a href="shop.html">Lighting</a></span>
-                                        <h3 class="title"> <a href="single-product.html">Donec eu libero ac dapibus</a>
-                                        </h3>
-                                        <div class="product-category-rating">
-                                            <span class="rating float-none">
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star-outline"></i>
-                                            </span>
-                                        </div>
-                                        <p class="product-price"><span class="discounted-price">$85.00</span> <span
-                                                class="main-price discounted">$100.00</span></p>
-                                    </div>
-                                </div>
-                                <!--  single widget product -->
                             </div>
                         </div>
                     </div>

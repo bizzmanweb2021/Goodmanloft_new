@@ -60,7 +60,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::post('/import',[ProductController::class,'import'])->name('import');
 
     Route::get('/editProduct/{id}',function($id){
-        $prod = DB::table('products')->select('id','product_name','Product_Description','Product_Dimension','Price','Weight','Quantity','sale')->where('id','=',$id)->get();
+        $prod = DB::table('products')->select('id','product_name','Product_Description','Product_Dimension','Price','Weight','Quantity','sale','new','popular_products','discount')->where('id','=',$id)->get();
         return view('Admin.Product.product_edit',['prod'=>$prod]);
     })->name('edit.product');
 

@@ -32,14 +32,41 @@
                     <input type="text" name="Weight" value="{{ $prod[0]->Weight }}" class="form-control" style="width:100%">
                 </div><br>
 
+                
+
+                    <div class="col-md-2">
+                        <label for="sale" class="text-truncate  text-body ms-3 w-80 mb-0">Sale</label>
+                        <select type="sale" name="sale" id="sale" value="{{ $prod[0]->sale }}" class="form-control" style="width:100%">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="discount text-truncate  text-body ms-3 w-80 mb-0">Discount %</label>
+                        <input type="text" name="discount" value="{{ $prod[0]->discount }}" class="discount form-control" style="width:100%">
+                    </div><br>
+
+                    &nbsp;<div class="row mb-4">
                 <div class="col-md-4">
-                        <label class="text-truncate  text-body ms-3 w-80 mb-0">Product on Sale/New</label>
-                        <select type="sale" name="sale" value="{{ $prod[0]->sale }}" class="form-control" style="width:100%" >
-                        <option value="Sale">Sale</option>
-                        <option value="New">New</option>
+                        <label class="text-truncate  text-body ms-3 w-80 mb-0">New</label>
+                        <select type="new" name="new" id="new" value="{{ $prod[0]->new }}" class="form-control" style="width:100%">
+                            
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
                         </select>
                     </div><br>
-                
+                    <div class="col-md-4">
+                    <label class="text-truncate  text-body ms-3 w-80 mb-0">Quantity</label>
+                    <input type="text" name="Quantity" value="{{ $prod[0]->Quantity }}" class="form-control" style="width:100%">
+                </div><br>
+                <div class="col-md-4">
+                    <label class="text-truncate  text-body ms-3 w-80 mb-0">Price</label>
+                    <input type="text" name="Price" value="{{ $prod[0]->Price }}" class="form-control" style="width:100%" placeholder="In $">
+                </div><br>
+                </div>
+                <div class="col-md-4">            
+                        <input type="radio" id="popular_products" name="popular_products" value="popular_products"><label for="">Popular Products</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                </div><br>
                 
                 <!-- <div class="col-md-4 form-check">
                 <input class="form-check-input" type="checkbox" value="" id="sale">
@@ -55,18 +82,11 @@
                         @foreach (App\Models\product::orderBy('id')->limit(1)->get() as $product )
                         <input type="text"  value="{{$prod[0]->Product_Size}}"  class="form-control" style="width:100%">
                         @endforeach
-                </div><br> --}}
-            </div>
-            <div class="row mb-4">
+                </div><br> 
+            </div>--}}
+            {{--<div class="row mb-4">
+                
                 <div class="col-md-4">
-                    <label class="text-truncate  text-body ms-3 w-80 mb-0">Quantity</label>
-                    <input type="text" name="Quantity" value="{{ $prod[0]->Quantity }}" class="form-control" style="width:100%">
-                </div><br>
-                <div class="col-md-4">
-                    <label class="text-truncate  text-body ms-3 w-80 mb-0">Price</label>
-                    <input type="text" name="Price" value="{{ $prod[0]->Price }}" class="form-control" style="width:100%" placeholder="In $">
-                </div><br>
-                {{-- <div class="col-md-4">
                     <label class="text-truncate  text-body ms-3 w-80 mb-0">Stock Availability</label>
                     @foreach (App\Models\product::orderBy('id')->limit(1)->get() as $product )
                     <input type="text"  value="{{$prod[0]->stock_availability}}"  class="form-control" style="width:100%">
@@ -85,3 +105,14 @@
   </div>
 </div>
 @endsection
+<script type="text/javascript">
+    //alert('hello');
+    jQuery('.discount').hide();
+    jQuery('#sale').on('change',function(){
+    if(jQuery(this).val()=='yes'){
+        jQuery('.discount').show();
+    } else {
+        jQuery('.discount').hide();
+    }
+});
+

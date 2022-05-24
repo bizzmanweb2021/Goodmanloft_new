@@ -145,14 +145,16 @@
                             <option value='Select Shipping' selected>Select Shipping</option>
                             <option value='Local Shipping'>Local Shipping</option>
                             <option value='Express Local Shipping'>Express Local Shipping </option>
-                            <option value='Self Collection'>Self Collection</option>
-                        </select>
+                            <option value='selfCollection'>Self Collection</option>
+                            
+                 </select>
                  </div>
              </div>
          </div>
         
     </div>&nbsp;&nbsp;&nbsp;
-
+    
+   
     <div class="row">
         <div class="col-lg-6">
             <div class="row">
@@ -223,11 +225,23 @@
 
 @endsection
 
+
+
 @section('javascript')
 <script type="text/javascript">
     //alert('hello');
     jQuery('#gpay').show();
     //jQuery('.gpay').show();
+
+    $('body').on('change','.shipping_method',function(){
+
+        if($(this).val()=='selfCollection'){
+            alert('We will contact you within 3 working days');
+        }
+        
+
+    });
+    
 
 </script>  
 <script async
