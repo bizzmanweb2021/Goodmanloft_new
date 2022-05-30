@@ -1,55 +1,163 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Models\Shipping_charge;
+use App\Models\Cart;
 use App\Models\Coupon;
+use App\Models\Order;
+use App\Models\product;
 use Illuminate\Http\Request;
-use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Support\Facades\Auth;
+use DB;
 
 class CouponController extends Controller
 {
-    //
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        return view('Admin.Coupon.Coupon_add');
+        //
     }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-        $cop = Coupon::orderBy('coupon_code')->get();
-        return view('Admin.Coupon.couponView')->with('cop',$cop);
+        //
     }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
-        $this->validate($request,['coupon_name'=>'required',
-                                   'coupon_code'=>'required',
-                                   'coupon_description'=>'required',
-                                   'start_date'=>'required',
-                                   'end_date' => 'required',
-                                   'status'=>'required',
-                                   'discount_type'=>'required',
-                                   'Banner'=>'required|mimes:jpg,png,jpeg',
-                        ]);
 
-                        $image = $request->Banner;
-                        $filename = $image->getClientOriginalName();
-                        $image_resize = Image::make($image->getRealPath())->save(public_path('images/'.$filename));
-                        $image_destination =  'images/'.$filename;
+        $request->validate([
+            'coupon_code' => 'required'
+        ]);
 
-                        $coupon = new Coupon();
-                        $coupon->coupon_name = $request->coupon_name;
-                        $coupon->coupon_code = $request->coupon_code;
-                        $coupon->coupon_description = $request->coupon_description;
-                        $coupon->start_date = $request->start_date;
-                        $coupon->end_date = $request->end_date;
-                        $coupon->status = $request->status;
-                        $coupon->discount_type = $request->discount_type;
-                        $coupon->discount_amount = $request->discount_amount;
-                        $coupon->Banner = $image_destination;
-                        $coupon->grouped_by_users = $request->grouped_by_users;
-                        $coupon->grouped_by_products = $request->grouped_by_products;
-                        $coupon->grouped_by_category = $request->grouped_by_category;
-                        $coupon->save();
+       // $total = Cart::where("user_id",Auth::user()->id)->sum('total');
+        //if(250 < $total){
+            $coupon = Coupon::where('coupon_code', $request->coupon_code);
+            if($coupon->count() > 0){
 
-                        $notification1=array('alert-type'=>'success','message'=>'Coupon Added Successfully');
-                        return redirect()->route('admin.CouponView')->with($notification1);
+                if(DB::table('apply_coupon')->where(['user_id'=> Auth::user()->id,'coupon_id'=>$coupon->first()->id])->count() > 0){
+                    return back()->with(['status'=>'danger','message'=>'Coupon code is already applied.']);
+                }else{
+                    $cart = DB::table('apply_coupon')->insert(['user_id'=> Auth::user()->id,'coupon_id'=>$coupon->first()->id]);
+                    return back()->with(['status'=>'success','message'=>'Coupon code is applied.']);
+                }    
+            }else{
+                return back()->with(['status'=>'danger','message'=>'Invalid Coupon Code.']);
+            }
+        //}else{
+       //     return back()->with(['status'=>'danger','message'=>'Coupon code is not apply.']);
+       // }
+
+
+
+        exit;
+
+        $coupon = Coupon::where('number', $request->coupon_code)->first();
+        $cart = Cart::where('user_id', Auth::user()->id)->get();
+        $exit = Order::where('user_id', Auth::user()->id)->where('coupon_code', $request->coupon)->first();
+        $order_total = 0;
+        foreach ($cart as $item) {
+            $cart = Cart::find($item->product_id);
+
+            $order_total = $order_total + ($cart->price * $item->quantity);
+        }
+
+
+
+        // if ($request->home_delivery_select == 1) {
+        //     $check = ShippingCharge::where('country', $request->country)->first();
+        //     if ($check) {
+        //         $total = $order_sum + $check->amount;
+        //         $delivery_charge = $check->amount;
+        //     } else {
+        //         $delivery_charge = 0;
+        //         $total = $order_sum;
+        //     }
+        // } else {
+        //     $delivery_charge = 0;
+        //     $total = $order_sum;
+        // }
+
+        if ($order_total > $coupon->discount_amount && !$exit) {
+            $after_discount_amount = 0;
+            if ($coupon->discount_type == 'Fixed') {
+                $after_discount_amount = $total - $coupon->discount_amount;
+            } else {
+                $per_cal = ($coupon->discount_amount / 100) * $total;
+                $after_discount_amount =  $total - $per_cal;
+            }
+            $type = $coupon->discount_type == "Fixed" ? 'fixed' : '%';
+            echo json_encode([
+                'status' => 'success',
+                'after_discount_amount' => $after_discount_amount,
+                'type' => $type,
+                'discount_amount'       => $coupon->discount_amount,
+                $order_total
+            ]);
+        } else {
+            echo json_encode(['status' => 'Failed', 'message' => 'Invalid Coupon']);
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }

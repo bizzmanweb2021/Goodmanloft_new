@@ -39,8 +39,8 @@
                     <ul class="ft-menu">
                         <li><a href="{{ route('about.index') }}">About Us</a></li>
                         <li><a href="{{ route('privacy') }}">Privacy Policy</a></li>
-                        <li><a href="{{ route('login') }}">Shopping Guide</a></li>
-                        <li><a href="{{ route('login') }}">Delivery Information</a></li>
+                        <li><a href="{{ route('faq') }}">Shopping Guide</a></li>
+                        <li><a href="{{ route('faq') }}">Delivery Information</a></li>
                         <li><a href="{{ route('faq') }}">FAQ</a></li>
                         <li><a href="{{ route('term.condition') }}">Terms & Conditions</a></li>
                         

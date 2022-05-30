@@ -1,6 +1,6 @@
 @extends('Frontend.layouts.master')
 @section('content')
-<div class="page-banner-section section bg-image" data-bg="assets/images/inner-breadcum.png">
+
     <div class="container">
         <div class="row">
             <div class="col">
@@ -17,7 +17,7 @@
 </div>
 <!-- Page Banner Section End -->
  <!--Wishlist section start-->
- <div class="wishlist-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 mb-5 pb-5" style="background-image: url(assets/images/shopping-cart-pattern.png); background-size: contain; background-repeat: repeat;">
+ <div class="wishlist-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 mb-5 pb-5">
     <div class="container  pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20">
         <div class="row">
             <div class="col-12">
@@ -57,3 +57,4 @@
 
 
 @endsection
+

@@ -168,19 +168,59 @@
                                         <?php $sub_total += $cart->total ?>
                                         <ul>
                                             <!-- <li><img src="{{ $cart->product_image }}" style="width: 75px; height:100px;"></li> -->
-                                            <li>{{ $cart->product_name }} <span>${{ $cart->total }}</span></li>
+                                            <li>
+                                            <div class="row">
+                                                    <div class="col-md-10">{{ $cart->product_name }}</div>
+                                                    <div class="col-md-2"> <span>${{ $cart->total }}.00</span></div>
+</div></li>
                                         </ul>
                                         @endforeach
-                                        <p>Sub Total <span>${{ $sub_total }}</span></p>
+                                        @php
+                                            $shipping_amount = 0;
+                                            $charges = DB::table('shipping_charges')->where('country_id','200');
+                                            if($charges->count() > 0){
+                                                $charge = $charges->first();
+                                                if(250 > $sub_total){
+													$shipping_amount = $charge->delivery_amount;
+												}
+                                            }
+              
+                                            $coupon_amount = 0;
+											$coupon_code = '';
+                                            $apply_coupon = DB::table('apply_coupon')->where("user_id",Auth::user()->id)->orderBy('id','DESC');
+                                            if($apply_coupon->count() > 0){
+                                                $coupon_id = $apply_coupon->first()->coupon_id;
+
+                                                $coupon = DB::table('coupons')->where("id",$coupon_id);
+                                                if($coupon->count() > 0){
+                                                    $coupon = $coupon->first();
+                                                    
+													$coupon_code = $coupon->coupon_code;
+                                                    $coupon_amount = $coupon->discount_amount;
+                                                    
+                                                }
+                                            }
+
+                                        @endphp
+                                        <p>Sub Total <span>${{ $sub_total }}.00</span></p>
                                         <p>Shipping
                                             <span class="badge badge-secondary" style="float: none; color:black;">
                                             <a data-bs-toggle="modal" data-bs-target="#myModal">?</a>
-                                        </span><span  style="opacity: 0.8;">Calculated at next step</span></p>
-                                        <p>Coupon Code<span>
-                                            <input type="text" style="background-color: white; width:120px; height:40px;">
+                                        </span><span  style="opacity: 0.8;">{{ $shipping_amount }}.00</span></p>
+                                        <p>Discount Amount<span>
+											<input type="hidden" id="coupon_code" value="{{ $coupon_code}}">
+											<input type="hidden" id="shipping_charge" value="{{ $shipping_amount}}">
+                                            <span type="text" id="coupon_amount">{{ $coupon_amount}}.00</span>
+                                            <!-- <input type="text" id="coupon_amount" value="{{ $coupon_amount}}" style="background-color: white; width:120px; height:40px;"> -->
                                         </span></p>
                                         
-                        <p >Total <span class="tot">${{ $sub_total }}</span></p>
+                                        <p >Total <span class="tot">$
+                                        @if(250 > $sub_total)
+                                            {{ $sub_total = $sub_total + $shipping_amount - $coupon_amount}}.00
+                                        @else
+                                            {{ $sub_total = $sub_total - $coupon_amount }}.00
+                                        @endif
+                                        </span></p>
                     </div>
                 </div>
             </div>
@@ -215,10 +255,10 @@
             </div>
         </div>
     </div><br>
-    <div class="shipping-btn ">
+    <!-- <div class="shipping-btn ">
         <a href="{{ route('confirm.payment') }}" data-amount="1280" data-id="3" class="btn order_now"><span>Continue To Payment</span></a> &nbsp;
         <a href="{{ route('checkout') }}"data-amount="1280" data-id="3" class="btn order_now"><span>Return to information</span></a>
-    </div>
+    </div> -->
     </div>
 </div>
 <!--Contact section end-->
@@ -236,7 +276,7 @@
     $('body').on('change','.shipping_method',function(){
 
         if($(this).val()=='selfCollection'){
-            alert('We will contact you within 3 working days');
+            alert('We will contact you within 3-Working Days');
         }
         
 
@@ -248,7 +288,7 @@
   src="https://pay.google.com/gp/p/js/pay.js"
   onload="onGooglePayLoaded()"></script>  
 
-<script src="https://www.paypal.com/sdk/js?client-id=Adizxf9OQ6bntDa6O2iLB9_9hWyX-5W-rkMcqDZ6ieQ4bWtv51gdIFopTgG7ZrENQrDoDmAAkT6BuW1n&currency=USD"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=Adizxf9OQ6bntDa6O2iLB9_9hWyX-5W-rkMcqDZ6ieQ4bWtv51gdIFopTgG7ZrENQrDoDmAAkT6BuW1n&currency=SGD"></script>
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 <script>
@@ -269,15 +309,33 @@
             // Successful capture! For dev/demo purposes:
             console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
             const transaction = orderData.purchase_units[0].payments.captures[0];
-            alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
+            //alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
+//alert(orderData.purchase_units[0]['amount'].currency_code);
 
-               var user_id = $('user_id').val();
-               var user_email = $('user_email').val();
-               var coupon_code = $('coupon_code').val();
-               var payment_method = $('payment_method').val();
-               var order_total = $('order_total').val();
-               var currency = $('currency').val();
-               var payment_status = $('payment_status').val();
+
+                var transaction_id = orderData.id;
+                var payment_status = orderData.status;
+                var currency_code = orderData.purchase_units[0]['amount'].currency_code;
+                var value = orderData.purchase_units[0]['amount'].value;
+
+                var given_name = orderData.payer.name.given_name;
+                var surname = orderData.payer.name.surname;
+                var email_address = orderData.payer.email_address;
+                var address_line_1 = orderData.payer.address.address_line_1;
+                var address_line_2 = orderData.payer.address.address_line_2;
+                var postal_code = orderData.payer.address.postal_code;
+                var country_code = orderData.payer.address.country_code;
+
+
+               //var user_id = $('user_id').val();
+              //    var user_email = $('user_email').val();
+                 var coupon_code = $('#coupon_code').val();
+				 var coupon_amount = $('#coupon_amount').val();
+				 var shipping_charge = $('#shipping_charge').val();
+            //    var payment_method = $('payment_method').val();
+            //    var order_total = $('order_total').val();
+            //    var currency = $('currency').val();
+              // var payment_status = $('payment_status').val();
 
 
             $.ajax(
@@ -286,20 +344,28 @@
                 url: "/place-order",
                 data:
                 {
-                    user_id : 'user_id',
-                    user_email:'user_email',
-                    coupon_code : 'coupon_code',
-                    payment_method : 'Paid by Paypal',
-                    order_total : 'order_total',
-                    amount : 'amount',
-                    currency : 'currency',
-                    payment_status:'payment_status',
+                    "_token": "{{ csrf_token() }}",
+                    "transaction_id" : transaction_id,
+                    "payment_status" :payment_status,
+                    "coupon_code" : coupon_code,
+					"coupon_amount" : coupon_amount,
+					"shipping_charge" : shipping_charge,
+                    "payment_method" : 'Paid by Paypal',
+                    "order_total" : value,
+                    //amount : 'amount',
+                    "currency" : currency_code,
+                    "given_name" : given_name,
+                    "surname" : surname,
+                    "email_address" : email_address,
+                    "address_line_1" : address_line_1,
+                    "address_line_2" : address_line_2,
+                    "postal_code" : postal_code,
+                    "country_code" : country_code,
                 },
-                success:function(response)
+                success: function(response)
                 {
-                    swat(response.status)
-                    window.location.href="/confirmPayment"
-            }
+                    window.location.href = '/confirmPayment';
+            },
 
           });
         });
@@ -560,7 +626,7 @@ function prefetchGooglePaymentData() {
   // transactionInfo must be set but does not affect cache
   paymentDataRequest.transactionInfo = {
     totalPriceStatus: 'NOT_CURRENTLY_KNOWN',
-    currencyCode: 'USD'
+    currencyCode: 'SG'
   };
   const paymentsClient = getGooglePaymentsClient();
   paymentsClient.prefetchPaymentData(paymentDataRequest);

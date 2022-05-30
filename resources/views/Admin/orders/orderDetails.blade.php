@@ -38,8 +38,9 @@
                                 <label for="update_delivery_point_status">Payment Status</label>
                                 <select class="form-control aiz-selectpicker" data-minimum-results-for-search="Infinity"
                                     id="update_payment_status">
-                                    <option value="0" >Unpaid</option>
-                                    <option value="1" >Paid</option>
+                                    <option value="">--Select--</option>
+                                    <option value="Approved" >Approved</option>
+                                    <option value="Pending" >Pending</option>
                                 </select>
                             </div>
                            
@@ -48,11 +49,11 @@
                                     <select class="form-control aiz-selectpicker" data-minimum-results-for-search="Infinity"
                                         id="update_self_pick_order_status">
                                         <option value="">--Select--</option>
-                                        <option value="4">
+                                        <option value="Pending Collection">
                                             Pending Collection</option>
-                                        <option value="5">
+                                        <option value="Complete">
                                             Complete</option>
-                                        <option value="6" >
+                                        <option value="Cancelled" >
                                             Cancelled</option>
                                     </select>
                                 </div>
@@ -63,6 +64,7 @@
                                     <select class="form-control aiz-selectpicker" data-minimum-results-for-search="Infinity"
                                         id="update_pick_point_status">
                                         <option value="">--Select--</option>
+                                        <option value="">Singapore</option>
                                        
                                     </select>
                                 </div>
@@ -128,6 +130,7 @@
                                 <table class="table table-bordered aiz-table invoice-summary">
                                     <thead>
                                         <tr class="bg-trans-dark">
+                                        <th width="3%">#</th>
                                             <th width="10%">Product_Image</th>
                                             <th class="text-uppercase">Product Name</th>
                                             <th data-breakpoints="lg" class="text-uppercase">
@@ -139,9 +142,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach (App\Models\Cart::where("user_id",Auth::user()->id)->get() as $cart)
+                                    
+                                    @foreach($carts as $key=> $cart)
                                             <tr>
-                                                
+                                            <td>
+                                                {{ $key+1 }}
+                                                </td>
                                                 <td><img src="{{ $cart->product_image }}">
                                                 </td>
                                                 <td>
@@ -152,12 +158,10 @@
                                                 </td>
                                                 <td>
                                                     {{ $cart->price }}
-                                                </td>
-                                               
+                                                </td>         
                                                 <td>
                                                 ${{ $cart->total }}
                                                 </td>
-                                               
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -165,13 +169,59 @@
                             </div>
                         </div>
                         {{-- end order list --}}
-
                         {{-- footer --}}
-                       
+                        
+                        <div class="row">
+                                                <div class="col-xl-6 col-md-6">
+                                              </div>
+                                                <div class="col-xl-6 col-md-6 ml-auto mr-0">
+                                                    <table class="table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>Subtotal</th>
+                                                                <td class="text-right">
+                                                                    <span
+                                                                        class="fw-600">${{ $cart->total }}</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Shipping</th>
+                                                                <td class="text-right">
+                                                                    <span
+                                                                        class="font-italic">${{ 0.00 }}</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Coupon Discount</th>
+                                                                <td class="text-right">
+                                                                    <span
+                                                                        class="font-italic">${{ 0.00 }}</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th><span class="fw-600">Total</span></th>
+                                                                <td class="text-right">
+                                                                    <strong><span>${{ $cart->total }}</span></strong>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+                        
+                            {{-- end footer --}}
+
+                            <div class="text-right no-print">
+                                <a href="#" type="button"
+                                    class="btn btn-icon btn-light"><i class="las la-print"></i></a>
+                            </div>
+                        </div>
+                        {{-- end card body --}}
                     </div>
                     {{-- end --}}
 
-                </div>
+                
             </div>
         </section>
     </div>

@@ -11,9 +11,11 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\BillingAddressController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactAdminController;
+use App\Http\Controllers\AdminCouponController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PromotionController;
@@ -54,7 +56,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::get('/stockAdd',[ProductController::class,'stockAdd'])->name('stockAdd');
     Route::post('/stockStore',[ProductController::class,'stockStore'])->name('stockStore');
     Route::get('/getSubCategoryById',[ProductController::class,'getSubCategoryById'])->name('getSubCategoryById');
-    Route::get('/orderDetails',[OrderController::class,'orderDetails'])->name('orderDetails');
+    Route::get('/orderDetails',[AdminOrderController::class,'orderDetails'])->name('orderDetails');
 
     Route::get('/import-form',[ProductController::class,'importForm'])->name('importForm');
     Route::post('/import',[ProductController::class,'import'])->name('import');
@@ -95,11 +97,11 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::post('/updateSubCate/{id}',[SubCategoryController::class,'updateSub'])->name('update.Subcate');
 
 
-    Route::get('/couponView',[CouponController::class,'create'])->name('CouponView');
-    Route::get('/couponAdd',[CouponController::class,'index'])->name('CouponAdd');
-    Route::post('/couponStore',[CouponController::class,'store'])->name('CouponStore');
+    Route::get('/couponView',[AdminCouponController::class,'create'])->name('CouponView');
+    Route::get('/couponAdd',[AdminCouponController::class,'index'])->name('CouponAdd');
+    Route::post('/couponStore',[AdminCouponController::class,'store'])->name('CouponStore');
 
-    Route::resource('/orders',OrderController::class);
+    Route::resource('/orders',AdminOrderController::class);
     // Route::get('/orderDetails',[OrderController::class,'show_order_details'])->name('show_order_details');
     Route::resource('/payments',PaymentController::class);
 
@@ -241,6 +243,15 @@ Route::middleware('auth')->group(function()
 
     Route::post('/place-order',[PaypalController::class,'PlaceOrder'])->name('place-order');
 
+    Route::resource('order', OrderController::class)->names([
+        'store' => 'order.store'
+    ])->middleware('signed');
 
+    Route::resource('coupon', CouponController::class)->names([
+        'store' => 'coupon.store'
+    ])->middleware('signed');
+
+    Route::post('/apply-coupon',[CouponController::class,'store'])->name('apply-coupon');
+    
 
 });

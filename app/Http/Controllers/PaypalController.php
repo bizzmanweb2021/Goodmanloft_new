@@ -64,15 +64,24 @@ class PaypalController extends Controller
         $order->user_id =Auth::id();
         $order->payment_method = $request->input('payment_method');
         $order->coupon_code =$request->input('coupon_code');
-        $order->order_total =$request->input('order_total');
+        $order->order_total = $request->input('order_total');
+        $order->full_name =$request->input('given_name')." ".$request->input('surname');
+        $order->email_address =$request->input('email_address');
+        $order->address_line_1 =$request->input('address_line_1');
+        $order->address_line_2 =$request->input('address_line_2');
+        $order->order_currency =$request->input('currency');
+        $order->postal_code =$request->input('postal_code');
+        $order->country_code =$request->input('country_code');
+        $order->payment_status =$request->input('payment_status');
+        $order->transaction_id =$request->input('transaction_id');
+        $order->discount_amount =$request->input('coupon_amount');
+        $order->shipping_charge =$request->input('shipping_charge');
+        
         $order->save();
 
         $payment = payment::create([
-            'user_id'   => $Auth::id(),
-            'order_id' => $order->id,
-            'amount' => $order->order_total,
-            'currency' => "USD",
-            'payment_status' => "Completed"
+            'user_id'   => Auth::id(),
+            'order_id' => $order->id
             ]);
 
          $cart = Cart::where('user_id',auth()->user()->id)->where('product_id',null)->get()->toArray();
@@ -106,7 +115,7 @@ class PaypalController extends Controller
         }
         Cart::where('user_id', auth()->user()->id)->where('product_id', null)->update(['product_id' => session()->get('id')]);
 
-       if($request->input('payment_method') = 'Paid by Paypal'){
+       if($request->input('payment_method') == 'Paid by Paypal'){
         return response()->json(['status'=>'Payment Done successfully']);
        }
         return redirect($response['paypal_link']);
@@ -125,7 +134,7 @@ class PaypalController extends Controller
         $data= new payment();
         $data= $request->all();
 
-        echo"<pre>"; print_r($data); exit();
+       // echo"<pre>"; print_r($data); exit();
         $payment=payment::create($data);
 
 

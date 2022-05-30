@@ -92,9 +92,8 @@
                                                                         </a>
                                                                         <div class="product-action d-flex justify-content-between">
                                                                             <a class="product-btn" href="{{ route('add.wish',$products->id) }}">Add to Cart</a>
-                                                                            <ul class="d-flex">
+                                                                            <ul class="d-flex" onclick="wishlist()">
                                                                                 <li><a href="{{ route('wishlistShow',$products['id']) }}"><i class="ion-android-favorite-outline"></i></a></li>
-                                                                                <li><a href="compare.html"><i class="ion-ios-shuffle"></i></a></li>
                                                                             </ul>
                                                                         </div>
                                                                     </div>
@@ -137,6 +136,13 @@
     </div>
 <!-- Shop Section End -->
 @section('javascript')
+
+<script>
+    function wishlist(){
+        alert('Product Added in Wishlist Successfully');
+
+        }
+</script>
 <script>
     $('#price-range').slider({
     range: true,

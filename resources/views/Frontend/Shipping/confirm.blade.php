@@ -77,15 +77,15 @@
                                                         @endforeach
                                                         <tr>
                                                             <td class="w-50 fw-600">Total Order Amount:</td>
-                                                            <td>${{ $sub_total }}</td>
+                                                            <td>${{ $sub_total }}.00</td>
                                                         </tr>
                                                         <tr>
-                                                            <td class="w-50 fw-600">Shipping:</td>
-                                                            <td></td>
+                                                            <td class="w-50 fw-600">Currency:</td>
+                                                            <td>SGD</td>
                                                         </tr>
                                                         <tr>
-                                                            <td class="w-50 fw-600">Payment method</td>
-                                                            <td></td>
+                                                            <td class="w-50 fw-600">Payment method:</td>
+                                                            <td>Paid by Paypal</td>
                                                         </tr>
                                                      
                                                     </table>
@@ -126,6 +126,33 @@
                                                     <table class="table">
                                                         <tbody>
                                                             <tr>
+                                                            @php
+                                            $shipping_amount = 0;
+                                            $charges = DB::table('shipping_charges')->where('country_id','200');
+                                            if($charges->count() > 0){
+                                                $charge = $charges->first();
+                                                if(250 > $sub_total){
+													$shipping_amount = $charge->delivery_amount;
+												}
+                                            }
+              
+                                            $coupon_amount = 0;
+											$coupon_code = '';
+                                            $apply_coupon = DB::table('apply_coupon')->where("user_id",Auth::user()->id)->orderBy('id','DESC');
+                                            if($apply_coupon->count() > 0){
+                                                $coupon_id = $apply_coupon->first()->coupon_id;
+
+                                                $coupon = DB::table('coupons')->where("id",$coupon_id);
+                                                if($coupon->count() > 0){
+                                                    $coupon = $coupon->first();
+                                                    
+													$coupon_code = $coupon->coupon_code;
+                                                    $coupon_amount = $coupon->discount_amount;
+                                                    
+                                                }
+                                            }
+
+                                        @endphp
                                                                 <th>Subtotal</th>
                                                                 <td class="text-right">
                                                                     <span
@@ -136,20 +163,27 @@
                                                                 <th>Shipping</th>
                                                                 <td class="text-right">
                                                                     <span
-                                                                        class="font-italic">$0</span>
+                                                                        class="font-italic">{{ $shipping_amount }}.00</span>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Coupon Discount</th>
                                                                 <td class="text-right">
+                                                                <input type="hidden" id="coupon_code" value="{{ $coupon_code}}">
+											                    <input type="hidden" id="shipping_charge" value="{{ $shipping_amount}}">
                                                                     <span
-                                                                        class="font-italic">$0</span>
+                                                                    type="text" id="coupon_amount" class="font-italic">{{ $coupon_amount}}.00</span>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <th><span class="fw-600">Total</span></th>
+                                                                
                                                                 <td class="text-right">
-                                                                    <strong><span>${{ $sub_total }}</span></strong>
+                                                                    <strong><span>$ @if(250 > $sub_total)
+                                                               {{ $sub_total = $sub_total + $shipping_amount - $coupon_amount}}.00
+                                                                @else
+                                                                {{ $sub_total = $sub_total - $coupon_amount }}.00
+                                                                 @endif</span></strong>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -161,16 +195,12 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div>
-                                <a href="/" class="btn btn-primary">Go To Home</a>
+                            <div class="shipping-btn ">
+                            <a href="/" data-amount="1280" data-id="3" class="btn order_now"><span>Go To Home</span></a> &nbsp;
                             </div>
-
                         </div>
                     </div>
                 </section>
-
-
 
             </div>
         </div>

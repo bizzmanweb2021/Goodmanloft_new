@@ -135,17 +135,36 @@
                                         <?php $sub_total += $cart->total ?>
                                         <ul>
                                             <!-- <li><img src="{{ $cart->product_image }}" style="width: 75px; height:100px;"></li> -->
-                                            <li>{{ $cart->product_name }} <span>${{ $cart->total }}</span></li>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-md-10">{{ $cart->product_name }}</div>
+                                                    <div class="col-md-2"> <span>${{ $cart->total }}.00</span></div>
+</div>
+                                                </li>
                                         </ul>
                                         @endforeach
-                                        <p>Sub Total <span>${{ $sub_total }}</span></p>
+                                        
+                                        
+                                        <p>Sub Total <span>${{ $sub_total }}.00</span></p>
                                         <p>Shipping
                                             <span class="badge badge-secondary" style="float: none; color:black;">
                                             <a data-bs-toggle="modal" data-bs-target="#myModal">?</a>
                                         </span><span  style="opacity: 0.8;">Calculated at next step</span></p>
                                         <p>Coupon Code<span>
-                                            <input type="text" style="background-color: white; width:120px; height:40px;">
+                                            <input type="text" style="background-color: white; width:120px; height:40px;" 
+                                            id="apply_coupon" name="apply_coupon">
+                                            <button type="button" class="btn btn-primary" id="apply_coupon_btn" style="padding: 11px;">Apply</button>
                                         </span></p>
+                                        @if ($status = Session::get('status'))
+                                            <br>
+                                            <div class="alert alert-{{ $status }} alert-dismissible fade show" role="alert">
+                                            <div class="alert-body">
+                                            {{ Session::get('message') }}
+                                            </div>
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            </div>
+                                        @endif
+                                        
                                         <div class="modal" id="myModal">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -196,4 +215,9 @@ We offer free delivery for orders above SGD$250.
 </div>
 <!--Checkout section end-->
 
+<form id="apply_coupon_form" action="{{ route('apply-coupon') }}" method="POST" class="checkout-form">
+    @csrf
+    <input type="hidden" name="coupon_code" id="apply_coupon_code">
+</form>
 @endsection
+

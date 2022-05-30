@@ -23,6 +23,16 @@
 <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins.js') }}"></script>
 <script src="{{ asset('assets/js/main.js') }}"></script>
+<script>
+$(function(){
+    $(document).on('click','#apply_coupon_btn',function(){
+       var apply_coupon = $('#apply_coupon').val();
+       $('#apply_coupon_code').val(apply_coupon);
+       $('#apply_coupon_form').submit();
+       // alert('ok');
+    })
+})
+</script>
 @yield('javascript')
 </body>
 </html>

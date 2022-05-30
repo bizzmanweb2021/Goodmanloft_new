@@ -155,7 +155,8 @@ class ProductController extends Controller
     public function import(Request $request)
     {
        Excel::import(new productImport,$request->file);
-       return "Products Imported Successfully";
+       return redirect()->route('admin.productView');
+      // return "Products Imported Successfully";
     }
     
     // public function search()

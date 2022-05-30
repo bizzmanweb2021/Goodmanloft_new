@@ -61,27 +61,27 @@
                 <table class="table align-items-center justify-content-center mb-0">
                     <thead>
                     <tr>
-                    <th class="text-uppercase text-center text-secondary text-xxs font-weight-bolder opacity-7 ps-2">User ID</th>
-                      <th class="text-uppercase text-center text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Customer Name</th>
-                      <th class="text-uppercase text-center text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Price</th>
-                      <th class="text-uppercase text-center text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Quantity</th>
+                    <th class="text-uppercase text-center text-secondary text-xxs font-weight-bolder opacity-7 ps-2">S.No</th>
+                      <th class="text-uppercase text-center text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Transaction_ID</th>
+                      <th class="text-uppercase text-center text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Customer Name</th>
+                      <th class="text-uppercase text-center text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Email_Address</th>
                       <th class="text-uppercase text-center text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Total Amount</th>
-                       <th class="text-uppercase text-center text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Date</th>
+                      <th class="text-uppercase text-center text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Payment Status</th>
+                      <th class="text-uppercase text-center text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Date</th>
                       <th class="text-uppercase text-center text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($carts as $cart)
+                    @foreach($orders as $key=> $order)
                    
                         <tr style="text-align: center">  
-                            <td>{{ $cart->user_id }}</td>
-                            <td>{{ $cart->product_name }}</td>
-                           
-                            
-                            <td>{{ $cart->price }}</td>
-                            <td>{{ $cart->quantity }}</td>
-                            <td>{{ $cart->total }}</td>
-                            <td>{{ $cart->created_at }}</td>
+                            <td>{{ $key+1 }}</td>
+                            <td>{{ $order->transaction_id }}</td>
+                            <td>{{ $order->full_name }}</td>
+                            <td>{{ $order->email_address }}</td> 
+                            <td>{{ $order->order_total }}</td>
+                            <td>{{ $order->payment_status }}</td>
+                            <td>{{ $order->created_at }}</td>
                             <td><a class="btn btn-soft-info  btn-icon btn-circle btn-sm" href="{{route('admin.orderDetails')}}"><i class="fa fa-eye"> &nbsp &nbsp </i></a></td>
                             
                         </tr>
