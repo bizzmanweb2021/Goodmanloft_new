@@ -7,7 +7,7 @@ use App\Models\User;
 use DB;
 use Illuminate\Http\Request;
 
-class OrderController extends Controller
+class AdminOrderController extends Controller
 {
     //
     public function index()

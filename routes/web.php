@@ -25,6 +25,8 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FaqAdminController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\FestiveController;
+use App\Http\Controllers\PDFController;
+use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\NurseryController;
 use App\Http\Controllers\PaypalController;
@@ -47,8 +49,18 @@ Route::get('/admin/login',[AdminAuthController::class,'index'])->name('admin.log
 Route::post('/admin/login',[AdminAuthController::class,'store'])->name('admin.login');
 
 Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function(){
-    Route::get('/dashboard',[AdminDashboardController::class,'index'])->name('dashboard');
+Route::get('/dashboard',[AdminDashboardController::class,'index'])->name('dashboard');
 
+Route::get('/search','ProductDetailsController@search');
+Route::get('get-all-products',[PDFController::class,'getAllproducts']);
+Route::get('/download-pdf',[PDFController::class,'downloadPDF'])->name('download-pdf');
+Route::get('/download-pdf1',[PDFController::class,'downloadPDF1'])->name('download-pdf1');
+// Route::resource('/download-pdf2',[PDFController::class,'downloadPDF2']);
+
+Route::get('get-all-products',[ExcelController::class,'getAllproducts']);
+Route::get('/download-excel',[ExcelController::class,'downloadExcel'])->name('download-excel');
+
+    Route::resource('/orders',AdminOrderController::class);
     Route::get('/productView',[ProductController::class,'index'])->name('productView');
     Route::get('/productAdd',[ProductController::class,'create'])->name('productAdd');
     Route::post('/productStore',[ProductController::class,'store'])->name('image.resize.pro');
@@ -57,6 +69,8 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::post('/stockStore',[ProductController::class,'stockStore'])->name('stockStore');
     Route::get('/getSubCategoryById',[ProductController::class,'getSubCategoryById'])->name('getSubCategoryById');
     Route::get('/orderDetails',[AdminOrderController::class,'orderDetails'])->name('orderDetails');
+
+    // Route::get('/download-pdf2',[AdminOrderController::class,'downloadPDF2']);
 
     Route::get('/import-form',[ProductController::class,'importForm'])->name('importForm');
     Route::post('/import',[ProductController::class,'import'])->name('import');
@@ -101,7 +115,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::get('/couponAdd',[AdminCouponController::class,'index'])->name('CouponAdd');
     Route::post('/couponStore',[AdminCouponController::class,'store'])->name('CouponStore');
 
-    Route::resource('/orders',AdminOrderController::class);
+    // Route::resource('/orders',AdminOrderController::class);
     // Route::get('/orderDetails',[OrderController::class,'show_order_details'])->name('show_order_details');
     Route::resource('/payments',PaymentController::class);
 
@@ -180,9 +194,9 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
 });
 
 
-Route::get('/search','ProductDetailsController@search');
-Route::get('get-all-products',[PDFController::class,'getAllproducts']);
-Route::get('/download-pdf',[PDFController::class,'downloadPDF']);
+// Route::get('/search','ProductDetailsController@search');
+// Route::get('get-all-products',[PDFController::class,'getAllproducts']);
+// Route::get('/download-pdf',[PDFController::class,'downloadPDF']);
 
 Route::get('/',[HomeController::class,'index'])->name('user.index');
 Route::get('/search/',[HomeController::class,'search'])->name('search');

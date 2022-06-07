@@ -172,7 +172,7 @@
                                             <div class="row">
                                                     <div class="col-md-10">{{ $cart->product_name }}</div>
                                                     <div class="col-md-2"> <span>${{ $cart->total }}.00</span></div>
-</div></li>
+                                        </div></li>
                                         </ul>
                                         @endforeach
                                         @php
@@ -431,9 +431,12 @@
         });
 </script>
 
-<script>
+<script async
+  src="https://pay.google.com/gp/p/js/pay.js"
+  onload="onGooglePayLoaded()"></script>
 
-  /**
+<script>
+    /**
  * Define the version of the Google Pay API referenced when creating your
  * configuration
  *
@@ -608,8 +611,8 @@ function addGooglePayButton() {
  */
 function getGoogleTransactionInfo() {
   return {
-    countryCode: 'US',
-    currencyCode: 'USD',
+    countryCode: 'SG',
+    currencyCode: 'SGD',
     totalPriceStatus: 'FINAL',
     // set to cart total
     totalPrice: '1.00'
@@ -626,7 +629,7 @@ function prefetchGooglePaymentData() {
   // transactionInfo must be set but does not affect cache
   paymentDataRequest.transactionInfo = {
     totalPriceStatus: 'NOT_CURRENTLY_KNOWN',
-    currencyCode: 'SG'
+    currencyCode: 'SGD'
   };
   const paymentsClient = getGooglePaymentsClient();
   paymentsClient.prefetchPaymentData(paymentDataRequest);
@@ -662,6 +665,6 @@ function processPayment(paymentData) {
     console.log(paymentData);
   // @todo pass payment token to your gateway to process payment
   paymentToken = paymentData.paymentMethodData.tokenizationData.token;
-}     
+}
 </script>
 @endsection

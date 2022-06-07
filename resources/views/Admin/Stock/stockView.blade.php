@@ -14,6 +14,12 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+                <div class="col-6">
+                <a class="btn btn-soft-info  btn-icon btn-circle btn-sm" href="{{route('admin.download-pdf1')}}"><i class="fa fa-file-pdf-o" style="font-size:35px;color:red"></i>
+                <a class="btn btn-soft-info  btn-icon btn-circle btn-sm" href="{{route('admin.download-pdf1')}}"><i class="fa fa-file-excel-o fa_custom fa-4x" style="font-size:35px;color:green"></i>
+</div>
+</div>
         <div class="card-body p-3">
             <div class="table-responsive p-0">
                 <table class="table align-items-center justify-content-center mb-0">

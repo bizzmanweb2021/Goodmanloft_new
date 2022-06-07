@@ -6,23 +6,20 @@ use Illuminate\Http\Request;
 use App\Models\product;
 use App\Models\Stock;
 use App\Models\Order;
-use PDF;
 use Excel;
 
-class PDFController extends Controller
+class ExcelController extends Controller
 {
     public function getAllProducts()
     {
         $Products=product::all();
         return view('Admin.Product.product',compact('Products'));
     }
-    public function downloadPDF()
+    public function downloadExcel()
     {
         $Products=product::all();
-        ini_set('max_execution_time', 300);
-        $pdf=PDF::loadView('Admin.Product.product',compact('Products'));
-        
-        return $pdf->download('products.pdf');
+        // $excel=Excel::loadView('Admin.Product.product',compact('Products')); 
+        return  Excel::download('products.xlsx');
     }
     public function downloadPDF1()
     {

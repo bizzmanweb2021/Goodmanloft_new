@@ -14,11 +14,17 @@
                     <a class="btn bg-gradient-dark mb-0" href="{{route('admin.importForm')}}"><i class="fas fa-plus"></i>&nbsp;&nbsp;Bulk Upload</a><br>
                     
                 </div><br>
-                <div class="col-4">
+                <!-- <div class="col-4">
                     <input type="text" class="form-control" placeholder="search">
-                </div>
+                </div> -->
             </div>
         </div>
+        <div class="row">
+                <div class="col-6">
+                <a class="btn btn-soft-info  btn-icon btn-circle btn-sm" href="{{route('admin.download-pdf')}}"><i class="fa fa-file-pdf-o" style="font-size:35px;color:red"></i>
+                <a class="btn btn-soft-info  btn-icon btn-circle btn-sm" href="{{route('admin.download-pdf')}}"><i class="fa fa-file-excel-o fa_custom fa-4x" style="font-size:35px;color:green"></i>
+</div>
+</div>
         <div class="card-body p-3">
             <div class="table-responsive p-0">
                 <table class="table align-items-center justify-content-center mb-0">
