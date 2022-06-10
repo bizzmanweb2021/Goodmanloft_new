@@ -151,9 +151,9 @@
                                             <a data-bs-toggle="modal" data-bs-target="#myModal">?</a>
                                         </span><span  style="opacity: 0.8;">Calculated at next step</span></p>
                                         <p>Coupon Code<span>
-                                            <input type="text" style="background-color: white; width:120px; height:40px;" 
+                                            <input type="text" style="background-color: white; width:120px; height:52px;" 
                                             id="apply_coupon" name="apply_coupon">
-                                            <button type="button" class="btn btn-primary" id="apply_coupon_btn" style="padding: 11px;">Apply</button>
+                                            <button type="button" class="btn btn-primary" style="background-color: #b49f64;" id="apply_coupon_btn">Apply</button>
                                         </span></p>
                                         @if ($status = Session::get('status'))
                                             <br>

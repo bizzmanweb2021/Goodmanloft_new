@@ -16,6 +16,11 @@ class PDFController extends Controller
         $Products=product::all();
         return view('Admin.Product.product',compact('Products'));
     }
+    public function getAllOrders()
+    {
+        $Orders=Order::all();
+        return view('Admin.orders.orderpdf',compact('Orders'));
+    }
     public function downloadPDF()
     {
         $Products=product::all();
@@ -31,11 +36,11 @@ class PDFController extends Controller
         
         return $pdf->download('stocks.pdf');
     }
-    // public function downloadPDF2()
-    // {
-    //     $Orders=Order::all();
-    //     $pdf=PDF::loadView('Admin.orders.index',compact('Orders'));
+    public function downloadPDF2()
+    {
+        $Orders=Order::all();
+        $pdf=PDF::loadView('Admin.orders.orderpdf',compact('Orders'));
         
-    //     return $pdf->download('orders.pdf');
-    // }
+        return $pdf->download('Orders.pdf');
+    }
 }

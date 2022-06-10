@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 use App\Models\category;
 use App\Models\product;
 use App\Models\Stock;
+use App\Models\Order;
 use App\Models\subcategory;
 use DB;
 use Excel;
 use App\Imports\productImport;
+use App\Exports\ProductsExport;
+use App\Exports\OrdersExport;
+use App\Export\StocksExport;
 use ImageResize;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Http\Request;
@@ -158,6 +162,21 @@ class ProductController extends Controller
        return redirect()->route('admin.productView');
       // return "Products Imported Successfully";
     }
+    public function fileExport(Request $request) 
+    {        
+        return Excel::download(new ProductsExport, 'Products.xlsx');
+    }
+
+    public function fileExport1(Request $request) 
+    {        
+        return Excel::download(new StocksExport, 'Stocks.xlsx');
+    }
+
+    public function fileExport2(Request $request) 
+    {        
+        return Excel::download(new OrdersExport, 'Orders.xlsx');
+    }
+
     
     // public function search()
     // {

@@ -53,14 +53,19 @@ Route::get('/dashboard',[AdminDashboardController::class,'index'])->name('dashbo
 
 Route::get('/search','ProductDetailsController@search');
 Route::get('get-all-products',[PDFController::class,'getAllproducts']);
+Route::get('get-all-orders',[PDFController::class,'getAllorders']);
 Route::get('/download-pdf',[PDFController::class,'downloadPDF'])->name('download-pdf');
 Route::get('/download-pdf1',[PDFController::class,'downloadPDF1'])->name('download-pdf1');
-// Route::resource('/download-pdf2',[PDFController::class,'downloadPDF2']);
+Route::get('/download-pdf2',[PDFController::class,'downloadPDF2'])->name('download-pdf2');
 
-Route::get('get-all-products',[ExcelController::class,'getAllproducts']);
-Route::get('/download-excel',[ExcelController::class,'downloadExcel'])->name('download-excel');
+Route::get('file-export', [ProductController::class, 'fileExport'])->name('file-export');
 
-    Route::resource('/orders',AdminOrderController::class);
+Route::get('file-export1', [ProductController::class, 'fileExport1'])->name('file-export1');
+Route::get('file-export2', [ProductController::class, 'fileExport2'])->name('file-export2');
+
+
+    // Route::resource('/orders',AdminOrderController::class);
+    Route::get('/orders',[AdminOrderController::class,'index'])->name('orders');
     Route::get('/productView',[ProductController::class,'index'])->name('productView');
     Route::get('/productAdd',[ProductController::class,'create'])->name('productAdd');
     Route::post('/productStore',[ProductController::class,'store'])->name('image.resize.pro');

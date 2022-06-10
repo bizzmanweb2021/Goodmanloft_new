@@ -56,9 +56,10 @@
             </div>
         </div>
         <div class="row">
-                <div class="col-6">
-                <a class="btn btn-soft-info  btn-icon btn-circle btn-sm" href="{{route('admin.download-pdf1')}}"><i class="fa fa-file-pdf-o" style="font-size:35px;color:red"></i>
-                <a class="btn btn-soft-info  btn-icon btn-circle btn-sm" href="{{route('admin.download-pdf1')}}"><i class="fa fa-file-excel-o fa_custom fa-4x" style="font-size:35px;color:green"></i>
+            <div class="col-md-9"></div>
+            <div class="col-md-3 text-right">
+                <a class="btn btn-soft-info  btn-icon btn-circle btn-sm" href="{{route('admin.download-pdf2')}}"><i class="fa fa-file-pdf-o" style="font-size:35px;color:red"></i>
+                <a class="btn btn-soft-info  btn-icon btn-circle btn-sm" href="{{route('admin.file-export2')}}"><i class="fa fa-file-excel-o fa_custom fa-4x" style="font-size:35px;color:green"></i>
 </div>
 </div>
         <div class="card-body p-3">
@@ -74,7 +75,7 @@
                       <th class="text-uppercase text-center text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Total Amount</th>
                       <th class="text-uppercase text-center text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Payment Status</th>
                       <th class="text-uppercase text-center text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Date</th>
-                      <th class="text-uppercase text-center text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Action</th>
+                      <!-- <th class="text-uppercase text-center text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Action</th> -->
                     </tr>
                     </thead>
                     <tbody>
@@ -89,7 +90,7 @@
                             <td>{{ $order->order_total }}</td>
                             <td>{{ $order->payment_status }}</td>
                             <td>{{ $order->created_at }}</td>
-                            <td><a class="btn btn-soft-info  btn-icon btn-circle btn-sm" href="{{route('admin.orderDetails')}}"><i class="fa fa-eye"> &nbsp &nbsp </i></a></td>
+                            <!-- <td><a class="btn btn-soft-info  btn-icon btn-circle btn-sm" href="{{route('admin.orderDetails')}}"><i class="fa fa-eye"> &nbsp &nbsp </i></a></td> -->
                             
                         </tr>
                         @endforeach

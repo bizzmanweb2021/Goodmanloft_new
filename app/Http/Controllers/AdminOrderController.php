@@ -13,7 +13,7 @@ class AdminOrderController extends Controller
     public function index()
     {
         
-        $data = Order::orderBy("id","desc")->get();
+        $data = Order::all();
         return view('Admin.orders.index')->with('orders',$data);
        
     }

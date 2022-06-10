@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2022 at 03:23 PM
+-- Generation Time: Jun 10, 2022 at 04:13 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.15
 
@@ -165,9 +165,10 @@ CREATE TABLE `carts` (
 INSERT INTO `carts` (`id`, `product_image`, `product_name`, `price`, `quantity`, `total`, `updated_at`, `created_at`, `user_id`, `product_id`, `discount_amount`, `how_may_discount`, `discount_type`, `after_discount_price`) VALUES
 (46, 'images/pic.png', 'Chair', 2500, 1, 2500, '2022-05-05 05:02:15.000000', '2022-05-05 05:02:15.000000', 5, '36', NULL, NULL, NULL, NULL),
 (47, 'images/g.jpg', 'Pedro Long Woven Straw Grass and Wood Bench', 219, 1, 219, '2022-05-05 06:24:37.000000', '2022-05-05 06:24:37.000000', 5, '8', NULL, NULL, NULL, NULL),
-(52, 'images/4.jpg', 'Freya Bed Runner With All Sides Fringe', 109, 4, 436, '2022-06-01 02:37:36.000000', '2022-05-21 00:02:48.000000', 1, '4', NULL, NULL, NULL, NULL),
+(52, 'images/4.jpg', 'Freya Bed Runner With All Sides Fringe', 109, 5, 545, '2022-06-08 09:13:28.000000', '2022-05-21 00:02:48.000000', 1, '4', NULL, NULL, NULL, NULL),
 (53, 'images/f.jpg', 'Jojon Long High Water Hyacinth Bench With Wooden Legs', 209, 2, 418, '2022-05-30 08:26:48.000000', '2022-05-24 08:25:28.000000', 3, '7', NULL, NULL, NULL, NULL),
-(57, 'images/h.jpg', 'Marcelo Round Low Water Hyacinth Stool', 139, 2, 278, '2022-05-30 07:22:38.000000', '2022-05-30 07:04:27.000000', 2, '9', NULL, NULL, NULL, NULL);
+(57, 'images/h.jpg', 'Marcelo Round Low Water Hyacinth Stool', 139, 2, 278, '2022-05-30 07:22:38.000000', '2022-05-30 07:04:27.000000', 2, '9', NULL, NULL, NULL, NULL),
+(58, 'images/af.jpg', 'Woven Rattan Basket Set', 49, 1, 49, '2022-06-10 05:39:05.000000', '2022-06-10 05:39:05.000000', 1, '18', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -672,7 +673,6 @@ CREATE TABLE `orders` (
   `discount_amount` decimal(20,2) DEFAULT NULL,
   `shipping_charge` decimal(20,2) DEFAULT NULL,
   `order_total` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `total` decimal(20,2) DEFAULT NULL,
   `payment_status` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `transaction_id` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
@@ -683,26 +683,24 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `user_id`, `full_name`, `payment_method`, `address_line_1`, `address_line_2`, `order_currency`, `postal_code`, `country_code`, `email_address`, `coupon_code`, `discount_amount`, `shipping_charge`, `order_total`, `total`, `payment_status`, `transaction_id`, `created_at`, `updated_at`) VALUES
-(30, 3, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'USD', 238858, 'SG', 'admin123@gmail.com', NULL, NULL, NULL, '209.00', NULL, 'payment_status', '41854613M21414234', '2022-05-24 16:02:45', '2022-05-24 16:02:45'),
-(31, 3, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'singapore', 'USD', 238858, 'SG', 'abi@gmail.com', NULL, NULL, NULL, '209.00', NULL, 'payment_status', '70H14996LG5772948', '2022-05-24 16:07:08', '2022-05-24 16:07:08'),
-(32, 3, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'singapore', 'USD', 238858, 'SG', 'abi@gmail.com', NULL, NULL, NULL, '209.00', NULL, 'COMPLETED', '3HX53611MA6706001', '2022-05-24 16:09:55', '2022-05-24 16:09:55'),
-(33, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'USD', 238858, 'SG', 'admin123@gmail.com', NULL, NULL, NULL, '1272.00', NULL, 'COMPLETED', '2GA98532SL1104357', '2022-05-25 08:28:36', '2022-05-25 08:28:36'),
-(34, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'singapore', 'USD', 238858, 'SG', 'abi@gmail.com', NULL, NULL, NULL, '1272.00', NULL, 'COMPLETED', '96L65667GF313481L', '2022-05-25 08:30:36', '2022-05-25 08:30:36'),
-(35, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'USD', 238858, 'SG', 'admin123@gmail.com', NULL, NULL, NULL, '207.00', NULL, 'COMPLETED', '4VW345020V742390Y', '2022-05-26 05:44:24', '2022-05-26 05:44:24'),
-(36, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'USD', 238858, 'SG', 'test123@gmail.com', NULL, NULL, NULL, '207.00', NULL, 'COMPLETED', '8MH91523XX5842210', '2022-05-26 05:48:54', '2022-05-26 05:48:54'),
-(37, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'USD', 238858, 'SG', 'nandini@gmail.com', NULL, NULL, NULL, '207.00', NULL, 'COMPLETED', '8J780918LJ514991W', '2022-05-26 06:07:46', '2022-05-26 06:07:46'),
-(38, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'debasis@gmail.com', NULL, NULL, NULL, '207.00', NULL, 'COMPLETED', '1BV595823R122370F', '2022-05-26 06:13:41', '2022-05-26 06:13:41'),
-(39, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'nandini@gmail.com', NULL, NULL, NULL, '207.00', NULL, 'COMPLETED', '9YP353648D5747132', '2022-05-26 06:19:24', '2022-05-26 06:19:24'),
-(40, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'abi@gmail.com', NULL, NULL, NULL, '207.00', NULL, 'COMPLETED', '3TG69181R49729828', '2022-05-26 07:29:08', '2022-05-26 07:29:08'),
-(41, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'debasis@gmail.com', NULL, NULL, NULL, '207.00', NULL, 'COMPLETED', '923605597V979053E', '2022-05-26 07:40:10', '2022-05-26 07:40:10'),
-(42, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'test123@gmail.com', NULL, NULL, NULL, '416.00', NULL, 'COMPLETED', '74F32403PR584210T', '2022-05-26 12:41:21', '2022-05-26 12:41:21'),
-(43, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'nandini@gmail.com', NULL, NULL, NULL, '416.00', NULL, 'COMPLETED', '0T3253633U705274M', '2022-05-26 12:48:41', '2022-05-26 12:48:41'),
-(44, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'abi@gmail.com', NULL, NULL, NULL, '416.00', NULL, 'COMPLETED', '57C816527F328510G', '2022-05-26 13:04:59', '2022-05-26 13:04:59'),
-(45, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'admin123@gmail.com', NULL, NULL, NULL, '416.00', NULL, 'COMPLETED', '4JY34325HR076662H', '2022-05-26 13:13:27', '2022-05-26 13:13:27'),
-(46, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'nandini@gmail.com', NULL, NULL, NULL, '416.00', NULL, 'COMPLETED', '574270692H7044508', '2022-05-26 13:19:04', '2022-05-26 13:19:04'),
-(47, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'nandini@gmail.com', NULL, NULL, NULL, '416.00', NULL, 'COMPLETED', '5HK57088RX0494935', '2022-05-27 10:05:34', '2022-05-27 10:05:34'),
-(48, 2, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'test123@gmail.com', NULL, NULL, NULL, '209.00', NULL, 'COMPLETED', '48W97978V8494421W', '2022-05-28 11:13:08', '2022-05-28 11:13:08');
+INSERT INTO `orders` (`id`, `user_id`, `full_name`, `payment_method`, `address_line_1`, `address_line_2`, `order_currency`, `postal_code`, `country_code`, `email_address`, `coupon_code`, `discount_amount`, `shipping_charge`, `order_total`, `payment_status`, `transaction_id`, `created_at`, `updated_at`) VALUES
+(32, 3, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'singapore', 'USD', 238858, 'SG', 'abi@gmail.com', NULL, '0.00', '50.00', '209.00', 'COMPLETED', '3HX53611MA6706001', '2022-05-24 16:09:55', '2022-05-24 16:09:55'),
+(33, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'USD', 238858, 'SG', 'admin123@gmail.com', NULL, '200.00', '0.00', '1272.00', 'COMPLETED', '2GA98532SL1104357', '2022-05-25 08:28:36', '2022-05-25 08:28:36'),
+(34, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'singapore', 'USD', 238858, 'SG', 'abi@gmail.com', NULL, '200.00', '0.00', '1272.00', 'COMPLETED', '96L65667GF313481L', '2022-05-25 08:30:36', '2022-05-25 08:30:36'),
+(35, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'USD', 238858, 'SG', 'admin123@gmail.com', NULL, '0.00', '50.00', '207.00', 'COMPLETED', '4VW345020V742390Y', '2022-05-26 05:44:24', '2022-05-26 05:44:24'),
+(36, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'USD', 238858, 'SG', 'test123@gmail.com', NULL, '0.00', '50.00', '207.00', 'COMPLETED', '8MH91523XX5842210', '2022-05-26 05:48:54', '2022-05-26 05:48:54'),
+(37, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'USD', 238858, 'SG', 'nandini@gmail.com', NULL, '0.00', '50.00', '207.00', 'COMPLETED', '8J780918LJ514991W', '2022-05-26 06:07:46', '2022-05-26 06:07:46'),
+(38, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'debasis@gmail.com', NULL, '0.00', '50.00', '207.00', 'COMPLETED', '1BV595823R122370F', '2022-05-26 06:13:41', '2022-05-26 06:13:41'),
+(39, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'nandini@gmail.com', NULL, '0.00', '50.00', '207.00', 'COMPLETED', '9YP353648D5747132', '2022-05-26 06:19:24', '2022-05-26 06:19:24'),
+(40, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'abi@gmail.com', NULL, '0.00', '50.00', '207.00', 'COMPLETED', '3TG69181R49729828', '2022-05-26 07:29:08', '2022-05-26 07:29:08'),
+(41, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'debasis@gmail.com', NULL, '0.00', '50.00', '207.00', 'COMPLETED', '923605597V979053E', '2022-05-26 07:40:10', '2022-05-26 07:40:10'),
+(42, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'test123@gmail.com', NULL, '200.00', '0.00', '416.00', 'COMPLETED', '74F32403PR584210T', '2022-05-26 12:41:21', '2022-05-26 12:41:21'),
+(43, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'nandini@gmail.com', NULL, '200.00', '0.00', '416.00', 'COMPLETED', '0T3253633U705274M', '2022-05-26 12:48:41', '2022-05-26 12:48:41'),
+(44, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'abi@gmail.com', NULL, '200.00', '0.00', '416.00', 'COMPLETED', '57C816527F328510G', '2022-05-26 13:04:59', '2022-05-26 13:04:59'),
+(45, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'admin123@gmail.com', NULL, '200.00', '0.00', '416.00', 'COMPLETED', '4JY34325HR076662H', '2022-05-26 13:13:27', '2022-05-26 13:13:27'),
+(46, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'nandini@gmail.com', NULL, '200.00', '0.00', '416.00', 'COMPLETED', '574270692H7044508', '2022-05-26 13:19:04', '2022-05-26 13:19:04'),
+(47, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'nandini@gmail.com', NULL, '200.00', '0.00', '416.00', 'COMPLETED', '5HK57088RX0494935', '2022-05-27 10:05:34', '2022-05-27 10:05:34'),
+(48, 2, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'test123@gmail.com', NULL, '0.00', '0.00', '209.00', 'COMPLETED', '48W97978V8494421W', '2022-05-28 11:13:08', '2022-05-28 11:13:08');
 
 -- --------------------------------------------------------
 
@@ -1346,7 +1344,7 @@ ALTER TABLE `billing_addresses`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `categories`

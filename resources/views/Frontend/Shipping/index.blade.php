@@ -611,8 +611,8 @@ function addGooglePayButton() {
  */
 function getGoogleTransactionInfo() {
   return {
-    countryCode: 'SG',
-    currencyCode: 'SGD',
+    countryCode: 'US',
+    currencyCode: 'USD',
     totalPriceStatus: 'FINAL',
     // set to cart total
     totalPrice: '1.00'
@@ -629,7 +629,7 @@ function prefetchGooglePaymentData() {
   // transactionInfo must be set but does not affect cache
   paymentDataRequest.transactionInfo = {
     totalPriceStatus: 'NOT_CURRENTLY_KNOWN',
-    currencyCode: 'SGD'
+    currencyCode: 'USD'
   };
   const paymentsClient = getGooglePaymentsClient();
   paymentsClient.prefetchPaymentData(paymentDataRequest);
