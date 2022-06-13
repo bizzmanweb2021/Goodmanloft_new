@@ -58,8 +58,8 @@
         <div class="row">
             <div class="col-md-9"></div>
             <div class="col-md-3 text-right">
-                <a class="btn btn-soft-info  btn-icon btn-circle btn-sm" href="{{route('admin.download-pdf2')}}"><i class="fa fa-file-pdf-o" style="font-size:35px;color:red"></i>
-                <a class="btn btn-soft-info  btn-icon btn-circle btn-sm" href="{{route('admin.file-export2')}}"><i class="fa fa-file-excel-o fa_custom fa-4x" style="font-size:35px;color:green"></i>
+                <a class="btn btn-soft-info  btn-icon btn-circle btn-sm" href="{{route('admin.download-pdf2')}}"><i class="fa fa-file-pdf-o" style="font-size:35px;color:red"></i></a>
+                <a class="btn btn-soft-info  btn-icon btn-circle btn-sm" href="{{route('admin.file-export2')}}"><i class="fa fa-file-excel-o fa_custom fa-4x" style="font-size:35px;color:green"></i></a>
 </div>
 </div>
         <div class="card-body p-3">

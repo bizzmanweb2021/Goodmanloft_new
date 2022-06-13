@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-12">
                 <a class="btn bg-gradient-dark mb-0" href="{{route('admin.productAdd')}}"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add Product</a>
-                    <a class="btn bg-gradient-dark mb-0" href="{{route('admin.importForm')}}"><i class="fas fa-plus"></i>&nbsp;&nbsp;Bulk Upload</a><br>
+                <a class="btn bg-gradient-dark mb-0" href="{{route('admin.importForm')}}"><i class="fas fa-plus"></i>&nbsp;&nbsp;Bulk Upload</a><br>
                    
                 </div>
             </div>
@@ -17,10 +17,10 @@
         <div class="row">
             <div class="col-md-9"></div>
             <div class="col-md-3 text-right">
-            <a class="btn btn-soft-info  btn-icon btn-circle btn-sm" href="{{route('admin.download-pdf')}}"><i class="fa fa-file-pdf-o" style="font-size:35px;color:red"></i>
-                <a class="btn btn-soft-info  btn-icon btn-circle btn-sm" href="{{route('admin.file-export')}}"><i class="fa fa-file-excel-o fa_custom fa-4x" style="font-size:35px;color:green"></i>
-</div>
-</div>
+            <a class="btn btn-soft-info  btn-icon btn-circle btn-sm" href="{{route('admin.download-pdf')}}"><i class="fa fa-file-pdf-o" style="font-size:35px;color:red"></i></a>
+            <a class="btn btn-soft-info  btn-icon btn-circle btn-sm" href="{{route('admin.file-export')}}"><i class="fa fa-file-excel-o fa_custom fa-4x" style="font-size:35px;color:green"></i></a>
+            </div>
+          </div>
 
 
         <div class="card-body p-3">
