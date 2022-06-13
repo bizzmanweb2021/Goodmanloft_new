@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 10, 2022 at 04:13 PM
+-- Generation Time: Jun 13, 2022 at 08:56 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.15
 
@@ -557,13 +557,6 @@ CREATE TABLE `coupons` (
   `created_at` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `coupons`
---
-
-INSERT INTO `coupons` (`id`, `coupon_name`, `coupon_code`, `coupon_description`, `start_date`, `end_date`, `status`, `discount_type`, `discount_amount`, `shipping_charge`, `Banner`, `grouped_by_users`, `grouped_by_products`, `grouped_by_category`, `updated_at`, `created_at`) VALUES
-(1, 'abc', 'GLCC464', 'hgfg', '2022-05-21', '2022-05-14', 'active', 'Fixed', '200', '50', 'images/pic.png', NULL, NULL, NULL, '2022-05-24 08:02:57.000000', '2022-05-24 08:02:57.000000');
-
 -- --------------------------------------------------------
 
 --
@@ -784,7 +777,12 @@ INSERT INTO `payments` (`id`, `Image`, `user_id`, `order_id`, `Status`, `created
 (24, NULL, NULL, NULL, NULL, '2022-05-30 07:01:03', '2022-05-30 07:01:03'),
 (25, NULL, NULL, NULL, NULL, '2022-05-30 08:28:31', '2022-05-30 08:28:31'),
 (26, NULL, NULL, NULL, NULL, '2022-05-31 02:52:35', '2022-05-31 02:52:35'),
-(27, NULL, NULL, NULL, NULL, '2022-05-31 05:08:47', '2022-05-31 05:08:47');
+(27, NULL, NULL, NULL, NULL, '2022-05-31 05:08:47', '2022-05-31 05:08:47'),
+(28, NULL, NULL, NULL, NULL, '2022-06-10 23:58:04', '2022-06-10 23:58:04'),
+(29, NULL, NULL, NULL, NULL, '2022-06-11 00:03:36', '2022-06-11 00:03:36'),
+(30, NULL, NULL, NULL, NULL, '2022-06-11 00:06:18', '2022-06-11 00:06:18'),
+(31, NULL, NULL, NULL, NULL, '2022-06-11 01:22:11', '2022-06-11 01:22:11'),
+(32, NULL, NULL, NULL, NULL, '2022-06-11 01:36:04', '2022-06-11 01:36:04');
 
 -- --------------------------------------------------------
 
@@ -1410,7 +1408,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`

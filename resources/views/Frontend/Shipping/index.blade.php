@@ -210,7 +210,8 @@
                                         <p>Discount Amount<span>
 											<input type="hidden" id="coupon_code" value="{{ $coupon_code}}">
 											<input type="hidden" id="shipping_charge" value="{{ $shipping_amount}}">
-                                            <span type="text" id="coupon_amount">{{ $coupon_amount}}.00</span>
+                                            <input type="hidden" id="coupon_amount" value="{{ $coupon_amount }}">
+                                            <span type="text">{{ $coupon_amount}}.00</span>
                                             <!-- <input type="text" id="coupon_amount" value="{{ $coupon_amount}}" style="background-color: white; width:120px; height:40px;"> -->
                                         </span></p>
                                         
@@ -310,7 +311,9 @@
             console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
             const transaction = orderData.purchase_units[0].payments.captures[0];
             //alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
-//alert(orderData.purchase_units[0]['amount'].currency_code);
+//alert(orderData.purchase_units[0]['.amount'].currency_code);
+console.log(orderData.purchase_units);
+                console.log(orderData.purchase_units[0].shipping.address.address_line_1);
 
 
                 var transaction_id = orderData.id;
@@ -321,10 +324,12 @@
                 var given_name = orderData.payer.name.given_name;
                 var surname = orderData.payer.name.surname;
                 var email_address = orderData.payer.email_address;
-                var address_line_1 = orderData.payer.address.address_line_1;
-                var address_line_2 = orderData.payer.address.address_line_2;
-                var postal_code = orderData.payer.address.postal_code;
-                var country_code = orderData.payer.address.country_code;
+
+                var address_line_1 = orderData.purchase_units[0].shipping.address.address_line_1;
+                var address_line_2 = orderData.purchase_units[0].shipping.address.address_line_2;
+                var postal_code = orderData.purchase_units[0].shipping.address.postal_code;
+                var country_code = orderData.purchase_units[0].shipping.address.country_code;
+            
 
 
                //var user_id = $('user_id').val();
@@ -365,9 +370,9 @@
                 success: function(response)
                 {
                     window.location.href = '/confirmPayment';
-            },
+                }   
 
-          });
+            });
         });
       }
     }).render('#paypal-button-container');
