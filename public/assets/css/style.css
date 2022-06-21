@@ -5386,6 +5386,61 @@ a.popup-img {
   }
 }
 
+.single {
+  margin-bottom: 20px;
+}
+.single:last-child {
+  margin-bottom: 0;
+}
+.single-method input[type=radio] {
+  display: none;
+}
+.single input[type=radio] + label {
+  position: relative;
+  padding-left: 30px;
+  line-height: 20px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #292929;
+  margin: 0;
+}
+.single-method input[type=radio] + label::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  display: block;
+  border: 2px solid #292929;
+  content: "";
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+.element { 
+  position: absolute; 
+  top: 10px; 
+  right: 10px; 
+} 
+.single-method input[type=radio] + label::after {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  display: block;
+  content: "";
+  opacity: 0;
+  background-color: #b49f64;
+  width: 10px;
+  text-align: center;
+  height: 10px;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+.single-method input[type=radio]:checked + label::before {
+  border: 2px solid #b49f64;
+}
+.single-method input[type=radio]:checked + label::after {
+  opacity: 1;
+}
 /*-- Single Payment Method --*/
 .single-method {
   margin-bottom: 20px;
@@ -7846,3 +7901,24 @@ h2.entry-title:before {
   .gpay-card-info-container.black, .gpay-card-info-animation-container.black{
     width: 100% !important;
   }
+  /* this is sale popup */
+.sale-text{
+  margin-top: 55px;
+}
+.sale-text span{
+  color: #b49f64;
+  font-size: 40px;
+  font-weight: 700;
+}
+.sale-text h2{
+  margin-bottom: 20px;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+}
+.sale-text p{
+  margin-top: 20px;
+  color: #000000;
+}
+.text-bold {
+    font-weight: 1000;
+}

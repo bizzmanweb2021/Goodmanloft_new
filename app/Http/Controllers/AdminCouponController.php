@@ -33,7 +33,6 @@ class AdminCouponController extends Controller
                         $filename = $image->getClientOriginalName();
                         $image_resize = Image::make($image->getRealPath())->save(public_path('images/'.$filename));
                         $image_destination =  'images/'.$filename;
-
                         $coupon = new Coupon();
                         $coupon->coupon_name = $request->coupon_name;
                         $coupon->coupon_code = $request->coupon_code;
@@ -41,6 +40,8 @@ class AdminCouponController extends Controller
                         $coupon->start_date = $request->start_date;
                         $coupon->end_date = $request->end_date;
                         $coupon->status = $request->status;
+                        $coupon->promotion = $request->promotion;
+                        $coupon->minimum_limit = $request->minimum_limit;
                         $coupon->discount_type = $request->discount_type;
                         $coupon->discount_amount = $request->discount_amount;
                         $coupon->Banner = $image_destination;
@@ -51,5 +52,10 @@ class AdminCouponController extends Controller
 
                         $notification1=array('alert-type'=>'success','message'=>'Coupon Added Successfully');
                         return redirect()->route('admin.CouponView')->with($notification1);
+    }
+    public function delete($id)
+    {
+        Coupon::where('id', request()->id)->delete();
+        return redirect()->back()->with('error', 'Coupon Deleted Successfully');
     }
 }

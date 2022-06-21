@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2022 at 08:56 AM
+-- Generation Time: Jun 20, 2022 at 05:35 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.15
 
@@ -83,7 +83,8 @@ CREATE TABLE `apply_coupon` (
 INSERT INTO `apply_coupon` (`id`, `coupon_id`, `user_id`) VALUES
 (12, 1, 2),
 (13, 1, 1),
-(14, 1, 3);
+(14, 1, 3),
+(15, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -165,10 +166,15 @@ CREATE TABLE `carts` (
 INSERT INTO `carts` (`id`, `product_image`, `product_name`, `price`, `quantity`, `total`, `updated_at`, `created_at`, `user_id`, `product_id`, `discount_amount`, `how_may_discount`, `discount_type`, `after_discount_price`) VALUES
 (46, 'images/pic.png', 'Chair', 2500, 1, 2500, '2022-05-05 05:02:15.000000', '2022-05-05 05:02:15.000000', 5, '36', NULL, NULL, NULL, NULL),
 (47, 'images/g.jpg', 'Pedro Long Woven Straw Grass and Wood Bench', 219, 1, 219, '2022-05-05 06:24:37.000000', '2022-05-05 06:24:37.000000', 5, '8', NULL, NULL, NULL, NULL),
-(52, 'images/4.jpg', 'Freya Bed Runner With All Sides Fringe', 109, 5, 545, '2022-06-08 09:13:28.000000', '2022-05-21 00:02:48.000000', 1, '4', NULL, NULL, NULL, NULL),
 (53, 'images/f.jpg', 'Jojon Long High Water Hyacinth Bench With Wooden Legs', 209, 2, 418, '2022-05-30 08:26:48.000000', '2022-05-24 08:25:28.000000', 3, '7', NULL, NULL, NULL, NULL),
 (57, 'images/h.jpg', 'Marcelo Round Low Water Hyacinth Stool', 139, 2, 278, '2022-05-30 07:22:38.000000', '2022-05-30 07:04:27.000000', 2, '9', NULL, NULL, NULL, NULL),
-(58, 'images/af.jpg', 'Woven Rattan Basket Set', 49, 1, 49, '2022-06-10 05:39:05.000000', '2022-06-10 05:39:05.000000', 1, '18', NULL, NULL, NULL, NULL);
+(58, 'images/af.jpg', 'Woven Rattan Basket Set', 49, 1, 49, '2022-06-10 05:39:05.000000', '2022-06-10 05:39:05.000000', 1, '18', NULL, NULL, NULL, NULL),
+(65, 'images/k.jpg', 'Havana 4 Tier Rattan Arch Shaped Bookshelf (Natural)', 599, 1, 599, '2022-06-14 23:45:13.000000', '2022-06-14 23:45:13.000000', 1, '14', NULL, NULL, NULL, NULL),
+(66, 'images/f.jpg', 'Jojon Long High Water Hyacinth Bench With Wooden Legs', 209, 1, 209, '2022-06-14 23:51:13.000000', '2022-06-14 23:51:13.000000', 1, '7', NULL, NULL, NULL, NULL),
+(67, 'images/2.jpg', 'Joveno Teakwood Candle', 49, 1, 49, '2022-06-15 23:44:14.000000', '2022-06-15 23:44:14.000000', 1, '3', NULL, NULL, NULL, NULL),
+(68, 'images/d.jpg', 'Malena Rattan Storage Bench with Cushion', 729, 1, 729, '2022-06-15 23:44:26.000000', '2022-06-15 23:44:26.000000', 1, '11', NULL, NULL, NULL, NULL),
+(69, 'images/i.jpg', 'Roma Round Water Hyacinth Stool With Long Wooden Legs', 229, 1, 229, '2022-06-20 09:59:58.000000', '2022-06-20 09:59:58.000000', 1, '10', NULL, NULL, NULL, NULL),
+(70, 'images/4.jpg', 'Freya Bed Runner With All Sides Fringe', 109, 1, 109, '2022-06-20 10:04:32.000000', '2022-06-20 10:04:32.000000', 1, '4', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -548,14 +554,24 @@ CREATE TABLE `coupons` (
   `status` varchar(255) NOT NULL,
   `discount_type` varchar(255) NOT NULL,
   `discount_amount` varchar(255) NOT NULL,
+  `minimum_limit` int(255) NOT NULL,
   `shipping_charge` varchar(60) DEFAULT NULL,
-  `Banner` varchar(255) NOT NULL,
-  `grouped_by_users` varchar(255) DEFAULT NULL,
-  `grouped_by_products` varchar(255) DEFAULT NULL,
-  `grouped_by_category` varchar(255) DEFAULT NULL,
+  `Banner` varchar(255) DEFAULT NULL,
+  `promotion` varchar(255) DEFAULT NULL,
+  `grouped_by_users` varchar(500) DEFAULT NULL,
+  `grouped_by_products` varchar(500) DEFAULT NULL,
+  `grouped_by_category` varchar(500) DEFAULT NULL,
   `updated_at` datetime(6) NOT NULL,
   `created_at` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `coupons`
+--
+
+INSERT INTO `coupons` (`id`, `coupon_name`, `coupon_code`, `coupon_description`, `start_date`, `end_date`, `status`, `discount_type`, `discount_amount`, `minimum_limit`, `shipping_charge`, `Banner`, `promotion`, `grouped_by_users`, `grouped_by_products`, `grouped_by_category`, `updated_at`, `created_at`) VALUES
+(2, 'GLCC1234', 'GLCC1234', 'abc', '2022-06-18', '2022-06-30', 'active', 'flatAmount', '50', 0, NULL, 'images/pic.png', NULL, NULL, NULL, NULL, '2022-06-15 06:32:34.000000', '2022-06-15 06:32:34.000000'),
+(11, 'Father\'s Day', 'GLCC978', '\"Father’s day exclusive offer – Reward him with an exceptional gift!!!!\"', '2022-06-01', '2022-06-20', 'active', 'flatAmount', '300', 5000, NULL, 'images/pic.png', 'promotion', NULL, NULL, NULL, '2022-06-16 14:04:07.000000', '2022-06-16 14:04:07.000000');
 
 -- --------------------------------------------------------
 
@@ -668,6 +684,9 @@ CREATE TABLE `orders` (
   `order_total` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `payment_status` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `transaction_id` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status_id` int(50) NOT NULL,
+  `order_status` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payment` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -676,24 +695,24 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `user_id`, `full_name`, `payment_method`, `address_line_1`, `address_line_2`, `order_currency`, `postal_code`, `country_code`, `email_address`, `coupon_code`, `discount_amount`, `shipping_charge`, `order_total`, `payment_status`, `transaction_id`, `created_at`, `updated_at`) VALUES
-(32, 3, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'singapore', 'USD', 238858, 'SG', 'abi@gmail.com', NULL, '0.00', '50.00', '209.00', 'COMPLETED', '3HX53611MA6706001', '2022-05-24 16:09:55', '2022-05-24 16:09:55'),
-(33, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'USD', 238858, 'SG', 'admin123@gmail.com', NULL, '200.00', '0.00', '1272.00', 'COMPLETED', '2GA98532SL1104357', '2022-05-25 08:28:36', '2022-05-25 08:28:36'),
-(34, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'singapore', 'USD', 238858, 'SG', 'abi@gmail.com', NULL, '200.00', '0.00', '1272.00', 'COMPLETED', '96L65667GF313481L', '2022-05-25 08:30:36', '2022-05-25 08:30:36'),
-(35, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'USD', 238858, 'SG', 'admin123@gmail.com', NULL, '0.00', '50.00', '207.00', 'COMPLETED', '4VW345020V742390Y', '2022-05-26 05:44:24', '2022-05-26 05:44:24'),
-(36, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'USD', 238858, 'SG', 'test123@gmail.com', NULL, '0.00', '50.00', '207.00', 'COMPLETED', '8MH91523XX5842210', '2022-05-26 05:48:54', '2022-05-26 05:48:54'),
-(37, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'USD', 238858, 'SG', 'nandini@gmail.com', NULL, '0.00', '50.00', '207.00', 'COMPLETED', '8J780918LJ514991W', '2022-05-26 06:07:46', '2022-05-26 06:07:46'),
-(38, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'debasis@gmail.com', NULL, '0.00', '50.00', '207.00', 'COMPLETED', '1BV595823R122370F', '2022-05-26 06:13:41', '2022-05-26 06:13:41'),
-(39, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'nandini@gmail.com', NULL, '0.00', '50.00', '207.00', 'COMPLETED', '9YP353648D5747132', '2022-05-26 06:19:24', '2022-05-26 06:19:24'),
-(40, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'abi@gmail.com', NULL, '0.00', '50.00', '207.00', 'COMPLETED', '3TG69181R49729828', '2022-05-26 07:29:08', '2022-05-26 07:29:08'),
-(41, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'debasis@gmail.com', NULL, '0.00', '50.00', '207.00', 'COMPLETED', '923605597V979053E', '2022-05-26 07:40:10', '2022-05-26 07:40:10'),
-(42, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'test123@gmail.com', NULL, '200.00', '0.00', '416.00', 'COMPLETED', '74F32403PR584210T', '2022-05-26 12:41:21', '2022-05-26 12:41:21'),
-(43, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'nandini@gmail.com', NULL, '200.00', '0.00', '416.00', 'COMPLETED', '0T3253633U705274M', '2022-05-26 12:48:41', '2022-05-26 12:48:41'),
-(44, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'abi@gmail.com', NULL, '200.00', '0.00', '416.00', 'COMPLETED', '57C816527F328510G', '2022-05-26 13:04:59', '2022-05-26 13:04:59'),
-(45, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'admin123@gmail.com', NULL, '200.00', '0.00', '416.00', 'COMPLETED', '4JY34325HR076662H', '2022-05-26 13:13:27', '2022-05-26 13:13:27'),
-(46, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'nandini@gmail.com', NULL, '200.00', '0.00', '416.00', 'COMPLETED', '574270692H7044508', '2022-05-26 13:19:04', '2022-05-26 13:19:04'),
-(47, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'nandini@gmail.com', NULL, '200.00', '0.00', '416.00', 'COMPLETED', '5HK57088RX0494935', '2022-05-27 10:05:34', '2022-05-27 10:05:34'),
-(48, 2, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'test123@gmail.com', NULL, '0.00', '0.00', '209.00', 'COMPLETED', '48W97978V8494421W', '2022-05-28 11:13:08', '2022-05-28 11:13:08');
+INSERT INTO `orders` (`id`, `user_id`, `full_name`, `payment_method`, `address_line_1`, `address_line_2`, `order_currency`, `postal_code`, `country_code`, `email_address`, `coupon_code`, `discount_amount`, `shipping_charge`, `order_total`, `payment_status`, `transaction_id`, `status_id`, `order_status`, `payment`, `created_at`, `updated_at`) VALUES
+(32, 3, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'singapore', 'USD', 238858, 'SG', 'abi@gmail.com', NULL, '0.00', '50.00', '209.00', 'COMPLETED', '3HX53611MA6706001', 0, '', '', '2022-05-24 16:09:55', '2022-05-24 16:09:55'),
+(33, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'USD', 238858, 'SG', 'admin123@gmail.com', NULL, '200.00', '0.00', '1272.00', 'COMPLETED', '2GA98532SL1104357', 0, '', '', '2022-05-25 08:28:36', '2022-05-25 08:28:36'),
+(34, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'singapore', 'USD', 238858, 'SG', 'abi@gmail.com', NULL, '200.00', '0.00', '1272.00', 'COMPLETED', '96L65667GF313481L', 0, '', '', '2022-05-25 08:30:36', '2022-05-25 08:30:36'),
+(35, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'USD', 238858, 'SG', 'admin123@gmail.com', NULL, '0.00', '50.00', '207.00', 'COMPLETED', '4VW345020V742390Y', 0, '', '', '2022-05-26 05:44:24', '2022-05-26 05:44:24'),
+(36, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'USD', 238858, 'SG', 'test123@gmail.com', NULL, '0.00', '50.00', '207.00', 'COMPLETED', '8MH91523XX5842210', 0, '', '', '2022-05-26 05:48:54', '2022-05-26 05:48:54'),
+(37, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'USD', 238858, 'SG', 'nandini@gmail.com', NULL, '0.00', '50.00', '207.00', 'COMPLETED', '8J780918LJ514991W', 0, '', '', '2022-05-26 06:07:46', '2022-05-26 06:07:46'),
+(38, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'debasis@gmail.com', NULL, '0.00', '50.00', '207.00', 'COMPLETED', '1BV595823R122370F', 0, '', '', '2022-05-26 06:13:41', '2022-05-26 06:13:41'),
+(39, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'nandini@gmail.com', NULL, '0.00', '50.00', '207.00', 'COMPLETED', '9YP353648D5747132', 0, '', '', '2022-05-26 06:19:24', '2022-05-26 06:19:24'),
+(40, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'abi@gmail.com', NULL, '0.00', '50.00', '207.00', 'COMPLETED', '3TG69181R49729828', 0, '', '', '2022-05-26 07:29:08', '2022-05-26 07:29:08'),
+(41, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'debasis@gmail.com', NULL, '0.00', '50.00', '207.00', 'COMPLETED', '923605597V979053E', 0, '', '', '2022-05-26 07:40:10', '2022-05-26 07:40:10'),
+(42, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'test123@gmail.com', NULL, '200.00', '0.00', '416.00', 'COMPLETED', '74F32403PR584210T', 0, '', '', '2022-05-26 12:41:21', '2022-05-26 12:41:21'),
+(43, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'nandini@gmail.com', NULL, '200.00', '0.00', '416.00', 'COMPLETED', '0T3253633U705274M', 0, '', '', '2022-05-26 12:48:41', '2022-05-26 12:48:41'),
+(44, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'abi@gmail.com', NULL, '200.00', '0.00', '416.00', 'COMPLETED', '57C816527F328510G', 0, '', '', '2022-05-26 13:04:59', '2022-05-26 13:04:59'),
+(45, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'admin123@gmail.com', NULL, '200.00', '0.00', '416.00', 'COMPLETED', '4JY34325HR076662H', 0, '', '', '2022-05-26 13:13:27', '2022-05-26 13:13:27'),
+(46, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'nandini@gmail.com', NULL, '200.00', '0.00', '416.00', 'COMPLETED', '574270692H7044508', 0, '', '', '2022-05-26 13:19:04', '2022-05-26 13:19:04'),
+(47, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'nandini@gmail.com', NULL, '200.00', '0.00', '416.00', 'COMPLETED', '5HK57088RX0494935', 0, '', '', '2022-05-27 10:05:34', '2022-05-27 10:05:34'),
+(48, 2, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'test123@gmail.com', NULL, '0.00', '0.00', '209.00', 'COMPLETED', '48W97978V8494421W', 0, '', '', '2022-05-28 11:13:08', '2022-05-28 11:13:08');
 
 -- --------------------------------------------------------
 
@@ -859,7 +878,11 @@ INSERT INTO `products` (`id`, `Category_id`, `SubCategory_id`, `product_name`, `
 (19, 2, 11, 'Bamboo Laundry  Style Baskets With Lids', 'Medium', '', 6, 'images/ah.jpg', '2022-05-11 11:23:12', '2022-02-16 03:19:07', 'Grey', 'Round', 'Jute', '40 x 50', 1, 'Dotted', 'These lovely large round baskets are made from woven bamboo,\r\n with a natural straw jute rim on the top and handles on the lids.\r\n These baskets come in set of two sizes - a large size and a medium\r\n size, and in a grey or white color. These versatile and useful baskets \r\ncan be used for any purposes, from a decor piece, to a waste bin, \r\nto a laundry bin!', '250', 'yes', 'no', 20, '[\"1645001347_ah.jpg\",\"1645001347_ai.jpg\"]', '', NULL),
 (20, 2, 11, 'Bamboo Laundry  Style Baskets With Lids', 'Medium', '', 8, 'images/ai.jpg', '2022-05-11 11:23:38', '2022-02-16 03:20:38', 'white', 'Round', 'Jute', '50 x 60', 1, 'Plain', 'These lovely large round baskets are made from woven bamboo,\r\n with a natural straw jute rim on the top and handles on the lids.\r\n These baskets come in set of two sizes - a large size and a medium\r\n size, and in a grey or white color. These versatile and useful baskets \r\ncan be used for any purposes, from a decor piece, to a waste bin, \r\nto a laundry bin!', '250', 'yes', 'no', 20, '[\"1645001438_ah.jpg\",\"1645001438_ai.jpg\"]', '', NULL),
 (22, 2, 18, 'Hand-Woven Round Floor Rug with White Tassel (Natural)', 'Small', '', 1, 'images/re.jpg', '2022-05-11 11:44:34', '2022-03-01 04:51:54', 'white&Brown', 'Round', 'Sleepwell', '45 x 45 x 45', 1, 'Printed', 'Perfect round floor rug for your living room, bedroom, kitchen, entryway, laundry room, office. This hand-woven round floor rug with tassel can be a perfect gift for your family and friends on occasions such as holidays, birthdays and Christmas too!', '29.9', 'yes', 'no', 20, '[\"1646130113_re.jpg\",\"1646130114_ve.jpg\"]', '', NULL),
-(23, 2, 18, 'Hand-Woven Round Floor Rug with White Tassel (Natural)', 'Medium', '', 1, 'images/pe.jpg', '2022-05-23 12:32:07', '2022-03-01 04:54:01', 'white&Brown', 'Round', 'Bombay Dyeing.', '80 x 80 x 80', 1, 'Plain', 'Perfect round floor rug for your living room, bedroom, kitchen, entryway, laundry room, office. This hand-woven round floor rug with tassel can be a perfect gift for your family and friends on occasions such as holidays, birthdays and Christmas too!', '39.9', 'no', 'yes', 0, '[\"1646130241_pe.jpg\",\"1646130241_re.jpg\"]', 'popular_products', NULL);
+(23, 2, 18, 'Hand-Woven Round Floor Rug with White Tassel (Natural)', 'Medium', '', 1, 'images/pe.jpg', '2022-05-23 12:32:07', '2022-03-01 04:54:01', 'white&Brown', 'Round', 'Bombay Dyeing.', '80 x 80 x 80', 1, 'Plain', 'Perfect round floor rug for your living room, bedroom, kitchen, entryway, laundry room, office. This hand-woven round floor rug with tassel can be a perfect gift for your family and friends on occasions such as holidays, birthdays and Christmas too!', '39.9', 'no', 'yes', 0, '[\"1646130241_pe.jpg\",\"1646130241_re.jpg\"]', 'popular_products', NULL),
+(93, 1, 8, 'Joveno Teakwood Candle', 'small', 'Available', 20, 'images/2.jpg', '2022-06-14 01:15:57', '2022-06-14 01:15:57', 'Red', 'Curved', 'Wax', '16 x 13 x 8', 1, 'Dotted', 'Looking for a way of capturing that wonderful exot...', '49', 'yes', 'no', 20, '[\"1644927847_1.jpg\",\"1644927847_2.jpg\"]', NULL, NULL),
+(94, 2, 6, 'Freya Bed Runner With All Sides Fringe', 'medium', 'Unavailable', 20, 'images/4.jpg', '2022-06-14 01:15:57', '2022-06-14 01:15:57', 'Green', 'Round', 'Wax', '246 x 75', 1, 'Dotted', 'Our bed runner is beautiful and luxurious. Our h...', '109', 'no', 'yes', NULL, '[\"1644928185_2.jpg\",\"1644928185_4.jpg\"]', NULL, NULL),
+(97, 1, 8, 'Joveno Teakwood Candle', 'small', 'Available', 20, 'images/2.jpg', '2022-06-15 01:12:10', '2022-06-15 01:12:10', 'Red', 'Curved', 'Wax', '16 x 13 x 8', 1, 'Dotted', 'Looking for a way of capturing that wonderful exot...', '49', 'yes', 'no', 20, '[\"1644927847_1.jpg\",\"1644927847_2.jpg\"]', NULL, NULL),
+(98, 2, 6, 'Freya Bed Runner With All Sides Fringe', 'medium', 'Unavailable', 20, 'images/4.jpg', '2022-06-15 01:12:10', '2022-06-15 01:12:10', 'Green', 'Round', 'Wax', '246 x 75', 1, 'Dotted', 'Our bed runner is beautiful and luxurious. Our h...', '109', 'no', 'yes', NULL, '[\"1644928185_2.jpg\",\"1644928185_4.jpg\"]', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1115,7 +1138,8 @@ INSERT INTO `wishlists` (`id`, `product_id`, `user_id`, `updated_at`, `created_a
 (12, 15, '1', NULL, NULL),
 (13, 14, '1', NULL, NULL),
 (14, 86, '1', NULL, NULL),
-(15, 85, '1', NULL, NULL);
+(15, 85, '1', NULL, NULL),
+(16, 97, '1', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1324,7 +1348,7 @@ ALTER TABLE `about_us`
 -- AUTO_INCREMENT for table `apply_coupon`
 --
 ALTER TABLE `apply_coupon`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `articles`
@@ -1342,7 +1366,7 @@ ALTER TABLE `billing_addresses`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -1378,7 +1402,7 @@ ALTER TABLE `countries`
 -- AUTO_INCREMENT for table `coupons`
 --
 ALTER TABLE `coupons`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1420,7 +1444,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
 -- AUTO_INCREMENT for table `promotions`
@@ -1468,7 +1492,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `wishlists`
 --
 ALTER TABLE `wishlists`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `_registers`

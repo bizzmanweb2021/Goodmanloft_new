@@ -163,43 +163,47 @@
                 } ,
                 dataType: 'json',
                 success:function(data){
-                   var len = data.length;
-                   $('#product_range').empty();
-                   console.log(data);
-                   var url = "{{ asset('') }}"
+                //    var len = data.length;
+                //    $('#product_range').empty();
+                //    console.log(data);
+                //    var url = "{{ asset('') }}"
                    for (let index = 0; index < len; index++) {
                     //    const element = array[index];
-                    var image = data[index]['product_image'];
-                    var product_link = "{{ route('productShow',':id') }}";
-                    var product_add = "{{ route('add.wish',':id') }}"
-                    product_link = product_link.replace(':id',data[index]['id']);
-                    product_add = product_add.replace(':id',data[index]['id']);
+                    // var image = data[index]['product_image'];
+                    // var product_link = "{{ route('productShow',':id') }}";
+                    // var product_add = "{{ route('add.wish',':id') }}"
+                    // product_link = product_link.replace(':id',data[index]['id']);
+                    // product_add = product_add.replace(':id',data[index]['id']);
 
                     $('#product_range').append(`<div class="col-lg-4 col-md-6 col-sm-6" >
                                                             <a href="#">
-                                                                <div class="single-grid-product mb-30">
+                                                            @foreach ($product as $products )
+
+                                                                 @if($products->sale == 'yes')
+                                                                 <div class="single-grid-product mb-30">
                                                                     <div class="product-image">
                                                                         <div class="product-label">
-                                                                            <span class="sale">Sale</span>
-                                                                            <span class="new">New</span>
+                                                                            <span class="sale">{{($products->discount)}}%</span>
+                                                                            <span class="new">Sale</span>
                                                                         </div>
-                                                                        <a href="${product_link}">
-                                                                            <img src="${url+image}" class="img-fluid" alt="">
+                                                                        <a href="{{ route('productShow',$products->id) }}">
+                                                                            <img src="{{ asset($products->product_image) }}" class="img-fluid" alt="">
                                                                         </a>
                                                                         <div class="product-action d-flex justify-content-between">
-                                                                            <a class="product-btn" href="${product_add}">Add to Cart</a>
-                                                                            <ul class="d-flex">
-                                                                                <li><a href="#"><i class="ion-android-favorite-outline"></i></a></li>
-                                                                                <li><a href="compare.html"><i class="ion-ios-shuffle"></i></a></li>
+                                                                            <a class="product-btn" href="{{ route('add.wish',$products->id) }}">Add to Cart</a>
+                                                                            <ul class="d-flex" onclick="wishlist()">
+                                                                                <li><a href="{{ route('wishlistShow',$products['id']) }}"><i class="ion-android-favorite-outline"></i></a></li>
                                                                             </ul>
                                                                         </div>
                                                                     </div>
                                                                     <div class="product-content">
-                                                                        <h3 class="title"> <a href="${product_link}" tabindex="0">${data[index]['product_name']}</a></h3>
-                                                                        <p class="product-price"><span class="discounted-price">$ ${data[index]['Price']}</span> <span class="main-price discounted">${data[index]['Price']}</span></p>
-                                                                        <p class="text-success" style="color:#2ebe2c"> ${data[index]['stock_availability']}</p>
+                                                                        <h3 class="title"> <a href="{{ route('productShow',$products['id']) }}" tabindex="0">{{($products->product_name) }}</a></h3>
+                                                                        <p class="product-price"><span class="discounted-price">${{ $products->Price -$products->Price*(($products->discount)/100) }}</span> <span class="main-price discounted">${{ $products->Price }}</span></p>
+                                                                        <p class="text-success" style="color:#2ebe2c">{{ $products->stock_availability }}</p>
                                                                     </div>
                                                                 </div>
+                                                                @endif 
+                                                                @endforeach
                                                             </a>
 
                                                         </div>`);

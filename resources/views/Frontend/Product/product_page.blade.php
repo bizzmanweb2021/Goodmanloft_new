@@ -13,10 +13,10 @@
                     <ul class="page-breadcrumb">
                         <li><a href="{{ route('user.index') }}">Home</a></li>
                         <li>Shop</li>
-                        @foreach (App\Models\category::orderBy('id','desc')->limit(1)->get() as $cate)
+                        @foreach (App\Models\category::where('id',$category_id)->limit(1)->get() as $cate)
                         <li>{{ $cate->Category_Name }}</li>
                         @endforeach<br>
-                        @foreach (App\Models\subcategory::orderBy('id','asc')->limit(1)->get() as $sub)
+                        @foreach (App\Models\subcategory::where('id',$subcategory_id)->limit(1)->get() as $sub)
                         <li>{{ $sub->SubCategory_Name }}</li>
                         @endforeach
                     </ul>
@@ -196,7 +196,7 @@
                                                                 <div class="single-grid-product mb-30">
                                                                     <div class="product-image">
                                                                         <div class="product-label">
-                                                                            <span class="sale">Sale</span>
+                                                                            
                                                                             <span class="new">New</span>
                                                                         </div>
                                                                         <a href="${product_link}">
@@ -204,10 +204,9 @@
                                                                         </a>
                                                                         <div class="product-action d-flex justify-content-between">
                                                                             <a class="product-btn" href="${product_add}">Add to Cart</a>
-                                                                            <ul class="d-flex">
-                                                                                <li><a href="#"><i class="ion-android-favorite-outline"></i></a></li>
-                                                                                <li><a href="compare.html"><i class="ion-ios-shuffle"></i></a></li>
-                                                                            </ul>
+                                                                            <ul class="d-flex" onclick="wishlist()">
+                                                                                <li style="padding-top:16px;"><a href="${product_add}"><i class="ion-android-favorite-outline"></i></a></li>
+                                                                                </ul>
                                                                         </div>
                                                                     </div>
                                                                     <div class="product-content">

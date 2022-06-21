@@ -75,25 +75,32 @@
                       <th class="text-uppercase text-center text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Total Amount</th>
                       <th class="text-uppercase text-center text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Payment Status</th>
                       <th class="text-uppercase text-center text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Date</th>
-                      <!-- <th class="text-uppercase text-center text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Action</th> -->
+                      <th class="text-uppercase text-center text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($orders as $key=> $order)
-                   
-                        <tr style="text-align: center">  
-                            <td>{{ $key+1 }}</td>
-                            <td>{{ $order->transaction_id }}</td>
-                            <td>{{ $order->full_name }}</td>
-                            <td>{{ $order->shipping_charge }}</td> 
-                            <td>{{ $order->discount_amount }}</td> 
-                            <td>{{ $order->order_total }}</td>
-                            <td>{{ $order->payment_status }}</td>
-                            <td>{{ $order->created_at }}</td>
-                            <!-- <td><a class="btn btn-soft-info  btn-icon btn-circle btn-sm" href="{{route('admin.orderDetails')}}"><i class="fa fa-eye"> &nbsp &nbsp </i></a></td> -->
+                    
+                            <?php 
+								foreach($result as $key=> $data)
+								{
+								?>
+								<tr style="text-align: center">
+                                <td>{{ $key+1 }}</td>
+								<td><?php echo $data->transaction_id;?></td>
+								<td><?php echo $data->full_name;?></td>
+								<td><?php echo $data->shipping_charge;?></td>
+								<td><?php echo $data->discount_amount;?></td>
+								<td><?php echo $data->order_total;?></td>
+								<td><?php echo $data->payment_status;?></td>
+                                <td><?php echo $data->payment_method;?></td>
+								<td><?php echo $data->date;?></td>
+                                <td><a rel="id" href="{{url('admin/orderDetails/'.$data->id)}}"><i class="fa fa-eye"></i></a></td>
+                           
                             
                         </tr>
-                        @endforeach
+                        <?php
+						}
+						?>
                     </tbody>
                     
                 </table>
@@ -101,5 +108,8 @@
         </div>
     </div>
 </div>
+<div id="order_list_loder" style="display: none">
+        @include('admin.loder.index')
+    </div>
 
 @endsection

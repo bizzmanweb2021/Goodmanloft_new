@@ -22,6 +22,7 @@ class ShopPageController extends Controller
         else
             return abort(404,"something went wrong");
     }
+   
     public function shop($id)
     {
 
@@ -33,7 +34,10 @@ class ShopPageController extends Controller
         {
             $product = product::where('Category_id',$id)->orderBy('id')->get();
         }
-        return view('Frontend.Product.product_page')->with('product',$product);
+        $category_id = $id;
+        $subcategory_id = request()->sub_id;
+
+        return view('Frontend.Product.product_page',compact('category_id','subcategory_id'))->with('product',$product);
 
     }
     public function filterAll($id)

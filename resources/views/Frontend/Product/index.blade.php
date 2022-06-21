@@ -88,7 +88,9 @@
                                     <div class="product-details-content">
                                         <h2>{!! $product->product_name !!}</h2>
                                         <div class="single-product-price">
-                                            <span class="price new-price">${!! $product->Price !!}</span>
+                                            
+                                              <span class="price new-price">${{ $product->Price -$product->Price*(($product->discount)/100) }}</span>
+                                            <!-- <span class="price new-price">${!! $product->Price !!}</span> -->
                                         </div>
                                         <div class="product-description">
                                             <p>{!! $product->Product_Description !!}</p>

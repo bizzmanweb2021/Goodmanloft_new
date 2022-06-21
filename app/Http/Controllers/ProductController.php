@@ -154,7 +154,7 @@ class ProductController extends Controller
     }
     public function importForm()
     {
-        return view('admin.import-form');
+        return view('Admin.import-form');
     }
     public function import(Request $request)
     {

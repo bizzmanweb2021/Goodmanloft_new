@@ -75,7 +75,7 @@
                         
                         <div class="row gutters-5">
                             <div class="col text-left text-md-left">
-                            @foreach (App\Models\Shipping_address::orderBy('id','desc')->limit(1)->get() as $shipping)
+                            @foreach (App\Models\Shipping_address::where('user_id',$order->user_id)->orderBy('id','desc')->limit(1)->get() as $shipping)
                                          
                                <ul style="list-style:none"> 
                                    <li>
@@ -90,7 +90,7 @@
                                 @endforeach 
                             </div>
                             <div class="col text-left text-md-left">
-                            @foreach (App\Models\Billing_address::orderBy('id','desc')->limit(1)->get() as $billing)
+                            @foreach (App\Models\Billing_address::where('user_id',$order->user_id)->orderBy('id','desc')->limit(1)->get() as $billing)
                              
                             <ul style="list-style:none"> 
                                    <li>
@@ -107,20 +107,61 @@
                             @endforeach 
 
                             </div>
-                            <div class="col-md-5 text-left text-md-left">
-                           
+                            <div class="col-md-4 ml-auto">
+                                <table>
+                                @foreach (App\Models\Order::where('id',$order->id)->orderBy('id')->limit(1)->get() as $orders)
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-main text-bold">Order #:</td>
+                                            <td class="text-right text-info text-bold">{{ $orders->transaction_id }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-main text-bold">Order Status:</td>
+                                            <td class="text-right"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-main text-bold">Payment status:</td>
+                                            <td class="text-right">{{ $orders->payment_status }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-main text-bold">Order Date:</td>
+                                            <td class="text-right">
+                                                {{ date('d-m-Y h:i A', strtotime($orders->created_at)) }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-main text-bold">
+                                                Total amount:
+                                            </td>
+                                            <td class="text-right">
+                                                ${{ $orders->order_total }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-main text-bold">Payment method:</td>
+                                            <td class="text-right">
+                                            {{ $orders->payment_method }}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    @endforeach 
+                                </table>
+                            </div>
+                        </div>
+                            <!-- <div class="col-md-5 text-left text-md-left">
+                            @foreach (App\Models\Order::orderBy('id','desc')->limit(1)->get() as $orders)
                              
                             <ul style="list-style:none"> 
                             &nbsp;  
-                                    <li><strong class="text-main text-bold">Order Status:Completed</strong></li>&nbsp;
-                                    <li><strong class="text-main text-bold">Payment Status:Paid</strong></li>&nbsp;
-                                    <li><strong class="text-main text-bold">Order Date:2022-18-05</strong></li>&nbsp;
-                                    <li><strong class="text-main text-bold">Payment Status:Approved</strong></li>&nbsp;
-                                    <li><strong class="text-main text-bold">Payment Method:Paypal</strong></li> &nbsp;                             
+                                    <li><strong class="text-main text-bold">Order Status:</strong></li>&nbsp;
+                                    <li><strong class="text-main text-bold">Transaction Status:</strong>{{ $orders->transaction_id }}</li>&nbsp;
+                                    <li><strong class="text-main text-bold">Order Date:</strong>{{ $orders->created_at }}</li>&nbsp;
+                                    <li><strong class="text-main text-bold">Payment Status:</strong>{{ $orders->payment_status }}</li>&nbsp;
+                                    <li><strong class="text-main text-bold">Payment Method:</strong>{{ $orders->payment_method }}</li> &nbsp;                             
                              </ul>
                            
-
-                            </div>
+                             @endforeach 
+                            </div> -->
                         </div>
                         {{-- end address --}}
                         <hr class="new-section-sm bord-no">
@@ -148,7 +189,7 @@
                                             <td>
                                                 {{ $key+1 }}
                                                 </td>
-                                                <td><img src="{{ $cart->product_image }}">
+                                                <td><img src="{{ url('/' . $cart["product_image"] )}}" width=100px; height=80px; />
                                                 </td>
                                                 <td>
                                                 {{ $cart->product_name }}
@@ -157,7 +198,7 @@
                                                 {{ $cart->quantity }}
                                                 </td>
                                                 <td>
-                                                    {{ $cart->price }}
+                                                {{ $cart->price }}
                                                 </td>         
                                                 <td>
                                                 ${{ $cart->total }}

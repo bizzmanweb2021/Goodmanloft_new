@@ -73,7 +73,13 @@ Route::get('file-export2', [ProductController::class, 'fileExport2'])->name('fil
     Route::get('/stockAdd',[ProductController::class,'stockAdd'])->name('stockAdd');
     Route::post('/stockStore',[ProductController::class,'stockStore'])->name('stockStore');
     Route::get('/getSubCategoryById',[ProductController::class,'getSubCategoryById'])->name('getSubCategoryById');
-    Route::get('/orderDetails',[AdminOrderController::class,'orderDetails'])->name('orderDetails');
+    Route::get('/orderDetails/{id}',[AdminOrderController::class,'orderDetails'])->name('orderDetails');
+
+    Route::post('/validate_form', [AdminOrderController::class, 'validate_form'])->name('order.validate_form')->middleware('signed');
+    Route::resource('order', AdminOrderController::class)->names([
+        'store' => 'order.store'
+    ])->middleware('signed');
+
 
     // Route::get('/download-pdf2',[AdminOrderController::class,'downloadPDF2']);
 
@@ -119,7 +125,7 @@ Route::get('file-export2', [ProductController::class, 'fileExport2'])->name('fil
     Route::get('/couponView',[AdminCouponController::class,'create'])->name('CouponView');
     Route::get('/couponAdd',[AdminCouponController::class,'index'])->name('CouponAdd');
     Route::post('/couponStore',[AdminCouponController::class,'store'])->name('CouponStore');
-
+    Route::get('/delete-coupon/{id}', [AdminCouponController::class, 'delete'])->name('Coupon-Delete');
     // Route::resource('/orders',AdminOrderController::class);
     // Route::get('/orderDetails',[OrderController::class,'show_order_details'])->name('show_order_details');
     Route::resource('/payments',PaymentController::class);
@@ -205,6 +211,7 @@ Route::get('file-export2', [ProductController::class, 'fileExport2'])->name('fil
 
 Route::get('/',[HomeController::class,'index'])->name('user.index');
 Route::get('/search/',[HomeController::class,'search'])->name('search');
+// Route::get('/',[HomeController::class,'coupon'])->name('user.index');
 
 Route::get('/productShow/{product_id}',[ShopPageController::class,'show'])->name('productShow');
 Route::get('/shop/{id}',[ShopPageController::class,'shop'])->name('shop');

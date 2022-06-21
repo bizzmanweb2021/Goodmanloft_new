@@ -36,6 +36,12 @@ class HomeController extends Controller
         $product = product::query()->where('product_name', 'LIKE', "%{$search}%")->orWhere('Price', 'LIKE', "%{$search}%")->get();
         return view('Frontend.Product.product_page', compact('product'));
     }
+    // public function coupon()
+    // {
+    //    //print_r('called');exit();
+      
+    //    return view('Frontend.Home.coupon');
+    // }
 
 
 }

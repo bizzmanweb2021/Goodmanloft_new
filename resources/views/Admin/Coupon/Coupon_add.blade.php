@@ -66,22 +66,32 @@
                         <label class="text-truncate  text-body ms-3 w-80 mb-0">Value</label>
                         <input type="text" name="discount_amount" class="form-control" style="width:100%">
                     </div><br>
-                    <div class="col-md-4">
+                    <div class="col-md-4 limit">
+                        <label class="text-truncate  text-body ms-3 w-80 mb-0">Minimum Limit</label>
+                        <input type="text" name="minimum_limit" class="form-control" style="width:100%">
+                    </div><br>
+                </div><br>
+                <div class="row">
+                <div class="col-md-4 Banner">
                         <div class="upload">
                             <label class="text-truncate  text-body ms-3 w-80 mb-0">Upload Coupon Banner</label>
-                            <input type="file" name="Banner" class="form-control" id="Banner">
+                            <input type="file" name="Banner" class="form-control" id="Banner"><br>
+                            
                         </div>
-                    </div></br></br></br>
-                    @error('Banner')
-                    <span style="color:red">{{ $message }}</span>
-                    @enderror
                 </div>
-                </div>
+                <div class="col-md-4">  
+                        <label class="text-truncate  text-body ms-3 w-80 mb-2"></label></br>          
+                        <input type="checkbox" id="promotion" name="promotion" value="promotion"><label for="">Promotion</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div><br>
+                </div></br>
+
+               
                 <div class="row mb-4">
                     <div class="col-md-4">
-                        <button type="submit" class="btn btn-info btn-sm" style="background-color: #bf9f6c">ADDto</button>
+                        <button type="submit" class="btn btn-info btn-sm" style="background-color: #bf9f6c">ADD</button>
                         <button type="reset" class="btn btn-light btn-sm" name="submit">Return</button>
                     </div>
+                </div>
                 </div>
             </form>
         </div>
