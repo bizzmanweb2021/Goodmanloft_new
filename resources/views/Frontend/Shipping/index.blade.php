@@ -232,25 +232,20 @@
                     <h3 style="margin-top:30px;">Payment Method</h3>
                     <div class="checkout-payment-method">
                         <div class="single">
-                            <input type="radio" id="payment_cash" class="btn_pay" name="payment-method" value="1">
-                            <!-- <label id="paypal-button-container">Google Pay</label> -->
-                            <a href="{{ route('user.index') }}"><img src="{{ url('/') }}/assets/images/paypal.png" style="width: 75px; height:50px;" alt="" class="img-fluid"></a>
-                                                                       
-                         </div>
-                        <hr>
+                            <input type="radio" id="payment_cash" name="payment-method" value="cash">
+                            <label for="payment_cash">Google Pay</label>
+                           </div>
                         <div class="single">
-                            <input type="radio" id="payment_paypal" class="btn_pay" name="payment-method" value="2">
-                            <a href="{{ route('user.index') }}"><img src="{{ url('/') }}/assets/images/gpay.jpg" alt="" style="width: 120px; height:60px;" class="img-fluid"></a>
-                        </div>
-                        <hr>
-                        <div class="single">
-                            <input type="radio" id="payment_cash" class="btn_pay" name="payment-method" value="3">
-                            <label for="payment_cash">Credit Card or Debit Card</label>
-                            <a href="{{ route('user.index') }}"><img src="{{ url('/') }}/assets/images/card1.jpg" style="width: 75px; height:50px;" alt="" class="img-fluid"></a>
+                            <input type="radio" id="payment_paypal" name="payment-method" value="paypal">
+                            <label for="payment_paypal">Paypal</label>
                           </div>
+                        <div class="single">
+                            <input type="radio" id="payment_cash" name="payment-method" value="cash">
+                            <label for="payment_cash">Cash on Delivery</label>
+                               </div>
                     </div>
                 </div> 
-                <div id="paypal-button-container" style="display:block;"></div>
+                <div id="paypal-button-container"></div>
                 
                
                 <div id="container"></div>
@@ -275,15 +270,6 @@
     //alert('hello');
     jQuery('#gpay').show();
     //jQuery('.gpay').show();
-
-    $(document).on('click','.btn_pay',function(){
-
-        if($(this).val() == 1){
- 
-            $('.paypal-button').trigger('click');
-        }
-
-    });
 
     $('body').on('change','.shipping_method',function(){
 

@@ -190,10 +190,13 @@
                     var product_add = "{{ route('add.wish',':id') }}"
                     product_link = product_link.replace(':id',data[index]['id']);
                     product_add = product_add.replace(':id',data[index]['id']);
-
+                   
                     $('#product_range').append(`<div class="col-lg-4 col-md-6 col-sm-6" >
+                   
                                                             <a href="#">
+                                                            
                                                                 <div class="single-grid-product mb-30">
+                                                               
                                                                     <div class="product-image">
                                                                         <div class="product-label">
                                                                             
@@ -215,9 +218,11 @@
                                                                         <p class="text-success" style="color:#2ebe2c"> ${data[index]['stock_availability']}</p>
                                                                     </div>
                                                                 </div>
+                                                               
                                                             </a>
-
+                                                            
                                                         </div>`);
+                                                        
 
                    }
 
