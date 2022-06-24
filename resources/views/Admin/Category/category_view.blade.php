@@ -19,24 +19,25 @@
                 <table class="table align-items-center justify-content-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Category Image</th>
-                      <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Product Category Name</th>
-                      <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Edit</th>
+                      <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">S.No</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Category Name</th>
+                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Edit</th>
 
                     </tr>
 
                   </thead>
                     <tbody>
-                      @foreach($category as $item)
+                      
+                      @foreach($category as $key=> $item)
                       <tr>
-                        <td><img src="{{ url('/' . $item["Category_image"] )}}" width=80px; height=80px; /> </td>
-                        <td>{{$item["Category_Name"]}}</td>
+                        <!-- <td><img src="{{ url('/' . $item->Category_image )}}" width=80px; height=80px; /> </td> -->
+                        <td>{{ $key+1 }}</td>
+                        <td>{{$item->Category_Name}}</td>
                         <td><a href="{{route('admin.edit.cate',$item["id"])}}"><i class="fa fa-edit"></i></a></td>
 
-                        </tr>
+                      </tr>
                       @endforeach
-
-                </tbody>
+                    </tbody>
                 </table>
             </div>
         </div>

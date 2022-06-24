@@ -7910,15 +7910,32 @@ h2.entry-title:before {
   font-size: 40px;
   font-weight: 700;
 }
-.sale-text h2{
+.sale-text h3{
   margin-bottom: 20px;
   font-family: "Times New Roman", Times, serif;
   font-weight: bold;
 }
 .sale-text p{
-  margin-top: 20px;
+  margin-top: 10px;
   color: #000000;
 }
 .text-bold {
     font-weight: 1000;
+}
+
+/* this is sale popup */
+.sale-text{
+  margin-top: 30px;
+}
+.sale-text span{
+  color: #b49f64;
+  font-size: 40px;
+  font-weight: 700;
+  
+}
+.sale-text h3{
+  margin-bottom: 20px;
+}
+.sale-text p{
+  margin-top: 20px;
 }

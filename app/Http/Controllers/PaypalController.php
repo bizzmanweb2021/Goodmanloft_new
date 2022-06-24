@@ -77,8 +77,19 @@ class PaypalController extends Controller
         $order->discount_amount =$request->input('coupon_amount');
         $order->shipping_charge =$request->input('shipping_charge');
         
+        
         $order->save();
 
+
+        // $order_items=new Order();
+        // $order_items->user_id =Auth::id();
+        // $order_items->order_id = $request->input('payment_method');
+        // $order_items->quantity =$request->input('coupon_code');
+        // $order_items->order_total = $request->input('order_total');
+        
+
+        // $order->save();
+         
         $payment = payment::create([
             'user_id'   => Auth::id(),
             'order_id' => $order->id

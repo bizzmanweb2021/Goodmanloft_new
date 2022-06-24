@@ -109,7 +109,7 @@
                             </div>
                             <div class="col-md-4 ml-auto">
                                 <table>
-                                @foreach (App\Models\Order::where('id',$order->id)->orderBy('id')->limit(1)->get() as $orders)
+                                @foreach (App\Models\Order::where("user_id",Auth::user()->id)->where('id',$order->id)->orderBy('id')->limit(1)->get() as $orders)
                                     <tbody>
                                         <tr>
                                             <td class="text-main text-bold">Order #:</td>
@@ -183,16 +183,21 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    @php $total=0; @endphp
+                                    @foreach (App\Models\OrderItem::where("user_id",Auth::user()->id)->where('order_id',$order->id)->get() as $key=>$cart)
                                     
-                                    @foreach($carts as $key=> $cart)
                                             <tr>
                                             <td>
                                                 {{ $key+1 }}
+                                                @php
+                                                $Product = App\Models\Product::where('id',$cart->product_id)->first();
+                                                $total += $cart->quantity*$cart->price;
+                                                @endphp
                                                 </td>
-                                                <td><img src="{{ url('/' . $cart["product_image"] )}}" width=100px; height=80px; />
+                                                <td><img src="{{ url('/' . $Product["product_image"] )}}" width=100px; height=80px; />
                                                 </td>
                                                 <td>
-                                                {{ $cart->product_name }}
+                                                {{ $Product->product_name }}
                                                 </td>
                                                 <td>
                                                 {{ $cart->quantity }}
@@ -201,7 +206,7 @@
                                                 {{ $cart->price }}
                                                 </td>         
                                                 <td>
-                                                ${{ $cart->total }}
+                                                ${{ $cart->quantity*$cart->price }}
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -222,7 +227,7 @@
                                                                 <th>Subtotal</th>
                                                                 <td class="text-right">
                                                                     <span
-                                                                        class="fw-600">${{ $cart->total }}</span>
+                                                                        class="fw-600">${{ $total }}</span>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -242,7 +247,7 @@
                                                             <tr>
                                                                 <th><span class="fw-600">Total</span></th>
                                                                 <td class="text-right">
-                                                                    <strong><span>${{ $cart->total }}</span></strong>
+                                                                    <strong><span>${{ $total }}</span></strong>
                                                                 </td>
                                                             </tr>
                                                         </tbody>

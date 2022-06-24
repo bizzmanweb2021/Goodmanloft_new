@@ -40,7 +40,7 @@
              </div>
              <div class="col-md-7">
                  <div class="shipping-add-change">
-                    <a href="{{ route('checkout') }}">Change</a>
+                    <a ="{{ route('checkout') }}">Change</a>
                  </div>
              </div>
          </div>
@@ -230,25 +230,27 @@
             <div class="row">
                  <div class="col-12 mb-60 mt-5">
                     <h3 style="margin-top:30px;">Payment Method</h3>
-                    <div class="checkout-payment-method">
+                    <!-- <div class="checkout-payment-method">
                         <div class="single">
-                            <input type="radio" id="payment_cash" name="payment-method" value="cash">
+                            <input type="radio" class="btn_pay" id="payment_cash" name="payment-method" value="gpay">
                             <label for="payment_cash">Google Pay</label>
                            </div>
-                        <div class="single">
-                            <input type="radio" id="payment_paypal" name="payment-method" value="paypal">
+                        <div input type="radio" class="single">
+                            <input type="radio" class="paypal-button btn_pay" id="payment_paypal" name="payment-method" value="paypal">
                             <label for="payment_paypal">Paypal</label>
                           </div>
                         <div class="single">
-                            <input type="radio" id="payment_cash" name="payment-method" value="cash">
-                            <label for="payment_cash">Cash on Delivery</label>
+                            <input type="radio" class="btn_pay" id="payment_cash" name="payment-method" value="cash">
+                            <label for="payment_cash">Debit or Credit Card</label>
                                </div>
-                    </div>
-                </div> 
+                    </div> -->
+                
+                <h5 style="margin-top:30px; margin-bottom:20px; font-weight: 1000;">Paypal/Debit or Credit Card:</h5>
                 <div id="paypal-button-container"></div>
                 
-               
+                <h5 style="margin-bottom:20px; font-weight: 1000;">GooglePay:</h5>
                 <div id="container"></div>
+                </div> 
 
             </div>
         </div>
@@ -279,6 +281,13 @@
         
 
     });
+
+
+    $(document).on('click','.btn_pay',function(){
+        if($(this).val() == 'gpay'){
+            $('.gpay-card-info-container').click();
+        }
+    })
     
 
 </script>  
@@ -308,8 +317,8 @@
             console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
             const transaction = orderData.purchase_units[0].payments.captures[0];
             //alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
-//alert(orderData.purchase_units[0]['.amount'].currency_code);
-console.log(orderData.purchase_units);
+            //alert(orderData.purchase_units[0]['.amount'].currency_code);
+            console.log(orderData.purchase_units);
                 console.log(orderData.purchase_units[0].shipping.address.address_line_1);
 
 
@@ -366,7 +375,7 @@ console.log(orderData.purchase_units);
                 },
                 success: function(response)
                 {
-                    window.location.href = '/confirmPayment';
+                   // window.location.href = '/confirmPayment';
                 }   
 
             });

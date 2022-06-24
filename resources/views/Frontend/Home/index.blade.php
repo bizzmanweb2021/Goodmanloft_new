@@ -86,14 +86,41 @@
                     </div>
                 </div>
         </div>
-        {{-- <div class="newsletter-popup-area" id="newsletter-popup-area">
+        <!--popup-->
+        <div class="newsletter-popup-area" id="newsletter-popup-area">
+        <div class="newsletter-popup-content-wrapper">
+            <div class="newsletter-popup-content text-center">
+                <a href="javascript:void(0)" class="close-newsletter-popup" id="close-newsletter-popup">Close</a>
+               <div class="row">
+               @foreach (App\Models\Coupon::all() as $item )
+               @if($item->promotion == 'promotion')
+                   <div class="col-md-4">
+                       <img src="{{ url('/' . $item["Banner"] )}}" alt="" class="img-fluid">
+                   </div>
+                   <div class="col-md-6">
+                       <div class="sale-text">
+                        <h3>{{ $item->coupon_name }}</h3>
+                        <span>{{ $item->coupon_code }}</span>
+                        <p>{{ $item->coupon_description }} </p>
+                        <button class="btn btn-primary">SHOP NOW</button>
+                       </div>   
+                       
+                   </div>
+                 @endif  
+                @endforeach
+               </div>
+            </div>
+        </div>
+    </div>
+    <!-- Endpopup-->
+       <!-- <div class="newsletter-popup-area" id="newsletter-popup-area">
             <div class="newsletter-popup-content-wrapper">
                 <div class="newsletter-popup-content text-center" style="width:60%">
                     <a href="javascript:void(0)" class="close-newsletter-popup" id="close-newsletter-popup">Close</a>
                     <a href="{{ route('festive') }}"><img src="{{ asset('assets/images/discount.jpg') }}"/></a>
                 </div>
             </div>
-        </div> --}}
+        </div>  -->
         <!--Banner section start-->
         <div class="banner-section section pt-45 pt-lg-25">
             <div class="container">
@@ -454,6 +481,29 @@
             </div>
         </header>
         <!--Header Mobile section end-->
+        <!--popup-->
+        <div class="newsletter-popup-area" id="newsletter-popup-area">
+        <div class="newsletter-popup-content-wrapper">
+            <div class="newsletter-popup-content text-center">
+                <a href="javascript:void(0)" class="close-newsletter-popup" id="close-newsletter-popup">Close</a>
+               <div class="row">
+                   <div class="col-md-6">
+                       <img src="assets/images/giftbox.jpg" alt="" class="img-fluid">
+                   </div>
+                   <div class="col-md-6">
+                       <div class="sale-text">
+                        <h3>SUMMER SALE</h3>
+                        <span>UPTO 50% OFF</span>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, tenetur iure animi quos ab tempore excepturi minus nisi. Quis totam, </p>
+                        <button class="btn btn-primary">SHOP NOW</button>
+                       </div>   
+                       
+                   </div>
+               </div>
+            </div>
+        </div>
+    </div>
+    <!-- Endpopup-->
         <!-- Offcanvas Menu Start -->
         <div class="offcanvas-mobile-menu" id="offcanvas-mobile-menu">
             <a href="javascript:void(0)" class="offcanvas-menu-close" id="offcanvas-menu-close-trigger">

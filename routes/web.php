@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\AboutAdminController;
 use App\Http\Controllers\ArticleAdminController;
 use App\Http\Controllers\AboutController;
@@ -212,6 +213,11 @@ Route::get('file-export2', [ProductController::class, 'fileExport2'])->name('fil
 Route::get('/',[HomeController::class,'index'])->name('user.index');
 Route::get('/search/',[HomeController::class,'search'])->name('search');
 // Route::get('/',[HomeController::class,'coupon'])->name('user.index');
+
+Route::get('forget-password', [ForgotPasswordController::class, 'ForgetPassword'])->name('ForgetPasswordGet');
+Route::post('forget-password', [ForgotPasswordController::class, 'ForgetPasswordStore'])->name('ForgetPasswordPost');
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'ResetPassword'])->name('ResetPasswordGet');
+Route::post('reset-password', [ForgotPasswordController::class, 'ResetPasswordStore'])->name('ResetPasswordPost');
 
 Route::get('/productShow/{product_id}',[ShopPageController::class,'show'])->name('productShow');
 Route::get('/shop/{id}',[ShopPageController::class,'shop'])->name('shop');

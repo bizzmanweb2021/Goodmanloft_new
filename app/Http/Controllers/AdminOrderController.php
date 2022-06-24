@@ -67,6 +67,18 @@ class AdminOrderController extends Controller
          $data = Cart::orderBy("id","desc")->get();
          $order =  Order::where('id', $id)->first();
         return view('Admin.orders.orderDetails')->with(['carts'=>$data,'order'=>$order]);
+
+
+        $order_details = Order::join('order_items', 'order_items.order_id', '=', 'orders.id')
+                ->join('products', 'products.id', '=', 'order_items.product_id')
+                ->select(
+                    'products.title',
+                    'products.productimagee as image',
+                    'order_items.quantity as qun',
+                    'orders.shipping_method',
+                    'products.saleprice'
+                )
+                ->where('orders.id', $id)->get();
     }
 
     public function store(Request $request)

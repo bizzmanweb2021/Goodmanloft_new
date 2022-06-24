@@ -44,8 +44,9 @@
                         <span>Remember me</span>
                     </div>
                     <div class="col-md-6">
+                   
                         <span class="lost-password text-right pull-right">
-                            <a href="#">Lost your password?</a>
+                            <a href="{{ route('ForgetPasswordGet') }}">{{ __('Forgot Your Password?') }}</a>
                         </span>
                     </div>
                 </div>

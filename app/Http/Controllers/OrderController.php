@@ -12,6 +12,7 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Coupon;
 use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\product;
 use App\Models\Pickup;
 use App\Models\Shipping_address;

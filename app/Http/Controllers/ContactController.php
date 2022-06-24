@@ -22,7 +22,9 @@ class ContactController extends Controller
         $con->message = $request->message;
         $con->save();
 
-        return back()->with('message','Successfully Sent');
+        $notification=array('alert-type'=>'success','message'=>'Message Successfully Sent.');
+        return back()->with($notification);
+        
     }
 
     public function show()

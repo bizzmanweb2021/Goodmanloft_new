@@ -23,7 +23,7 @@ class CategoryController extends Controller
     public function show(Request $request)
     {
         $this->validate($request,['Category_name'=>'required|max:30',
-                                   'Category_Image'=>'required|mimes:jpg,png,jpeg'
+                                   'Category_Image'=>'required|mimes:jpg,png,jpeg',
                                  ]);
 
                                 $image = $request->Category_Image;
