@@ -1,4 +1,4 @@
-@extends('Admin.layouts.main')
+@extends('Admin.layouts.menu')
 @section('content')
     <style>
         body {
@@ -39,8 +39,8 @@
                                 <select class="form-control aiz-selectpicker" data-minimum-results-for-search="Infinity"
                                     id="update_payment_status">
                                     <option value="">--Select--</option>
-                                    <option value="Approved" >Approved</option>
-                                    <option value="Pending" >Pending</option>
+                                    <option value="Approved" @if($order->payment == "Approved") selected @endif>Approved</option>
+                                    <option value="Pending" @if($order->payment == "Pending") selected @endif>Pending</option>
                                 </select>
                             </div>
                            
@@ -49,12 +49,9 @@
                                     <select class="form-control aiz-selectpicker" data-minimum-results-for-search="Infinity"
                                         id="update_self_pick_order_status">
                                         <option value="">--Select--</option>
-                                        <option value="Pending Collection">
-                                            Pending Collection</option>
-                                        <option value="Complete">
-                                            Complete</option>
-                                        <option value="Cancelled" >
-                                            Cancelled</option>
+                                        <option value="Pending Collection" @if($order->order_status == "Pending Collection") selected @endif>Pending Collection</option>
+                                        <option value="Complete" @if($order->order_status == "Complete") selected @endif>Complete</option>
+                                        <option value="Cancelled" @if($order->order_status == "Cancelled") selected @endif>Cancelled</option>
                                     </select>
                                 </div>
                                
@@ -109,24 +106,23 @@
                             </div>
                             <div class="col-md-4 ml-auto">
                                 <table>
-                                @foreach (App\Models\Order::where("user_id",Auth::user()->id)->where('id',$order->id)->orderBy('id')->limit(1)->get() as $orders)
                                     <tbody>
                                         <tr>
                                             <td class="text-main text-bold">Order #:</td>
-                                            <td class="text-right text-info text-bold">{{ $orders->transaction_id }}</td>
+                                            <td class="text-right text-info text-bold">{{ $order->transaction_id }}</td>
                                         </tr>
                                         <tr>
                                             <td class="text-main text-bold">Order Status:</td>
-                                            <td class="text-right"></td>
+                                            <td class="text-right order_status">{{ $order->order_status}}</td>
                                         </tr>
                                         <tr>
                                             <td class="text-main text-bold">Payment status:</td>
-                                            <td class="text-right">{{ $orders->payment_status }}</td>
+                                            <td class="text-right">{{ $order->payment_status }}</td>
                                         </tr>
                                         <tr>
                                             <td class="text-main text-bold">Order Date:</td>
                                             <td class="text-right">
-                                                {{ date('d-m-Y h:i A', strtotime($orders->created_at)) }}
+                                                {{ date('d-m-Y h:i A', strtotime($order->created_at)) }}
                                             </td>
                                         </tr>
                                         <tr>
@@ -134,17 +130,16 @@
                                                 Total amount:
                                             </td>
                                             <td class="text-right">
-                                                ${{ $orders->order_total }}
+                                                ${{ $order->order_total }}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="text-main text-bold">Payment method:</td>
                                             <td class="text-right">
-                                            {{ $orders->payment_method }}
+                                            {{ $order->payment_method }}
                                             </td>
                                         </tr>
                                     </tbody>
-                                    @endforeach 
                                 </table>
                             </div>
                         </div>
@@ -184,29 +179,28 @@
                                     </thead>
                                     <tbody>
                                     @php $total=0; @endphp
-                                    @foreach (App\Models\OrderItem::where("user_id",Auth::user()->id)->where('order_id',$order->id)->get() as $key=>$cart)
+                                    @foreach ($order_details as $key=>$item)
                                     
                                             <tr>
                                             <td>
                                                 {{ $key+1 }}
                                                 @php
-                                                $Product = App\Models\Product::where('id',$cart->product_id)->first();
-                                                $total += $cart->quantity*$cart->price;
+                                                $total += $item->quantity*$item->price;
                                                 @endphp
                                                 </td>
-                                                <td><img src="{{ url('/' . $Product["product_image"] )}}" width=100px; height=80px; />
+                                                <td><img src="{{ url('/' . $item->product_image )}}" width=100px; height=80px; />
                                                 </td>
                                                 <td>
-                                                {{ $Product->product_name }}
+                                                {{ $item->product_name }}
                                                 </td>
                                                 <td>
-                                                {{ $cart->quantity }}
+                                                {{ $item->quantity }}
                                                 </td>
                                                 <td>
-                                                {{ $cart->price }}
+                                                ${{ $item->price }}.00
                                                 </td>         
                                                 <td>
-                                                ${{ $cart->quantity*$cart->price }}
+                                                ${{ $item->quantity*$item->price }}.00
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -227,27 +221,27 @@
                                                                 <th>Subtotal</th>
                                                                 <td class="text-right">
                                                                     <span
-                                                                        class="fw-600">${{ $total }}</span>
+                                                                        class="fw-600">${{ $total }}.00</span>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Shipping</th>
                                                                 <td class="text-right">
                                                                     <span
-                                                                        class="font-italic">${{ 0.00 }}</span>
+                                                                        class="font-italic">${{ $order->shipping_charge}}</span>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Coupon Discount</th>
                                                                 <td class="text-right">
                                                                     <span
-                                                                        class="font-italic">${{ 0.00 }}</span>
+                                                                        class="font-italic">${{ $order->discount_amount }}</span>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <th><span class="fw-600">Total</span></th>
                                                                 <td class="text-right">
-                                                                    <strong><span>${{ $total }}</span></strong>
+                                                                    <strong><span>${{ $order->order_total }}</span></strong>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -277,3 +271,46 @@
    
 
 @endsection
+<!-- @section('javascript')
+<script>
+$(function(){
+    $(document).on('change','#update_payment_status',function(){
+        var payment_status = $(this).val();
+        if(payment_status != ''){
+            jQuery.ajax({
+                url: "{{ route('payment-status') }}",
+                method: 'post',
+                data: {
+                    "_token":"{{csrf_token()}}",
+                    "payment_status": payment_status,
+                    "order_id":{{$order->id}}
+                },
+                success: function(result){
+                    alert(result.status);
+                }
+            });
+        }
+    });
+
+    $(document).on('change','#update_self_pick_order_status',function(){
+        var order_status = $(this).val();
+        if(order_status != ''){
+            jQuery.ajax({
+                url: "{{ route('order-status') }}",
+                method: 'post',
+                data: {
+                    "_token":"{{csrf_token()}}",
+                    "order_status": order_status,
+                    "order_id":{{$order->id}}
+                },
+                success: function(result){
+                    $('.order_status').text(order_status);
+                    alert(result.status);
+                }
+            });
+        }
+    });
+});
+</script>
+@endsection -->
+

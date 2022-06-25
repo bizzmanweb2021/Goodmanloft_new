@@ -19,6 +19,7 @@
                 <table class="table align-items-center justify-content-center mb-0">
                   <thead>
                     <tr>
+                      <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">S.No</th>
                       <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">SubCategory Image</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">SubCategory Name</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Category Name</th>
@@ -28,8 +29,9 @@
 
                   </thead>
                     <tbody>
-                      @foreach($subcategory as $item)
+                      @foreach($subcategory as $key=> $item)
                       <tr>
+                       <td>{{ $key+1 }}</td>
                         <td><img src="{{ url('/' . $item->SubCategory_image )}}" width=80px; height=80px; /> </td>
                         <td>{{$item->SubCategory_Name}}</td>
                         <td>{{$item->Category_Name}}</td>

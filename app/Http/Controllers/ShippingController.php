@@ -20,8 +20,8 @@ class ShippingController extends Controller
     public function index()
     {
         $data = DB::table('shipping_charges')
-        ->select('shipping_charges.country_name','shipping_charges.delivery_amount')
-        ->join('countries','countries.id','=','shipping_charges.Country_id')->get();
+        ->select('shipping_charges.country_name','shipping_charges.delivery_amount','countries.country_name')
+        ->join('countries','countries.id','=','shipping_charges.country_name')->get();
         return view('Admin.Shipping.shipping_view')->with('shipping',$data);
     }
     public function create()
@@ -30,15 +30,14 @@ class ShippingController extends Controller
         return view('Admin.Shipping.shipping',compact('Getcountrylist'));
     }
 
-
-
+   
     public function store(Request $request)
     {
         $ship = new Shipping_charge();
         $ship->delivery_amount = $request->delivery_amount;
-        $ship->Country_id = $request->Country_name;
+        $ship->country_id = $request->country_name;
         $ship->country_name = $request->country_name;
-       // print_r('called');exit();
+        //print_r('called');exit();
         $ship->save();
 
         $notification1=array('alert-type'=>'success',

@@ -8,6 +8,8 @@ use App\Models\Order;
 use App\Models\subcategory;
 use DB;
 use Excel;
+use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\withHeadingRow;
 use App\Imports\productImport;
 use App\Exports\ProductsExport;
 use App\Exports\OrdersExport;
@@ -168,7 +170,8 @@ class ProductController extends Controller
     }
 
     public function fileExport1(Request $request) 
-    {        
+    {    
+            
         return Excel::download(new StocksExport, 'Stocks.xlsx');
     }
 

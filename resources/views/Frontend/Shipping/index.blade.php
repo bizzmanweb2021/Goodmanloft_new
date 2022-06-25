@@ -375,7 +375,7 @@
                 },
                 success: function(response)
                 {
-                   // window.location.href = '/confirmPayment';
+                    window.location.href = '/confirmPayment';
                 }   
 
             });

@@ -19,41 +19,7 @@
                     @php
                         $order_status = App\Models\OrderStatus::get();
                     @endphp
-                    <div class="col-md-3 mt-2">
-                        <label class="text-truncate  text-body ms-3 w-80 mb-0">Status</label>
-                            <select name="" id="order_status" class="form-control">
-                                <option value="">--Select--</option>
-                                    @foreach ($order_status as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                    @endforeach
-                                    <option value="0">Self Pick</option>
-                            </select>
-                    </div>
-                    <div class="col-md-3 mt-2">
-                        <label class="text-truncate  text-body ms-3 w-80 mb-0">Product Name</label>
-                            <select name="" id="order_status" class="form-control">
-                                <option value="">--Select--</option>
-                                <option value="0">Paid</option>
-                                <option value="1">Unpaid</option>
-                            </select>
-                    </div>
-                    <div class="col-md-3 mt-2">
-                        <label class="text-truncate  text-body ms-3 w-80 mb-0">Customer Name</label>
-                            <select name="" id="order_status" class="form-control">
-                                <option value="">--Select--</option>
-                                <option value="0">Paid</option>
-                                <option value="1">Unpaid</option>
-                            </select>
-                    </div>
-                    <div class="col-md-3 mt-2">
-                        <label class="text-truncate  text-body ms-3 w-80 mb-0">Customer MobileNo.</label>
-                            <select name="" id="order_status" class="form-control">
-                                <option value="">--Select--</option>
-                                <option value="0">Paid</option>
-                                <option value="1">Unpaid</option>
-                            </select>
-                    </div>
-            </div>
+                    
         </div>
         <div class="row">
             <div class="col-md-9"></div>
@@ -109,7 +75,7 @@
     </div>
 </div>
 <div id="order_list_loder" style="display: none">
-        @include('admin.loder.index')
-    </div>
+@include('Admin.loder.index')
+</div>
 
 @endsection

@@ -284,6 +284,9 @@ Route::middleware('auth')->group(function()
     ])->middleware('signed');
 
     Route::post('/apply-coupon',[CouponController::class,'store'])->name('apply-coupon');
+
+    Route::post('/payment-status',[OrderController::class,'payment_status'])->name('payment-status');
+    Route::post('/order-status',[OrderController::class,'order_status'])->name('order-status');
     
 
 });

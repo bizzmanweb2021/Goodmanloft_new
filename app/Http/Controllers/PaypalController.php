@@ -7,6 +7,7 @@ use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Payment;
 use App\Models\Order;
+use App\Models\OrderItem;
 use DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -81,21 +82,14 @@ class PaypalController extends Controller
         $order->save();
 
 
-        // $order_items=new Order();
-        // $order_items->user_id =Auth::id();
-        // $order_items->order_id = $request->input('payment_method');
-        // $order_items->quantity =$request->input('coupon_code');
-        // $order_items->order_total = $request->input('order_total');
-        
 
-        // $order->save();
          
         $payment = payment::create([
             'user_id'   => Auth::id(),
             'order_id' => $order->id
             ]);
 
-         $cart = Cart::where('user_id',auth()->user()->id)->where('product_id',null)->get()->toArray();
+         $cart = Cart::where('user_id',auth()->user()->id)->get()->toArray();
 
         $data = [];
 
@@ -103,10 +97,11 @@ class PaypalController extends Controller
         $data['items'] = array_map(function ($item) use($cart) {
             $name=Product::where('id',$item['product_id'])->pluck('product_name');
             return [
+                'product_id' =>$item['product_id'],
                 'product_name' =>$name ,
-                'Price' => $item['Price'],
+                'Price' => $item['price'],
                 'desc'  => 'Thank you for using paypal',
-                'Quantity' => $item['Quantity']
+                'Quantity' => $item['quantity']
             ];
         }, $cart);
 
@@ -116,8 +111,22 @@ class PaypalController extends Controller
         $data['cancel_url'] = route('payment.cancel');
 
         $total = 0;
+        $orderItem = [];
         foreach($data['items'] as $item) {
             $total += $item['Price']*$item['Quantity'];
+            $orderItem[] = [
+                'user_id' => auth()->user()->id,
+                'order_id' => $order->id,
+                'product_id' => $item['product_id'],
+                'price' => $item['Price'],
+                'quantity' =>$item['Quantity'],
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ];
+        }
+
+        if(!empty($orderItem)){
+            OrderItem::insert($orderItem);
         }
 
         $data['total'] = $total;
