@@ -40,7 +40,7 @@
              </div>
              <div class="col-md-7">
                  <div class="shipping-add-change">
-                    <a ="{{ route('checkout') }}">Change</a>
+                    <a href="{{ route('checkout') }}">Change</a>
                  </div>
              </div>
          </div>
@@ -291,9 +291,7 @@
     
 
 </script>  
-<script async
-  src="https://pay.google.com/gp/p/js/pay.js"
-  onload="onGooglePayLoaded()"></script>  
+
 
 <script src="https://www.paypal.com/sdk/js?client-id=Adizxf9OQ6bntDa6O2iLB9_9hWyX-5W-rkMcqDZ6ieQ4bWtv51gdIFopTgG7ZrENQrDoDmAAkT6BuW1n&currency=SGD"></script>
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Srmklive\PayPal\Services\ExpressCheckout;
 use Illuminate\Http\Request;
 use App\Models\Cart;
-use App\Models\Product;
+use App\Models\product;
 use App\Models\Payment;
 use App\Models\Order;
 use App\Models\OrderItem;
@@ -135,6 +135,7 @@ class PaypalController extends Controller
         }
         Cart::where('user_id', auth()->user()->id)->where('product_id', null)->update(['product_id' => session()->get('id')]);
 
+        Cart::where('user_id', auth()->user()->id)->delete();
        if($request->input('payment_method') == 'Paid by Paypal'){
         return response()->json(['status'=>'Payment Done successfully']);
        }

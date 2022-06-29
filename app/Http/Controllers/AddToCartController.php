@@ -71,7 +71,14 @@ class AddToCartController extends Controller
     }
     public function cartShow()
     {
-        $data = Cart::where('user_id',Auth::user()->id)->get();
+        $data = Cart::Join('products','carts.product_id','=','products.id')
+        ->where('carts.user_id',Auth::user()->id)
+        ->select('carts.product_image','carts.product_name','carts.price','carts.quantity','carts.id','products.discount','products.sale')
+        ->get();
+
+
+       // echo '<pre>';
+       // print($data); exit;
         return view('Frontend.Cart.index')->with('data',$data);
     }
     public function removeCart($id)

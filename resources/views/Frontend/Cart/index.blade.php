@@ -47,18 +47,26 @@
                             <tbody>
                                 @php $total = 0 @endphp
                                     @foreach($data as $detail)
-                                        <?php $total += $detail['price'] * $detail['quantity'] ?>
+                                        <?php 
+                                        if($detail['sale'] == 'yes'){
+                                            $price = ($detail['price'] - ($detail['price']*($detail['discount']/100)));
+                                            $total += ($detail['price'] - ($detail['price']*($detail['discount']/100))) *  $detail['quantity'] ;
+                                        }else{
+                                            $price = $detail['price'];
+                                            $total += $detail['price'] * $detail['quantity'] ;
+                                        }
+                                        ?>
                                             <tr>
                                                 <td class="pro-remove"><a href="{{ route('cart.remove',$detail['id']) }}"><i class="fa fa-trash-o"></i></a></td>
                                                 <td class="pro-thumbnail"><a href="#"><img src="{{ asset($detail['product_image']) }}" alt="Product"></a></td>
                                                 <td class="pro-title"><a href="#">{{ $detail['product_name'] }}</a></td>
-                                                <td class="pro-price"><span>${{ $detail['price'] }}.00</span></td>
+                                                <td class="pro-price"><span>${{ $price }}</span></td>
                                                 <td class="pro-quantity">
                                                     <div class="pro-qty">
                                                         <input type="text" data-id="{{ $detail['id']}}" class="update-cart" value="{{ $detail['quantity'] }}" min="1">
                                                     </div>
                                                 </td>
-                                                <td class="pro-subtotal"><span>${{ $detail['price'] * $detail['quantity'] }}.00</span></td>
+                                                <td class="pro-subtotal"><span>${{ $price * $detail['quantity'] }}</span></td>
                                             </tr>
                                     @endforeach
                                 <?php>
@@ -68,7 +76,7 @@
                 </div>
             <div class="cart-summary ">
                 <div class="cart-summary-wrap" style="padding: 20px; background-color: Transparent; font-family: 'Montserrat', sans-serif; font-size:18px;">
-                    <p> Sub Total<span> ${{ $total }}.00</span></p>
+                    <p> Sub Total<span> ${{ $total }}</span></p>
                     <p style="font-size: 12px">(The sub total are not inclusive of any additional charges such as delivery)</p>
                 </div>
                 <div class="cart-summary-button" style="text-align: right;">

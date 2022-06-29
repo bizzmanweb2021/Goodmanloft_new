@@ -131,21 +131,28 @@
                                     <div class="checkout-cart-total">
                                         <h4>Product <span>Total</span></h4>
                                         @php $sub_total = 0 @endphp
-                                        @foreach (App\Models\Cart::where("user_id",Auth::user()->id)->get() as $cart)
-                                        <?php $sub_total += $cart->total ?>
+                                        @foreach (App\Models\Cart::Join('products','carts.product_id','=','products.id')->where("carts.user_id",Auth::user()->id)->select('carts.product_name','carts.total','carts.price','carts.quantity','products.discount','products.sale')->get() as $cart)
+                                        <?php 
+                                         if($cart->sale == 'yes'){
+                                            $sub_total += ($cart->price - ($cart->price* ($cart->discount/100))) *  $cart->quantity;
+                                        }else{
+                                            $sub_total +=  $cart->price * $cart->quantity ;
+                                        }
+                                        
+                                        ?>
                                         <ul>
                                             <!-- <li><img src="{{ $cart->product_image }}" style="width: 75px; height:100px;"></li> -->
                                             <li>
                                                 <div class="row">
                                                     <div class="col-md-10">{{ $cart->product_name }}</div>
-                                                    <div class="col-md-2"> <span>${{ $cart->total }}.00</span></div>
+                                                    <div class="col-md-2"> <span>${{ ($cart->price - ($cart->price*($cart->discount/100))) *  $cart->quantity }}</span></div>
 </div>
                                                 </li>
                                         </ul>
                                         @endforeach
                                         
                                         
-                                        <p>Sub Total <span>${{ $sub_total }}.00</span></p>
+                                        <p>Sub Total <span>${{ $sub_total }}</span></p>
                                         <p>Shipping
                                             <span class="badge badge-secondary" style="float: none; color:black;">
                                             <a data-bs-toggle="modal" data-bs-target="#myModal">?</a>
