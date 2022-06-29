@@ -46,7 +46,7 @@
                                             <li>30 October 2018</li>
                                         </ul>
                                         <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent ornare tortor ac ante egestas hendrerit. Aliquam et metus pharetra, bibendum massa nec, fermentum odio.</p>
-                                        <a class="btn" href="blog-details.html">Read more</a>
+                                        <a class="btn" href="{{ route('newsDetails.show') }}">Read more</a>
                                     </div>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                                             <li>30 October 2018</li>
                                         </ul>
                                         <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent ornare tortor ac ante egestas hendrerit. Aliquam et metus pharetra, bibendum massa nec, fermentum odio.</p>
-                                        <a class="btn" href="blog-details.html">Read more</a>
+                                        <a class="btn" href="{{ route('newsDetails.show') }}">Read more</a>
                                     </div>
                                 </div>
                             </div>
@@ -79,7 +79,7 @@
                                             <li>30 October 2018</li>
                                         </ul>
                                         <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent ornare tortor ac ante egestas hendrerit. Aliquam et metus pharetra, bibendum massa nec, fermentum odio.</p>
-                                        <a class="btn" href="blog-details.html">Read more</a>
+                                        <a class="btn" href="{{ route('newsDetails.show') }}">Read more</a>
                                     </div>
                                 </div>
                             </div>
@@ -95,7 +95,7 @@
                                             <li>30 October 2018</li>
                                         </ul>
                                         <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent ornare tortor ac ante egestas hendrerit. Aliquam et metus pharetra, bibendum massa nec, fermentum odio.</p>
-                                        <a class="btn" href="blog-details.html">Read more</a>
+                                        <a class="btn" href="{{ route('newsDetails.show') }}">Read more</a>
                                     </div>
                                 </div>
                             </div>
