@@ -71,13 +71,19 @@
                                                 <div class="col-md-6">
                                                     <table class="table">
                                                     @php $sub_total = 0 @endphp
-                                                    @foreach (App\Models\Cart::where("user_id",Auth::user()->id)->get() as $cart)
-                                                    <?php $sub_total += $cart->total ?>
-                                                        
+                                                    @foreach (App\Models\Cart::Join('products','carts.product_id','=','products.id')->where("carts.user_id",Auth::user()->id)->select('carts.product_name','carts.product_image','carts.created_at','carts.total','carts.price','carts.quantity','products.discount','products.sale')->get() as $key=>$cart)
+                                                      <?php 
+                                                    if($cart->sale == 'yes'){
+                                                     $sub_total += ($cart->price - ($cart->price* ($cart->discount/100))) *  $cart->quantity;
+                                                    }else{
+                                                      $sub_total +=  $cart->price * $cart->quantity ;
+                                                         }
+                                        
+                                                         ?>
                                                         @endforeach
                                                         <tr>
                                                             <td class="w-50 fw-600">Total Order Amount:</td>
-                                                            <td>${{ $sub_total }}.00</td>
+                                                            <td>${{ $sub_total }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td class="w-50 fw-600">Currency:</td>
@@ -98,6 +104,7 @@
                                                 <table class="table table-responsive-md">
                                                     <thead>
                                                         <tr>
+                                                            <th>S.No</th>
                                                             <th width="30%">Product</th>
                                                             <th>Name</th>
                                                             <th>Quantity</th>
@@ -106,12 +113,22 @@
                                                     </thead>
 
                                                     <tbody>
-                                                         @foreach (App\Models\Cart::where("user_id",Auth::user()->id)->get() as $cart)
+                                                    @php $sub_total = 0 @endphp
+                                                    @foreach (App\Models\Cart::Join('products','carts.product_id','=','products.id')->where("carts.user_id",Auth::user()->id)->select('carts.product_name','carts.product_image','carts.created_at','carts.total','carts.price','carts.quantity','products.discount','products.sale')->get() as $key=>$cart)
+                                                      <?php 
+                                                    if($cart->sale == 'yes'){
+                                                     $sub_total += ($cart->price - ($cart->price* ($cart->discount/100))) *  $cart->quantity;
+                                                    }else{
+                                                      $sub_total +=  $cart->price * $cart->quantity ;
+                                                         }
+                                        
+                                                         ?>
                                                             <tr>
+                                                               <td>{{ $key+1 }}</td>
                                                                 <td><img src="{{ $cart->product_image }}"></td>
                                                                 <td>{{ $cart->product_name }}</td>
                                                                 <td> {{ $cart->quantity }}</td>
-                                                                <td>${{ $cart->total }}</td>
+                                                                <td>${{ ($cart->price - ($cart->price*($cart->discount/100))) *  $cart->quantity }}</td>
                                                                 @endforeach 
                                                                 
                                                             </tr>
@@ -125,6 +142,7 @@
                                                 <div class="col-xl-6 col-md-6 ml-auto mr-0">
                                                     <table class="table">
                                                         <tbody>
+                                                      
                                                             <tr>
                                                             @php
                                             $shipping_amount = 0;
@@ -151,8 +169,10 @@
                                                     
                                                 }
                                             }
-
+                                            App\Models\Cart::where('user_id', auth()->user()->id)->delete();
+                                            App\Models\Wishlist::where('user_id', auth()->user()->id)->delete();
                                         @endphp
+                                        
                                                                 <th>Subtotal</th>
                                                                 <td class="text-right">
                                                                     <span
@@ -180,9 +200,9 @@
                                                                 
                                                                 <td class="text-right">
                                                                     <strong><span>$ @if(250 > $sub_total)
-                                                               {{ $sub_total = $sub_total + $shipping_amount - $coupon_amount}}.00
+                                                               {{ $sub_total = $sub_total + $shipping_amount - $coupon_amount}}
                                                                 @else
-                                                                {{ $sub_total = $sub_total - $coupon_amount }}.00
+                                                                {{ $sub_total = $sub_total - $coupon_amount }}
                                                                  @endif</span></strong>
                                                                 </td>
                                                             </tr>

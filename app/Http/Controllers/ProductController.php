@@ -151,6 +151,7 @@ class ProductController extends Controller
     {
         $stock = DB::table('stocks')->where('id','=',$request->id)->update([
             'stock_available' => $request->input('stock_available'),
+            'product_name' => $request->input('product_name'),
         ]);
         return redirect()->route('admin.stockView');
     }

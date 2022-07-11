@@ -17,7 +17,6 @@
     @endphp
     <div class="explore-btn">
         <a href="{{ route('shop',$obj->id) }}">Explore Now</a>
-
     </div>
 
 </div>

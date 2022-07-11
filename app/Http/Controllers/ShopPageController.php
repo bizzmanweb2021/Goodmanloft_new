@@ -12,7 +12,7 @@ class ShopPageController extends Controller
     //
     public function index()
     {
-        return view('Frontend.');
+        return view('Frontend.Product.index');
     }
     public function show($id)
     {

@@ -15,7 +15,9 @@ class PlaceOrderController extends Controller
     //
     public function index()
     {
-        return view('Frontend.Checkout.index');
+        $Billing_address = Billing_address::where('user_id',auth()->user()->id)->first();
+        $Shipping_address = Shipping_address::where('user_id',auth()->user()->id)->first();
+        return view('Frontend.Checkout.index',compact('Billing_address','Shipping_address'));
     }
 
     public function saveAddress(Request $request)
@@ -51,7 +53,7 @@ class PlaceOrderController extends Controller
                 $check->zip_ship = $request->zip_ship;
                 $check->save();
 
-                return view('Frontend.Checkout.address');
+                return view('Frontend.Shipping.index');
             }
             else
             {
@@ -81,7 +83,7 @@ class PlaceOrderController extends Controller
                 $check->zip_ship = $request->zip;
                 $check->save();
 
-                return view('Frontend.Checkout.address');
+                return view('Frontend.Shipping.index');
             }
 
     }

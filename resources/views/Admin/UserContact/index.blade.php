@@ -18,6 +18,7 @@
                 <table class="table align-items-center justify-content-center mb-0">
                   <thead>
                     <tr>
+                    <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">S.No</th>
                       <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Name</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Phone</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
@@ -28,8 +29,9 @@
 
                   </thead>
                     <tbody>
-                      @foreach($contacts as $item)
+                      @foreach($contacts as $key=>$item)
                       <tr>
+                        <td>{{ $key+1 }}</td>
                         <td>{{$item->name}}</td>
                         <td>{{$item->phone}}</td>
                         <td>{{ $item->email }}</td>

@@ -31,9 +31,9 @@
                          <h4>Contact</h4>
                      </div>
                      <div class="col-md-6">
-                         @foreach (App\Models\Billing_address::orderBy('id','desc')->limit(1)->get() as $bill )
-                         <p>{{ $bill->email }}/{{ $bill->phone }}</p>
-                         @endforeach
+                        
+                         <p>{{ Auth::user()->email }}/{{ Auth::user()->phone }}</p>
+                         
 
                      </div>
                  </div>

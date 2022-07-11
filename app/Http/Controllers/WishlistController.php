@@ -33,7 +33,7 @@ class WishlistController extends Controller
         $data = DB::table('wishlists')
         ->select('products.product_image','products.product_name','products.Price','products.id')
         ->join('products','products.id','=','wishlists.product_id')->get();
-        return view('Frontend.Wishlist.index')->with('data',$data);
+        return view('Frontend.wishlist.index')->with('data',$data);
     }
     public function removeWishlist($id)
     {

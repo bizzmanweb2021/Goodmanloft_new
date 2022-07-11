@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\category;
 use App\Models\product;
+use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -23,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        
         $product = product::orderBy('id','desc')->limit (6)->get();
         return view('Frontend.Home.index')->with('product',$product);
     }

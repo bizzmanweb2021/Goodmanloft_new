@@ -56,7 +56,7 @@
                                                 <ul class="icon-list justify-content-end">
                                                     <li>
                                                         <div class="header-cart-icon">
-                                                            <a href="{{ route('cart.list') }}"><i class="ion-bag"></i><span>2</span></a>
+                                                            <a href="{{ route('cart.show') }}"><i class="fa fa-shopping-bag"></i><span class="cart-count">{{ App\Models\Cart::where('user_id',Auth::check()?Auth::user()->id:0)->count() }}</span></a>
                                                         </div>
                                                     </li>
                                                     <li>
@@ -99,7 +99,7 @@
                     <ul>
                         <li class=""><a href="{{ route('user.index') }}">Home</a></li>
                         <li class="menu-item-has-children"><a href="#">Shop</a>
-                        <ul class="mega-menu four-column left-0">
+                        <ul class="menu-item-has-children">
                                             @foreach (App\Models\category::all() as $item )
                                             <li><a href="{{ route('shop',$item->id) }}" class="item-link">{{ $item->Category_Name }}</a>
                                                 @foreach ( App\Models\subcategory::where('Category_id', $item->id)->get() as $data )
@@ -114,8 +114,8 @@
                         </li>
                         <li><a href="{{ route('about.index') }}">About Us</a></li>
                         <li class=""><a href="{{ route('faq') }}">Faq</a></li>
-                        <li><a href="#">Promotions</a></li>
-                        <li><a href="#">News</a></li>
+                        <li><a href="{{ route('promotion') }}">Promotions</a></li>
+                        <li><a href="{{ route('news.index') }}">News</a></li>
                         <li><a href="{{ route('contact.index') }}">Contact Us</a></li>
                     </ul>
                 </nav>

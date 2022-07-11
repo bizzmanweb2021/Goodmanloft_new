@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Srmklive\PayPal\Services\ExpressCheckout;
 use Illuminate\Http\Request;
 use App\Models\Cart;
+use App\Models\Wishlist;
 use App\Models\product;
 use App\Models\Payment;
 use App\Models\Order;
@@ -135,7 +136,8 @@ class PaypalController extends Controller
         }
         Cart::where('user_id', auth()->user()->id)->where('product_id', null)->update(['product_id' => session()->get('id')]);
 
-        Cart::where('user_id', auth()->user()->id)->delete();
+       // Cart::where('user_id', auth()->user()->id)->delete();
+        //Wishlist::where('user_id', auth()->user()->id)->delete();
        if($request->input('payment_method') == 'Paid by Paypal'){
         return response()->json(['status'=>'Payment Done successfully']);
        }
@@ -148,6 +150,7 @@ class PaypalController extends Controller
     public function success(Request $request)
 
     {
+        
         $provider = new ExpressCheckout;
         $response = $provider->getExpressCheckoutDetails($request->token);
         // return $response;
@@ -155,7 +158,7 @@ class PaypalController extends Controller
         $data= new payment();
         $data= $request->all();
 
-       // echo"<pre>"; print_r($data); exit();
+       //echo"<pre>"; print_r($data); exit();
         $payment=payment::create($data);
 
 

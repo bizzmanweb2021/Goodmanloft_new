@@ -197,10 +197,10 @@
                                                 {{ $item->quantity }}
                                                 </td>
                                                 <td>
-                                                ${{ $item->price }}.00
+                                                ${{ $item->price }}
                                                 </td>         
                                                 <td>
-                                                ${{ $item->quantity*$item->price }}.00
+                                                ${{ $item->quantity*$item->price }}
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -221,7 +221,7 @@
                                                                 <th>Subtotal</th>
                                                                 <td class="text-right">
                                                                     <span
-                                                                        class="fw-600">${{ $total }}.00</span>
+                                                                        class="fw-600">${{ $total }}</span>
                                                                 </td>
                                                             </tr>
                                                             <tr>

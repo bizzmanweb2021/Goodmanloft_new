@@ -95,7 +95,7 @@ Route::get('file-export2', [ProductController::class, 'fileExport2'])->name('fil
     Route::post('/updateProduct/{id}',[ProductController::class,'updateProduct'])->name('update.prod');
 
     Route::get('/editStock/{id}',function($id){
-        $stock = DB::table('stocks')->select('id','stock_available')->where('id','=',$id)->get();
+        $stock = DB::table('stocks')->select('id','stock_available','product_name')->where('id','=',$id)->get();
         return view('Admin.Stock.stockEdit',['stock'=>$stock]);
     })->name('edit.stock');
 
@@ -220,7 +220,7 @@ Route::get('reset-password/{token}', [ForgotPasswordController::class, 'ResetPas
 Route::post('reset-password', [ForgotPasswordController::class, 'ResetPasswordStore'])->name('ResetPasswordPost');
 
 Route::get('/productShow/{product_id}',[ShopPageController::class,'show'])->name('productShow');
-Route::get('/shop/{id}',[ShopPageController::class,'shop'])->name('shop');
+// Route::get('/shop/{id}',[ShopPageController::class,'shop'])->name('shop');
 Route::get('/getPrice',[ShopPageController::class,'filter'])->name('get.price');
 Route::get('/getPrice',[ShopPageController::class,'filters'])->name('get.price');
 Route::get('/nursery',[NurseryController::class,'index'])->name('nursery');
@@ -288,5 +288,5 @@ Route::middleware('auth')->group(function()
     Route::post('/payment-status',[OrderController::class,'payment_status'])->name('payment-status');
     Route::post('/order-status',[OrderController::class,'order_status'])->name('order-status');
     
-
+    Route::get('/shop/{id}',[ShopPageController::class,'shop'])->name('shop');
 });

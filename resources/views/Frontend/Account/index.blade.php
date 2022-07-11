@@ -68,24 +68,35 @@
                                             <thead class="thead-light">
                                             <tr>
                                                 <!-- <th>No</th> -->
+                                                <th>S.No</th>
                                                 <th>Product Name</th>
                                                 <th>Product Image</th>
                                                 <th>Quantity</th>
                                                 <th>Total</th>
                                                 <th>Date</th>
-                                                <th>Status</th>
+                                               
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            @foreach (App\Models\Cart::where("user_id",Auth::user()->id)->get() as $cart)
+                                            @php $sub_total = 0 @endphp
+                                        @foreach (App\Models\Cart::Join('products','carts.product_id','=','products.id')->where("carts.user_id",Auth::user()->id)->select('carts.product_name','carts.product_image','carts.created_at','carts.total','carts.price','carts.quantity','products.discount','products.sale')->get() as $key=>$cart)
+                                        <?php 
+                                         if($cart->sale == 'yes'){
+                                            $sub_total += ($cart->price - ($cart->price* ($cart->discount/100))) *  $cart->quantity;
+                                        }else{
+                                            $sub_total +=  $cart->price * $cart->quantity ;
+                                        }
+                                        
+                                        ?>
                                             
                                             <tr>
+                                                <td>{{ $key+1 }}</td>
                                                 <td>{{ $cart->product_name }}</td>
                                                 <td><img src="{{ $cart->product_image }}"></td>  
                                                 <td>{{ $cart->quantity }}</td>
-                                                <td>${{ $cart->total }}</td>
+                                                <td>${{ ($cart->price - ($cart->price*($cart->discount/100))) *  $cart->quantity }}</td>
                                                 <td>{{ $cart->updated_at }}</td>
-                                                <td>Pending</td>
+                                                
                                             </tr>
                                             @endforeach
 

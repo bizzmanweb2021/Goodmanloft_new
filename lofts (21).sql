@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 25, 2022 at 06:40 AM
+-- Generation Time: Jul 11, 2022 at 08:33 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.15
 
@@ -128,13 +128,23 @@ CREATE TABLE `billing_addresses` (
 
 INSERT INTO `billing_addresses` (`user_id`, `full_name`, `email`, `phone`, `country`, `address`, `city`, `state`, `zip`, `id`, `updated_at`, `created_at`) VALUES
 (1, 'test123', 'test123@gmail.com', '8967565467', '1', 'Bihar', 'Muzaffarpur', 'Bihar', '785300', 1, '2022-03-16 10:48:59.000000', '2022-03-16 10:48:59.000000'),
-(1, 'test123', 'test123@gmail.com', '8967565467', NULL, '155/179A,second street,MVP', 'Erode', 'Tamilnadu', '638655', 19, '2022-04-28 11:26:45.000000', '2022-04-28 11:26:45.000000'),
 (2, 'test', 'test@gmail.com', '9788671878', NULL, '155/179A,Second street', 'singapore', 'singapore', '638455', 20, '2022-04-28 11:29:13.000000', '2022-04-28 11:29:13.000000'),
 (3, 'Nandhu', 'nandhini.laravel@gmail.com', '9788671878', NULL, '155/179A,Second street', 'singapore', 'singapore', '638455', 21, '2022-04-28 11:31:54.000000', '2022-04-28 11:31:54.000000'),
-(1, 'test123', 'test123@gmail.com', '8967565467', NULL, '155/179A,second street,MVP', 'Erode', 'Tamilnadu', '638655', 22, '2022-04-29 08:34:56.000000', '2022-04-29 08:34:56.000000'),
-(1, 'test123', 'test123@gmail.com', '8967565467', NULL, '155/179A,second street,MVP', 'Erode', 'Tamilnadu', '638655', 23, '2022-05-04 08:41:01.000000', '2022-05-04 08:41:01.000000'),
-(1, 'test123', 'test123@gmail.com', '8967565467', NULL, '155/179A,second street,MVP', 'Erode', 'Tamilnadu', '638655', 24, '2022-05-04 13:44:17.000000', '2022-05-04 13:44:17.000000'),
-(1, 'test123', 'test123@gmail.com', '8967565467', NULL, '155/179A,second street,MVP', 'Erode', 'Tamilnadu', '638655', 25, '2022-05-04 13:46:07.000000', '2022-05-04 13:46:07.000000');
+(9, 'tamil', 'tamil@gmail.com', '9788671878', NULL, '12,Gandhi nagar', 'singapore', 'singapore', '638786', 26, '2022-06-30 10:02:31.000000', '2022-06-30 10:02:31.000000'),
+(9, 'tamil', 'tamil@gmail.com', '9788671878', NULL, '12,Gandhi nagar', 'singapore', 'singapore', '638786', 27, '2022-06-30 10:05:40.000000', '2022-06-30 10:05:40.000000'),
+(9, 'tamil', 'tamil@gmail.com', '9788671878', NULL, '12,Gandhi nagar', 'singapore', 'singapore', '638786', 28, '2022-06-30 11:00:10.000000', '2022-06-30 11:00:10.000000'),
+(10, 'new', 'abi@gmail.com', '9788671878', NULL, 'n1', 'n1', 'n1', '638455', 32, '2022-07-05 07:15:00.000000', '2022-07-05 07:15:00.000000'),
+(10, 'new', 'abi@gmail.com', '9788671878', NULL, 'n1', 'n1', 'n1', '638455', 33, '2022-07-05 07:21:52.000000', '2022-07-05 07:21:52.000000'),
+(10, 'new', 'abi@gmail.com', '9788671878', NULL, 'n1', 'n1', 'n1', '638455', 34, '2022-07-05 07:35:36.000000', '2022-07-05 07:35:36.000000'),
+(10, 'new', 'abi@gmail.com', '9788671878', NULL, 'n1', 'n1', 'n1', '638455', 35, '2022-07-05 07:49:03.000000', '2022-07-05 07:49:03.000000'),
+(10, 'new', 'abi@gmail.com', '9788671878', NULL, 'n1', 'n1', 'n1', '638455', 36, '2022-07-05 07:53:58.000000', '2022-07-05 07:53:58.000000'),
+(10, 'new', 'abi@gmail.com', '9788671878', NULL, 'n1', 'n1', 'n1', '638455', 37, '2022-07-05 07:57:40.000000', '2022-07-05 07:57:40.000000'),
+(10, 'new', 'abi@gmail.com', '9788671878', NULL, 'n1', 'n1', 'n1', '638455', 38, '2022-07-05 08:08:58.000000', '2022-07-05 08:08:58.000000'),
+(1, 'test123', 'test123@gmail.com', '2147483647', NULL, 'Bihar', 'Muzaffarpur', 'Bihar', '785300', 39, '2022-07-05 08:10:48.000000', '2022-07-05 08:10:48.000000'),
+(1, 'test123', 'test123@gmail.com', '2147483647', NULL, 'Bihar', 'Muzaffarpur', 'Bihar', '785300', 40, '2022-07-05 08:21:07.000000', '2022-07-05 08:21:07.000000'),
+(1, 'test123', 'test123@gmail.com', '2147483647', NULL, 'Bihar', 'Muzaffarpur', 'Bihar', '785300', 41, '2022-07-05 11:42:15.000000', '2022-07-05 11:42:15.000000'),
+(1, 'test123', 'test123@gmail.com', '2147483647', NULL, 'Bihar', 'Muzaffarpur', 'Bihar', '785300', 42, '2022-07-05 12:04:41.000000', '2022-07-05 12:04:41.000000'),
+(1, 'test123', 'test123@gmail.com', '2147483647', NULL, 'Bihar', 'Muzaffarpur', 'Bihar', '785300', 43, '2022-07-05 12:06:21.000000', '2022-07-05 12:06:21.000000');
 
 -- --------------------------------------------------------
 
@@ -146,9 +156,9 @@ CREATE TABLE `carts` (
   `id` bigint(20) NOT NULL,
   `product_image` varchar(255) NOT NULL,
   `product_name` varchar(255) NOT NULL,
-  `price` bigint(20) NOT NULL,
+  `price` decimal(20,2) NOT NULL,
   `quantity` bigint(20) NOT NULL,
-  `total` bigint(20) NOT NULL,
+  `total` decimal(20,2) NOT NULL,
   `updated_at` timestamp(6) NULL DEFAULT NULL,
   `created_at` timestamp(6) NULL DEFAULT NULL,
   `user_id` bigint(20) NOT NULL,
@@ -164,10 +174,11 @@ CREATE TABLE `carts` (
 --
 
 INSERT INTO `carts` (`id`, `product_image`, `product_name`, `price`, `quantity`, `total`, `updated_at`, `created_at`, `user_id`, `product_id`, `discount_amount`, `how_may_discount`, `discount_type`, `after_discount_price`) VALUES
-(67, 'images/2.jpg', 'Joveno Teakwood Candle', 49, 1, 49, '2022-06-15 23:44:14.000000', '2022-06-15 23:44:14.000000', 1, '3', NULL, NULL, NULL, NULL),
-(68, 'images/d.jpg', 'Malena Rattan Storage Bench with Cushion', 729, 1, 729, '2022-06-15 23:44:26.000000', '2022-06-15 23:44:26.000000', 1, '11', NULL, NULL, NULL, NULL),
-(69, 'images/i.jpg', 'Roma Round Water Hyacinth Stool With Long Wooden Legs', 229, 1, 229, '2022-06-20 09:59:58.000000', '2022-06-20 09:59:58.000000', 1, '10', NULL, NULL, NULL, NULL),
-(70, 'images/4.jpg', 'Freya Bed Runner With All Sides Fringe', 109, 1, 109, '2022-06-20 10:04:32.000000', '2022-06-20 10:04:32.000000', 1, '4', NULL, NULL, NULL, NULL);
+(71, 'images/pe.jpg', 'Hand-Woven Round Floor Rug with White Tassel (Natural)', '40.00', 5, '200.00', '2022-06-27 23:37:51.000000', '2022-06-27 23:36:47.000000', 2, '23', NULL, NULL, NULL, NULL),
+(72, 'images/k.jpg', 'Havana 4 Tier Rattan Arch Shaped Bookshelf (Natural)', '599.00', 1, '0.00', '2022-06-27 23:38:26.000000', '2022-06-27 23:38:26.000000', 2, '14', NULL, NULL, NULL, NULL),
+(101, 'images/f.jpg', 'Jojon Long High Water Hyacinth Bench With Wooden Legs', '209.00', 1, '209.00', '2022-06-30 00:22:46.000000', '2022-06-30 00:22:46.000000', 8, '7', NULL, NULL, NULL, NULL),
+(102, 'images/f.jpg', 'Jojon Long High Water Hyacinth Bench With Wooden Legs', '209.00', 2, '418.00', '2022-06-30 01:03:41.000000', '2022-06-30 01:03:39.000000', 9, '7', NULL, NULL, NULL, NULL),
+(103, 'images/f.jpg', 'Jojon Long High Water Hyacinth Bench With Wooden Legs', '209.00', 1, '209.00', '2022-06-30 04:57:43.000000', '2022-06-30 04:57:43.000000', 5, '7', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -238,8 +249,8 @@ CREATE TABLE `contacts` (
 --
 
 INSERT INTO `contacts` (`id`, `name`, `email`, `phone`, `message`, `subject`, `updated_at`, `created_at`) VALUES
-(1, 'Harsha', 'harsha123@gmail.com', 987654433, 'Defective product please change them soon.', 'Product Related Query', '2022-03-25 09:57:36.000000', '2022-03-25 09:57:36.000000'),
-(2, 'Twinkal', 'twinkal123@gmail.com', 9087766556, 'use, disclose or otherwise process personal data of our customers in accordance with the Personal Data Protection Act', 'Product Related Query', '2022-03-25 10:14:15.000000', '2022-03-25 10:14:15.000000');
+(1, 'Nandhu', 'nandhu@gmail.com', 987654433, 'Defective product please change them soon.', 'Product Related Query', '2022-03-25 09:57:36.000000', '2022-03-25 09:57:36.000000'),
+(2, 'Test', 'test@gmail.com', 9087766556, 'use, disclose or otherwise process personal data of our customers in accordance with the Personal Data Protection Act', 'Product Related Query', '2022-03-25 10:14:15.000000', '2022-03-25 10:14:15.000000');
 
 -- --------------------------------------------------------
 
@@ -691,7 +702,26 @@ INSERT INTO `orders` (`id`, `user_id`, `full_name`, `payment_method`, `address_l
 (66, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'hhh@gmail.com', 'GLCC1234', '50.00', '0.00', '1923.00', 'COMPLETED', '9XX37898916732719', NULL, 'Complete', 'Approved', '2022-06-24 12:55:23', '2022-06-24 12:55:23'),
 (67, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'abi@gmail.com', 'GLCC1234', '50.00', '0.00', '1923.00', 'COMPLETED', '47225819VA8566224', NULL, 'Complete', 'Approved', '2022-06-24 13:01:30', '2022-06-24 14:39:19'),
 (68, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'test123@gmail.com', 'GLCC1234', '50.00', '0.00', '1923.00', 'COMPLETED', '3DW13067KX8726141', NULL, 'Pending Collection', 'Pending', '2022-06-24 14:44:04', '2022-06-24 15:15:00'),
-(69, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'abi@gmail.com', 'GLCC1234', '50.00', '0.00', '1923.00', 'COMPLETED', '7YK61226D0657433D', NULL, NULL, NULL, '2022-06-25 03:53:33', '2022-06-25 03:53:33');
+(69, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'abi@gmail.com', 'GLCC1234', '50.00', '0.00', '1923.00', 'COMPLETED', '7YK61226D0657433D', NULL, NULL, NULL, '2022-06-25 03:53:33', '2022-06-25 03:53:33'),
+(70, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'thamil@gmail.com', 'GLCC1234', '50.00', '0.00', '1066.00', 'COMPLETED', '5MK27666KD1243809', NULL, NULL, NULL, '2022-06-28 08:22:54', '2022-06-28 08:22:54'),
+(71, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'admin123@gmail.com', 'GLCC1234', '50.00', '0.00', '2062.00', 'COMPLETED', '70M82221E89172723', NULL, NULL, NULL, '2022-06-29 13:06:39', '2022-06-29 13:06:39'),
+(72, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'debasis@gmail.com', 'GLCC1234', '50.00', '0.00', '637.00', 'COMPLETED', '5Y098616US617734S', NULL, NULL, NULL, '2022-06-29 13:47:37', '2022-06-29 13:47:37'),
+(73, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'test123@gmail.com', 'GLCC1234', '50.00', '0.00', '378.00', 'COMPLETED', '73600444436713459', NULL, 'Pending Collection', NULL, '2022-06-29 14:35:33', '2022-06-29 14:55:50'),
+(74, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'test123@gmail.com', 'GLCC1234', '50.00', '0.00', '1325.00', 'COMPLETED', '9B7770393S116614E', NULL, NULL, NULL, '2022-06-29 15:01:16', '2022-06-29 15:01:16'),
+(75, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'admin123@gmail.com', 'GLCC1234', '50.00', '0.00', '607.00', 'COMPLETED', '0RW04995242976732', NULL, NULL, NULL, '2022-06-29 15:06:29', '2022-06-29 15:06:29'),
+(76, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'debasis@gmail.com', 'GLCC1234', '50.00', '0.00', '607.00', 'COMPLETED', '22958070FU406673K', NULL, NULL, NULL, '2022-06-29 15:13:32', '2022-06-29 15:13:32'),
+(77, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'admin123@gmail.com', 'GLCC1234', '50.00', '0.00', '607.00', 'COMPLETED', '1TX23816GE122462F', NULL, NULL, NULL, '2022-06-29 15:16:41', '2022-06-29 15:16:41'),
+(78, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'admin123@gmail.com', 'GLCC1234', '50.00', '0.00', '607.00', 'COMPLETED', '8DH13247FC250183V', NULL, NULL, NULL, '2022-06-30 11:04:11', '2022-06-30 11:04:11'),
+(79, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'singapore', 'SGD', 238858, 'SG', 'nandini@gmail.com', 'GLCC1234', '50.00', '0.00', '786.00', 'COMPLETED', '5K2519631X482974V', NULL, NULL, NULL, '2022-07-05 05:33:02', '2022-07-05 05:33:02'),
+(80, 10, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'test123@gmail.com', NULL, '0.00', '0.00', '418.00', 'COMPLETED', '4YC60545370957510', NULL, NULL, NULL, '2022-07-05 07:37:10', '2022-07-05 07:37:10'),
+(81, 10, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'abi@gmail.com', NULL, '0.00', '0.00', '418.00', 'COMPLETED', '6KJ08730R21623155', NULL, NULL, NULL, '2022-07-05 07:39:06', '2022-07-05 07:39:06'),
+(82, 10, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'abi@gmail.com', NULL, '0.00', '0.00', '418.00', 'COMPLETED', '4FD57286BU414030S', NULL, NULL, NULL, '2022-07-05 07:50:34', '2022-07-05 07:50:34'),
+(83, 10, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'abi@gmail.com', NULL, '0.00', '0.00', '418.00', 'COMPLETED', '69X05047YB040763P', NULL, NULL, NULL, '2022-07-05 07:55:08', '2022-07-05 07:55:08'),
+(84, 10, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'nandini@gmail.com', NULL, '0.00', '0.00', '418.00', 'COMPLETED', '9MC136860J626381B', NULL, NULL, NULL, '2022-07-05 07:58:53', '2022-07-05 07:58:53'),
+(85, 10, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'test123@gmail.com', NULL, '0.00', '0.00', '418.00', 'COMPLETED', '13M12581NJ0867215', NULL, NULL, NULL, '2022-07-05 08:09:55', '2022-07-05 08:09:55'),
+(86, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'nandini@gmail.com', 'GLCC1234', '50.00', '0.00', '786.00', 'COMPLETED', '08X2511978536550L', NULL, NULL, NULL, '2022-07-05 08:11:40', '2022-07-05 08:11:40'),
+(87, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'new@gmail.com', 'GLCC1234', '50.00', '50.00', '209.00', 'COMPLETED', '9DX13674A6295213M', NULL, NULL, NULL, '2022-07-05 11:43:56', '2022-07-05 11:43:56'),
+(88, 1, 'Nandhini chandran', 'Paid by Paypal', '155/179A', 'Singapore', 'SGD', 238858, 'SG', 'abi@gmail.com', 'GLCC1234', '50.00', '50.00', '209.00', 'COMPLETED', '6D95578893400543J', NULL, NULL, NULL, '2022-07-05 12:07:24', '2022-07-05 12:07:24');
 
 -- --------------------------------------------------------
 
@@ -738,7 +768,39 @@ INSERT INTO `order_items` (`id`, `user_id`, `order_id`, `product_id`, `price`, `
 (117, 1, 69, 3, '49.00', 1, '2022-06-24 22:23:34', '2022-06-24 22:23:34'),
 (118, 1, 69, 11, '729.00', 1, '2022-06-24 22:23:34', '2022-06-24 22:23:34'),
 (119, 1, 69, 10, '229.00', 1, '2022-06-24 22:23:34', '2022-06-24 22:23:34'),
-(120, 1, 69, 4, '109.00', 1, '2022-06-24 22:23:34', '2022-06-24 22:23:34');
+(120, 1, 69, 4, '109.00', 1, '2022-06-24 22:23:34', '2022-06-24 22:23:34'),
+(121, 1, 70, 3, '49.00', 1, '2022-06-28 02:52:54', '2022-06-28 02:52:54'),
+(122, 1, 70, 11, '729.00', 1, '2022-06-28 02:52:54', '2022-06-28 02:52:54'),
+(123, 1, 70, 10, '229.00', 1, '2022-06-28 02:52:54', '2022-06-28 02:52:54'),
+(124, 1, 70, 4, '109.00', 1, '2022-06-28 02:52:54', '2022-06-28 02:52:54'),
+(125, 1, 71, 116, '109.00', 3, '2022-06-29 07:36:39', '2022-06-29 07:36:39'),
+(126, 1, 71, 11, '729.00', 1, '2022-06-29 07:36:39', '2022-06-29 07:36:39'),
+(127, 1, 71, 14, '599.00', 1, '2022-06-29 07:36:39', '2022-06-29 07:36:39'),
+(128, 1, 71, 16, '89.00', 1, '2022-06-29 07:36:39', '2022-06-29 07:36:39'),
+(129, 1, 71, 19, '250.00', 1, '2022-06-29 07:36:39', '2022-06-29 07:36:39'),
+(130, 1, 71, 115, '49.00', 1, '2022-06-29 07:36:39', '2022-06-29 07:36:39'),
+(131, 1, 71, 15, '69.00', 1, '2022-06-29 07:36:39', '2022-06-29 07:36:39'),
+(132, 1, 72, 10, '229.00', 3, '2022-06-29 08:17:37', '2022-06-29 08:17:37'),
+(133, 1, 73, 7, '209.00', 1, '2022-06-29 09:05:33', '2022-06-29 09:05:33'),
+(134, 1, 73, 8, '219.00', 1, '2022-06-29 09:05:33', '2022-06-29 09:05:33'),
+(135, 1, 74, 7, '209.00', 2, '2022-06-29 09:31:16', '2022-06-29 09:31:16'),
+(136, 1, 74, 8, '219.00', 1, '2022-06-29 09:31:16', '2022-06-29 09:31:16'),
+(137, 1, 74, 9, '139.00', 1, '2022-06-29 09:31:16', '2022-06-29 09:31:16'),
+(138, 1, 74, 14, '599.00', 1, '2022-06-29 09:31:16', '2022-06-29 09:31:16'),
+(139, 1, 75, 8, '219.00', 3, '2022-06-29 09:36:29', '2022-06-29 09:36:29'),
+(140, 1, 76, 8, '219.00', 3, '2022-06-29 09:43:32', '2022-06-29 09:43:32'),
+(141, 1, 77, 8, '219.00', 3, '2022-06-29 09:46:41', '2022-06-29 09:46:41'),
+(142, 1, 78, 8, '219.00', 3, '2022-06-30 05:34:11', '2022-06-30 05:34:11'),
+(143, 1, 79, 7, '209.00', 4, '2022-07-05 00:03:02', '2022-07-05 00:03:02'),
+(144, 10, 80, 7, '209.00', 2, '2022-07-05 02:07:10', '2022-07-05 02:07:10'),
+(145, 10, 81, 7, '209.00', 2, '2022-07-05 02:09:06', '2022-07-05 02:09:06'),
+(146, 10, 82, 7, '209.00', 2, '2022-07-05 02:20:34', '2022-07-05 02:20:34'),
+(147, 10, 83, 7, '209.00', 2, '2022-07-05 02:25:08', '2022-07-05 02:25:08'),
+(148, 10, 84, 7, '209.00', 2, '2022-07-05 02:28:53', '2022-07-05 02:28:53'),
+(149, 10, 85, 7, '209.00', 2, '2022-07-05 02:39:55', '2022-07-05 02:39:55'),
+(150, 1, 86, 7, '209.00', 4, '2022-07-05 02:41:40', '2022-07-05 02:41:40'),
+(151, 1, 87, 7, '209.00', 1, '2022-07-05 06:13:56', '2022-07-05 06:13:56'),
+(152, 1, 88, 7, '209.00', 1, '2022-07-05 06:37:24', '2022-07-05 06:37:24');
 
 -- --------------------------------------------------------
 
@@ -793,7 +855,13 @@ INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
 ('test123@gmail.com', 'uIxuadtT3ZFQJvY0b6YBGzXVQ0RL7Fhza4LUvwwQVA71K2MFFOtqQigIG7h32K4E', '2022-06-23 08:15:38'),
 ('test123@gmail.com', 'vferLjA1kBY5CHL9fyLwyRpurDfZzVI63uy9Xn8rvCZWp2S1zHcFQFbBIEkOgEjg', '2022-06-23 08:20:42'),
 ('test123@gmail.com', 'JCGZE9ooRhzBsXeYj3RdLA0VJdpGVngONffeyCpscki4GgOwLqKLNPykcoSKvkX7', '2022-06-23 08:21:29'),
-('test123@gmail.com', 'SNiqskLKmf7nXconhl9m7KV944SsIVjJo7Bm9cxx9DNf2SbEW1rg4mOmn1tsmlrT', '2022-06-23 08:22:00');
+('test123@gmail.com', 'SNiqskLKmf7nXconhl9m7KV944SsIVjJo7Bm9cxx9DNf2SbEW1rg4mOmn1tsmlrT', '2022-06-23 08:22:00'),
+('nandhini.laravel@gmail.com', 'TMYbvTX74uyPULrXXhuA4aRXfF27NmuZtOLfTy4WyVK6OWYP5AoeOmDkiagjFyc1', '2022-06-30 07:27:14'),
+('nandhini.laravel@gmail.com', 'gVnGlPbrZatyIN63TjMIdE9fdg0PoMOK7narh0sKtcZH4FK30vgmLhZXVUrdQby3', '2022-06-30 07:28:33'),
+('nandhini.laravel@gmail.com', 'EGxRx9lZcN7BeoJrzQyQtTd7jiBPLs4bHGV8QEc2L1EVdmUqObYMPUn6Wd7wvOzE', '2022-06-30 07:30:30'),
+('nandhini.laravel@gmail.com', 'BIXFojR0fSjLYRZPccQWipeSpGaJ2F2KwgWhF3BbEaflNmyHssOebd1QUnnCa7pS', '2022-06-30 07:32:09'),
+('nandhini.laravel@gmail.com', 'sxc0dDZWNMjK3XzIcAL4uzSKelCaGPxTBkLgjje8aCl03q7cQAmBCLh0HcPL19gn', '2022-06-30 07:32:41'),
+('nandhini.laravel@gmail.com', 'RFmIlVGNiRFDn70BF7FnjvFMT565rWYHs8pBvq5DKaPtRcpBmWVFBcca54b78Kgd', '2022-06-30 07:42:02');
 
 -- --------------------------------------------------------
 
@@ -857,7 +925,26 @@ INSERT INTO `payments` (`id`, `Image`, `user_id`, `order_id`, `Status`, `created
 (39, NULL, NULL, NULL, NULL, '2022-06-24 07:25:23', '2022-06-24 07:25:23'),
 (40, NULL, NULL, NULL, NULL, '2022-06-24 07:31:30', '2022-06-24 07:31:30'),
 (41, NULL, NULL, NULL, NULL, '2022-06-24 09:14:04', '2022-06-24 09:14:04'),
-(42, NULL, NULL, NULL, NULL, '2022-06-24 22:23:33', '2022-06-24 22:23:33');
+(42, NULL, NULL, NULL, NULL, '2022-06-24 22:23:33', '2022-06-24 22:23:33'),
+(43, NULL, NULL, NULL, NULL, '2022-06-28 02:52:54', '2022-06-28 02:52:54'),
+(44, NULL, NULL, NULL, NULL, '2022-06-29 07:36:39', '2022-06-29 07:36:39'),
+(45, NULL, NULL, NULL, NULL, '2022-06-29 08:17:37', '2022-06-29 08:17:37'),
+(46, NULL, NULL, NULL, NULL, '2022-06-29 09:05:33', '2022-06-29 09:05:33'),
+(47, NULL, NULL, NULL, NULL, '2022-06-29 09:31:16', '2022-06-29 09:31:16'),
+(48, NULL, NULL, NULL, NULL, '2022-06-29 09:36:29', '2022-06-29 09:36:29'),
+(49, NULL, NULL, NULL, NULL, '2022-06-29 09:43:32', '2022-06-29 09:43:32'),
+(50, NULL, NULL, NULL, NULL, '2022-06-29 09:46:41', '2022-06-29 09:46:41'),
+(51, NULL, NULL, NULL, NULL, '2022-06-30 05:34:11', '2022-06-30 05:34:11'),
+(52, NULL, NULL, NULL, NULL, '2022-07-05 00:03:02', '2022-07-05 00:03:02'),
+(53, NULL, NULL, NULL, NULL, '2022-07-05 02:07:10', '2022-07-05 02:07:10'),
+(54, NULL, NULL, NULL, NULL, '2022-07-05 02:09:06', '2022-07-05 02:09:06'),
+(55, NULL, NULL, NULL, NULL, '2022-07-05 02:20:34', '2022-07-05 02:20:34'),
+(56, NULL, NULL, NULL, NULL, '2022-07-05 02:25:08', '2022-07-05 02:25:08'),
+(57, NULL, NULL, NULL, NULL, '2022-07-05 02:28:53', '2022-07-05 02:28:53'),
+(58, NULL, NULL, NULL, NULL, '2022-07-05 02:39:55', '2022-07-05 02:39:55'),
+(59, NULL, NULL, NULL, NULL, '2022-07-05 02:41:40', '2022-07-05 02:41:40'),
+(60, NULL, NULL, NULL, NULL, '2022-07-05 06:13:56', '2022-07-05 06:13:56'),
+(61, NULL, NULL, NULL, NULL, '2022-07-05 06:37:24', '2022-07-05 06:37:24');
 
 -- --------------------------------------------------------
 
@@ -935,16 +1022,10 @@ INSERT INTO `products` (`id`, `Category_id`, `SubCategory_id`, `product_name`, `
 (20, 2, 11, 'Bamboo Laundry  Style Baskets With Lids', 'Medium', '', 8, 'images/ai.jpg', '2022-05-11 11:23:38', '2022-02-16 03:20:38', 'white', 'Round', 'Jute', '50 x 60', 1, 'Plain', 'These lovely large round baskets are made from woven bamboo,\r\n with a natural straw jute rim on the top and handles on the lids.\r\n These baskets come in set of two sizes - a large size and a medium\r\n size, and in a grey or white color. These versatile and useful baskets \r\ncan be used for any purposes, from a decor piece, to a waste bin, \r\nto a laundry bin!', '250', 'yes', 'no', 20, '[\"1645001438_ah.jpg\",\"1645001438_ai.jpg\"]', '', NULL),
 (22, 2, 18, 'Hand-Woven Round Floor Rug with White Tassel (Natural)', 'Small', '', 1, 'images/re.jpg', '2022-05-11 11:44:34', '2022-03-01 04:51:54', 'white&Brown', 'Round', 'Sleepwell', '45 x 45 x 45', 1, 'Printed', 'Perfect round floor rug for your living room, bedroom, kitchen, entryway, laundry room, office. This hand-woven round floor rug with tassel can be a perfect gift for your family and friends on occasions such as holidays, birthdays and Christmas too!', '29.9', 'yes', 'no', 20, '[\"1646130113_re.jpg\",\"1646130114_ve.jpg\"]', '', NULL),
 (23, 2, 18, 'Hand-Woven Round Floor Rug with White Tassel (Natural)', 'Medium', '', 1, 'images/pe.jpg', '2022-05-23 12:32:07', '2022-03-01 04:54:01', 'white&Brown', 'Round', 'Bombay Dyeing.', '80 x 80 x 80', 1, 'Plain', 'Perfect round floor rug for your living room, bedroom, kitchen, entryway, laundry room, office. This hand-woven round floor rug with tassel can be a perfect gift for your family and friends on occasions such as holidays, birthdays and Christmas too!', '39.9', 'no', 'yes', 0, '[\"1646130241_pe.jpg\",\"1646130241_re.jpg\"]', 'popular_products', NULL),
-(93, 1, 8, 'Joveno Teakwood Candle', 'small', 'Available', 20, 'images/2.jpg', '2022-06-14 01:15:57', '2022-06-14 01:15:57', 'Red', 'Curved', 'Wax', '16 x 13 x 8', 1, 'Dotted', 'Looking for a way of capturing that wonderful exot...', '49', 'yes', 'no', 20, '[\"1644927847_1.jpg\",\"1644927847_2.jpg\"]', NULL, NULL),
-(94, 2, 6, 'Freya Bed Runner With All Sides Fringe', 'medium', 'Unavailable', 20, 'images/4.jpg', '2022-06-14 01:15:57', '2022-06-14 01:15:57', 'Green', 'Round', 'Wax', '246 x 75', 1, 'Dotted', 'Our bed runner is beautiful and luxurious. Our h...', '109', 'no', 'yes', NULL, '[\"1644928185_2.jpg\",\"1644928185_4.jpg\"]', NULL, NULL),
-(97, 1, 8, 'Joveno Teakwood Candle', 'small', 'Available', 20, 'images/2.jpg', '2022-06-15 01:12:10', '2022-06-15 01:12:10', 'Red', 'Curved', 'Wax', '16 x 13 x 8', 1, 'Dotted', 'Looking for a way of capturing that wonderful exot...', '49', 'yes', 'no', 20, '[\"1644927847_1.jpg\",\"1644927847_2.jpg\"]', NULL, NULL),
-(98, 2, 6, 'Freya Bed Runner With All Sides Fringe', 'medium', 'Unavailable', 20, 'images/4.jpg', '2022-06-15 01:12:10', '2022-06-15 01:12:10', 'Green', 'Round', 'Wax', '246 x 75', 1, 'Dotted', 'Our bed runner is beautiful and luxurious. Our h...', '109', 'no', 'yes', NULL, '[\"1644928185_2.jpg\",\"1644928185_4.jpg\"]', NULL, NULL),
-(99, 1, 8, 'Joveno Teakwood Candle', 'small', 'Available', 20, 'images/2.jpg', '2022-06-24 09:55:11', '2022-06-24 09:55:11', 'Red', 'Curved', 'Wax', '16 x 13 x 8', 1, 'Dotted', 'Looking for a way of capturing that wonderful exot...', '49', 'yes', 'no', 20, '[\"1644927847_1.jpg\",\"1644927847_2.jpg\"]', NULL, NULL),
-(100, 2, 6, 'Freya Bed Runner With All Sides Fringe', 'medium', 'Unavailable', 20, 'images/4.jpg', '2022-06-24 09:55:11', '2022-06-24 09:55:11', 'Green', 'Round', 'Wax', '246 x 75', 1, 'Dotted', 'Our bed runner is beautiful and luxurious. Our h...', '109', 'no', 'yes', NULL, '[\"1644928185_2.jpg\",\"1644928185_4.jpg\"]', NULL, NULL),
-(101, 1, 8, 'Joveno Teakwood Candle', 'small', 'Available', 20, 'images/2.jpg', '2022-06-24 21:27:20', '2022-06-24 21:27:20', 'Red', 'Curved', 'Wax', '16 x 13 x 8', 1, 'Dotted', 'Looking for a way of capturing that wonderful exot...', '49', 'yes', 'no', 20, '[\"1644927847_1.jpg\",\"1644927847_2.jpg\"]', NULL, NULL),
-(102, 2, 6, 'Freya Bed Runner With All Sides Fringe', 'medium', 'Unavailable', 20, 'images/4.jpg', '2022-06-24 21:27:20', '2022-06-24 21:27:20', 'Green', 'Round', 'Wax', '246 x 75', 1, 'Dotted', 'Our bed runner is beautiful and luxurious. Our h...', '109', 'no', 'yes', NULL, '[\"1644928185_2.jpg\",\"1644928185_4.jpg\"]', NULL, NULL),
-(103, 1, 8, 'Joveno Teakwood Candle', 'small', 'Available', 20, 'images/2.jpg', '2022-06-24 21:29:53', '2022-06-24 21:29:53', 'Red', 'Curved', 'Wax', '16 x 13 x 8', 1, 'Dotted', 'Looking for a way of capturing that wonderful exot...', '49', 'yes', 'no', 20, '[\"1644927847_1.jpg\",\"1644927847_2.jpg\"]', NULL, NULL),
-(104, 2, 6, 'Freya Bed Runner With All Sides Fringe', 'medium', 'Unavailable', 20, 'images/4.jpg', '2022-06-24 21:29:53', '2022-06-24 21:29:53', 'Green', 'Round', 'Wax', '246 x 75', 1, 'Dotted', 'Our bed runner is beautiful and luxurious. Our h...', '109', 'no', 'yes', NULL, '[\"1644928185_2.jpg\",\"1644928185_4.jpg\"]', NULL, NULL);
+(115, 1, 8, 'Joveno Teakwood Candle', 'small', 'Available', 20, 'images/2.jpg', '2022-06-25 03:24:12', '2022-06-25 03:24:12', 'Red', 'Curved', 'Wax', '16 x 13 x 8', 1, 'Dotted', 'Looking for a way of capturing that wonderful exot...', '49', 'yes', 'no', 20, '[\"1644927847_1.jpg\",\"1644927847_2.jpg\"]', NULL, NULL),
+(116, 2, 6, 'Freya Bed Runner With All Sides Fringe', 'medium', 'Unavailable', 20, 'images/4.jpg', '2022-06-25 03:24:12', '2022-06-25 03:24:12', 'Green', 'Round', 'Wax', '246 x 75', 1, 'Dotted', 'Our bed runner is beautiful and luxurious. Our h...', '109', 'no', 'yes', NULL, '[\"1644928185_2.jpg\",\"1644928185_4.jpg\"]', NULL, NULL),
+(117, 1, 8, 'Joveno Teakwood Candle', 'small', 'Available', 20, 'images/2.jpg', '2022-06-27 08:46:32', '2022-06-27 08:46:32', 'Red', 'Curved', 'Wax', '16 x 13 x 8', 1, 'Dotted', 'Looking for a way of capturing that wonderful exot...', '49', 'yes', 'no', 20, '[\"1644927847_1.jpg\",\"1644927847_2.jpg\"]', NULL, NULL),
+(118, 2, 6, 'Freya Bed Runner With All Sides Fringe', 'medium', 'Unavailable', 20, 'images/4.jpg', '2022-06-27 08:46:32', '2022-06-27 08:46:32', 'Green', 'Round', 'Wax', '246 x 75', 1, 'Dotted', 'Our bed runner is beautiful and luxurious. Our h...', '109', 'no', 'yes', NULL, '[\"1644928185_2.jpg\",\"1644928185_4.jpg\"]', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -956,7 +1037,7 @@ CREATE TABLE `promotions` (
   `id` bigint(20) NOT NULL,
   `banner` varchar(255) NOT NULL,
   `form_description` text NOT NULL,
-  `remarks` varchar(1000) NOT NULL,
+  `remarks` varchar(1000) DEFAULT NULL,
   `updated_at` datetime(6) NOT NULL,
   `created_at` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -967,7 +1048,7 @@ CREATE TABLE `promotions` (
 
 INSERT INTO `promotions` (`id`, `banner`, `form_description`, `remarks`, `updated_at`, `created_at`) VALUES
 (10, 'images/Free_Shipping (1).png', '1', '', '2022-05-06 10:23:04.000000', '2022-05-06 10:23:04.000000'),
-(11, 'images/Your_Birthday_Promo (1).png', '2', '', '2022-05-06 10:23:18.000000', '2022-05-06 10:23:18.000000');
+(11, 'images/Your_Birthday_Promo (1).png', '3', '', '2022-05-06 10:23:18.000000', '2022-05-06 10:23:18.000000');
 
 -- --------------------------------------------------------
 
@@ -998,12 +1079,30 @@ CREATE TABLE `shipping_addresses` (
 INSERT INTO `shipping_addresses` (`user_id`, `full_name_ship`, `email_ship`, `phone_ship`, `country_ship`, `address_ship`, `city_ship`, `state_ship`, `zip_ship`, `address_type_ship`, `id`, `updated_at`, `created_at`) VALUES
 (1, 'test123', 'test123@gmail.com', '8967565467', '1', 'Bihar', 'Muzaffarpur', 'Bihar', '785300', 'Home', 1, '2022-03-16 10:48:59.000000', '2022-03-16 10:48:59.000000'),
 (1, 'test123', 'test123@gmail.com', '8967565467', NULL, '155/179A,second street,MVP', 'Erode', 'Tamilnadu', '638655', NULL, 19, '2022-04-28 11:26:45.000000', '2022-04-28 11:26:45.000000'),
-(2, 'test', 'test@gmail.com', '9788671878', NULL, '155/179A,Second street', 'singapore', 'singapore', '638455', NULL, 20, '2022-04-28 11:29:13.000000', '2022-04-28 11:29:13.000000'),
+(2, 'test', 'test@gmail.com', '9788671878', NULL, '155/179A,Second street', 'singapore', 'Karnataka', '638455', NULL, 20, '2022-04-28 11:29:13.000000', '2022-04-28 11:29:13.000000'),
 (3, 'Nandhu', 'nandhini.laravel@gmail.com', '9788671878', NULL, '155/179A,Second street', 'singapore', 'singapore', '638455', NULL, 21, '2022-04-28 11:31:54.000000', '2022-04-28 11:31:54.000000'),
 (1, 'test123', 'test123@gmail.com', '8967565467', NULL, '155/179A,second street,MVP', 'Erode', 'Tamilnadu', '638655', NULL, 22, '2022-04-29 08:34:56.000000', '2022-04-29 08:34:56.000000'),
 (1, 'test123', 'test123@gmail.com', '8967565467', NULL, '155/179A,second street,MVP', 'Erode', 'Tamilnadu', '638655', NULL, 23, '2022-05-04 08:41:01.000000', '2022-05-04 08:41:01.000000'),
 (1, 'test123', 'test123@gmail.com', '8967565467', NULL, '155/179A,second street,MVP', 'Erode', 'Tamilnadu', '638655', NULL, 24, '2022-05-04 13:44:17.000000', '2022-05-04 13:44:17.000000'),
-(1, 'test123', 'test123@gmail.com', '8967565467', NULL, '155/179A,second street,MVP', 'Erode', 'Tamilnadu', '638655', NULL, 25, '2022-05-04 13:46:07.000000', '2022-05-04 13:46:07.000000');
+(1, 'test123', 'test123@gmail.com', '8967565467', NULL, '155/179A,second street,MVP', 'Erode', 'Tamilnadu', '638655', NULL, 25, '2022-05-04 13:46:07.000000', '2022-05-04 13:46:07.000000'),
+(9, 'tamil', 'tamil@gmail.com', '9788671878', NULL, '12,Gandhi nagar', 'singapore', 'singapore', '638786', NULL, 26, '2022-06-30 10:02:31.000000', '2022-06-30 10:02:31.000000'),
+(9, 'tamil', 'tamil@gmail.com', '9788671878', NULL, '12,Gandhi nagar', 'singapore', 'singapore', '638786', NULL, 27, '2022-06-30 10:05:40.000000', '2022-06-30 10:05:40.000000'),
+(9, 'tamil', 'tamil@gmail.com', '9788671878', NULL, '12,Gandhi nagar', 'singapore', 'singapore', '638786', NULL, 28, '2022-06-30 11:00:10.000000', '2022-06-30 11:00:10.000000'),
+(1, 'test123', 'test123@gmail.com', '2147483647', NULL, '12,Gandhi nagar', 'singapore', 'singapore', '638786', NULL, 29, '2022-06-30 11:02:13.000000', '2022-06-30 11:02:13.000000'),
+(1, 'test123', 'test123@gmail.com', '2147483647', NULL, '12,Gandhi nagar', 'singapore', 'singapore', '638786', NULL, 30, '2022-07-05 05:31:47.000000', '2022-07-05 05:31:47.000000'),
+(1, 'test123', 'test123@gmail.com', '2147483647', NULL, '12,Gandhi nagar', 'singapore', 'singapore', '638786', NULL, 31, '2022-07-05 05:34:29.000000', '2022-07-05 05:34:29.000000'),
+(10, 'new', 'abi@gmail.com', '9788671878', NULL, 'n1', 'n1', 'n1', '638455', NULL, 32, '2022-07-05 07:15:00.000000', '2022-07-05 07:15:00.000000'),
+(10, 'new', 'abi@gmail.com', '9788671878', NULL, 'n1', 'n1', 'n1', '638455', NULL, 33, '2022-07-05 07:21:52.000000', '2022-07-05 07:21:52.000000'),
+(10, 'new', 'abi@gmail.com', '9788671878', NULL, 'n1', 'n1', 'n1', '638455', NULL, 34, '2022-07-05 07:35:36.000000', '2022-07-05 07:35:36.000000'),
+(10, 'new', 'abi@gmail.com', '9788671878', NULL, 'n1', 'n1', 'n1', '638455', NULL, 35, '2022-07-05 07:49:03.000000', '2022-07-05 07:49:03.000000'),
+(10, 'new', 'abi@gmail.com', '9788671878', NULL, 'n1', 'n1', 'n1', '638455', NULL, 36, '2022-07-05 07:53:58.000000', '2022-07-05 07:53:58.000000'),
+(10, 'new', 'abi@gmail.com', '9788671878', NULL, 'n1', 'n1', 'n1', '638455', NULL, 37, '2022-07-05 07:57:40.000000', '2022-07-05 07:57:40.000000'),
+(10, 'new', 'abi@gmail.com', '9788671878', NULL, 'n1', 'n1', 'n1', '638455', NULL, 38, '2022-07-05 08:08:58.000000', '2022-07-05 08:08:58.000000'),
+(1, 'test123', 'test123@gmail.com', '2147483647', NULL, 'Bihar', 'Muzaffarpur', 'Bihar', '785300', NULL, 39, '2022-07-05 08:10:48.000000', '2022-07-05 08:10:48.000000'),
+(1, 'test123', 'test123@gmail.com', '2147483647', NULL, 'Bihar', 'Muzaffarpur', 'Bihar', '785300', NULL, 40, '2022-07-05 08:21:07.000000', '2022-07-05 08:21:07.000000'),
+(1, 'test123', 'test123@gmail.com', '2147483647', NULL, 'Bihar', 'Muzaffarpur', 'Bihar', '785300', NULL, 41, '2022-07-05 11:42:15.000000', '2022-07-05 11:42:15.000000'),
+(1, 'test123', 'test123@gmail.com', '2147483647', NULL, 'Bihar', 'Muzaffarpur', 'Bihar', '785300', NULL, 42, '2022-07-05 12:04:41.000000', '2022-07-05 12:04:41.000000'),
+(1, 'test123', 'test123@gmail.com', '2147483647', NULL, 'Bihar', 'Muzaffarpur', 'Bihar', '785300', NULL, 43, '2022-07-05 12:06:21.000000', '2022-07-05 12:06:21.000000');
 
 -- --------------------------------------------------------
 
@@ -1048,9 +1147,8 @@ CREATE TABLE `stocks` (
 --
 
 INSERT INTO `stocks` (`id`, `product_name`, `stock_image`, `stock_available`, `stock_input_date`, `updated_at`, `created_at`) VALUES
-(1, '4', '', '40', NULL, '2022-03-23 10:00:03.000000', '2022-03-23 10:00:03.000000'),
 (2, '5', 'images/banner1.jpg', '57', NULL, '2022-04-13 07:18:27.000000', '2022-04-13 07:18:27.000000'),
-(3, '7', 'images/pic.png', '3', '2022-05-05', '2022-05-02 07:53:17.000000', '2022-05-02 07:53:17.000000'),
+(3, '7', 'images/pic.png', '20', '2022-05-05', '2022-05-02 07:53:17.000000', '2022-05-02 07:53:17.000000'),
 (4, '3', 'images/card1.jpg', '2', '2022-06-24', '2022-06-24 15:36:37.000000', '2022-06-24 15:36:37.000000');
 
 -- --------------------------------------------------------
@@ -1137,23 +1235,17 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `id` int(20) NOT NULL,
   `unique_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` int(10) NOT NULL,
-  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `city` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `state` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `zip` int(6) DEFAULT NULL
+  `phone` bigint(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`name`, `email`, `email_verified_at`, `password`, `image`, `remember_token`, `created_at`, `updated_at`, `id`, `unique_id`, `phone`, `address`, `city`, `state`, `zip`) VALUES
-('test123', 'test123@gmail.com', NULL, '$2y$10$Kko/XU41zH02Bmvz13ecwOl3SGZJTc38fV0Jv7k4EODy/Qi7Mhgda', NULL, NULL, '2022-02-07 04:54:12', '2022-02-07 04:54:12', 1, 'GML0000001', 2147483647, '155/179A,second street,MVP', 'Erode', 'Tamilnadu', 638655),
-('test', 'test@gmail.com', NULL, '$2y$10$z94Q6zqAFjEMMsrlFWhxGuqmRpTEvye7O.qCaImbheZbVkT2vEE6W', NULL, NULL, '2022-04-28 05:58:10', '2022-04-28 05:58:10', 2, 'GML0000002', 2147483647, '28/19,3rd street', 'singapore', 'singapore', 765432),
-('Nandhu', 'nandhini.laravel@gmail.com', NULL, '$2y$10$BmJVEbFMr3b07Uc3kKIh6.BRFgH6Lvfb8c/tagaQcjW3tEw2Lw74K', NULL, NULL, '2022-04-28 06:01:23', '2022-04-28 06:01:23', 3, 'GML0000003', 2147483647, '54B,Park Avenue', 'Erode', 'Tamilnadu', 638655),
-('Nandhini', 'nandhutamil1997@gmail.com', NULL, '$2y$10$mMaCEKhZoJzJ4KwRSnJmnOuKL9mFo1kCEtJ7J7XjJrhZi6OVyndKS', NULL, NULL, '2022-04-29 05:01:50', '2022-04-29 05:01:50', 4, 'GML0000004', 2147483647, NULL, NULL, NULL, NULL),
-('new', 'new@gmail.com', NULL, '$2y$10$D7RCrZA/M67/KK9.X5Awyu1cL1sbQTWtXCDW/b76Uz7NaCNuXjv1G', NULL, NULL, '2022-05-05 05:01:58', '2022-05-05 05:01:58', 5, 'GML0000005', 2147483647, NULL, NULL, NULL, NULL);
+INSERT INTO `users` (`name`, `email`, `email_verified_at`, `password`, `image`, `remember_token`, `created_at`, `updated_at`, `id`, `unique_id`, `phone`) VALUES
+('test123', 'test123@gmail.com', NULL, '$2y$10$Kko/XU41zH02Bmvz13ecwOl3SGZJTc38fV0Jv7k4EODy/Qi7Mhgda', NULL, NULL, '2022-02-07 04:54:12', '2022-02-07 04:54:12', 1, 'GML0000001', 2147483647),
+('test', 'test@gmail.com', NULL, '$2y$10$z94Q6zqAFjEMMsrlFWhxGuqmRpTEvye7O.qCaImbheZbVkT2vEE6W', NULL, NULL, '2022-04-28 05:58:10', '2022-04-28 05:58:10', 2, 'GML0000002', 2147483647),
+('new', 'abi@gmail.com', NULL, '$2y$10$INB/wMF.LQOTi5slRb/Lt.LfIFtZcWbsu97xZ8G3YAMt9MMSUcLvy', NULL, NULL, '2022-07-05 01:44:00', '2022-07-05 01:44:00', 10, 'GML0000003', 9788671878);
 
 -- --------------------------------------------------------
 
@@ -1169,28 +1261,6 @@ CREATE TABLE `wishlists` (
   `created_at` datetime(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `wishlists`
---
-
-INSERT INTO `wishlists` (`id`, `product_id`, `user_id`, `updated_at`, `created_at`) VALUES
-(1, 5, '1', NULL, NULL),
-(2, 3, '1', NULL, NULL),
-(3, 6, '1', NULL, NULL),
-(4, 13, '1', NULL, NULL),
-(5, 4, '1', NULL, NULL),
-(6, 19, '1', NULL, NULL),
-(7, 12, '1', NULL, NULL),
-(8, 22, '1', NULL, NULL),
-(9, 7, '2', NULL, NULL),
-(10, 7, '1', NULL, NULL),
-(11, 23, '1', NULL, NULL),
-(12, 15, '1', NULL, NULL),
-(13, 14, '1', NULL, NULL),
-(14, 86, '1', NULL, NULL),
-(15, 85, '1', NULL, NULL),
-(16, 97, '1', NULL, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -1201,7 +1271,7 @@ CREATE TABLE `_registers` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `Name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Phone` int(11) NOT NULL,
+  `Phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Retype_Password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1416,13 +1486,13 @@ ALTER TABLE `articles`
 -- AUTO_INCREMENT for table `billing_addresses`
 --
 ALTER TABLE `billing_addresses`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -1440,13 +1510,13 @@ ALTER TABLE `checkouts`
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `contact_us`
 --
 ALTER TABLE `contact_us`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `countries`
@@ -1482,19 +1552,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=153;
 
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -1506,19 +1576,19 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
 
 --
 -- AUTO_INCREMENT for table `promotions`
 --
 ALTER TABLE `promotions`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `shipping_addresses`
 --
 ALTER TABLE `shipping_addresses`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `shipping_charges`
@@ -1548,13 +1618,13 @@ ALTER TABLE `testimonials`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `wishlists`
 --
 ALTER TABLE `wishlists`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `_registers`
